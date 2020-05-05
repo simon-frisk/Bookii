@@ -1,12 +1,15 @@
 import React from 'react'
-import { View } from 'react-native'
-
-/*import { createDrawerNavigator } from '@react-navigation/drawer'
-import Search from './Search'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import TopLists from './TopLists'
+import Search from './Search'
 
-const Drawer = createDrawerNavigator()
-*/
+const Tab = createMaterialTopTabNavigator()
+
 export default () => {
-  return <View />
+  return (
+    <Tab.Navigator tabBarOptions={{ style: { paddingTop: 20 } }}>
+      <Tab.Screen name='Search' component={Search} />
+      <Tab.Screen name='Toplists' component={TopLists} />
+    </Tab.Navigator>
+  )
 }
