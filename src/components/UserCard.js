@@ -21,7 +21,7 @@ export default ({ name, _id, profilePicturePath }) => {
           profilePicturePath={profilePicturePath}
           size={40}
         />
-        <Typography size='h3' style={{ marginLeft: 10 }}>
+        <Typography size='h3' style={{ marginLeft: 20 }}>
           {name}
         </Typography>
       </TouchableOpacity>

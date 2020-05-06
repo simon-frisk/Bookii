@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { View, Button } from 'react-native'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 import Typography from '../../components/Typography'
+import FollowButton from './FollowButton'
 
 export default ({ profilePicturePath, name, isSelf }) => {
   const navigation = useNavigation()
@@ -22,13 +23,15 @@ export default ({ profilePicturePath, name, isSelf }) => {
         />
         <View style={{ marginRight: 40 }}>
           <Typography size='h1'>{name}</Typography>
-          {isSelf && (
+          {isSelf ? (
             <Button
               title='Settings'
               onPress={() => {
                 navigation.navigate('userSettings')
               }}
             />
+          ) : (
+            <FollowButton />
           )}
         </View>
       </View>
