@@ -6,7 +6,7 @@ import TextField from '../../components/TextField'
 import DatePicker from './DatePicker'
 import Styles from '../../util/Styles'
 import Typography from '../../components/Typography'
-import { UserPage } from '../Me'
+import { UserPage } from '../User/User'
 import { BookPage } from '../Book/Book'
 
 const AddFeedBook = gql`

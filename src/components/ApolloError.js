@@ -20,8 +20,6 @@ export default ({ error, type }) => {
 
   const errorMessage = errors.join(', ')
 
-  console.log(type)
-
   if (type === 'errortext')
     return <Typography style={{ color: 'red' }}>{errorMessage}</Typography>
   else if (type === 'errorcomponent')

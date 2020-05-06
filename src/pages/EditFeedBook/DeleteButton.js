@@ -3,7 +3,7 @@ import { Button } from 'react-native'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import ApolloError from '../../components/ApolloError'
-import { UserPage } from '../Me'
+import { UserPage } from '../User/User'
 import { BookPage } from '../Book/Book'
 
 const RemoveFeedBook = gql`

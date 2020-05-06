@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesome5 } from '@expo/vector-icons'
-import Me from '../pages/Me'
+import User from '../pages/User/User'
 import Discover from '../pages/Discover/Discover'
 import Feed from '../pages/Feed'
 
@@ -30,7 +30,7 @@ export default () => {
       />
       <Tabs.Screen
         name='Me'
-        component={Me}
+        component={User}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name='user' size={size} color={color} />
