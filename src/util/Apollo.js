@@ -16,8 +16,8 @@ export default new ApolloClient({
       }
     }),
     createUploadLink({
-      uri: 'https://bookii-api.herokuapp.com/graphql',
-      //uri: 'http://192.168.72.114:4000/graphql',
+      //uri: 'https://bookii-api.herokuapp.com/graphql',
+      uri: 'http://192.168.72.114:4000/graphql',
     }),
   ]),
   cache: new InMemoryCache(),

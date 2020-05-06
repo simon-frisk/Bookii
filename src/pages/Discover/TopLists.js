@@ -25,17 +25,6 @@ const TopList = gql`
 
 export default () => {
   const { data, loading, error } = useQuery(TopList)
-  const [lists, setLists] = useState([])
-
-  useEffect(() => {
-    if (data)
-      setLists(
-        data.nytimesBestSellers.map(list => ({
-          name: list.name,
-          data: list.books,
-        }))
-      )
-  }, [data])
 
   return (
     <SectionList
@@ -51,7 +40,14 @@ export default () => {
           )
         return <View />
       }}
-      sections={lists}
+      sections={
+        data
+          ? data.nytimesBestSellers.map(list => ({
+              name: list.name,
+              data: list.books,
+            }))
+          : []
+      }
       stickySectionHeadersEnabled={false}
       renderSectionHeader={({ section: list }) => (
         <Typography size='h2' style={{ marginVertical: 20 }}>

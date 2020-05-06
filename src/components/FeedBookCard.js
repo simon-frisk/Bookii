@@ -6,6 +6,7 @@ import BookCover from './BookCover'
 import ProfilePictureCircle from './ProfilePictureCircle'
 import { useNavigation } from '@react-navigation/native'
 import { SimpleLineIcons } from '@expo/vector-icons'
+import Card from './Card'
 
 export default ({
   bookId,
@@ -20,22 +21,7 @@ export default ({
   const navigation = useNavigation()
 
   return (
-    <View
-      style={{
-        marginBottom: 10,
-        marginTop: 5,
-        padding: 15,
-        borderRadius: 10,
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 2,
-          height: 2,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-        backgroundColor: 'white',
-      }}
-    >
+    <Card>
       <View
         style={{
           flexDirection: 'row',
@@ -70,6 +56,6 @@ export default ({
           </Typography>
         </View>
       </TouchableOpacity>
-    </View>
+    </Card>
   )
 }

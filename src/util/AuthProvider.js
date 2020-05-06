@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        userId: decodedAuthtoken && decodedAuthtoken.userId,
+        _id: decodedAuthtoken && decodedAuthtoken._id,
         signout,
         signin,
         initialAuthCheck,

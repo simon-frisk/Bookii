@@ -11,8 +11,8 @@ import Header from './Header'
 import { AuthContext } from '../../util/AuthProvider'
 
 export const UserPage = gql`
-  query UserPage($userId: ID) {
-    user(userId: $userId) {
+  query UserPage($_id: ID) {
+    user(_id: $_id) {
       _id
       name
       profilePicturePath
@@ -32,12 +32,12 @@ export const UserPage = gql`
 `
 
 export default ({ route }) => {
-  const userId = route.params && route.params.userId
-  const selfUserId = useContext(AuthContext).userId
-  const isSelf = !Boolean(userId) || selfUserId === userId
+  const _id = route.params && route.params._id
+  const selfId = useContext(AuthContext)._id
+  const isSelf = !Boolean(_id) || selfId === _id
 
   const { data, loading, error } = useQuery(UserPage, {
-    variables: { userId: isSelf ? selfUserId : userId },
+    variables: { _id: isSelf ? selfId : _id },
   })
 
   if (loading)

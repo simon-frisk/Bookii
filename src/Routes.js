@@ -10,11 +10,12 @@ import Book from './pages/Book/Book'
 import AddFeedBook from './pages/AddFeedBook/AddFeedBook'
 import UserSettings from './pages/UserSettings/UserSettings'
 import EditFeedBook from './pages/EditFeedBook/EditFeedBook'
+import User from './pages/User/User'
 
 const Stack = createStackNavigator()
 
 export default () => {
-  const { userId, initialAuthCheck, isInitialAuthCheckDone } = useContext(
+  const { _id, initialAuthCheck, isInitialAuthCheckDone } = useContext(
     AuthContext
   )
 
@@ -35,16 +36,17 @@ export default () => {
             headerRight: () => <CloseModalButton />,
           }}
         >
-          {userId && (
+          {_id && (
             <>
               <Stack.Screen name='mainTabScreen' component={BottomTabs} />
               <Stack.Screen name='book' component={Book} />
               <Stack.Screen name='addFeedBook' component={AddFeedBook} />
               <Stack.Screen name='editFeedBook' component={EditFeedBook} />
               <Stack.Screen name='userSettings' component={UserSettings} />
+              <Stack.Screen name='user' component={User} />
             </>
           )}
-          {!userId && <Stack.Screen name='signin' component={Signin} />}
+          {!_id && <Stack.Screen name='signin' component={Signin} />}
         </Stack.Navigator>
       </NavigationContainer>
     )
