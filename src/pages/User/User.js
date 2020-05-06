@@ -69,10 +69,11 @@ export default ({ route }) => {
         contentContainerStyle={Styles.pageContainer}
         renderItem={({ item: feedBook }) => (
           <FeedBookCard
-            _id={feedBook._id}
+            book_id={feedBook._id}
             bookId={feedBook.book.bookId}
             thumbnail={feedBook.book.thumbnail}
             title={feedBook.book.title}
+            user_id={data.user._id}
             name={data.user.name}
             profilePicturePath={data.user.profilePicturePath}
             comment={feedBook.comment}

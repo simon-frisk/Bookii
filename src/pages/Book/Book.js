@@ -77,10 +77,11 @@ export default ({ route }) => {
             data: data.user.feedBooks,
             renderItem: ({ item: { comment, date, _id } }) => (
               <FeedBookCard
-                _id={_id}
+                book_id={_id}
                 bookId={data.book.bookId}
                 title={data.book.title}
                 thumbnail={data.book.thumbnail}
+                user_id={data.user._id}
                 profilePicturePath={data.user.profilePicturePath}
                 name={data.user.name}
                 comment={comment}

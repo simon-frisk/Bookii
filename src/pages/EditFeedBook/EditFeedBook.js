@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import styles from '../../util/Styles'
 import Typography from '../../components/Typography'
 import Center from '../../components/Center'
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 import ApolloError from '../../components/ApolloError'
 import DeleteButton from './DeleteButton'
 
@@ -40,6 +40,7 @@ export default ({ route }) => {
 
   if (data) {
     const feedBook = data.user.feedBooks[0]
+    if (!feedBook) return <View />
     return (
       <ScrollView style={styles.pageContainer}>
         <Typography size='h1'>{feedBook.book.title}</Typography>
