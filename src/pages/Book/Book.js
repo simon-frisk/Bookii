@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
 import Center from '../../components/Center'
-import ApolloErrorText from '../../components/ApolloErrorText'
+import ApolloError from '../../components/ApolloError'
 import TopInfoArea from './TopInfoArea'
 import Typography from '../../components/Typography'
 import FeedBookCard from '../../components/FeedBookCard'
@@ -47,12 +47,7 @@ export default ({ route }) => {
       </Center>
     )
 
-  if (error)
-    return (
-      <Center>
-        <ApolloErrorText error={error} />
-      </Center>
-    )
+  if (error) return <ApolloError type='errorcomponent' error={error} />
 
   if (data && !data.book)
     return (

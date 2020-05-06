@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { useNavigation } from '@react-navigation/native'
 import Styles from '../util/Styles'
 import Center from '../components/Center'
-import ApolloErrorText from '../components/ApolloErrorText'
+import ApolloError from '../components/ApolloError'
 import Typography from '../components/Typography'
 import FeedBookCard from '../components/FeedBookCard'
 import ProfilePictureCircle from '../components/ProfilePictureCircle'
@@ -71,12 +71,7 @@ export default () => {
       </Center>
     )
 
-  if (error)
-    return (
-      <Center>
-        <ApolloErrorText error={error} />
-      </Center>
-    )
+  if (error) return <ApolloError type='errorcomponent' error={error} />
 
   if (data)
     return (

@@ -6,7 +6,7 @@ import BookCard from '../../components/BookCard'
 import Center from '../../components/Center'
 import TextField from '../../components/TextField'
 import Styles from '../../util/Styles'
-import ApolloErrorText from '../../components/ApolloErrorText'
+import ApolloError from '../../components/ApolloError'
 import Typography from '../../components/Typography'
 
 const BookSearch = gql`
@@ -60,12 +60,7 @@ export default () => {
   )
 
   const Empty = () => {
-    if (error)
-      return (
-        <Center>
-          <ApolloErrorText error={error} />
-        </Center>
-      )
+    if (error) return <ApolloError type='errorcomponent' error={error} />
     if (loading)
       return (
         <Center>

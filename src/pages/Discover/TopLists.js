@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/react-hooks'
 import Typography from '../../components/Typography'
 import Styles from '../../util/Styles'
 import Center from '../../components/Center'
-import ApolloErrorText from '../../components/ApolloErrorText'
+import ApolloError from '../../components/ApolloError'
 import BookCard from '../../components/BookCard'
 
 const TopList = gql`
@@ -36,19 +36,13 @@ export default () => {
         }))
       )
   }, [data])
-  console.log(lists)
 
   return (
     <SectionList
       ListHeaderComponent={() => <Typography size='h1'>Toplists</Typography>}
       contentContainerStyle={Styles.pageContainer}
       ListEmptyComponent={() => {
-        if (error)
-          return (
-            <Center>
-              <ApolloErrorText error={error} />
-            </Center>
-          )
+        if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)
           return (
             <Center>

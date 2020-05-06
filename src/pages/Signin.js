@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
 import TextField from '../components/TextField'
 import Center from '../components/Center'
-import ApolloErrorText from '../components/ApolloErrorText'
+import ApolloError from '../components/ApolloError'
 import Typography from '../components/Typography'
 
 const Signin = gql`
@@ -46,7 +46,7 @@ export default () => {
           placeholder='password'
           secureTextEntry={true}
         />
-        {error && <ApolloErrorText error={error} />}
+        {error && <ApolloError type='errortext' error={error} />}
         <Button title='sign in' onPress={signin} disabled={loading} />
       </View>
     </Center>

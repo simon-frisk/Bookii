@@ -4,7 +4,7 @@ import { Button, View } from 'react-native'
 import TextField from '../../components/TextField'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import ApolloErrorText from '../../components/ApolloErrorText'
+import ApolloError from '../../components/ApolloError'
 import Typography from '../../components/Typography'
 import { ReactNativeFile } from 'apollo-upload-client'
 
@@ -86,7 +86,7 @@ export default () => {
         secureTextEntry={true}
       />
       <Button title='Select profile picture' onPress={selectProfilePicture} />
-      {error && <ApolloErrorText error={error} />}
+      {error && <ApolloError type='errortext' error={error} />}
       <Button title='Update' onPress={update} disabled={loading} />
     </View>
   )

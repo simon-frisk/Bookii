@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "bookii",
+    "name": "Bookii",
     "slug": "bookii",
     "platforms": [
       "ios",
@@ -24,6 +24,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }

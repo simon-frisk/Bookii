@@ -18,7 +18,7 @@ export default ({ profilePicturePath, size, style }) => {
     return (
       <View
         style={{
-          backgroundColor: 'grey',
+          backgroundColor: 'darkgrey',
           width: size,
           height: size,
           borderRadius: size / 2,

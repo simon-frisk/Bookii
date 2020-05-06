@@ -6,7 +6,7 @@ import styles from '../../util/Styles'
 import Typography from '../../components/Typography'
 import Center from '../../components/Center'
 import { ActivityIndicator } from 'react-native'
-import ApolloErrorText from '../../components/ApolloErrorText'
+import ApolloError from '../../components/ApolloError'
 import DeleteButton from './DeleteButton'
 
 const UpdateFeedBookPage = gql`
@@ -29,12 +29,7 @@ export default ({ route }) => {
     variables: { _id: route.params._id },
   })
 
-  if (error)
-    return (
-      <Center>
-        <ApolloErrorText error={error} />
-      </Center>
-    )
+  if (error) return <ApolloError type='errorcomponent' error={error} />
 
   if (loading)
     return (
