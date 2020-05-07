@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-export default ({ size, grey, style, bold, italic, children }) => {
+export default ({ size, grey, style, bold, children }) => {
   let fontSize
   switch (size) {
     case 'h1':
@@ -22,7 +22,6 @@ export default ({ size, grey, style, bold, italic, children }) => {
       style={{
         fontSize,
         color: grey ? 'grey' : 'black',
-        fontStyle: italic ? 'italic' : 'normal',
         fontWeight: bold ? 'bold' : 'normal',
         ...style,
       }}

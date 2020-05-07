@@ -66,9 +66,7 @@ export default ({
         </Typography>
         <View style={{ flexDirection: 'row', flex: 1 }}>
           <BookCover uri={thumbnail} width={120} style={{ marginRight: 20 }} />
-          <Typography italic style={{ flex: 1 }}>
-            {comment}
-          </Typography>
+          <Typography style={{ flex: 1 }}>{comment}</Typography>
         </View>
       </TouchableOpacity>
     </Card>

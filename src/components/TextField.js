@@ -6,9 +6,8 @@ export default props => {
   return (
     <TextInput
       {...props}
-      style={styles.textfield}
-      keyboardAppearance='dark'
-      clearButtonMode='always'
+      multiline={props.canHaveManyLines ? true : false}
+      style={{ ...styles.textfield, ...props.style }}
     />
   )
 }
@@ -16,9 +15,11 @@ export default props => {
 const styles = StyleSheet.create({
   textfield: {
     backgroundColor: '#ddd',
+    borderColor: '#ddd',
     borderRadius: 10,
-    padding: 10,
+    borderWidth: 6,
     width: '100%',
+    padding: 3,
     marginBottom: 6,
     marginTop: 6,
   },

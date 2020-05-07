@@ -54,6 +54,7 @@ export default ({
       <DatePicker value={date} onChange={setDate} />
       <TextField
         value={comment}
+        canHaveManyLines={true}
         onChangeText={setComment}
         placeholder='Say something about this book'
       />
