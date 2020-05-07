@@ -16,6 +16,9 @@ export const UserPage = gql`
       _id
       name
       profilePicturePath
+      followers {
+        _id
+      }
       feedBooks {
         _id
         bookId
@@ -32,12 +35,13 @@ export const UserPage = gql`
 `
 
 export default ({ route }) => {
-  const _id = route.params && route.params._id
+  const paramsId = route.params && route.params._id
   const selfId = useContext(AuthContext)._id
-  const isSelf = !Boolean(_id) || selfId === _id
+  const isSelf = !Boolean(paramsId) || selfId === paramsId
+  const _id = isSelf ? selfId : paramsId
 
   const { data, loading, error } = useQuery(UserPage, {
-    variables: { _id: isSelf ? selfId : _id },
+    variables: { _id },
   })
 
   if (loading)
@@ -57,6 +61,10 @@ export default ({ route }) => {
             profilePicturePath={data.user.profilePicturePath}
             name={data.user.name}
             isSelf={isSelf}
+            isSelfFollowing={data.user.followers
+              .map(u => u._id)
+              .includes(selfId)}
+            _id={_id}
           />
         )}
         ListEmptyComponent={() => (
@@ -69,13 +77,13 @@ export default ({ route }) => {
         contentContainerStyle={Styles.pageContainer}
         renderItem={({ item: feedBook }) => (
           <FeedBookCard
+            user_id={data.user._id}
+            name={data.user.name}
+            profilePicturePath={data.user.profilePicturePath}
             book_id={feedBook._id}
             bookId={feedBook.book.bookId}
             thumbnail={feedBook.book.thumbnail}
             title={feedBook.book.title}
-            user_id={data.user._id}
-            name={data.user.name}
-            profilePicturePath={data.user.profilePicturePath}
             comment={feedBook.comment}
             date={feedBook.date}
           />

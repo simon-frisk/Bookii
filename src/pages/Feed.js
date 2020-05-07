@@ -8,7 +8,7 @@ import FeedBookCard from '../components/FeedBookCard'
 import ApolloError from '../components/ApolloError'
 import Center from '../components/Center'
 
-const FeedPage = gql`
+export const FeedPage = gql`
   query FeedPage {
     feed {
       _id

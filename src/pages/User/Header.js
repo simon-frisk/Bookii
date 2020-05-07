@@ -5,7 +5,7 @@ import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 import Typography from '../../components/Typography'
 import FollowButton from './FollowButton'
 
-export default ({ profilePicturePath, name, isSelf }) => {
+export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
   const navigation = useNavigation()
 
   return (
@@ -31,7 +31,7 @@ export default ({ profilePicturePath, name, isSelf }) => {
               }}
             />
           ) : (
-            <FollowButton />
+            <FollowButton isSelfFollowing={isSelfFollowing} _id={_id} />
           )}
         </View>
       </View>
