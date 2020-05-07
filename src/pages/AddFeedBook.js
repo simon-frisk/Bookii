@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { Button, ScrollView } from 'react-native'
-import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import TextField from '../../components/TextField'
-import DatePicker from '../../components/DatePicker'
-import Styles from '../../util/Styles'
-import Typography from '../../components/Typography'
-import { UserPage } from '../User/User'
-import { BookPage } from '../Book/Book'
+import { useMutation } from '@apollo/react-hooks'
+import { Button, ScrollView } from 'react-native'
+import TextField from '../components/TextField'
+import DatePicker from '../components/DatePicker'
+import Typography from '../components/Typography'
+import ApolloError from '../components/ApolloError'
+import { UserPage } from './User/User'
+import { BookPage } from './Book/Book'
+import Styles from '../util/Styles'
 
 const AddFeedBook = gql`
   mutation AddFeedBook($bookId: String!, $comment: String!, $date: String!) {
@@ -20,10 +21,7 @@ const AddFeedBook = gql`
 export default ({ route, navigation }) => {
   const bookId = route.params.bookId
 
-  const [date, setDate] = useState(new Date())
-  const [comment, setComment] = useState('')
-
-  const [callAddReadBookMutation, { data, loading, error }] = useMutation(
+  const [callAddReadBookMutation, { loading, error }] = useMutation(
     AddFeedBook,
     {
       refetchQueries: [
@@ -35,8 +33,12 @@ export default ({ route, navigation }) => {
           },
         },
       ],
+      onCompleted: navigation.goBack,
     }
   )
+
+  const [date, setDate] = useState(new Date())
+  const [comment, setComment] = useState('')
 
   const addBook = () => {
     callAddReadBookMutation({
@@ -47,13 +49,14 @@ export default ({ route, navigation }) => {
   return (
     <ScrollView contentContainerStyle={Styles.pageContainer}>
       <Typography size='h1'>Add book to feed</Typography>
+      <DatePicker value={date} onChange={setDate} />
       <TextField
         placeholder='Say something about this book'
         value={comment}
         onChangeText={setComment}
       />
-      <DatePicker value={date} onChange={setDate} />
-      <Button title='Add Book' onPress={addBook} />
+      {error && <ApolloError type='errortext' error={error} />}
+      <Button title='Add Book' disabled={loading} onPress={addBook} />
     </ScrollView>
   )
 }

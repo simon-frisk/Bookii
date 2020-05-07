@@ -7,7 +7,7 @@ import CloseModalButton from './components/CloseModalButton'
 import BottomTabs from './util/BottomTabs'
 import Signin from './pages/Signin'
 import Book from './pages/Book/Book'
-import AddFeedBook from './pages/AddFeedBook/AddFeedBook'
+import AddFeedBook from './pages/AddFeedBook'
 import UserSettings from './pages/UserSettings/UserSettings'
 import EditFeedBook from './pages/EditFeedBook/EditFeedBook'
 import User from './pages/User/User'
@@ -42,8 +42,8 @@ export default () => {
               <Stack.Screen name='book' component={Book} />
               <Stack.Screen name='addFeedBook' component={AddFeedBook} />
               <Stack.Screen name='editFeedBook' component={EditFeedBook} />
-              <Stack.Screen name='userSettings' component={UserSettings} />
               <Stack.Screen name='user' component={User} />
+              <Stack.Screen name='userSettings' component={UserSettings} />
             </>
           )}
           {!_id && <Stack.Screen name='signin' component={Signin} />}

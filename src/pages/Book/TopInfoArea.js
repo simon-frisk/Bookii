@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button, View } from 'react-native'
-
-import BookCover from '../../components/BookCover'
 import { useNavigation } from '@react-navigation/native'
+import BookCover from '../../components/BookCover'
 import Typography from '../../components/Typography'
 
 export default ({
