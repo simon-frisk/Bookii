@@ -8,6 +8,7 @@ import Center from '../../components/Center'
 import { ActivityIndicator, View } from 'react-native'
 import ApolloError from '../../components/ApolloError'
 import DeleteButton from './DeleteButton'
+import Edit from './Edit'
 
 const UpdateFeedBookPage = gql`
   query UpdateFeedBookPage($_id: ID!) {
@@ -16,6 +17,8 @@ const UpdateFeedBookPage = gql`
       feedBooks(_id: $_id) {
         _id
         bookId
+        comment
+        date
         book {
           title
         }
@@ -24,7 +27,7 @@ const UpdateFeedBookPage = gql`
   }
 `
 
-export default ({ route }) => {
+export default ({ route, navigation }) => {
   const { data, loading, error } = useQuery(UpdateFeedBookPage, {
     variables: { _id: route.params._id },
   })
@@ -44,7 +47,19 @@ export default ({ route }) => {
     return (
       <ScrollView style={styles.pageContainer}>
         <Typography size='h1'>{feedBook.book.title}</Typography>
-        <DeleteButton _id={feedBook._id} bookId={feedBook.bookId} />
+        <Typography size='h3'>Edit</Typography>
+        <Edit
+          _id={feedBook._id}
+          comment={feedBook.comment}
+          date={feedBook.date}
+          onCompleted={navigation.goBack}
+        />
+        <Typography size='h3'>Delete</Typography>
+        <DeleteButton
+          _id={feedBook._id}
+          bookId={feedBook.bookId}
+          onCompleted={navigation.goBack}
+        />
       </ScrollView>
     )
   }

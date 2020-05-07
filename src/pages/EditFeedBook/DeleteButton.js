@@ -14,7 +14,7 @@ const RemoveFeedBook = gql`
   }
 `
 
-export default ({ _id, bookId }) => {
+export default ({ _id, bookId, onCompleted }) => {
   const [callRemoveQuery, { data, loading, error }] = useMutation(
     RemoveFeedBook,
     {
@@ -28,10 +28,17 @@ export default ({ _id, bookId }) => {
           },
         },
       ],
+      onCompleted,
     }
   )
 
   if (error) return <ApolloError type='errortext' error={error} />
 
-  return <Button onPress={callRemoveQuery} title='remove' disabled={loading} />
+  return (
+    <Button
+      onPress={callRemoveQuery}
+      title='Remove'
+      disabled={loading || !!data}
+    />
+  )
 }
