@@ -44,6 +44,11 @@ export default () => {
               <ActivityIndicator />
             </Center>
           )
+        return (
+          <Center>
+            <Typography>No items on feed</Typography>
+          </Center>
+        )
       }}
       renderItem={({ item }) => (
         <FeedBookCard

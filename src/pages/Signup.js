@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, View } from 'react-native'
-import { useLazyQuery } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
 import TextField from '../components/TextField'
@@ -8,15 +8,15 @@ import Center from '../components/Center'
 import ApolloError from '../components/ApolloError'
 import Typography from '../components/Typography'
 
-const Signin = gql`
-  query Signin($email: String!, $password: String!) {
-    signin(email: $email, password: $password)
+const Signup = gql`
+  mutation Signup($email: String!, $password: String!, $name: String!) {
+    signup(user: { email: $email, name: $name, password: $password })
   }
 `
 
-export default ({ navigation }) => {
-  const [callQuery, { loading, error }] = useLazyQuery(Signin, {
-    onCompleted: ({ signin: token }) => {
+export default () => {
+  const [callMutation, { loading, error }] = useMutation(Signup, {
+    onCompleted: ({ signup: token }) => {
       setToken(token)
     },
   })
@@ -24,15 +24,16 @@ export default ({ navigation }) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
 
-  const signin = () => {
-    callQuery({ variables: { email, password } })
+  const signup = () => {
+    callMutation({ variables: { email, password, name } })
   }
 
   return (
     <Center>
       <View style={{ width: '50%', maxWidth: 300 }}>
-        <Typography size='h2'>Sign in</Typography>
+        <Typography size='h2'>Sign up</Typography>
         <TextField
           value={email}
           onChangeText={setEmail}
@@ -41,14 +42,18 @@ export default ({ navigation }) => {
           keyboardType='email-address'
         />
         <TextField
+          value={name}
+          onChangeText={setName}
+          placeholder='full name'
+        />
+        <TextField
           value={password}
           onChangeText={setPassword}
           placeholder='password'
           secureTextEntry={true}
         />
         {error && <ApolloError type='errortext' error={error} />}
-        <Button title='sign in' onPress={signin} disabled={loading} />
-        <Button title='sign up' onPress={() => navigation.navigate('signup')} />
+        <Button title='sign up' onPress={signup} disabled={loading} />
       </View>
     </Center>
   )

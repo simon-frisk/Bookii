@@ -6,6 +6,7 @@ import { AuthContext } from './util/AuthProvider'
 import CloseModalButton from './components/CloseModalButton'
 import BottomTabs from './util/BottomTabs'
 import Signin from './pages/Signin'
+import Signup from './pages/Signup'
 import Book from './pages/Book/Book'
 import AddFeedBook from './pages/AddFeedBook'
 import UserSettings from './pages/UserSettings/UserSettings'
@@ -46,7 +47,12 @@ export default () => {
               <Stack.Screen name='userSettings' component={UserSettings} />
             </>
           )}
-          {!_id && <Stack.Screen name='signin' component={Signin} />}
+          {!_id && (
+            <>
+              <Stack.Screen name='signin' component={Signin} />
+              <Stack.Screen name='signup' component={Signup} />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     )
