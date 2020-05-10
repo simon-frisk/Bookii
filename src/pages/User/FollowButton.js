@@ -1,11 +1,11 @@
 import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import { Button } from 'react-native'
 import ApolloError from '../../components/ApolloError'
 import { UserFollowingAndFollowers } from '../UserSettings/UserSettings'
 import { UserPage } from './User'
 import { FeedPage } from '../Feed'
+import PressButton from '../../components/PressButton'
 
 const FollowUser = gql`
   mutation FollowUser($_id: ID!) {
@@ -39,10 +39,11 @@ export default ({ isSelfFollowing, _id }) => {
   if (error) return <ApolloError error={error} type='errortext' />
 
   return (
-    <Button
-      title={isSelfFollowing ? 'Unfollow' : 'Follow'}
+    <PressButton
+      text={isSelfFollowing ? 'Unfollow' : 'Follow'}
       onPress={callMutation}
-      disabled={loading}
+      type='outline'
+      loading={loading}
     />
   )
 }

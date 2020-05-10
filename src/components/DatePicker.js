@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { View, Button, Platform } from 'react-native'
+import { View, Platform } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import Typography from './Typography'
+import PressButton from './PressButton'
 
 export default ({ value, onChange }) => {
   const [show, setShow] = useState(false)
@@ -23,7 +24,11 @@ export default ({ value, onChange }) => {
           }}
         />
       )}
-      <Button onPress={() => setShow(!show)} title='Set date' />
+      <PressButton
+        onPress={() => setShow(!show)}
+        text='Set date'
+        type='outline'
+      />
     </View>
   )
 }

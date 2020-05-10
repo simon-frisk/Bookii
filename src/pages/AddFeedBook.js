@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import { Button, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import TextField from '../components/TextField'
 import DatePicker from '../components/DatePicker'
 import Typography from '../components/Typography'
@@ -9,6 +9,7 @@ import ApolloError from '../components/ApolloError'
 import { UserPage } from './User/User'
 import { BookPage } from './Book/Book'
 import Styles from '../util/Styles'
+import PressButton from '../components/PressButton'
 
 const AddFeedBook = gql`
   mutation AddFeedBook($bookId: String!, $comment: String!, $date: String!) {
@@ -57,7 +58,12 @@ export default ({ route, navigation }) => {
         onChangeText={setComment}
       />
       {error && <ApolloError type='errortext' error={error} />}
-      <Button title='Add Book' disabled={loading} onPress={addBook} />
+      <PressButton
+        text='Add Book'
+        loading={loading}
+        type='filled'
+        onPress={addBook}
+      />
     </ScrollView>
   )
 }

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import * as ImagePicker from 'expo-image-picker'
-import { Button, View } from 'react-native'
+import { View } from 'react-native'
 import TextField from '../../components/TextField'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import ApolloError from '../../components/ApolloError'
 import Typography from '../../components/Typography'
 import { ReactNativeFile } from 'apollo-upload-client'
+import PressButton from '../../components/PressButton'
 
 const UpdateUser = gql`
   mutation UpdateUser(
@@ -85,9 +86,18 @@ export default () => {
         placeholder='password'
         secureTextEntry={true}
       />
-      <Button title='Select profile picture' onPress={selectProfilePicture} />
+      <PressButton
+        text='Select profile picture'
+        type='outline'
+        onPress={selectProfilePicture}
+      />
       {error && <ApolloError type='errortext' error={error} />}
-      <Button title='Update' onPress={update} disabled={loading} />
+      <PressButton
+        text='Update'
+        onPress={update}
+        type='filled'
+        loading={loading}
+      />
     </View>
   )
 }

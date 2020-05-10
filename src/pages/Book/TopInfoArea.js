@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, View } from 'react-native'
+import { View } from 'react-native'
+import PressButton from '../../components/PressButton'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/BookCover'
 import Typography from '../../components/Typography'
@@ -19,20 +20,18 @@ export default ({
 
   return (
     <View style={{ marginBottom: 30 }}>
-      <View style={{ alignItems: 'center', marginBottom: 20 }}>
-        <BookCover uri={thumbnail} width={200} />
-        <Typography size='h2' style={{ marginTop: 15, textAlign: 'center' }}>
-          {title}
-        </Typography>
-        {subTitle && (
-          <Typography grey style={{ marginBottom: 20, textAlign: 'center' }}>
-            {subTitle}
+      <View style={{ marginBottom: 20 }}>
+        <View style={{ alignItems: 'center' }}>
+          <BookCover uri={thumbnail} width={200} />
+          <Typography size='h2' style={{ marginTop: 15 }}>
+            {title}
           </Typography>
-        )}
-        <Button
-          title={'Add book' + (alreadyRead ? ' again' : '')}
+          {subTitle && <Typography grey>{subTitle}</Typography>}
+        </View>
+        <PressButton
+          text={'Add book' + (alreadyRead ? ' again' : '')}
           onPress={() => navigation.navigate('addFeedBook', { bookId })}
-          style={{ backgroundColor: 'blue' }}
+          type='filled'
         />
       </View>
       {authors && (

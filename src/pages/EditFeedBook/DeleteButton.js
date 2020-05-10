@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button } from 'react-native'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import ApolloError from '../../components/ApolloError'
+import PressButton from '../../components/PressButton'
 import { UserPage } from '../User/User'
 import { BookPage } from '../Book/Book'
 
@@ -35,10 +35,11 @@ export default ({ _id, bookId, onCompleted }) => {
   if (error) return <ApolloError type='errortext' error={error} />
 
   return (
-    <Button
+    <PressButton
       onPress={callRemoveQuery}
-      title='Remove'
-      disabled={loading || !!data}
+      text='Remove'
+      type='outline'
+      loading={loading || !!data}
     />
   )
 }

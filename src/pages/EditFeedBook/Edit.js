@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import { View, Button } from 'react-native'
+import { View } from 'react-native'
 import TextField from '../../components/TextField'
 import DatePicker from '../../components/DatePicker'
 import ApolloError from '../../components/ApolloError'
+import PressButton from '../../components/PressButton'
 
 const UpdateFeedBook = gql`
   mutation UpdateFeedBook($_id: ID!, $comment: String, $date: String) {
@@ -59,7 +60,12 @@ export default ({
         placeholder='Say something about this book'
       />
       {error && <ApolloError type='errortext' error={error} />}
-      <Button onPress={submit} title='Update' disabled={loading} />
+      <PressButton
+        onPress={submit}
+        text='Update'
+        type='filled'
+        loading={loading}
+      />
     </View>
   )
 }

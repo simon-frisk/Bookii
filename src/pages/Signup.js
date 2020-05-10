@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Button, View } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { View } from 'react-native'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
@@ -7,6 +7,7 @@ import TextField from '../components/TextField'
 import Center from '../components/Center'
 import ApolloError from '../components/ApolloError'
 import Typography from '../components/Typography'
+import PressButton from '../components/PressButton'
 
 const Signup = gql`
   mutation Signup($email: String!, $password: String!, $name: String!) {
@@ -53,7 +54,12 @@ export default () => {
           secureTextEntry={true}
         />
         {error && <ApolloError type='errortext' error={error} />}
-        <Button title='sign up' onPress={signup} disabled={loading} />
+        <PressButton
+          text='sign up'
+          onPress={signup}
+          loading={loading}
+          type='filled'
+        />
       </View>
     </Center>
   )

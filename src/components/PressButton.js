@@ -43,6 +43,7 @@ export default ({ text, type, loading, onPress, containerStyle }) => {
 const styles = StyleSheet.create({
   base: {
     padding: 10,
+    marginVertical: 10,
     borderRadius: 10,
     shadowOffset: {
       width: 2,

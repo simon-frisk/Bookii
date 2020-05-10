@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
-import { Button, View } from 'react-native'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
+import { View } from 'react-native'
 import TextField from '../components/TextField'
 import Center from '../components/Center'
 import ApolloError from '../components/ApolloError'
 import Typography from '../components/Typography'
+import PressButton from '../components/PressButton'
 
 const Signin = gql`
   query Signin($email: String!, $password: String!) {
@@ -47,8 +48,18 @@ export default ({ navigation }) => {
           secureTextEntry={true}
         />
         {error && <ApolloError type='errortext' error={error} />}
-        <Button title='sign in' onPress={signin} disabled={loading} />
-        <Button title='sign up' onPress={() => navigation.navigate('signup')} />
+        <PressButton
+          text='sign in'
+          onPress={signin}
+          loading={loading}
+          type='filled'
+          containerStyle={{ marginVertical: 10 }}
+        />
+        <PressButton
+          text='sign up'
+          onPress={() => navigation.navigate('signup')}
+          type='outline'
+        />
       </View>
     </Center>
   )
