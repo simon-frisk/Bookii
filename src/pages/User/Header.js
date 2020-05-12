@@ -38,7 +38,7 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
         </View>
       </View>
       <Typography size='h1' style={{ marginTop: 40 }}>
-        My Feed
+        Feed
       </Typography>
     </View>
   )

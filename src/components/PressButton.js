@@ -42,7 +42,7 @@ export default ({ text, type, loading, onPress, containerStyle }) => {
 
 const styles = StyleSheet.create({
   base: {
-    padding: 10,
+    padding: 9,
     marginVertical: 10,
     borderRadius: 10,
     shadowOffset: {
@@ -54,19 +54,13 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     backgroundColor: 'white',
   },
-  outline: {
-    borderColor: '#47f',
-    borderWidth: 1,
-  },
   filled: {
     backgroundColor: '#47f',
   },
   baseText: {
     textAlign: 'center',
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
-  },
-  outlineText: {
     color: '#47f',
   },
   filledText: {

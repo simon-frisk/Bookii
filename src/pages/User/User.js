@@ -5,34 +5,11 @@ import Styles from '../../util/Styles'
 import Center from '../../components/Center'
 import ApolloError from '../../components/ApolloError'
 import Typography from '../../components/Typography'
-import FeedBookCard from '../../components/FeedBookCard'
+import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
 import gql from 'graphql-tag'
 import Header from './Header'
 import { AuthContext } from '../../util/AuthProvider'
-
-export const UserPage = gql`
-  query UserPage($_id: ID) {
-    user(_id: $_id) {
-      _id
-      name
-      profilePicturePath
-      followers {
-        _id
-      }
-      feedBooks {
-        _id
-        bookId
-        comment
-        date
-        book {
-          thumbnail
-          title
-          bookId
-        }
-      }
-    }
-  }
-`
+import UserPage from './UserQuery'
 
 export default ({ route }) => {
   const paramsId = route.params && route.params._id

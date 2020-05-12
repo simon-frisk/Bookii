@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { FlatList, ActivityIndicator } from 'react-native'
 import Styles from '../util/Styles'
 import Typography from '../components/Typography'
-import FeedBookCard from '../components/FeedBookCard'
+import FeedBookCard from '../components/FeedBookCard/FeedBookCard'
 import ApolloError from '../components/ApolloError'
 import Center from '../components/Center'
 

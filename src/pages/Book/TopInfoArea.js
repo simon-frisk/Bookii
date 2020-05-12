@@ -23,10 +23,14 @@ export default ({
       <View style={{ marginBottom: 20 }}>
         <View style={{ alignItems: 'center' }}>
           <BookCover uri={thumbnail} width={200} />
-          <Typography size='h2' style={{ marginTop: 15 }}>
+          <Typography size='h2' style={{ marginTop: 15, textAlign: 'center' }}>
             {title}
           </Typography>
-          {subTitle && <Typography grey>{subTitle}</Typography>}
+          {subTitle && (
+            <Typography grey style={{ textAlign: 'center' }}>
+              {subTitle}
+            </Typography>
+          )}
         </View>
         <PressButton
           text={'Add book' + (alreadyRead ? ' again' : '')}

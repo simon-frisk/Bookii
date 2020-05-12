@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import ApolloError from '../../components/ApolloError'
 import { UserFollowingAndFollowers } from '../UserSettings/UserSettings'
-import { UserPage } from './User'
+import UserPage from './UserQuery'
 import { FeedPage } from '../Feed'
 import PressButton from '../../components/PressButton'
 

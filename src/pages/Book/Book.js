@@ -7,7 +7,7 @@ import Center from '../../components/Center'
 import ApolloError from '../../components/ApolloError'
 import TopInfoArea from './TopInfoArea'
 import Typography from '../../components/Typography'
-import FeedBookCard from '../../components/FeedBookCard'
+import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
 
 export const BookPage = gql`
   query BookPage($bookId: String!) {

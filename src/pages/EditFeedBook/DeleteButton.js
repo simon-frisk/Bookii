@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import ApolloError from '../../components/ApolloError'
 import PressButton from '../../components/PressButton'
-import { UserPage } from '../User/User'
+import UserPage from '../User/UserQuery'
 import { BookPage } from '../Book/Book'
 
 const RemoveFeedBook = gql`
