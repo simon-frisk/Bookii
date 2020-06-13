@@ -3,22 +3,14 @@ import { Image, View } from 'react-native'
 
 export default ({ uri, width, style }) => {
   return (
-    <View
-      style={{
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 2,
-          height: 2,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-        ...style,
-      }}
-    >
+    <View style={style}>
       {uri ? (
-        <Image source={{ uri }} style={{ width, height: width * 1.6 }} />
+        <Image
+          source={{ uri }}
+          style={{ width, height: width * 1.5, resizeMode: 'contain' }}
+        />
       ) : (
-        <View style={{ width, height: width * 1.6, backgroundColor: 'grey' }} />
+        <View style={{ width, height: width * 1.5, backgroundColor: 'grey' }} />
       )}
     </View>
   )
