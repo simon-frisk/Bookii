@@ -9,23 +9,10 @@ import {
 
 export default ({ text, type, loading, onPress, containerStyle }) => {
   let style = styles.base
-  switch (type) {
-    case 'outline':
-      style = { ...style, ...styles.outline }
-      break
-    case 'filled':
-      style = { ...style, ...styles.filled }
-      break
-  }
+  if (type === 'filled') style = { ...style, ...styles.filled }
+
   let textStyle = styles.baseText
-  switch (type) {
-    case 'outline':
-      textStyle = { ...textStyle, ...styles.outlineText }
-      break
-    case 'filled':
-      textStyle = { ...textStyle, ...styles.filledText }
-      break
-  }
+  if (type === 'filled') textStyle = { ...textStyle, ...styles.filledText }
 
   return (
     <TouchableOpacity onPress={onPress}>
@@ -46,11 +33,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 10,
     shadowOffset: {
-      width: 2,
-      height: 2,
+      width: 1,
+      height: 1,
     },
     shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowRadius: 3,
     shadowColor: 'black',
     backgroundColor: 'white',
   },

@@ -24,11 +24,7 @@ export default ({ value, onChange }) => {
           }}
         />
       )}
-      <PressButton
-        onPress={() => setShow(!show)}
-        text='Set date'
-        type='outline'
-      />
+      <PressButton onPress={() => setShow(!show)} text='Set date' />
     </View>
   )
 }

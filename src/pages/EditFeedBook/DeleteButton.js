@@ -38,7 +38,6 @@ export default ({ _id, bookId, onCompleted }) => {
     <PressButton
       onPress={callRemoveQuery}
       text='Remove'
-      type='outline'
       loading={loading || !!data}
     />
   )

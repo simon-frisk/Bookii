@@ -5,21 +5,14 @@ import Typography from '../Typography'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-export default ({
-  isSelf,
-  user_id,
-  book_id,
-  profilePicturePath,
-  name,
-  date,
-}) => {
+export default ({ isSelf, user_id, book_id, profilePicturePath, name }) => {
   const navigation = useNavigation()
 
   return (
     <View
       style={{
         flexDirection: 'row',
-        alignItems: 'center',
+        justifyContent: 'space-between',
         marginBottom: 10,
         flex: 1,
       }}
@@ -35,9 +28,7 @@ export default ({
           size={45}
           style={{ marginRight: 10 }}
         />
-        <Typography size='h4' bold>
-          {name} - {new Date(date).toDateString()}
-        </Typography>
+        <Typography size='h3'>{name}</Typography>
       </TouchableOpacity>
       {isSelf && (
         <TouchableOpacity

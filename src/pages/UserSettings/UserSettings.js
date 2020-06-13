@@ -41,7 +41,6 @@ export default () => {
       <View>
         <Typography size='h3'>Sign out</Typography>
         <PressButton
-          type='outline'
           text='Sign out'
           onPress={() => {
             signout()

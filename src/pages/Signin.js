@@ -58,7 +58,6 @@ export default ({ navigation }) => {
         <PressButton
           text='sign up'
           onPress={() => navigation.navigate('signup')}
-          type='outline'
         />
       </View>
     </Center>

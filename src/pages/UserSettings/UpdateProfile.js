@@ -88,7 +88,6 @@ export default () => {
       />
       <PressButton
         text='Select profile picture'
-        type='outline'
         onPress={selectProfilePicture}
       />
       {error && <ApolloError type='errortext' error={error} />}

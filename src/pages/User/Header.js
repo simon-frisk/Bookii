@@ -27,7 +27,6 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
           {isSelf ? (
             <PressButton
               text='Settings'
-              type='outline'
               onPress={() => {
                 navigation.navigate('userSettings')
               }}

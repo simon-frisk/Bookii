@@ -42,7 +42,6 @@ export default ({ isSelfFollowing, _id }) => {
     <PressButton
       text={isSelfFollowing ? 'Unfollow' : 'Follow'}
       onPress={callMutation}
-      type='outline'
       loading={loading}
     />
   )

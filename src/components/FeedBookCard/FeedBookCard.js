@@ -36,9 +36,19 @@ export default ({
         <Typography size='h2' style={{ marginBottom: 10 }}>
           {title}
         </Typography>
-        <View style={{ flexDirection: 'row', flex: 1 }}>
-          <Typography style={{ flex: 1 }}>{comment}</Typography>
-          <BookCover uri={thumbnail} width={120} style={{ marginRight: 20 }} />
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1,
+            justifyContent: 'space-between',
+          }}
+        >
+          {!!comment && (
+            <Typography style={{ flex: 1, marginRight: 20 }}>
+              {comment}
+            </Typography>
+          )}
+          <BookCover uri={thumbnail} width={120} />
         </View>
       </TouchableOpacity>
     </Card>
