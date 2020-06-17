@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#47f',
   },
   filledText: {
     color: 'white',

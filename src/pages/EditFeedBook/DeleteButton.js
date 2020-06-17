@@ -37,7 +37,7 @@ export default ({ _id, bookId, onCompleted }) => {
   return (
     <PressButton
       onPress={callRemoveQuery}
-      text='Remove'
+      text='Remove from feed'
       loading={loading || !!data}
     />
   )

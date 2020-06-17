@@ -47,14 +47,12 @@ export default ({ route, navigation }) => {
     return (
       <ScrollView style={styles.pageContainer}>
         <Typography size='h1'>{feedBook.book.title}</Typography>
-        <Typography size='h3'>Edit</Typography>
         <Edit
           _id={feedBook._id}
           comment={feedBook.comment}
           date={feedBook.date}
           onCompleted={navigation.goBack}
         />
-        <Typography size='h3'>Delete</Typography>
         <DeleteButton
           _id={feedBook._id}
           bookId={feedBook.bookId}

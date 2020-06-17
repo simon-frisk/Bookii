@@ -51,6 +51,9 @@ export default ({
           <BookCover uri={thumbnail} width={120} />
         </View>
       </TouchableOpacity>
+      <Typography style={{ marginTop: 10 }}>
+        {new Date(date).toDateString()}
+      </Typography>
     </Card>
   )
 }

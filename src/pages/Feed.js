@@ -9,8 +9,8 @@ import ApolloError from '../components/ApolloError'
 import Center from '../components/Center'
 
 export const FeedPage = gql`
-  query FeedPage {
-    feed {
+  query FeedPage($after: ID) {
+    feed(after: $after) {
       _id
       bookId
       comment
@@ -29,7 +29,8 @@ export const FeedPage = gql`
 `
 
 export default () => {
-  const { data, loading, error } = useQuery(FeedPage)
+  const { data, loading, error, fetchMore } = useQuery(FeedPage)
+
   return (
     <FlatList
       ListHeaderComponent={() => <Typography size='h1'>Feed</Typography>}
@@ -63,6 +64,14 @@ export default () => {
           profilePicturePath={item.user.profilePicturePath}
         />
       )}
+      onEndReached={() => {
+        fetchMore({
+          variables: { after: data.feed[data.feed.length - 1]._id },
+          updateQuery(prev, { fetchMoreResult }) {
+            return { feed: [...prev.feed, ...fetchMoreResult.feed] }
+          },
+        })
+      }}
     />
   )
 }
