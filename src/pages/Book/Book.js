@@ -8,6 +8,7 @@ import ApolloError from '../../components/ApolloError'
 import TopInfoArea from './TopInfoArea'
 import Typography from '../../components/Typography'
 import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
+import Card from '../../components/Card'
 
 export const BookPage = gql`
   query BookPage($bookId: String!) {
@@ -20,6 +21,7 @@ export const BookPage = gql`
       pages
       published
       publisher
+      wikipediadescription
     }
     user {
       _id
@@ -88,6 +90,18 @@ export default ({ route }) => {
                 date={date}
               />
             ),
+          },
+          {
+            data: [data.book.wikipediadescription],
+            renderItem: ({ item }) => {
+              console.log(item)
+              return (
+                <Card>
+                  <Typography size='h3'>On wikipedia</Typography>
+                  <Typography>{item}</Typography>
+                </Card>
+              )
+            },
           },
         ]}
         keyExtractor={(item, index) => index + item._id}
