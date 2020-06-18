@@ -5,7 +5,7 @@ export default ({ size, grey, style, children }) => {
   let fontSize
   switch (size) {
     case 'h1':
-      fontSize = 40
+      fontSize = 39
       break
     case 'h2':
       fontSize = 32

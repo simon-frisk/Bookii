@@ -11,18 +11,12 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
 
   return (
     <View>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
+      <View style={{ alignItems: 'center' }}>
         <ProfilePictureCircle
           profilePicturePath={profilePicturePath}
-          size={75}
+          size={80}
         />
-        <View style={{ marginRight: 40 }}>
+        <View>
           <Typography size='h1'>{name}</Typography>
           {isSelf ? (
             <PressButton
@@ -36,7 +30,7 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
           )}
         </View>
       </View>
-      <Typography size='h1' style={{ marginTop: 40 }}>
+      <Typography size='h1' style={{ marginTop: 30 }}>
         Feed
       </Typography>
     </View>
