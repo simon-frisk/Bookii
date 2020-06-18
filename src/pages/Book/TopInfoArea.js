@@ -4,6 +4,7 @@ import PressButton from '../../components/PressButton'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/BookCover'
 import Typography from '../../components/Typography'
+import Card from '../../components/Card'
 
 export default ({
   thumbnail,
@@ -14,12 +15,13 @@ export default ({
   pages,
   published,
   publisher,
+  wikipediadescription,
   alreadyRead,
 }) => {
   const navigation = useNavigation()
 
   return (
-    <View style={{ marginBottom: 30 }}>
+    <View>
       <View style={{ marginBottom: 20 }}>
         <View style={{ alignItems: 'center' }}>
           <BookCover uri={thumbnail} width={200} />
@@ -38,14 +40,22 @@ export default ({
           type='filled'
         />
       </View>
-      {authors && (
-        <Typography grey>{`Author${
-          authors.length > 1 ? 's' : ''
-        }: ${authors.join(' , ')}`}</Typography>
+      <View style={{ marginBottom: 15 }}>
+        {authors && (
+          <Typography grey>{`Author${
+            authors.length > 1 ? 's' : ''
+          }: ${authors.join(' , ')}`}</Typography>
+        )}
+        {pages && <Typography grey>Pages: {pages}</Typography>}
+        {published && <Typography grey>Published: {published}</Typography>}
+        {publisher && <Typography grey>Publisher: {publisher}</Typography>}
+      </View>
+      {wikipediadescription && (
+        <Card>
+          <Typography size='h3'>On wikipedia</Typography>
+          <Typography>{wikipediadescription}</Typography>
+        </Card>
       )}
-      {pages && <Typography grey>Pages: {pages}</Typography>}
-      {published && <Typography grey>Published: {published}</Typography>}
-      {publisher && <Typography grey>Publisher: {publisher}</Typography>}
     </View>
   )
 }

@@ -8,7 +8,6 @@ import ApolloError from '../../components/ApolloError'
 import TopInfoArea from './TopInfoArea'
 import Typography from '../../components/Typography'
 import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
-import Card from '../../components/Card'
 
 export const BookPage = gql`
   query BookPage($bookId: String!) {
@@ -71,6 +70,7 @@ export default ({ route }) => {
             pages={data.book.pages}
             published={data.book.published}
             publisher={data.book.publisher}
+            wikipediadescription={data.book.wikipediadescription}
             alreadyRead={data.user.feedBooks.length}
           />
         )}
@@ -90,21 +90,9 @@ export default ({ route }) => {
                 date={date}
               />
             ),
-          },
-          {
-            data: [data.book.wikipediadescription],
-            renderItem: ({ item }) => {
-              console.log(item)
-              return (
-                <Card>
-                  <Typography size='h3'>On wikipedia</Typography>
-                  <Typography>{item}</Typography>
-                </Card>
-              )
-            },
+            keyExtractor: (item, index) => item._id + index,
           },
         ]}
-        keyExtractor={(item, index) => index + item._id}
         contentContainerStyle={Styles.pageContainer}
       />
     )
