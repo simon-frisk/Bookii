@@ -51,19 +51,24 @@ export default ({ route }) => {
         data={data.user.feedBooks}
         keyExtractor={({ _id }, index) => index + _id}
         contentContainerStyle={Styles.pageContainer}
-        renderItem={({ item: feedBook }) => (
-          <FeedBookCard
-            user_id={data.user._id}
-            name={data.user.name}
-            profilePicturePath={data.user.profilePicturePath}
-            book_id={feedBook._id}
-            bookId={feedBook.book.bookId}
-            thumbnail={feedBook.book.thumbnail}
-            title={feedBook.book.title}
-            comment={feedBook.comment}
-            date={feedBook.date}
-          />
-        )}
+        renderItem={({ item: feedBook }) => {
+          if (feedBook.book) {
+            //temporary
+            return (
+              <FeedBookCard
+                user_id={data.user._id}
+                name={data.user.name}
+                profilePicturePath={data.user.profilePicturePath}
+                book_id={feedBook._id}
+                bookId={feedBook.book.bookId}
+                thumbnail={feedBook.book.thumbnail}
+                title={feedBook.book.title}
+                comment={feedBook.comment}
+                date={feedBook.date}
+              />
+            )
+          }
+        }}
       />
     )
 }

@@ -33,7 +33,6 @@ export default () => {
 
   return (
     <FlatList
-      ListHeaderComponent={() => <Typography size='h1'>Feed</Typography>}
       data={data ? data.feed : []}
       keyExtractor={({ _id }, index) => index + _id}
       contentContainerStyle={Styles.pageContainer}

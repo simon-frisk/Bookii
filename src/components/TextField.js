@@ -1,26 +1,41 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
+import { StyleSheet, View, TextInput } from 'react-native'
+import { AntDesign } from '@expo/vector-icons'
 
 export default props => {
   return (
-    <TextInput
-      {...props}
-      multiline={props.canHaveManyLines ? true : false}
-      style={{ ...styles.textfield, ...props.style }}
-    />
+    <View style={{ ...styles.container, ...props.style }}>
+      {props.icon && (
+        <AntDesign
+          name={props.icon}
+          style={{ marginRight: 5 }}
+          size={15}
+          color='grey'
+        />
+      )}
+      <TextInput
+        {...props}
+        multiline={props.canHaveManyLines ? true : false}
+        style={styles.textfield}
+      />
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  textfield: {
+  container: {
     backgroundColor: '#ddd',
     borderColor: '#ddd',
     borderRadius: 10,
     borderWidth: 6,
     width: '100%',
-    padding: 3,
-    marginBottom: 6,
-    marginTop: 6,
+    paddingHorizontal: 3,
+    marginVertical: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  textfield: {
+    width: '100%',
+    paddingVertical: 3,
   },
 })

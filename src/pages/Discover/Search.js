@@ -36,6 +36,7 @@ export default () => {
       <>
         <TextField
           value={query}
+          icon='search1'
           onChangeText={query => {
             setQuery(query)
           }}
