@@ -34,7 +34,6 @@ export default () => {
 
     return (
       <>
-        <Typography size='h1'>Search</Typography>
         <TextField
           value={query}
           onChangeText={query => {
@@ -44,7 +43,7 @@ export default () => {
             setBooks([])
             callSearchQuery({ variables: { query } })
           }}
-          placeholder='title, author etc'
+          placeholder='search'
         />
       </>
     )
@@ -83,7 +82,7 @@ export default () => {
   return (
     <FlatList
       data={books}
-      contentContainerStyle={Styles.pageContainer}
+      contentContainerStyle={{ padding: '3%' }}
       keyExtractor={({ bookId }, index) => bookId + index}
       renderItem={Book}
       ListEmptyComponent={Empty}

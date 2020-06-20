@@ -28,8 +28,7 @@ export default () => {
 
   return (
     <SectionList
-      ListHeaderComponent={() => <Typography size='h1'>Toplists</Typography>}
-      contentContainerStyle={Styles.pageContainer}
+      contentContainerStyle={{ padding: '3%' }}
       ListEmptyComponent={() => {
         if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)

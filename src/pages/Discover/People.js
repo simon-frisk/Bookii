@@ -23,7 +23,6 @@ export default () => {
 
   return (
     <FlatList
-      ListHeaderComponent={() => <Typography size='h1'>People</Typography>}
       ListEmptyComponent={() => {
         if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)
@@ -33,7 +32,7 @@ export default () => {
             </Center>
           )
       }}
-      contentContainerStyle={Styles.pageContainer}
+      contentContainerStyle={{ padding: '3%' }}
       data={data ? data.users : []}
       keyExtractor={({ _id }, index) => _id + index}
       renderItem={({ item: user }) => (
