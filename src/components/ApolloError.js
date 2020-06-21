@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import Typography from './Typography'
-import Center from './Center'
 import { AuthContext } from '../util/AuthProvider'
 import { View } from 'react-native'
+import Styles from '../util/Styles'
 
 export default ({ error, type }) => {
   const { signout } = useContext(AuthContext)
@@ -24,9 +24,9 @@ export default ({ error, type }) => {
     return <Typography style={{ color: 'red' }}>{errorMessage}</Typography>
   else if (type === 'errorcomponent')
     return (
-      <Center>
+      <View style={Styles.center}>
         <Typography style={{ color: 'red' }}>{errorMessage}</Typography>
-      </Center>
+      </View>
     )
   else return <View />
 }

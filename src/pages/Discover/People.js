@@ -1,9 +1,8 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import { FlatList, ActivityIndicator } from 'react-native'
+import { FlatList, ActivityIndicator, View } from 'react-native'
 import ApolloError from '../../components/ApolloError'
-import Center from '../../components/Center'
 import UserCard from '../../components/UserCard'
 import Styles from '../../util/Styles'
 
@@ -26,9 +25,9 @@ export default () => {
         if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)
           return (
-            <Center>
+            <View style={Styles.center}>
               <ActivityIndicator />
-            </Center>
+            </View>
           )
       }}
       contentContainerStyle={Styles.pageContainer}

@@ -4,10 +4,10 @@ import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
 import { View } from 'react-native'
 import TextField from '../components/TextField'
-import Center from '../components/Center'
 import ApolloError from '../components/ApolloError'
 import Typography from '../components/Typography'
 import PressButton from '../components/PressButton'
+import Styles from '../util/Styles'
 
 const Signin = gql`
   query Signin($email: String!, $password: String!) {
@@ -31,7 +31,7 @@ export default () => {
   }
 
   return (
-    <Center>
+    <View style={Styles.center}>
       <View style={{ width: '50%', maxWidth: 300 }}>
         <Typography size='h2'>Sign in</Typography>
         <TextField
@@ -56,6 +56,6 @@ export default () => {
           containerStyle={{ marginVertical: 10 }}
         />
       </View>
-    </Center>
+    </View>
   )
 }

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { FlatList, ActivityIndicator } from 'react-native'
+import { FlatList, ActivityIndicator, View } from 'react-native'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import BookCard from '../../components/BookCard'
-import Center from '../../components/Center'
 import TextField from '../../components/TextField'
 import ApolloError from '../../components/ApolloError'
 import Typography from '../../components/Typography'
@@ -56,19 +55,19 @@ export default () => {
           <>
             {error && <ApolloError type='errorcomponent' error={error} />}
             {loading && (
-              <Center>
+              <View style={Styles.center}>
                 <ActivityIndicator />
-              </Center>
+              </View>
             )}
             {data &&
               (query ? (
-                <Center>
+                <View style={Styles.center}>
                   <Typography>No books found</Typography>
-                </Center>
+                </View>
               ) : (
-                <Center>
+                <View style={Styles.center}>
                   <Typography>Search for books</Typography>
-                </Center>
+                </View>
               ))}
           </>
         )}

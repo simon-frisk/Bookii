@@ -1,12 +1,11 @@
 import React from 'react'
+import { FlatList, ActivityIndicator, View } from 'react-native'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import { FlatList, ActivityIndicator } from 'react-native'
 import Styles from '../util/Styles'
 import Typography from '../components/Typography'
 import FeedBookCard from '../components/FeedBookCard/FeedBookCard'
 import ApolloError from '../components/ApolloError'
-import Center from '../components/Center'
 
 export const FeedPage = gql`
   query FeedPage($after: ID) {
@@ -40,16 +39,16 @@ export default () => {
         if (error) return <ApolloError error={error} type='errorcomponent' />
         if (loading)
           return (
-            <Center>
+            <View style={Styles.center}>
               <ActivityIndicator />
-            </Center>
+            </View>
           )
         return (
-          <Center>
+          <View style={Styles.center}>
             <Typography>
               Follow other people to see their books on your feed!
             </Typography>
-          </Center>
+          </View>
         )
       }}
       renderItem={({ item }) => (

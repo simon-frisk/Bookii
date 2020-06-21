@@ -1,13 +1,12 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../../util/AuthProvider'
+import { View, SectionList, ActivityIndicator } from 'react-native'
 import { useApolloClient, useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import { View, SectionList, ActivityIndicator } from 'react-native'
+import { AuthContext } from '../../util/AuthProvider'
 import Styles from '../../util/Styles'
 import UpdateProfile from './UpdateProfile'
 import Typography from '../../components/Typography'
 import ApolloError from '../../components/ApolloError'
-import Center from '../../components/Center'
 import UserCard from '../../components/UserCard'
 import PressButton from '../../components/PressButton'
 
@@ -63,9 +62,9 @@ export default () => {
         if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)
           return (
-            <Center>
+            <View style={Styles.center}>
               <ActivityIndicator />
-            </Center>
+            </View>
           )
       }}
       sections={

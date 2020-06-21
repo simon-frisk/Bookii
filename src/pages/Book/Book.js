@@ -1,9 +1,8 @@
 import React from 'react'
-import { ScrollView, ActivityIndicator } from 'react-native'
+import { ScrollView, ActivityIndicator, View } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
-import Center from '../../components/Center'
 import ApolloError from '../../components/ApolloError'
 import TopInfoArea from './TopInfoArea'
 import Typography from '../../components/Typography'
@@ -42,18 +41,18 @@ export default ({ route }) => {
 
   if (loading)
     return (
-      <Center>
+      <View style={Styles.center}>
         <ActivityIndicator />
-      </Center>
+      </View>
     )
 
   if (error) return <ApolloError type='errorcomponent' error={error} />
 
   if (data && !data.book)
     return (
-      <Center>
+      <View style={Styles.center}>
         <Typography>Book not found</Typography>
-      </Center>
+      </View>
     )
 
   if (data && data.book && data.user)

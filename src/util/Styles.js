@@ -21,4 +21,10 @@ export default {
     shadowRadius: 3,
     backgroundColor: 'white',
   },
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 50,
+  },
 }

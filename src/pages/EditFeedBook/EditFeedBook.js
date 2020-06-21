@@ -1,14 +1,13 @@
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, View, ActivityIndicator } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import styles from '../../util/Styles'
 import Typography from '../../components/Typography'
-import Center from '../../components/Center'
-import { ActivityIndicator, View } from 'react-native'
 import ApolloError from '../../components/ApolloError'
 import DeleteButton from './DeleteButton'
 import Edit from './Edit'
+import Styles from '../../util/Styles'
 
 const UpdateFeedBookPage = gql`
   query UpdateFeedBookPage($_id: ID!) {
@@ -36,9 +35,9 @@ export default ({ route, navigation }) => {
 
   if (loading)
     return (
-      <Center>
+      <View style={Styles.center}>
         <ActivityIndicator />
-      </Center>
+      </View>
     )
 
   if (data) {

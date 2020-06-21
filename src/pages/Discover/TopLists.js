@@ -4,7 +4,6 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import Typography from '../../components/Typography'
 import Styles from '../../util/Styles'
-import Center from '../../components/Center'
 import ApolloError from '../../components/ApolloError'
 import BookCard from '../../components/BookCard'
 
@@ -40,9 +39,9 @@ export default () => {
         if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)
           return (
-            <Center>
+            <View style={Styles.center}>
               <ActivityIndicator />
-            </Center>
+            </View>
           )
         return <View />
       }}
