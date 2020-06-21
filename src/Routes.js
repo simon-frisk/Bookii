@@ -49,8 +49,8 @@ export default () => {
           )}
           {!_id && (
             <>
-              <Stack.Screen name='signin' component={Signin} />
               <Stack.Screen name='signup' component={Signup} />
+              <Stack.Screen name='signin' component={Signin} />
             </>
           )}
         </Stack.Navigator>

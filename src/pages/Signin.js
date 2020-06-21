@@ -15,7 +15,7 @@ const Signin = gql`
   }
 `
 
-export default ({ navigation }) => {
+export default () => {
   const [callQuery, { loading, error }] = useLazyQuery(Signin, {
     onCompleted: ({ signin: token }) => {
       setToken(token)
@@ -54,10 +54,6 @@ export default ({ navigation }) => {
           loading={loading}
           type='filled'
           containerStyle={{ marginVertical: 10 }}
-        />
-        <PressButton
-          text='sign up'
-          onPress={() => navigation.navigate('signup')}
         />
       </View>
     </Center>

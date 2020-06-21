@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { View } from 'react-native'
+import { Link } from '@react-navigation/native'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
@@ -60,6 +61,12 @@ export default () => {
           loading={loading}
           type='filled'
         />
+        <Typography>
+          Already have an account?{' '}
+          <Link to='/signin' style={{ color: 'blue' }}>
+            Sign in!
+          </Link>
+        </Typography>
       </View>
     </Center>
   )
