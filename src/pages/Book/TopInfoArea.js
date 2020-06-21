@@ -4,7 +4,7 @@ import PressButton from '../../components/PressButton'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/BookCover'
 import Typography from '../../components/Typography'
-import Card from '../../components/Card'
+import Styles from '../../util/Styles'
 
 export default ({
   thumbnail,
@@ -51,10 +51,10 @@ export default ({
         {publisher && <Typography grey>Publisher: {publisher}</Typography>}
       </View>
       {wikipediadescription && (
-        <Card>
-          <Typography size='h3'>On wikipedia</Typography>
+        <View style={[Styles.card, { padding: 10 }]}>
+          <Typography size='h3'>Wikipedia</Typography>
           <Typography>{wikipediadescription}</Typography>
-        </Card>
+        </View>
       )}
     </View>
   )

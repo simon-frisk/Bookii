@@ -4,9 +4,9 @@ import { View } from 'react-native'
 import Typography from '../Typography'
 import BookCover from '../BookCover'
 import { useNavigation } from '@react-navigation/native'
-import Card from '../Card'
 import { AuthContext } from '../../util/AuthProvider'
 import UserBar from './UserBar'
+import Styles from '../../util/Styles'
 
 export default ({
   bookId,
@@ -23,7 +23,7 @@ export default ({
   const { _id: self_id } = useContext(AuthContext)
 
   return (
-    <Card>
+    <View style={[Styles.card, { marginVertical: 10, padding: 15 }]}>
       <UserBar
         isSelf={user_id.toString() === self_id.toString()}
         user_id={user_id}
@@ -54,6 +54,6 @@ export default ({
       <Typography style={{ marginTop: 10 }}>
         {new Date(date).toDateString()}
       </Typography>
-    </Card>
+    </View>
   )
 }

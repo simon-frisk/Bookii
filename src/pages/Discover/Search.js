@@ -37,7 +37,7 @@ export default () => {
         onChangeText={query => {
           setQuery(query)
         }}
-        style={{ margin: ' 3%' }}
+        style={Styles.standardMargin}
         placeholder='search'
       />
       <FlatList

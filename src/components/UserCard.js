@@ -1,15 +1,17 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import Typography from './Typography'
-import Card from './Card'
 import ProfilePictureCircle from './ProfilePictureCircle'
 import { useNavigation } from '@react-navigation/native'
+import Styles from '../util/Styles'
 
 export default ({ name, _id, profilePicturePath }) => {
   const navigation = useNavigation()
 
   return (
-    <Card>
+    <View
+      style={[Styles.card, { padding: 10, marginVertical: 5, width: '100%' }]}
+    >
       <TouchableOpacity
         onPress={() => navigation.navigate('user', { _id })}
         style={{
@@ -21,10 +23,10 @@ export default ({ name, _id, profilePicturePath }) => {
           profilePicturePath={profilePicturePath}
           size={40}
         />
-        <Typography size='h3' style={{ marginLeft: 20 }}>
+        <Typography size='h3' style={{ flex: 1 }}>
           {name}
         </Typography>
       </TouchableOpacity>
-    </Card>
+    </View>
   )
 }

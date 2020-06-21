@@ -11,7 +11,7 @@ export default ({ size, grey, style, children }) => {
       fontSize = 32
       break
     case 'h3':
-      fontSize = 26
+      fontSize = 24
       break
     case 'h4':
       fontSize = 16
