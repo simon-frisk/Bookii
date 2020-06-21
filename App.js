@@ -11,7 +11,7 @@ export default () => (
   <ApolloProvider client={apolloClient}>
     <AuthProvider>
       <StatusBar />
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
         <Main />
       </SafeAreaView>
     </AuthProvider>
