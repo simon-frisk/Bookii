@@ -1,8 +1,10 @@
-import { StyleSheet } from 'react-native'
-
-export default StyleSheet.create({
+export default {
   pageContainer: {
     padding: '3%',
-    paddingVertical: 45,
+    margin: 'auto',
+    maxWidth: 700,
   },
-})
+  extraTopPageMargin: {
+    marginTop: 45,
+  },
+}

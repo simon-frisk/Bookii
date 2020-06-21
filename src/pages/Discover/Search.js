@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FlatList, ActivityIndicator, View } from 'react-native'
+import { FlatList, ActivityIndicator } from 'react-native'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import BookCard from '../../components/BookCard'
@@ -7,6 +7,7 @@ import Center from '../../components/Center'
 import TextField from '../../components/TextField'
 import ApolloError from '../../components/ApolloError'
 import Typography from '../../components/Typography'
+import Styles from '../../util/Styles'
 
 const BookSearch = gql`
   query BookSearch($query: String!) {
@@ -41,7 +42,7 @@ export default () => {
       />
       <FlatList
         data={data && data.bookSearch}
-        contentContainerStyle={{ padding: '3%' }}
+        contentContainerStyle={Styles.pageContainer}
         keyExtractor={({ bookId }, index) => bookId + index}
         renderItem={({ item: book }) => (
           <BookCard

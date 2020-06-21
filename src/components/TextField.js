@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, TextInput } from 'react-native'
+import { View, TextInput } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
 export default props => {
@@ -22,7 +22,7 @@ export default props => {
   )
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     backgroundColor: '#ddd',
     borderColor: '#ddd',
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 3,
   },
-})
+}

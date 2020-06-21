@@ -1,5 +1,5 @@
 import React from 'react'
-import { SectionList, ActivityIndicator } from 'react-native'
+import { ScrollView, ActivityIndicator } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
@@ -36,9 +36,8 @@ export const BookPage = gql`
 `
 
 export default ({ route }) => {
-  const bookId = route.params.bookId
   const { data, loading, error } = useQuery(BookPage, {
-    variables: { bookId },
+    variables: { bookId: route.params.bookId },
   })
 
   if (loading)
@@ -59,41 +58,37 @@ export default ({ route }) => {
 
   if (data && data.book && data.user)
     return (
-      <SectionList
-        ListHeaderComponent={() => (
-          <TopInfoArea
-            thumbnail={data.book.thumbnail}
-            title={data.book.title}
-            bookId={data.book.bookId}
-            subTitle={data.book.subTitle}
-            authors={data.book.authors}
-            pages={data.book.pages}
-            published={data.book.published}
-            publisher={data.book.publisher}
-            wikipediadescription={data.book.wikipediadescription}
-            alreadyRead={data.user.feedBooks.length}
-          />
-        )}
-        sections={[
-          {
-            data: data.user.feedBooks,
-            renderItem: ({ item: { comment, date, _id } }) => (
-              <FeedBookCard
-                book_id={_id}
-                bookId={data.book.bookId}
-                title={data.book.title}
-                thumbnail={data.book.thumbnail}
-                user_id={data.user._id}
-                profilePicturePath={data.user.profilePicturePath}
-                name={data.user.name}
-                comment={comment}
-                date={date}
-              />
-            ),
-            keyExtractor: (item, index) => item._id + index,
-          },
+      <ScrollView
+        contentContainerStyle={[
+          Styles.pageContainer,
+          Styles.extraTopPageMargin,
         ]}
-        contentContainerStyle={Styles.pageContainer}
-      />
+      >
+        <TopInfoArea
+          thumbnail={data.book.thumbnail}
+          title={data.book.title}
+          bookId={data.book.bookId}
+          subTitle={data.book.subTitle}
+          authors={data.book.authors}
+          pages={data.book.pages}
+          published={data.book.published}
+          publisher={data.book.publisher}
+          wikipediadescription={data.book.wikipediadescription}
+          alreadyRead={data.user.feedBooks.length}
+        />
+        {data.user.feedBooks.map(feedBook => (
+          <FeedBookCard
+            book_id={feedBook._id}
+            comment={feedBook.comment}
+            date={feedBook.date}
+            bookId={data.book.bookId}
+            title={data.book.title}
+            thumbnail={data.book.thumbnail}
+            user_id={data.user._id}
+            profilePicturePath={data.user.profilePicturePath}
+            name={data.user.name}
+          />
+        ))}
+      </ScrollView>
     )
 }

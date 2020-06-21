@@ -35,7 +35,7 @@ export default () => {
     <FlatList
       data={data ? data.feed : []}
       keyExtractor={({ _id }, index) => index + _id}
-      contentContainerStyle={Styles.pageContainer}
+      contentContainerStyle={[Styles.pageContainer, Styles.extraTopPageMargin]}
       ListEmptyComponent={() => {
         if (error) return <ApolloError error={error} type='errorcomponent' />
         if (loading)

@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { FlatList, ActivityIndicator } from 'react-native'
 import ApolloError from '../../components/ApolloError'
-import Typography from '../../components/Typography'
 import Center from '../../components/Center'
 import UserCard from '../../components/UserCard'
 import Styles from '../../util/Styles'
@@ -32,7 +31,7 @@ export default () => {
             </Center>
           )
       }}
-      contentContainerStyle={{ padding: '3%' }}
+      contentContainerStyle={Styles.pageContainer}
       data={data ? data.users : []}
       keyExtractor={({ _id }, index) => _id + index}
       renderItem={({ item: user }) => (

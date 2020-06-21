@@ -26,9 +26,16 @@ const TopList = gql`
 export default () => {
   const { data, loading, error } = useQuery(TopList)
 
+  const sections = data
+    ? data.nytimesBestSellers.map(list => ({
+        name: list.name,
+        data: list.books,
+      }))
+    : []
+
   return (
     <SectionList
-      contentContainerStyle={{ padding: '3%' }}
+      contentContainerStyle={Styles.pageContainer}
       ListEmptyComponent={() => {
         if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)
@@ -39,18 +46,11 @@ export default () => {
           )
         return <View />
       }}
-      sections={
-        data
-          ? data.nytimesBestSellers.map(list => ({
-              name: list.name,
-              data: list.books,
-            }))
-          : []
-      }
+      sections={sections}
       stickySectionHeadersEnabled={false}
-      renderSectionHeader={({ section: list }) => (
+      renderSectionHeader={({ section }) => (
         <Typography size='h2' style={{ marginVertical: 20 }}>
-          {list.name}
+          {section.name}
         </Typography>
       )}
       renderItem={({ item: book }) => {

@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-} from 'react-native'
+import { TouchableOpacity, Text, View, ActivityIndicator } from 'react-native'
 
 export default ({ text, type, loading, onPress, containerStyle }) => {
   let style = styles.base
@@ -27,7 +21,7 @@ export default ({ text, type, loading, onPress, containerStyle }) => {
   )
 }
 
-const styles = StyleSheet.create({
+const styles = {
   base: {
     padding: 9,
     marginVertical: 10,
@@ -52,4 +46,4 @@ const styles = StyleSheet.create({
   filledText: {
     color: 'white',
   },
-})
+}
