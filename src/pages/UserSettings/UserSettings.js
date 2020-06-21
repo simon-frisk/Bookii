@@ -56,7 +56,10 @@ export default () => {
   return (
     <SectionList
       ListHeaderComponent={Top}
-      contentContainerStyle={Styles.pageContainer}
+      contentContainerStyle={[
+        Styles.pageContainer,
+        Styles.extraHorizontalPagePadding,
+      ]}
       ListEmptyComponent={() => {
         if (error) return <ApolloError type='errorcomponent' error={error} />
         if (loading)

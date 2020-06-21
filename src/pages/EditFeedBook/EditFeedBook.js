@@ -2,11 +2,10 @@ import React from 'react'
 import { ScrollView, View, ActivityIndicator, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import styles from '../../util/Styles'
+import Styles from '../../util/Styles'
 import ApolloError from '../../components/ApolloError'
 import DeleteButton from './DeleteButton'
 import Edit from './Edit'
-import Styles from '../../util/Styles'
 
 const UpdateFeedBookPage = gql`
   query UpdateFeedBookPage($_id: ID!) {
@@ -43,7 +42,9 @@ export default ({ route, navigation }) => {
     const feedBook = data.user.feedBooks[0]
     if (!feedBook) return <View />
     return (
-      <ScrollView style={styles.pageContainer}>
+      <ScrollView
+        style={[Styles.pageContainer, Styles.extraHorizontalPagePadding]}
+      >
         <Text style={Styles.h1}>{feedBook.book.title}</Text>
         <Edit
           _id={feedBook._id}

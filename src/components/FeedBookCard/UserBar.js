@@ -28,7 +28,7 @@ export default ({ isSelf, user_id, book_id, profilePicturePath, name }) => {
           size={45}
           style={{ marginRight: 10 }}
         />
-        <Text styles={Styles.h3}>{name}</Text>
+        <Text style={Styles.h3}>{name}</Text>
       </TouchableOpacity>
       {isSelf && (
         <TouchableOpacity

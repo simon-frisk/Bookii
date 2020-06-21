@@ -48,7 +48,10 @@ export default ({ route }) => {
         )}
         data={data.user.feedBooks}
         keyExtractor={({ _id }, index) => index + _id}
-        contentContainerStyle={Styles.pageContainer}
+        contentContainerStyle={[
+          Styles.pageContainer,
+          Styles.extraHorizontalPagePadding,
+        ]}
         renderItem={({ item: feedBook }) => {
           if (feedBook.book) {
             //temporary

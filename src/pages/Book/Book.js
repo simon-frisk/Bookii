@@ -59,7 +59,7 @@ export default ({ route }) => {
       <ScrollView
         contentContainerStyle={[
           Styles.pageContainer,
-          Styles.extraTopPageMargin,
+          Styles.extraHorizontalPagePadding,
         ]}
       >
         <TopInfoArea

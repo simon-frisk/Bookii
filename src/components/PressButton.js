@@ -1,5 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, Text, View, ActivityIndicator } from 'react-native'
+import Styles from '../util/Styles'
 
 export default ({ text, type, loading, onPress, containerStyle }) => {
   let style = styles.base
@@ -26,14 +27,7 @@ const styles = {
     padding: 9,
     marginVertical: 10,
     borderRadius: 10,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    shadowColor: 'black',
-    backgroundColor: 'white',
+    ...Styles.shadow,
   },
   filled: {
     backgroundColor: '#47f',
@@ -41,7 +35,6 @@ const styles = {
   baseText: {
     textAlign: 'center',
     fontSize: 16,
-    fontWeight: 'bold',
   },
   filledText: {
     color: 'white',

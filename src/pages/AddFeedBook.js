@@ -47,7 +47,12 @@ export default ({ route, navigation }) => {
   }
 
   return (
-    <ScrollView contentContainerStyle={Styles.pageContainer}>
+    <ScrollView
+      contentContainerStyle={[
+        Styles.pageContainer,
+        Styles.extraHorizontalPagePadding,
+      ]}
+    >
       <Text style={Styles.h1}>Add book to feed</Text>
       <DatePicker value={date} onChange={setDate} />
       <TextField

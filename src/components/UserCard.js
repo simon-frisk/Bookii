@@ -22,7 +22,7 @@ export default ({ name, _id, profilePicturePath }) => {
           profilePicturePath={profilePicturePath}
           size={40}
         />
-        <Text style={{ flex: 1, ...Styles.h3 }}>{name}</Text>
+        <Text style={{ flex: 1, ...Styles.h3, marginLeft: 15 }}>{name}</Text>
       </TouchableOpacity>
     </View>
   )
