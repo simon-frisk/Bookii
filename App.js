@@ -1,16 +1,19 @@
 import 'react-native-gesture-handler'
 import React from 'react'
-import Routes from './src/Routes'
+import { SafeAreaView } from 'react-native'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { AuthProvider } from './src/util/AuthProvider'
-import { StatusBar } from 'react-native'
 import apolloClient from './src/util/Apollo'
+import { StatusBar } from 'expo-status-bar'
+import { AuthProvider } from './src/util/AuthProvider'
+import Routes from './src/Routes'
 
 export default () => (
   <ApolloProvider client={apolloClient}>
     <AuthProvider>
-      <StatusBar barStyle='dark-content' />
-      <Routes />
+      <StatusBar />
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#eee' }}>
+        <Routes />
+      </SafeAreaView>
     </AuthProvider>
   </ApolloProvider>
 )

@@ -8,7 +8,7 @@ const Tab = createMaterialTopTabNavigator()
 
 export default () => {
   return (
-    <Tab.Navigator tabBarOptions={{ style: { paddingTop: 20 } }}>
+    <Tab.Navigator>
       <Tab.Screen name='search' component={Search} />
       <Tab.Screen name='toplists' component={TopLists} />
       <Tab.Screen name='people' component={People} />

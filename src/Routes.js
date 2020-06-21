@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { BlurView } from 'expo-blur'
 import { AuthContext } from './util/AuthProvider'
 import CloseModalButton from './components/CloseModalButton'
 import BottomTabs from './util/BottomTabs'
@@ -29,17 +30,25 @@ export default () => {
       <NavigationContainer>
         <Stack.Navigator
           mode='modal'
-          headerMode='float'
+          headerMode='screen'
           screenOptions={{
-            headerTransparent: true,
             title: '',
             headerLeft: () => <View />,
             headerRight: () => <CloseModalButton />,
+            headerTransparent: true,
+            headerBackground: () => (
+              <BlurView intensity={100} style={[StyleSheet.absoluteFill]} />
+            ),
+            headerStyle: { height: 40 },
           }}
         >
           {_id && (
             <>
-              <Stack.Screen name='mainTabScreen' component={BottomTabs} />
+              <Stack.Screen
+                name='mainTabScreen'
+                component={BottomTabs}
+                options={{ headerShown: false }}
+              />
               <Stack.Screen name='book' component={Book} />
               <Stack.Screen name='addFeedBook' component={AddFeedBook} />
               <Stack.Screen name='editFeedBook' component={EditFeedBook} />
