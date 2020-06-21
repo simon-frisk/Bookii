@@ -2,10 +2,9 @@ import React, { useContext, useState } from 'react'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import TextField from '../components/TextField'
 import ApolloError from '../components/ApolloError'
-import Typography from '../components/Typography'
 import PressButton from '../components/PressButton'
 import Styles from '../util/Styles'
 
@@ -33,7 +32,7 @@ export default () => {
   return (
     <View style={Styles.center}>
       <View style={{ width: '50%', maxWidth: 300 }}>
-        <Typography size='h2'>Sign in</Typography>
+        <Text style={Styles.h2}>Sign in</Text>
         <TextField
           value={email}
           onChangeText={setEmail}

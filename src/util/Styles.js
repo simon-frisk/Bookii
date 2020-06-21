@@ -27,4 +27,16 @@ export default {
     justifyContent: 'center',
     marginVertical: 50,
   },
+  h1: {
+    fontSize: 39,
+  },
+  h2: {
+    fontSize: 32,
+  },
+  h3: {
+    fontSize: 24,
+  },
+  h4: {
+    fontSize: 16,
+  },
 }

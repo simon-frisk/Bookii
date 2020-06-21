@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { View } from 'react-native'
-import Typography from '../Typography'
+import { View, Text } from 'react-native'
 import BookCover from '../BookCover'
 import { useNavigation } from '@react-navigation/native'
 import { AuthContext } from '../../util/AuthProvider'
@@ -33,9 +32,7 @@ export default ({
         date={date}
       />
       <TouchableOpacity onPress={() => navigation.navigate('book', { bookId })}>
-        <Typography size='h2' style={{ marginBottom: 10 }}>
-          {title}
-        </Typography>
+        <Text style={{ marginBottom: 10, ...Styles.h2 }}>{title}</Text>
         <View
           style={{
             flexDirection: 'row',
@@ -44,16 +41,12 @@ export default ({
           }}
         >
           {!!comment && (
-            <Typography style={{ flex: 1, marginRight: 20 }}>
-              {comment}
-            </Typography>
+            <Text style={{ flex: 1, marginRight: 20 }}>{comment}</Text>
           )}
           <BookCover uri={thumbnail} width={120} />
         </View>
       </TouchableOpacity>
-      <Typography style={{ marginTop: 10 }}>
-        {new Date(date).toDateString()}
-      </Typography>
+      <Text style={{ marginTop: 10 }}>{new Date(date).toDateString()}</Text>
     </View>
   )
 }

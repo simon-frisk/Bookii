@@ -1,9 +1,8 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import PressButton from '../../components/PressButton'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/BookCover'
-import Typography from '../../components/Typography'
 import Styles from '../../util/Styles'
 
 export default ({
@@ -25,13 +24,13 @@ export default ({
       <View style={{ marginBottom: 20 }}>
         <View style={{ alignItems: 'center' }}>
           <BookCover uri={thumbnail} width={200} />
-          <Typography size='h2' style={{ marginTop: 15, textAlign: 'center' }}>
+          <Text style={{ marginTop: 15, textAlign: 'center', ...Styles.h2 }}>
             {title}
-          </Typography>
+          </Text>
           {subTitle && (
-            <Typography grey style={{ textAlign: 'center' }}>
+            <Text style={{ textAlign: 'center', color: 'grey' }}>
               {subTitle}
-            </Typography>
+            </Text>
           )}
         </View>
         <PressButton
@@ -42,18 +41,22 @@ export default ({
       </View>
       <View style={{ marginBottom: 15 }}>
         {authors && (
-          <Typography grey>{`Author${
+          <Text style={{ color: 'grey' }}>{`Author${
             authors.length > 1 ? 's' : ''
-          }: ${authors.join(' , ')}`}</Typography>
+          }: ${authors.join(' , ')}`}</Text>
         )}
-        {pages && <Typography grey>Pages: {pages}</Typography>}
-        {published && <Typography grey>Published: {published}</Typography>}
-        {publisher && <Typography grey>Publisher: {publisher}</Typography>}
+        {pages && <Text style={{ color: 'grey' }}>Pages: {pages}</Text>}
+        {published && (
+          <Text style={{ color: 'grey' }}>Published: {published}</Text>
+        )}
+        {publisher && (
+          <Text style={{ color: 'grey' }}>Publisher: {publisher}</Text>
+        )}
       </View>
       {wikipediadescription && (
         <View style={[Styles.card, { padding: 10 }]}>
-          <Typography size='h3'>Wikipedia</Typography>
-          <Typography>{wikipediadescription}</Typography>
+          <Text style={Styles.h3}>Wikipedia</Text>
+          <Text>{wikipediadescription}</Text>
         </View>
       )}
     </View>

@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
-import { View, SectionList, ActivityIndicator } from 'react-native'
+import { View, SectionList, ActivityIndicator, Text } from 'react-native'
 import { useApolloClient, useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { AuthContext } from '../../util/AuthProvider'
 import Styles from '../../util/Styles'
 import UpdateProfile from './UpdateProfile'
-import Typography from '../../components/Typography'
 import ApolloError from '../../components/ApolloError'
 import UserCard from '../../components/UserCard'
 import PressButton from '../../components/PressButton'
@@ -34,11 +33,11 @@ export default () => {
 
   const Top = () => (
     <>
-      <Typography size='h1'>Settings</Typography>
+      <Text style={Styles.h1}>Settings</Text>
       <UpdateProfile />
 
       <View>
-        <Typography size='h3'>Sign out</Typography>
+        <Text style={Styles.h3}>Sign out</Text>
         <PressButton
           text='Sign out'
           onPress={() => {
@@ -48,9 +47,9 @@ export default () => {
         />
       </View>
 
-      <Typography size='h3' style={{ marginTop: 10 }}>
+      <Text style={{ marginTop: 10, ...Styles.h3 }}>
         Following and Followers
-      </Typography>
+      </Text>
     </>
   )
 
@@ -77,9 +76,7 @@ export default () => {
       }
       stickySectionHeadersEnabled={false}
       renderSectionHeader={({ section }) => (
-        <Typography size='h4' style={{ marginBottom: 10 }}>
-          {section.title}
-        </Typography>
+        <Text style={{ marginBottom: 10, ...Styles.h4 }}>{section.title}</Text>
       )}
       renderItem={({ item: user }) => (
         <UserCard

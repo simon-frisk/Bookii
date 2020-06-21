@@ -1,9 +1,8 @@
 import React from 'react'
-import { FlatList, ActivityIndicator, View } from 'react-native'
+import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import Styles from '../util/Styles'
-import Typography from '../components/Typography'
 import FeedBookCard from '../components/FeedBookCard/FeedBookCard'
 import ApolloError from '../components/ApolloError'
 
@@ -45,9 +44,7 @@ export default () => {
           )
         return (
           <View style={Styles.center}>
-            <Typography>
-              Follow other people to see their books on your feed!
-            </Typography>
+            <Text>Follow other people to see their books on your feed!</Text>
           </View>
         )
       }}

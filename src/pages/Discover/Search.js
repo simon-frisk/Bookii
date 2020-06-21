@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { FlatList, ActivityIndicator, View } from 'react-native'
+import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import BookCard from '../../components/BookCard'
 import TextField from '../../components/TextField'
 import ApolloError from '../../components/ApolloError'
-import Typography from '../../components/Typography'
 import Styles from '../../util/Styles'
 
 const BookSearch = gql`
@@ -62,11 +61,11 @@ export default () => {
             {data &&
               (query ? (
                 <View style={Styles.center}>
-                  <Typography>No books found</Typography>
+                  <Text>No books found</Text>
                 </View>
               ) : (
                 <View style={Styles.center}>
-                  <Typography>Search for books</Typography>
+                  <Text>Search for books</Text>
                 </View>
               ))}
           </>

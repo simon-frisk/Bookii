@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
-import { FlatList, ActivityIndicator, View } from 'react-native'
+import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import Styles from '../../util/Styles'
 import ApolloError from '../../components/ApolloError'
-import Typography from '../../components/Typography'
 import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
 import Header from './Header'
 import { AuthContext } from '../../util/AuthProvider'
@@ -44,7 +43,7 @@ export default ({ route }) => {
         )}
         ListEmptyComponent={() => (
           <View style={Styles.center}>
-            <Typography>No books on feed yet!</Typography>
+            <Text>No books on feed yet!</Text>
           </View>
         )}
         data={data.user.feedBooks}

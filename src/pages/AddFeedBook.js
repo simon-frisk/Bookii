@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import { ScrollView } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import TextField from '../components/TextField'
 import DatePicker from '../components/DatePicker'
-import Typography from '../components/Typography'
 import ApolloError from '../components/ApolloError'
 import UserPage from './User/UserQuery'
 import { BookPage } from './Book/Book'
@@ -49,7 +48,7 @@ export default ({ route, navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={Styles.pageContainer}>
-      <Typography size='h1'>Add book to feed</Typography>
+      <Text style={Styles.h1}>Add book to feed</Text>
       <DatePicker value={date} onChange={setDate} />
       <TextField
         placeholder='Say something about this book'

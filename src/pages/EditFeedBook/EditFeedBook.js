@@ -1,9 +1,8 @@
 import React from 'react'
-import { ScrollView, View, ActivityIndicator } from 'react-native'
+import { ScrollView, View, ActivityIndicator, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import styles from '../../util/Styles'
-import Typography from '../../components/Typography'
 import ApolloError from '../../components/ApolloError'
 import DeleteButton from './DeleteButton'
 import Edit from './Edit'
@@ -45,7 +44,7 @@ export default ({ route, navigation }) => {
     if (!feedBook) return <View />
     return (
       <ScrollView style={styles.pageContainer}>
-        <Typography size='h1'>{feedBook.book.title}</Typography>
+        <Text style={Styles.h1}>{feedBook.book.title}</Text>
         <Edit
           _id={feedBook._id}
           comment={feedBook.comment}

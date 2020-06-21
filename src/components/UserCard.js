@@ -1,6 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
-import Typography from './Typography'
+import { TouchableOpacity, View, Text } from 'react-native'
 import ProfilePictureCircle from './ProfilePictureCircle'
 import { useNavigation } from '@react-navigation/native'
 import Styles from '../util/Styles'
@@ -23,9 +22,7 @@ export default ({ name, _id, profilePicturePath }) => {
           profilePicturePath={profilePicturePath}
           size={40}
         />
-        <Typography size='h3' style={{ flex: 1 }}>
-          {name}
-        </Typography>
+        <Text style={{ flex: 1, ...Styles.h3 }}>{name}</Text>
       </TouchableOpacity>
     </View>
   )

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
-import Typography from '../../components/Typography'
 import PressButton from '../../components/PressButton'
 import FollowButton from './FollowButton'
+import Styles from '../../util/Styles'
 
 export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
   const navigation = useNavigation()
@@ -17,7 +17,7 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
           size={80}
         />
         <View>
-          <Typography size='h1'>{name}</Typography>
+          <Text style={Styles.h1}>{name}</Text>
           {isSelf ? (
             <PressButton
               text='Settings'
@@ -30,9 +30,7 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
           )}
         </View>
       </View>
-      <Typography size='h1' style={{ marginTop: 30 }}>
-        Feed
-      </Typography>
+      <Text style={{ marginTop: 30, ...Styles.h1 }}>Feed</Text>
     </View>
   )
 }

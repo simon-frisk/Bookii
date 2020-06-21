@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { SectionList, ActivityIndicator, View } from 'react-native'
+import React from 'react'
+import { SectionList, ActivityIndicator, View, Text } from 'react-native'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import Typography from '../../components/Typography'
 import Styles from '../../util/Styles'
 import ApolloError from '../../components/ApolloError'
 import BookCard from '../../components/BookCard'
@@ -48,9 +47,7 @@ export default () => {
       sections={sections}
       stickySectionHeadersEnabled={false}
       renderSectionHeader={({ section }) => (
-        <Typography size='h2' style={{ marginVertical: 20 }}>
-          {section.name}
-        </Typography>
+        <Text style={{ marginVertical: 20, ...Styles.h2 }}>{section.name}</Text>
       )}
       renderItem={({ item: book }) => {
         return (

@@ -1,9 +1,9 @@
 import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View, Text } from 'react-native'
 import ProfilePictureCircle from '../ProfilePictureCircle'
-import Typography from '../Typography'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import Styles from '../../util/Styles'
 
 export default ({ isSelf, user_id, book_id, profilePicturePath, name }) => {
   const navigation = useNavigation()
@@ -28,7 +28,7 @@ export default ({ isSelf, user_id, book_id, profilePicturePath, name }) => {
           size={45}
           style={{ marginRight: 10 }}
         />
-        <Typography size='h3'>{name}</Typography>
+        <Text styles={Styles.h3}>{name}</Text>
       </TouchableOpacity>
       {isSelf && (
         <TouchableOpacity

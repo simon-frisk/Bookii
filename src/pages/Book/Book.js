@@ -1,11 +1,10 @@
 import React from 'react'
-import { ScrollView, ActivityIndicator, View } from 'react-native'
+import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
 import ApolloError from '../../components/ApolloError'
 import TopInfoArea from './TopInfoArea'
-import Typography from '../../components/Typography'
 import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
 
 export const BookPage = gql`
@@ -51,7 +50,7 @@ export default ({ route }) => {
   if (data && !data.book)
     return (
       <View style={Styles.center}>
-        <Typography>Book not found</Typography>
+        <Text>Book not found</Text>
       </View>
     )
 

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
-import Typography from './Typography'
 import { AuthContext } from '../util/AuthProvider'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import Styles from '../util/Styles'
 
 export default ({ error, type }) => {
@@ -21,11 +20,11 @@ export default ({ error, type }) => {
   const errorMessage = errors.join(', ')
 
   if (type === 'errortext')
-    return <Typography style={{ color: 'red' }}>{errorMessage}</Typography>
+    return <Text style={{ color: 'red' }}>{errorMessage}</Text>
   else if (type === 'errorcomponent')
     return (
       <View style={Styles.center}>
-        <Typography style={{ color: 'red' }}>{errorMessage}</Typography>
+        <Text style={{ color: 'red' }}>{errorMessage}</Text>
       </View>
     )
   else return <View />
