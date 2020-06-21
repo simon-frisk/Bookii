@@ -23,21 +23,32 @@ export default () => {
   const [callSearchQuery, { data, loading, error }] = useLazyQuery(BookSearch)
   const [query, setQuery] = useState('')
 
-  useEffect(() => {
+  useEffect(() => search(), [query])
+
+  const search = () => {
     callSearchQuery({ variables: { query } })
-  }, [query])
+  }
 
   return (
     <>
-      <TextField
-        value={query}
-        icon='search1'
-        onChangeText={query => {
-          setQuery(query)
+      <View
+        style={{
+          borderBottomWidth: 0.5,
+          borderBottomColor: 'lightgrey',
+          backgroundColor: 'white',
         }}
-        style={Styles.standardMargin}
-        placeholder='search'
-      />
+      >
+        <TextField
+          value={query}
+          icon='search1'
+          onChangeText={query => {
+            setQuery(query)
+          }}
+          onEndEditing={search}
+          style={Styles.standardMargin}
+          placeholder='search'
+        />
+      </View>
       <FlatList
         data={data && data.bookSearch}
         contentContainerStyle={Styles.pageContainer}
@@ -58,16 +69,16 @@ export default () => {
                 <ActivityIndicator />
               </View>
             )}
-            {data &&
-              (query ? (
-                <View style={Styles.center}>
-                  <Text>No books found</Text>
-                </View>
-              ) : (
-                <View style={Styles.center}>
-                  <Text>Search for books</Text>
-                </View>
-              ))}
+            {!query && (
+              <View style={Styles.center}>
+                <Text>Search for books</Text>
+              </View>
+            )}
+            {!!data && !!query && (
+              <View style={Styles.center}>
+                <Text>No books found</Text>
+              </View>
+            )}
           </>
         )}
       />
