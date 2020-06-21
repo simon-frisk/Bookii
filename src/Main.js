@@ -17,14 +17,17 @@ import User from './pages/User/User'
 const Stack = createStackNavigator()
 
 export default () => {
-  const { _id, initialAuthCheck, isInitialAuthCheckDone } = useContext(
-    AuthContext
-  )
+  const {
+    _id: isSignedIn,
+    initialAuthCheck,
+    isInitialAuthCheckDone,
+  } = useContext(AuthContext)
 
   useEffect(() => {
     initialAuthCheck()
   }, [])
 
+  if (!isInitialAuthCheckDone) return <View />
   if (isInitialAuthCheckDone)
     return (
       <NavigationContainer>
@@ -42,7 +45,7 @@ export default () => {
             headerStyle: { height: 40 },
           }}
         >
-          {_id && (
+          {isSignedIn && (
             <>
               <Stack.Screen
                 name='mainTabScreen'
@@ -56,14 +59,17 @@ export default () => {
               <Stack.Screen name='userSettings' component={UserSettings} />
             </>
           )}
-          {!_id && (
+          {!isSignedIn && (
             <>
-              <Stack.Screen name='signup' component={Signup} />
+              <Stack.Screen
+                name='signup'
+                component={Signup}
+                options={{ headerShown: false }}
+              />
               <Stack.Screen name='signin' component={Signin} />
             </>
           )}
         </Stack.Navigator>
       </NavigationContainer>
     )
-  return <View />
 }

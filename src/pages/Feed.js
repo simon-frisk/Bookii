@@ -46,7 +46,9 @@ export default () => {
           )
         return (
           <Center>
-            <Typography>No items on feed</Typography>
+            <Typography>
+              Follow other people to see their books on your feed!
+            </Typography>
           </Center>
         )
       }}

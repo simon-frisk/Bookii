@@ -28,14 +28,13 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     borderRadius: 10,
     borderWidth: 6,
-    width: '100%',
     paddingHorizontal: 3,
     marginVertical: 6,
     flexDirection: 'row',
     alignItems: 'center',
   },
   textfield: {
-    width: '100%',
+    flex: 1,
     paddingVertical: 3,
   },
 })
