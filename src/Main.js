@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { View, StyleSheet } from 'react-native'
-import { BlurView } from 'expo-blur'
+import { View } from 'react-native'
 import { AuthContext } from './util/AuthProvider'
 import CloseModalButton from './components/CloseModalButton'
 import BottomTabs from './util/BottomTabs'
@@ -32,26 +31,18 @@ export default () => {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          mode='modal'
-          headerMode='screen'
+          mode='card'
+          headerMode='float'
           screenOptions={{
             title: '',
             headerLeft: () => <View />,
             headerRight: () => <CloseModalButton />,
             headerTransparent: true,
-            headerBackground: () => (
-              <BlurView intensity={100} style={[StyleSheet.absoluteFill]} />
-            ),
-            headerStyle: { height: 40 },
           }}
         >
           {isSignedIn && (
             <>
-              <Stack.Screen
-                name='mainTabScreen'
-                component={BottomTabs}
-                options={{ headerShown: false }}
-              />
+              <Stack.Screen name='mainTabScreen' component={BottomTabs} />
               <Stack.Screen name='book' component={Book} />
               <Stack.Screen name='addFeedBook' component={AddFeedBook} />
               <Stack.Screen name='editFeedBook' component={EditFeedBook} />
@@ -61,11 +52,7 @@ export default () => {
           )}
           {!isSignedIn && (
             <>
-              <Stack.Screen
-                name='signup'
-                component={Signup}
-                options={{ headerShown: false }}
-              />
+              <Stack.Screen name='signup' component={Signup} />
               <Stack.Screen name='signin' component={Signin} />
             </>
           )}
