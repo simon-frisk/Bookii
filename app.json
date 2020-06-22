@@ -1,31 +1,30 @@
 {
   "expo": {
     "name": "Bookii",
+    "description": "Bookii as a platform for books - share books with your fiends and find awesome books to read!",
     "slug": "bookii",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "privacy": "public",
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
-    "orientation": "portrait",
+    "primaryColor": "#47f",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "bookiiapp",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#47f"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bookii.bookiiapp",
+      "buildNumber": "1.0.0",
+      "requireFullScreen": false,
+      "usesIcloudStorage": true
     },
-    "description": "",
     "githubUrl": "https://github.com/simon-frisk/Bookii"
   }
 }
