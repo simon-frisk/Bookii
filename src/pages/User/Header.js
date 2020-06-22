@@ -20,9 +20,9 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
           <Text style={Styles.h1}>{name}</Text>
           {isSelf ? (
             <PressButton
-              text='Settings'
+              text='Profile'
               onPress={() => {
-                navigation.navigate('userSettings')
+                navigation.navigate('profile')
               }}
             />
           ) : (

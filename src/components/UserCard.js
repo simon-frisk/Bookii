@@ -7,10 +7,10 @@ import Styles from '../util/Styles'
 export default ({ name, _id, profilePicturePath }) => {
   const navigation = useNavigation()
 
+  console.log(name)
+
   return (
-    <View
-      style={[Styles.card, { padding: 10, marginVertical: 5, width: '100%' }]}
-    >
+    <View style={[Styles.card, { padding: 10, marginVertical: 5 }]}>
       <TouchableOpacity
         onPress={() => navigation.navigate('user', { _id })}
         style={{
@@ -22,7 +22,7 @@ export default ({ name, _id, profilePicturePath }) => {
           profilePicturePath={profilePicturePath}
           size={40}
         />
-        <Text style={{ flex: 1, ...Styles.h3, marginLeft: 15 }}>{name}</Text>
+        <Text style={{ ...Styles.h3, marginHorizontal: 15 }}>{name}</Text>
       </TouchableOpacity>
     </View>
   )

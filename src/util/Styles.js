@@ -29,6 +29,7 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 50,
+    marginHorizontal: 20,
   },
   h1: {
     fontSize: 39,

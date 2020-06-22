@@ -22,8 +22,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.bookii.bookiiapp",
       "buildNumber": "1.0.0",
-      "requireFullScreen": false,
-      "usesIcloudStorage": true
+      "requireFullScreen": false
     },
     "githubUrl": "https://github.com/simon-frisk/Bookii"
   }

@@ -70,7 +70,7 @@ export default () => {
 
   return (
     <View>
-      <Text style={Styles.h3}>Update profile</Text>
+      <Text style={Styles.h2}>Update profile</Text>
       <Text>Enter the values you want to change</Text>
       <TextField
         value={email}
