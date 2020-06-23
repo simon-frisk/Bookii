@@ -10,7 +10,7 @@ export default ({ error, type }) => {
 
   if (error.graphQLErrors && error.graphQLErrors.length) {
     error.graphQLErrors.forEach(error => {
-      if (error.extensions.code === 'UNAUTHORIZED') signout()
+      if (error.extensions.code === 'UNAUTHENTICATED') signout()
       errors.push(error.message)
     })
   }

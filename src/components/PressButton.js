@@ -5,9 +5,11 @@ import Styles from '../util/Styles'
 export default ({ text, type, loading, onPress, containerStyle }) => {
   let style = styles.base
   if (type === 'filled') style = { ...style, ...styles.filled }
+  if (type === 'error') style = { ...style, ...styles.error }
 
   let textStyle = styles.baseText
-  if (type === 'filled') textStyle = { ...textStyle, ...styles.filledText }
+  if (type === 'filled' || type === 'error')
+    textStyle = { ...textStyle, ...styles.filledText }
 
   return (
     <TouchableOpacity onPress={onPress}>
@@ -31,6 +33,9 @@ const styles = {
   },
   filled: {
     backgroundColor: '#47f',
+  },
+  error: {
+    backgroundColor: '#d22',
   },
   baseText: {
     textAlign: 'center',
