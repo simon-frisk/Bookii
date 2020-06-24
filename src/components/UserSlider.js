@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, TouchableOpacity } from 'react-native'
+import { FlatList, TouchableOpacity, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import ProfilePictureCircle from './ProfilePictureCircle'
 
@@ -14,6 +14,7 @@ export default ({ users }) => {
       renderItem={({ item: user }) => (
         <TouchableOpacity
           onPress={() => navigation.navigate('user', { _id: user._id })}
+          style={{ alignItems: 'center' }}
         >
           <ProfilePictureCircle
             profilePicturePath={user.profilePicturePath}
@@ -21,6 +22,7 @@ export default ({ users }) => {
             size={70}
             style={{ margin: 7 }}
           />
+          <Text>{user.name.split(' ')[0]}</Text>
         </TouchableOpacity>
       )}
     />

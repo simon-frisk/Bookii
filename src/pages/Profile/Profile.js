@@ -7,7 +7,7 @@ import Styles from '../../util/Styles'
 import UpdateProfile from './UpdateProfile'
 import ApolloError from '../../components/ApolloError'
 import PressButton from '../../components/PressButton'
-import UserCirclesSwiper from '../../components/UserCirclesSwiper'
+import UserSlider from '../../components/UserSlider'
 import DeleteProfile from './DeleteProfile'
 
 export const UserFollowingAndFollowers = gql`
@@ -43,13 +43,13 @@ export default () => {
       {!!data && !!data.user.following.length && (
         <>
           <Text style={Styles.h3}>Following</Text>
-          <UserCirclesSwiper users={data.user.following} />
+          <UserSlider users={data.user.following} />
         </>
       )}
       {!!data && !!data.user.followers.length && (
         <>
           <Text style={Styles.h3}>Followers</Text>
-          <UserCirclesSwiper users={data.user.followers} />
+          <UserSlider users={data.user.followers} />
         </>
       )}
       <PressButton
