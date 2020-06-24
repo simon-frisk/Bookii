@@ -30,7 +30,12 @@ export default ({ route, navigation }) => {
   })
   const errorMessage = useApolloError(error)
 
-  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
+  if (error)
+    return (
+      <View style={Styles.center}>
+        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+      </View>
+    )
 
   if (loading)
     return (

@@ -23,7 +23,12 @@ export default () => {
   return (
     <FlatList
       ListEmptyComponent={() => {
-        if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
+        if (error)
+          return (
+            <View style={Styles.center}>
+              <Text style={{ color: 'red' }}>{errorMessage}</Text>
+            </View>
+          )
         if (loading)
           return (
             <View style={Styles.center}>

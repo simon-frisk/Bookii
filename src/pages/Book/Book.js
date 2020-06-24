@@ -46,7 +46,12 @@ export default ({ route }) => {
       </View>
     )
 
-  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
+  if (error)
+    return (
+      <View style={Styles.center}>
+        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+      </View>
+    )
 
   if (data && !data.book)
     return (
@@ -77,6 +82,7 @@ export default ({ route }) => {
         />
         {data.user.feedBooks.map(feedBook => (
           <FeedBookCard
+            key={feedBook._id}
             book_id={feedBook._id}
             comment={feedBook.comment}
             date={feedBook.date}

@@ -64,7 +64,11 @@ export default () => {
         )}
         ListEmptyComponent={() => (
           <>
-            {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+            {error && (
+              <View style={Styles.center}>
+                <Text style={{ color: 'red' }}>{errorMessage}</Text>
+              </View>
+            )}
             {loading && (
               <View style={Styles.center}>
                 <ActivityIndicator />

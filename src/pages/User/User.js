@@ -26,7 +26,12 @@ export default ({ route }) => {
       </View>
     )
 
-  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
+  if (error)
+    return (
+      <View style={Styles.center}>
+        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+      </View>
+    )
 
   if (data)
     return (
@@ -54,22 +59,19 @@ export default ({ route }) => {
           Styles.extraHorizontalPagePadding,
         ]}
         renderItem={({ item: feedBook }) => {
-          if (feedBook.book) {
-            //temporary
-            return (
-              <FeedBookCard
-                user_id={data.user._id}
-                name={data.user.name}
-                profilePicturePath={data.user.profilePicturePath}
-                book_id={feedBook._id}
-                bookId={feedBook.book.bookId}
-                thumbnail={feedBook.book.thumbnail}
-                title={feedBook.book.title}
-                comment={feedBook.comment}
-                date={feedBook.date}
-              />
-            )
-          }
+          return (
+            <FeedBookCard
+              user_id={data.user._id}
+              name={data.user.name}
+              profilePicturePath={data.user.profilePicturePath}
+              book_id={feedBook._id}
+              bookId={feedBook.book.bookId}
+              thumbnail={feedBook.book.thumbnail}
+              title={feedBook.book.title}
+              comment={feedBook.comment}
+              date={feedBook.date}
+            />
+          )
         }}
       />
     )
