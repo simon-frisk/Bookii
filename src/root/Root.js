@@ -3,7 +3,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { View } from 'react-native'
 import { AuthContext } from '../util/AuthProvider'
-import BottomTabs from '../util/BottomTabs'
+import CloseModalButton from '../components/CloseModalButton'
+import BottomTabs from './BottomTabs'
 import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
 import Book from '../pages/Book/Book'
@@ -11,7 +12,6 @@ import AddFeedBook from '../pages/AddFeedBook'
 import Profile from '../pages/Profile/Profile'
 import EditFeedBook from '../pages/EditFeedBook/EditFeedBook'
 import User from '../pages/User/User'
-import CloseModalButton from '../components/CloseModalButton'
 
 const Stack = createStackNavigator()
 
