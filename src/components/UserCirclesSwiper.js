@@ -17,6 +17,7 @@ export default ({ users }) => {
         >
           <ProfilePictureCircle
             profilePicturePath={user.profilePicturePath}
+            name={user.name}
             size={70}
             style={{ margin: 7 }}
           />

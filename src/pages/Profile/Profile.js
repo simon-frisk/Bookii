@@ -16,10 +16,12 @@ export const UserFollowingAndFollowers = gql`
       _id
       following {
         _id
+        name
         profilePicturePath
       }
       followers {
         _id
+        name
         profilePicturePath
       }
     }

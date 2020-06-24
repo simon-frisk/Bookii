@@ -7,8 +7,6 @@ import Styles from '../util/Styles'
 export default ({ name, _id, profilePicturePath }) => {
   const navigation = useNavigation()
 
-  console.log(name)
-
   return (
     <View style={[Styles.card, { padding: 10, marginVertical: 5 }]}>
       <TouchableOpacity
@@ -20,6 +18,7 @@ export default ({ name, _id, profilePicturePath }) => {
       >
         <ProfilePictureCircle
           profilePicturePath={profilePicturePath}
+          name={name}
           size={40}
         />
         <Text style={{ ...Styles.h3, marginHorizontal: 15 }}>{name}</Text>

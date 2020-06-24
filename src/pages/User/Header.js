@@ -14,6 +14,7 @@ export default ({ profilePicturePath, name, isSelf, isSelfFollowing, _id }) => {
       <View style={{ alignItems: 'center' }}>
         <ProfilePictureCircle
           profilePicturePath={profilePicturePath}
+          name={name}
           size={80}
         />
         <View>

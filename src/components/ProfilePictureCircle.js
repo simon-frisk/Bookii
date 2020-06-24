@@ -1,7 +1,12 @@
 import React from 'react'
-import { View, Image } from 'react-native'
+import { View, Image, Text } from 'react-native'
 
-export default ({ profilePicturePath, size, style }) => {
+export default ({ profilePicturePath, name, size, style }) => {
+  const initials = name
+    .split(' ')
+    .map(namePart => namePart.charAt(0))
+    .join('')
+
   if (profilePicturePath)
     return (
       <Image
@@ -23,7 +28,11 @@ export default ({ profilePicturePath, size, style }) => {
           height: size,
           borderRadius: size / 2,
           ...style,
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-      />
+      >
+        <Text style={{ color: 'white', fontSize: size * 0.4 }}>{initials}</Text>
+      </View>
     )
 }

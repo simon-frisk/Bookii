@@ -25,6 +25,7 @@ export default ({ isSelf, user_id, book_id, profilePicturePath, name }) => {
       >
         <ProfilePictureCircle
           profilePicturePath={profilePicturePath}
+          name={name}
           size={45}
           style={{ marginRight: 10 }}
         />
