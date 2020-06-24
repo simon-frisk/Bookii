@@ -36,7 +36,10 @@ export default () => {
 
   return (
     <ScrollView
-      style={[Styles.pageContainer, Styles.extraHorizontalPagePadding]}
+      contentContainerStyle={[
+        Styles.pageContainer,
+        Styles.extraHorizontalPagePadding,
+      ]}
     >
       <UpdateProfile />
       {loading && <ActivityIndicator style={{ margin: 30 }} />}
