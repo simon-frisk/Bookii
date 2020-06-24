@@ -22,6 +22,7 @@
     "apollo-link-context": "^1.0.20",
     "apollo-upload-client": "^13.0.0",
     "expo": "~37.0.3",
+    "expo-analytics-segment": "~8.1.0",
     "expo-image-picker": "~8.1.0",
     "expo-status-bar": "^1.0.0",
     "graphql": "^15.0.0",

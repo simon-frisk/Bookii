@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import { useMutation } from '@apollo/react-hooks'
 import { ReactNativeFile } from 'apollo-upload-client'
+import * as Segment from 'expo-analytics-segment'
 import gql from 'graphql-tag'
 import TextField from '../../components/TextField'
 import PressButton from '../../components/PressButton'
@@ -32,7 +33,14 @@ const UpdateUser = gql`
 `
 
 export default () => {
-  const [callMutation, { data, loading, error }] = useMutation(UpdateUser)
+  const [callMutation, { data, loading, error }] = useMutation(UpdateUser, {
+    onCompleted(data) {
+      Segment.identifyWithTraits(data.updateUser._id, {
+        email: data.updateUser.email,
+        name: data.updateUser.name,
+      })
+    },
+  })
   const errorMessage = useApolloError(error)
 
   useEffect(() => {
