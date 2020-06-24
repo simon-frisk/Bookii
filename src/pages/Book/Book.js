@@ -3,7 +3,7 @@ import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
-import ApolloError from '../../components/ApolloError'
+import useApolloError from '../../util/useApolloError'
 import TopInfoArea from './TopInfoArea'
 import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
 
@@ -37,6 +37,7 @@ export default ({ route }) => {
   const { data, loading, error } = useQuery(BookPage, {
     variables: { bookId: route.params.bookId },
   })
+  const errorMessage = useApolloError(error)
 
   if (loading)
     return (
@@ -45,7 +46,7 @@ export default ({ route }) => {
       </View>
     )
 
-  if (error) return <ApolloError type='errorcomponent' error={error} />
+  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
 
   if (data && !data.book)
     return (

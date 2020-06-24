@@ -1,8 +1,8 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import { FlatList, ActivityIndicator, View } from 'react-native'
-import ApolloError from '../../components/ApolloError'
+import { FlatList, ActivityIndicator, View, Text } from 'react-native'
+import useApolloError from '../../util/useApolloError'
 import UserCard from '../../components/UserCard'
 import Styles from '../../util/Styles'
 
@@ -18,11 +18,12 @@ const UsersPage = gql`
 
 export default () => {
   const { data, loading, error } = useQuery(UsersPage)
+  const errorMessage = useApolloError(error)
 
   return (
     <FlatList
       ListEmptyComponent={() => {
-        if (error) return <ApolloError type='errorcomponent' error={error} />
+        if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
         if (loading)
           return (
             <View style={Styles.center}>

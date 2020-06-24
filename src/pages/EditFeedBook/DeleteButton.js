@@ -1,10 +1,11 @@
 import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import ApolloError from '../../components/ApolloError'
 import PressButton from '../../components/PressButton'
 import UserPage from '../User/UserQuery'
 import { BookPage } from '../Book/Book'
+import { Text } from 'react-native'
+import useApolloError from '../../util/useApolloError'
 
 const RemoveFeedBook = gql`
   mutation RemoveFeedBook($_id: ID!) {
@@ -31,8 +32,9 @@ export default ({ _id, bookId, onCompleted }) => {
       onCompleted,
     }
   )
+  const errorMessage = useApolloError(error)
 
-  if (error) return <ApolloError type='errortext' error={error} />
+  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
 
   return (
     <PressButton

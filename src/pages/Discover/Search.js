@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import BookCard from '../../components/BookCard'
 import TextField from '../../components/TextField'
-import ApolloError from '../../components/ApolloError'
+import useApolloError from '../../util/useApolloError'
 import Styles from '../../util/Styles'
 
 const BookSearch = gql`
@@ -21,6 +21,7 @@ const BookSearch = gql`
 
 export default () => {
   const [callSearchQuery, { data, loading, error }] = useLazyQuery(BookSearch)
+  const errorMessage = useApolloError(error)
   const [query, setQuery] = useState('')
 
   useEffect(() => search(), [query])
@@ -63,7 +64,7 @@ export default () => {
         )}
         ListEmptyComponent={() => (
           <>
-            {error && <ApolloError type='errorcomponent' error={error} />}
+            {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
             {loading && (
               <View style={Styles.center}>
                 <ActivityIndicator />

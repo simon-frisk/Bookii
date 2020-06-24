@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import PressButton from '../../components/PressButton'
-import ApolloError from '../../components/ApolloError'
 import { AuthContext } from '../../util/AuthProvider'
+import useApolloError from '../../util/useApolloError'
 
 const DeleteProfile = gql`
   mutation DeleteProfile($_id: ID!) {
@@ -18,6 +18,7 @@ export default ({ _id }) => {
     variables: { _id },
     onCompleted: () => signout(),
   })
+  const errorMessage = useApolloError(error)
   const { signout } = useContext(AuthContext)
 
   return (
@@ -28,7 +29,7 @@ export default ({ _id }) => {
         loading={loading}
         onPress={deleteAccount}
       />
-      {error && <ApolloError error={error} type='errortext' />}
+      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
     </>
   )
 }

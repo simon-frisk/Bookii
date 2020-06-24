@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks'
 import { ScrollView, Text } from 'react-native'
 import TextField from '../components/TextField'
 import DatePicker from '../components/DatePicker'
-import ApolloError from '../components/ApolloError'
+import useApolloError from '../util/useApolloError'
 import UserPage from './User/UserQuery'
 import { BookPage } from './Book/Book'
 import Styles from '../util/Styles'
@@ -36,6 +36,7 @@ export default ({ route, navigation }) => {
       onCompleted: navigation.goBack,
     }
   )
+  const errorMessage = useApolloError(error)
 
   const [date, setDate] = useState(new Date())
   const [comment, setComment] = useState('')
@@ -61,7 +62,7 @@ export default ({ route, navigation }) => {
         value={comment}
         onChangeText={setComment}
       />
-      {error && <ApolloError type='errortext' error={error} />}
+      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
       <PressButton
         text='Add Book'
         loading={loading}

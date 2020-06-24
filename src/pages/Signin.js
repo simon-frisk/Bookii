@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
 import { View, Text } from 'react-native'
 import TextField from '../components/TextField'
-import ApolloError from '../components/ApolloError'
+import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
 import Styles from '../util/Styles'
 
@@ -20,6 +20,8 @@ export default () => {
       setToken(token)
     },
   })
+  const errorMessage = useApolloError(error)
+
   const { signin: setToken } = useContext(AuthContext)
 
   const [email, setEmail] = useState('')
@@ -46,7 +48,7 @@ export default () => {
           placeholder='password'
           secureTextEntry={true}
         />
-        {error && <ApolloError type='errortext' error={error} />}
+        {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
         <PressButton
           text='sign in'
           onPress={signin}

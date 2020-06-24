@@ -4,8 +4,8 @@ import { useMutation } from '@apollo/react-hooks'
 import { View } from 'react-native'
 import TextField from '../../components/TextField'
 import DatePicker from '../../components/DatePicker'
-import ApolloError from '../../components/ApolloError'
 import PressButton from '../../components/PressButton'
+import useApolloError from '../../util/useApolloError'
 
 const UpdateFeedBook = gql`
   mutation UpdateFeedBook($_id: ID!, $comment: String, $date: String) {
@@ -32,6 +32,7 @@ export default ({
   const [callMutation, { loading, error }] = useMutation(UpdateFeedBook, {
     onCompleted,
   })
+  const errorMessage = useApolloError(error)
   const [comment, setComment] = useState('')
   const [date, setDate] = useState(new Date())
 
@@ -59,7 +60,7 @@ export default ({
         onChangeText={setComment}
         placeholder='Say something about this book'
       />
-      {error && <ApolloError type='errortext' error={error} />}
+      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
       <PressButton
         onPress={submit}
         text='Update'

@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import Styles from '../util/Styles'
 import FeedBookCard from '../components/FeedBookCard/FeedBookCard'
-import ApolloError from '../components/ApolloError'
+import useApolloError from '../util/useApolloError'
 
 export const FeedPage = gql`
   query FeedPage($after: ID) {
@@ -28,6 +28,7 @@ export const FeedPage = gql`
 
 export default () => {
   const { data, loading, error, fetchMore } = useQuery(FeedPage)
+  const errorMessage = useApolloError(error)
 
   return (
     <FlatList
@@ -38,7 +39,12 @@ export default () => {
         Styles.extraHorizontalPagePadding,
       ]}
       ListEmptyComponent={() => {
-        if (error) return <ApolloError error={error} type='errorcomponent' />
+        if (error)
+          return (
+            <View style={Styles.center}>
+              <Text style={{ color: 'red' }}>{errorMessage}</Text>
+            </View>
+          )
         if (loading)
           return (
             <View style={Styles.center}>

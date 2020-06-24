@@ -3,9 +3,9 @@ import { ScrollView, View, ActivityIndicator, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
-import ApolloError from '../../components/ApolloError'
 import DeleteButton from './DeleteButton'
 import Edit from './Edit'
+import useApolloError from '../../util/useApolloError'
 
 const UpdateFeedBookPage = gql`
   query UpdateFeedBookPage($_id: ID!) {
@@ -28,8 +28,9 @@ export default ({ route, navigation }) => {
   const { data, loading, error } = useQuery(UpdateFeedBookPage, {
     variables: { _id: route.params._id },
   })
+  const errorMessage = useApolloError(error)
 
-  if (error) return <ApolloError type='errorcomponent' error={error} />
+  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
 
   if (loading)
     return (

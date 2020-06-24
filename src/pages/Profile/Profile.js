@@ -5,10 +5,10 @@ import gql from 'graphql-tag'
 import { AuthContext } from '../../util/AuthProvider'
 import Styles from '../../util/Styles'
 import UpdateProfile from './UpdateProfile'
-import ApolloError from '../../components/ApolloError'
 import PressButton from '../../components/PressButton'
 import UserSlider from '../../components/UserSlider'
 import DeleteProfile from './DeleteProfile'
+import useApolloError from '../../util/useApolloError'
 
 export const UserFollowingAndFollowers = gql`
   query UserFollowingAndFollowers {
@@ -30,6 +30,7 @@ export const UserFollowingAndFollowers = gql`
 
 export default () => {
   const { data, loading, error } = useQuery(UserFollowingAndFollowers)
+  const errorMessage = useApolloError(error)
   const { signout } = useContext(AuthContext)
   const client = useApolloClient()
 
@@ -39,7 +40,7 @@ export default () => {
     >
       <UpdateProfile />
       {loading && <ActivityIndicator style={{ margin: 30 }} />}
-      {error && <ApolloError type='errorcomponent' error={error} />}
+      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
       {!!data && !!data.user.following.length && (
         <>
           <Text style={Styles.h3}>Following</Text>

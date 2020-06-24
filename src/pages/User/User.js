@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import Styles from '../../util/Styles'
-import ApolloError from '../../components/ApolloError'
 import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
 import Header from './Header'
 import { AuthContext } from '../../util/AuthProvider'
 import UserPage from './UserQuery'
+import useApolloError from '../../util/useApolloError'
 
 export default ({ route }) => {
   const paramsId = route.params && route.params._id
@@ -17,6 +17,7 @@ export default ({ route }) => {
   const { data, loading, error } = useQuery(UserPage, {
     variables: { _id },
   })
+  const errorMessage = useApolloError(error)
 
   if (loading)
     return (
@@ -25,7 +26,7 @@ export default ({ route }) => {
       </View>
     )
 
-  if (error) return <ApolloError type='errorcomponent' error={error} />
+  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
 
   if (data)
     return (

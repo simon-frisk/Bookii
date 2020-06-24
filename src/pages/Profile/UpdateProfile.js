@@ -5,9 +5,9 @@ import { useMutation } from '@apollo/react-hooks'
 import { ReactNativeFile } from 'apollo-upload-client'
 import gql from 'graphql-tag'
 import TextField from '../../components/TextField'
-import ApolloError from '../../components/ApolloError'
 import PressButton from '../../components/PressButton'
 import Styles from '../../util/Styles'
+import useApolloError from '../../util/useApolloError'
 
 const UpdateUser = gql`
   mutation UpdateUser(
@@ -33,6 +33,7 @@ const UpdateUser = gql`
 
 export default () => {
   const [callMutation, { data, loading, error }] = useMutation(UpdateUser)
+  const errorMessage = useApolloError(error)
 
   useEffect(() => {
     if (data) {
@@ -90,7 +91,7 @@ export default () => {
         text='Select profile picture'
         onPress={selectProfilePicture}
       />
-      {error && <ApolloError type='errortext' error={error} />}
+      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
       <PressButton
         text='Update'
         onPress={update}
