@@ -6,6 +6,7 @@ import UserPage from './UserQuery'
 import { FeedPage } from '../Feed'
 import PressButton from '../../components/PressButton'
 import useApolloError from '../../util/useApolloError'
+import { Text } from 'react-native'
 
 const FollowUser = gql`
   mutation FollowUser($_id: ID!) {

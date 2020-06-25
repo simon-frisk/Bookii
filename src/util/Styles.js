@@ -41,6 +41,6 @@ export default {
     fontSize: 24,
   },
   h4: {
-    fontSize: 16,
+    fontSize: 20,
   },
 }
