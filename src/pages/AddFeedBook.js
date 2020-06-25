@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import { ScrollView, Text } from 'react-native'
+import * as Segment from 'expo-analytics-segment'
 import TextField from '../components/TextField'
 import DatePicker from '../components/DatePicker'
 import useApolloError from '../util/useApolloError'
@@ -33,7 +34,10 @@ export default ({ route, navigation }) => {
           },
         },
       ],
-      onCompleted: navigation.goBack,
+      onCompleted: () => {
+        navigation.goBack()
+        Segment.track('FeedBook added')
+      },
     }
   )
   const errorMessage = useApolloError(error)

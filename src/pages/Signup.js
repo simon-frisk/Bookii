@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import { Link } from '@react-navigation/native'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
+import * as Segment from 'expo-analytics-segment'
 import { AuthContext } from '../util/AuthProvider'
 import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'
@@ -19,6 +20,7 @@ export default () => {
   const [callMutation, { loading, error }] = useMutation(Signup, {
     onCompleted: ({ signup: token }) => {
       setToken(token)
+      Segment.track('Account created')
     },
   })
   const errorMessage = useApolloError(error)
