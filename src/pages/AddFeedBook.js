@@ -35,8 +35,8 @@ export default ({ route, navigation }) => {
         },
       ],
       onCompleted: () => {
-        navigation.goBack()
         Segment.track('FeedBook added')
+        navigation.goBack()
       },
     }
   )

@@ -19,8 +19,8 @@ const Signup = gql`
 export default () => {
   const [callMutation, { loading, error }] = useMutation(Signup, {
     onCompleted: ({ signup: token }) => {
-      setToken(token)
       Segment.track('Account created')
+      setToken(token)
     },
   })
   const errorMessage = useApolloError(error)
