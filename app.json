@@ -5,7 +5,7 @@
     "slug": "bookii",
     "privacy": "public",
     "platforms": ["ios", "android"],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "primaryColor": "#4477FF",
     "icon": "./assets/icon.png",
     "scheme": "bookiiapp",
@@ -15,13 +15,12 @@
       "backgroundColor": "#4477FF"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 5000
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.bookii.bookiiapp",
-      "buildNumber": "1.0.0",
       "requireFullScreen": false
     },
     "android": {
