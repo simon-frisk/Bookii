@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { StatusBar } from 'expo-status-bar'
 import * as Segment from 'expo-analytics-segment'
@@ -17,9 +17,11 @@ export default () => {
     <ApolloProvider client={apolloClient}>
       <AuthProvider>
         <StatusBar />
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
-          <Root />
-        </SafeAreaView>
+        <SafeAreaProvider>
+          <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
+            <Root />
+          </SafeAreaView>
+        </SafeAreaProvider>
       </AuthProvider>
     </ApolloProvider>
   )
