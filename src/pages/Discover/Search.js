@@ -69,7 +69,7 @@ export default () => {
                 <Text style={{ color: 'red' }}>{errorMessage}</Text>
               </View>
             )}
-            {loading && (
+            {loading && !!query && (
               <View style={Styles.center}>
                 <ActivityIndicator />
               </View>
