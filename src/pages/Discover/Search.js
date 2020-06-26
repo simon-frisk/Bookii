@@ -79,7 +79,7 @@ export default () => {
                 <Text>Search for books</Text>
               </View>
             )}
-            {!!data && !!query && (
+            {!!data && !loading && !error && !!query && (
               <View style={Styles.center}>
                 <Text>No books found</Text>
               </View>
