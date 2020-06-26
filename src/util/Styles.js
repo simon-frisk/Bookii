@@ -11,10 +11,10 @@ const shadow = {
 
 export default {
   pageContainer: {
-    padding: '3%',
+    padding: '4%',
   },
   standardMargin: {
-    margin: '3%',
+    margin: '4%',
   },
   extraHorizontalPagePadding: {
     paddingVertical: 40,
@@ -32,15 +32,23 @@ export default {
     marginHorizontal: 20,
   },
   h1: {
-    fontSize: 39,
+    fontSize: 40,
+    fontFamily: 'Arial Rounded MT Bold',
+    fontWeight: '600',
   },
   h2: {
-    fontSize: 32,
+    fontSize: 33,
+    fontFamily: 'Arial Rounded MT Bold',
+    fontWeight: '500',
   },
   h3: {
     fontSize: 24,
+    fontFamily: 'Arial Rounded MT Bold',
+    fontWeight: '500',
   },
   h4: {
     fontSize: 20,
+    fontFamily: 'Arial Rounded MT Bold',
+    fontWeight: '500',
   },
 }
