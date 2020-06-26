@@ -69,7 +69,10 @@ export default ({ route, navigation }) => {
             <Text
               style={[
                 Styles.h2,
-                { marginHorizontal: Styles.standardPageInset },
+                {
+                  marginHorizontal: Styles.standardPageInset,
+                  marginBottom: 10,
+                },
               ]}
             >
               Feed

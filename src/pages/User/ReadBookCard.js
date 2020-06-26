@@ -31,13 +31,17 @@ export default ({
     >
       <TouchableOpacity onPress={() => navigation.navigate('book', { bookId })}>
         <View style={{ flexDirection: 'row' }}>
-          <BookCover uri={thumbnail} width={100} />
-          <Text style={[Styles.h4, { marginLeft: 20, flex: 1 }]}>{title}</Text>
+          <BookCover uri={thumbnail} width={90} />
+          <View
+            style={{ flex: 1, justifyContent: 'space-between', marginLeft: 12 }}
+          >
+            <Text style={[Styles.h4]}>{title}</Text>
+            <Text style={{ fontWeight: 'bold' }}>
+              {new Date(date).toDateString()}
+            </Text>
+          </View>
         </View>
-        <Text style={{ fontWeight: 'bold' }}>
-          {new Date(date).toDateString()}
-        </Text>
-        <Text>{comment}</Text>
+        <Text style={{ marginTop: 10 }}>{comment}</Text>
         {isSelf && (
           <PressButton
             text='Edit'

@@ -7,7 +7,11 @@ export default ({ uri, width, style }) => {
       {uri ? (
         <Image
           source={{ uri }}
-          style={{ width, height: width * 1.5, resizeMode: 'contain' }}
+          style={{
+            width,
+            height: width * 1.5,
+            resizeMode: 'contain',
+          }}
         />
       ) : (
         <View style={{ width, height: width * 1.5, backgroundColor: 'grey' }} />
