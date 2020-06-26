@@ -9,31 +9,27 @@ import TextField from '../../components/TextField'
 import PressButton from '../../components/PressButton'
 import Styles from '../../util/Styles'
 import useApolloError from '../../util/useApolloError'
+import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 
 const UpdateUser = gql`
-  mutation UpdateUser(
-    $name: String
-    $email: String
-    $password: String
-    $profilePicture: Upload
-  ) {
+  mutation UpdateUser($name: String, $email: String, $profilePicture: Upload) {
     updateUser(
-      user: {
-        email: $email
-        name: $name
-        password: $password
-        profilePicture: $profilePicture
-      }
+      user: { email: $email, name: $name, profilePicture: $profilePicture }
     ) {
       _id
       email
       name
+      profilePicturePath
     }
   }
 `
 
-export default () => {
-  const [callMutation, { data, loading, error }] = useMutation(UpdateUser, {
+export default ({
+  email: initialEmail,
+  name: initialName,
+  profilePicturePath: initialProfilePicturePath,
+}) => {
+  const [callMutation, { loading, error }] = useMutation(UpdateUser, {
     onCompleted(data) {
       Segment.identifyWithTraits(data.updateUser._id, {
         email: data.updateUser.email,
@@ -43,22 +39,15 @@ export default () => {
   })
   const errorMessage = useApolloError(error)
 
-  useEffect(() => {
-    if (data) {
-      setName()
-      setEmail()
-      setPassword()
-      setProfilePicture()
-    }
-  }, [data])
-
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [name, setName] = useState(initialName)
+  const [email, setEmail] = useState(initialEmail)
   const [profilePicture, setProfilePicture] = useState()
+  const [profilePicturePath, setProfilePicturePath] = useState(
+    initialProfilePicturePath
+  )
 
   const update = () => {
-    callMutation({ variables: { name, email, password, profilePicture } })
+    callMutation({ variables: { name, email, profilePicture } })
   }
 
   const selectProfilePicture = async () => {
@@ -74,13 +63,13 @@ export default () => {
         type: 'image/jpeg',
       })
       setProfilePicture(picture)
+      setProfilePicturePath(result.uri)
     }
   }
 
   return (
-    <View>
+    <View style={{ marginBottom: 35, marginTop: 10 }}>
       <Text style={Styles.h2}>Update profile</Text>
-      <Text>Enter the values you want to change</Text>
       <TextField
         value={email}
         onChangeText={setEmail}
@@ -89,16 +78,23 @@ export default () => {
         keyboardType='email-address'
       />
       <TextField value={name} onChangeText={setName} placeholder='name' />
-      <TextField
-        value={password}
-        onChangeText={setPassword}
-        placeholder='password'
-        secureTextEntry={true}
-      />
-      <PressButton
-        text='Select profile picture'
-        onPress={selectProfilePicture}
-      />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <PressButton
+          text='Select profile picture'
+          onPress={selectProfilePicture}
+        />
+        <ProfilePictureCircle
+          profilePicturePath={profilePicturePath}
+          size={50}
+          name={name}
+        />
+      </View>
       {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
       <PressButton
         text='Update'
