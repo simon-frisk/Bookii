@@ -33,7 +33,9 @@ export default ({ route, navigation }) => {
 
   if (data)
     return (
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
+      >
         <View
           style={[{ padding: Styles.standardPageInset }, { marginBottom: 30 }]}
         >
@@ -64,23 +66,11 @@ export default ({ route, navigation }) => {
         </View>
         {/*Some cool text if no books are added*/}
         {!!data.user.feedBooks.length && (
-          <>
-            <Text
-              style={[
-                Styles.h2,
-                {
-                  marginHorizontal: Styles.standardPageInset,
-                  marginBottom: 10,
-                },
-              ]}
-            >
-              Feed
-            </Text>
-            <FeedBookCardSlider
-              feedBooks={data.user.feedBooks}
-              isSelf={isSelf}
-            />
-          </>
+          <FeedBookCardSlider
+            feedBooks={data.user.feedBooks}
+            isSelf={isSelf}
+            title='Feed'
+          />
         )}
       </ScrollView>
     )

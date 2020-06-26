@@ -53,7 +53,6 @@ export default ({ route }) => {
     variables: { bookId: route.params.bookId },
   })
   const errorMessage = useApolloError(error)
-  console.log('hi', data, loading, error, errorMessage)
 
   if (loading)
     return (
@@ -78,7 +77,9 @@ export default ({ route }) => {
       )
     }
     return (
-      <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
+      >
         <TopInfoArea
           thumbnail={data.book.thumbnail}
           title={data.book.title}
@@ -92,22 +93,18 @@ export default ({ route }) => {
           alreadyRead={!!data.book.onselffeed.length}
         />
         {!!data.book.onselffeed.length && (
-          <>
-            <Text style={Styles.h2}>On your feed</Text>
-            <FeedBookCardSlider
-              feedBooks={data.book.onselffeed}
-              isSelf={true}
-            />
-          </>
+          <FeedBookCardSlider
+            feedBooks={data.book.onselffeed}
+            isSelf={true}
+            title='On your feed'
+          />
         )}
         {!!data.book.onfollowingfeed.length && (
-          <>
-            <Text style={Styles.h2}>On following feeds</Text>
-            <FeedBookCardSlider
-              feedBooks={data.book.onfollowingfeed}
-              isSelf={false}
-            />
-          </>
+          <FeedBookCardSlider
+            feedBooks={data.book.onfollowingfeed}
+            isSelf={false}
+            title='On following feeds'
+          />
         )}
       </ScrollView>
     )

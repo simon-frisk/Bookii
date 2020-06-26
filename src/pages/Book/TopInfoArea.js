@@ -20,7 +20,7 @@ export default ({
   const navigation = useNavigation()
 
   return (
-    <View>
+    <View style={{ padding: Styles.standardPageInset }}>
       <View style={{ marginBottom: 20 }}>
         <View style={{ alignItems: 'center' }}>
           <BookCover uri={thumbnail} width={200} />
