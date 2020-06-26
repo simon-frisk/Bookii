@@ -2,11 +2,10 @@ import { useContext } from 'react'
 import { AuthContext } from './AuthProvider'
 
 export default error => {
-  if (!error) return
-
   const { signout } = useContext(AuthContext)
 
-  if (error.graphQLErrors) {
+  if (!error) return
+  if (error.graphQLErrors.length) {
     return error.graphQLErrors
       .map(error => {
         if (error.extensions.code === 'UNAUTHENTICATED') signout()
