@@ -64,7 +64,7 @@ export default ({ route, navigation }) => {
           )}
         </View>
         {/*Some cool text if no books are added*/}
-        {data.user.feedBooks && (
+        {!!data.user.feedBooks.length && (
           <>
             <Text
               style={[
