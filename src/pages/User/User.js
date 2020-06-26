@@ -36,9 +36,7 @@ export default ({ route, navigation }) => {
       <ScrollView
         contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
       >
-        <View
-          style={[{ padding: Styles.standardPageInset }, { marginBottom: 30 }]}
-        >
+        <View style={{ padding: Styles.standardPageInset }}>
           <View style={{ alignItems: 'center' }}>
             <ProfilePictureCircle
               profilePicturePath={data.user.profilePicturePath}
@@ -65,6 +63,13 @@ export default ({ route, navigation }) => {
           )}
         </View>
         {/*Some cool text if no books are added*/}
+        {!!data.user.favoriteBooks.length && (
+          <FeedBookCardSlider
+            feedBooks={data.user.favoriteBooks}
+            isSelf={isSelf}
+            title='Favorite books'
+          />
+        )}
         {!!data.user.feedBooks.length && (
           <FeedBookCardSlider
             feedBooks={data.user.feedBooks}

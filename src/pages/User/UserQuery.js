@@ -20,6 +20,17 @@ export default gql`
           bookId
         }
       }
+      favoriteBooks {
+        _id
+        bookId
+        comment
+        date
+        book {
+          thumbnail
+          title
+          bookId
+        }
+      }
     }
   }
 `

@@ -11,6 +11,7 @@ export default ({ feedBooks, isSelf, title }) => (
         {
           marginHorizontal: Styles.standardPageInset,
           marginBottom: 10,
+          marginTop: 50,
         },
       ]}
     >

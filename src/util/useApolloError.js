@@ -8,7 +8,8 @@ export default error => {
   if (error.graphQLErrors.length) {
     return error.graphQLErrors
       .map(error => {
-        if (error.extensions.code === 'UNAUTHENTICATED') signout()
+        if (error.extentions && error.extensions.code === 'UNAUTHENTICATED')
+          signout()
         return error.message
       })
       .join(', ')
