@@ -6,8 +6,8 @@ import { AuthContext } from '../../util/AuthProvider'
 import useApolloError from '../../util/useApolloError'
 
 const DeleteProfile = gql`
-  mutation DeleteProfile($_id: ID!) {
-    deleteUser(_id: $_id) {
+  mutation DeleteProfile {
+    deleteUser {
       _id
     }
   }
@@ -15,7 +15,6 @@ const DeleteProfile = gql`
 
 export default ({ _id }) => {
   const [deleteAccount, { loading, error }] = useMutation(DeleteProfile, {
-    variables: { _id },
     onCompleted: () => signout(),
   })
   const errorMessage = useApolloError(error)
