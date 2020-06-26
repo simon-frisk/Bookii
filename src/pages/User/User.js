@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
 import Styles from '../../util/Styles'
-import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
 import { AuthContext } from '../../util/AuthProvider'
 import UserPage from './UserQuery'
 import useApolloError from '../../util/useApolloError'
@@ -35,46 +34,46 @@ export default ({ route, navigation }) => {
 
   if (data)
     return (
-      <ScrollView
-        contentContainerStyle={[
-          Styles.pageContainer,
-          Styles.extraHorizontalPagePadding,
-        ]}
-      >
+      <ScrollView>
         <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
+          style={[{ padding: Styles.standardPageInset }, { marginBottom: 30 }]}
         >
-          <Text style={Styles.h1}>{data.user.name}</Text>
-          <ProfilePictureCircle
-            profilePicturePath={data.user.profilePicturePath}
-            name={data.user.name}
-            size={70}
-          />
+          <View style={{ alignItems: 'center' }}>
+            <ProfilePictureCircle
+              profilePicturePath={data.user.profilePicturePath}
+              name={data.user.name}
+              size={70}
+            />
+            <Text style={Styles.h1}>{data.user.name}</Text>
+          </View>
+          {!isSelf && (
+            <FollowButton
+              _id={_id}
+              isSelfFollowing={data.user.followers.some(
+                follower => follower._id.toString() === selfId.toString()
+              )}
+            />
+          )}
+          {isSelf && (
+            <PressButton
+              text='Profile'
+              onPress={() => {
+                navigation.navigate('profile')
+              }}
+            />
+          )}
         </View>
-        {!isSelf && (
-          <FollowButton
-            _id={_id}
-            isSelfFollowing={data.user.followers.some(
-              follower => follower._id.toString() === selfId.toString()
-            )}
-          />
-        )}
-        {isSelf && (
-          <PressButton
-            text='Profile'
-            onPress={() => {
-              navigation.navigate('profile')
-            }}
-          />
-        )}
         {/*Some cool text if no books are added*/}
         {data.user.feedBooks && (
           <>
-            <Text style={Styles.h2}>Feed</Text>
+            <Text
+              style={[
+                Styles.h2,
+                { marginHorizontal: Styles.standardPageInset },
+              ]}
+            >
+              Feed
+            </Text>
             <FlatList
               data={data.user.feedBooks}
               keyExtractor={({ _id }, index) => index + _id}
@@ -88,6 +87,7 @@ export default ({ route, navigation }) => {
                   title={feedBook.book.title}
                   comment={feedBook.comment}
                   date={feedBook.date}
+                  style={{ marginLeft: Styles.standardPageInset }}
                 />
               )}
             />

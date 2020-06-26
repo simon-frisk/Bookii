@@ -35,12 +35,7 @@ export default () => {
   const client = useApolloClient()
 
   return (
-    <ScrollView
-      contentContainerStyle={[
-        Styles.pageContainer,
-        Styles.extraHorizontalPagePadding,
-      ]}
-    >
+    <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
       <UpdateProfile />
       {loading && <ActivityIndicator style={{ margin: 30 }} />}
       {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}

@@ -48,9 +48,7 @@ export default ({ route, navigation }) => {
     const feedBook = data.user.feedBooks[0]
     if (!feedBook) return <View />
     return (
-      <ScrollView
-        style={[Styles.pageContainer, Styles.extraHorizontalPagePadding]}
-      >
+      <ScrollView style={{ padding: Styles.standardPageInset }}>
         <Text style={Styles.h1}>{feedBook.book.title}</Text>
         <Edit
           _id={feedBook._id}

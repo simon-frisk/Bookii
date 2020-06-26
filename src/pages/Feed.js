@@ -34,10 +34,7 @@ export default () => {
     <FlatList
       data={data ? data.feed : []}
       keyExtractor={({ _id }, index) => index + _id}
-      contentContainerStyle={[
-        Styles.pageContainer,
-        Styles.extraHorizontalPagePadding,
-      ]}
+      contentContainerStyle={{ padding: Styles.standardPageInset }}
       ListEmptyComponent={() => {
         if (error)
           return (

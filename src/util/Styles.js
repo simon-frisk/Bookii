@@ -1,13 +1,5 @@
 export default {
-  pageContainer: {
-    padding: '4%',
-  },
-  standardMargin: {
-    margin: '4%',
-  },
-  extraHorizontalPagePadding: {
-    paddingVertical: 40,
-  },
+  standardPageInset: 20,
   card: {
     backgroundColor: 'white',
     borderRadius: 20,

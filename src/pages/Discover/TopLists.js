@@ -34,7 +34,7 @@ export default () => {
 
   return (
     <SectionList
-      contentContainerStyle={Styles.pageContainer}
+      contentContainerStyle={{ padding: Styles.standardPageInset }}
       ListEmptyComponent={() => {
         if (error)
           return (

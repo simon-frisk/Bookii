@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { View } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
 import { AuthContext } from '../util/AuthProvider'
-import CloseModalButton from '../components/CloseModalButton'
+import CloseScreenButton from './CloseScreenButton'
 import BottomTabs from './BottomTabs'
 import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
@@ -52,7 +52,7 @@ export default () => {
         screenOptions={{
           title: '',
           headerLeft: () => <View />,
-          headerRight: () => <CloseModalButton />,
+          headerRight: () => <CloseScreenButton />,
           headerTransparent: true,
         }}
       >

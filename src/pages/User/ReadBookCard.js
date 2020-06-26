@@ -13,6 +13,7 @@ export default ({
   title,
   comment,
   date,
+  style,
 }) => {
   const navigation = useNavigation()
 
@@ -20,11 +21,16 @@ export default ({
     <View
       style={[
         Styles.card,
-        { padding: 20, marginRight: 15, width: 270, alignSelf: 'flex-start' },
+        style,
+        {
+          padding: 20,
+          width: 280,
+          alignSelf: 'flex-start',
+        },
       ]}
     >
       <TouchableOpacity onPress={() => navigation.navigate('book', { bookId })}>
-        <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+        <View style={{ flexDirection: 'row' }}>
           <BookCover uri={thumbnail} width={100} />
           <Text style={[Styles.h4, { marginLeft: 20, flex: 1 }]}>{title}</Text>
         </View>

@@ -62,12 +62,7 @@ export default ({ route }) => {
 
   if (data && data.book && data.user)
     return (
-      <ScrollView
-        contentContainerStyle={[
-          Styles.pageContainer,
-          Styles.extraHorizontalPagePadding,
-        ]}
-      >
+      <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
         <TopInfoArea
           thumbnail={data.book.thumbnail}
           title={data.book.title}

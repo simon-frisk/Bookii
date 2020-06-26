@@ -36,7 +36,7 @@ export default () => {
             </View>
           )
       }}
-      contentContainerStyle={Styles.pageContainer}
+      contentContainerStyle={{ padding: Styles.standardPageInset }}
       data={data ? data.users : []}
       keyExtractor={({ _id }, index) => _id + index}
       renderItem={({ item: user }) => (

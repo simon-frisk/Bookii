@@ -46,13 +46,13 @@ export default () => {
             setQuery(query)
           }}
           onEndEditing={search}
-          style={Styles.standardMargin}
-          placeholder='search'
+          style={{ margin: Styles.standardPageInset }}
+          placeholder='Search'
         />
       </View>
       <FlatList
         data={data && data.bookSearch}
-        contentContainerStyle={Styles.pageContainer}
+        contentContainerStyle={{ padding: Styles.standardPageInset }}
         keyExtractor={({ bookId }, index) => bookId + index}
         renderItem={({ item: book }) => (
           <BookCard
