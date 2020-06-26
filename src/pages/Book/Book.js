@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
 import useApolloError from '../../util/useApolloError'
 import TopInfoArea from './TopInfoArea'
-import FeedBookCard from '../../components/FeedBookCard/FeedBookCard'
+import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
 
 export const BookPage = gql`
   query BookPage($bookId: String!) {
@@ -19,15 +19,30 @@ export const BookPage = gql`
       published
       publisher
       wikipediadescription
-    }
-    user {
-      _id
-      name
-      profilePicturePath
-      feedBooks(bookId: $bookId) {
+      onselffeed {
         _id
         date
         comment
+        book {
+          bookId
+          title
+          thumbnail
+        }
+      }
+      onfollowingfeed {
+        _id
+        date
+        comment
+        book {
+          bookId
+          title
+          thumbnail
+        }
+        user {
+          name
+          profilePicturePath
+          _id
+        }
       }
     }
   }
@@ -38,6 +53,7 @@ export default ({ route }) => {
     variables: { bookId: route.params.bookId },
   })
   const errorMessage = useApolloError(error)
+  console.log('hi', data, loading, error, errorMessage)
 
   if (loading)
     return (
@@ -53,14 +69,14 @@ export default ({ route }) => {
       </View>
     )
 
-  if (data && !data.book)
-    return (
-      <View style={Styles.center}>
-        <Text>Book not found</Text>
-      </View>
-    )
-
-  if (data && data.book && data.user)
+  if (data) {
+    if (!data.book) {
+      return (
+        <View style={Styles.center}>
+          <Text>Book not found</Text>
+        </View>
+      )
+    }
     return (
       <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
         <TopInfoArea
@@ -73,22 +89,27 @@ export default ({ route }) => {
           published={data.book.published}
           publisher={data.book.publisher}
           wikipediadescription={data.book.wikipediadescription}
-          alreadyRead={data.user.feedBooks.length}
+          alreadyRead={!!data.book.onselffeed.length}
         />
-        {data.user.feedBooks.map(feedBook => (
-          <FeedBookCard
-            key={feedBook._id}
-            book_id={feedBook._id}
-            comment={feedBook.comment}
-            date={feedBook.date}
-            bookId={data.book.bookId}
-            title={data.book.title}
-            thumbnail={data.book.thumbnail}
-            user_id={data.user._id}
-            profilePicturePath={data.user.profilePicturePath}
-            name={data.user.name}
-          />
-        ))}
+        {!!data.book.onselffeed.length && (
+          <>
+            <Text style={Styles.h2}>On your feed</Text>
+            <FeedBookCardSlider
+              feedBooks={data.book.onselffeed}
+              isSelf={true}
+            />
+          </>
+        )}
+        {!!data.book.onfollowingfeed.length && (
+          <>
+            <Text style={Styles.h2}>On following feeds</Text>
+            <FeedBookCardSlider
+              feedBooks={data.book.onfollowingfeed}
+              isSelf={false}
+            />
+          </>
+        )}
       </ScrollView>
     )
+  }
 }

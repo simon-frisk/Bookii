@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { View, Text } from 'react-native'
-import BookCover from '../BookCover'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { AuthContext } from '../../util/AuthProvider'
+import { AuthContext } from '../../../util/AuthProvider'
+import BookCover from '../../BookCover'
 import UserBar from './UserBar'
-import Styles from '../../util/Styles'
+import Styles from '../../../util/Styles'
 
 export default ({
   bookId,

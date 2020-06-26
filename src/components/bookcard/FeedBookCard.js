@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Styles from '../../util/Styles'
-import BookCover from '../../components/BookCover'
-import PressButton from '../../components/PressButton'
+import BookCover from '../BookCover'
+import PressButton from '../PressButton'
 
 export default ({
   isSelf,

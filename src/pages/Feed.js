@@ -3,7 +3,7 @@ import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import Styles from '../util/Styles'
-import FeedBookCard from '../components/FeedBookCard/FeedBookCard'
+import FeedBookUserCard from '../components/bookcard/FeedBookUserCard/FeedBookUserCard'
 import useApolloError from '../util/useApolloError'
 
 export const FeedPage = gql`
@@ -55,7 +55,7 @@ export default () => {
         )
       }}
       renderItem={({ item }) => (
-        <FeedBookCard
+        <FeedBookUserCard
           book_id={item._id}
           bookId={item.bookId}
           comment={item.comment}

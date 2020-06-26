@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import Styles from '../../util/Styles'
 import useApolloError from '../../util/useApolloError'
-import BookCard from '../../components/BookCard'
+import BookCard from '../../components/bookcard/BookCard'
 
 const TopList = gql`
   query TopList {

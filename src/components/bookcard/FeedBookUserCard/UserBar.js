@@ -1,9 +1,9 @@
 import React from 'react'
 import { TouchableOpacity, View, Text } from 'react-native'
-import ProfilePictureCircle from '../ProfilePictureCircle'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
-import Styles from '../../util/Styles'
+import ProfilePictureCircle from '../../ProfilePictureCircle'
+import Styles from '../../../util/Styles'
 
 export default ({ isSelf, user_id, book_id, profilePicturePath, name }) => {
   const navigation = useNavigation()

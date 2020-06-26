@@ -1,15 +1,14 @@
 import React, { useContext } from 'react'
-import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
 import { useQuery } from '@apollo/react-hooks'
+import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
 import Styles from '../../util/Styles'
 import { AuthContext } from '../../util/AuthProvider'
-import UserPage from './UserQuery'
 import useApolloError from '../../util/useApolloError'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
-import FollowButton from './FollowButton'
 import PressButton from '../../components/PressButton'
-import { FlatList } from 'react-native-gesture-handler'
-import ReadBookCard from './ReadBookCard'
+import FollowButton from './FollowButton'
+import UserPage from './UserQuery'
+import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
@@ -77,22 +76,9 @@ export default ({ route, navigation }) => {
             >
               Feed
             </Text>
-            <FlatList
-              data={data.user.feedBooks}
-              keyExtractor={({ _id }, index) => index + _id}
-              horizontal={true}
-              renderItem={({ item: feedBook }) => (
-                <ReadBookCard
-                  isSelf={isSelf}
-                  feedBookId={feedBook._id}
-                  bookId={feedBook.book.bookId}
-                  thumbnail={feedBook.book.thumbnail}
-                  title={feedBook.book.title}
-                  comment={feedBook.comment}
-                  date={feedBook.date}
-                  style={{ marginLeft: Styles.standardPageInset }}
-                />
-              )}
+            <FeedBookCardSlider
+              feedBooks={data.user.feedBooks}
+              isSelf={isSelf}
             />
           </>
         )}

@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import BookCover from './BookCover'
-import Styles from '../util/Styles'
+import BookCover from '../BookCover'
+import Styles from '../../util/Styles'
 
 export default ({ bookId, thumbnail, title, authors }) => {
   const navigation = useNavigation()
