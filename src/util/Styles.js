@@ -1,14 +1,3 @@
-const shadow = {
-  shadowColor: 'black',
-  shadowOffset: {
-    width: 1,
-    height: 1,
-  },
-  shadowOpacity: 0.1,
-  shadowRadius: 3,
-  backgroundColor: 'white',
-}
-
 export default {
   pageContainer: {
     padding: '4%',
@@ -19,10 +8,9 @@ export default {
   extraHorizontalPagePadding: {
     paddingVertical: 40,
   },
-  shadow: shadow,
   card: {
-    ...shadow,
-    borderRadius: 10,
+    backgroundColor: 'white',
+    borderRadius: 20,
   },
   center: {
     flex: 1,

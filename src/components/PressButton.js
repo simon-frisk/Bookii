@@ -29,7 +29,14 @@ const styles = {
     padding: 9,
     marginVertical: 10,
     borderRadius: 10,
-    ...Styles.shadow,
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    backgroundColor: 'white',
   },
   filled: {
     backgroundColor: '#47f',
