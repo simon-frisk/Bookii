@@ -2,7 +2,7 @@ export default {
   standardPageInset: 20,
   card: {
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 25,
   },
   center: {
     flex: 1,

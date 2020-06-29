@@ -42,7 +42,7 @@ export default ({ route, navigation }) => {
             <ProfilePictureCircle
               profilePicturePath={data.user.profilePicturePath}
               name={data.user.name}
-              size={80}
+              size={100}
             />
             <Text style={Styles.h1}>{data.user.name}</Text>
           </View>

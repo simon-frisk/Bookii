@@ -129,7 +129,7 @@ export default ({ route }) => {
             )}
           </View>
           {data.book.wikipediadescription && (
-            <View style={[Styles.card, { padding: 10 }]}>
+            <View style={[Styles.card, { padding: 20 }]}>
               <Text style={Styles.h3}>Wikipedia</Text>
               <Text>{data.book.wikipediadescription}</Text>
             </View>
