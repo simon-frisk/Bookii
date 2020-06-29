@@ -9,6 +9,7 @@ import PressButton from '../../components/PressButton'
 import FollowButton from './FollowButton'
 import UserPage from './UserQuery'
 import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
+import SmallBookCardSlider from '../../components/bookcard/SmallBookCardSlider'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
@@ -73,6 +74,9 @@ export default ({ route, navigation }) => {
             isSelf={isSelf}
             title='Favorites'
           />
+        )}
+        {!!data.user.wishBooks.length && (
+          <SmallBookCardSlider books={data.user.wishBooks} title='Wish list' />
         )}
         {!!data.user.feedBooks.length && (
           <FeedBookCardSlider

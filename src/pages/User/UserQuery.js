@@ -9,6 +9,11 @@ export default gql`
       followers {
         _id
       }
+      wishBooks {
+        title
+        thumbnail
+        bookId
+      }
       feedBooks {
         _id
         bookId
