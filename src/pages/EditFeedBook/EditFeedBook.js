@@ -16,6 +16,7 @@ const UpdateFeedBookPage = gql`
         bookId
         comment
         date
+        favorite
         book {
           title
         }
@@ -54,6 +55,7 @@ export default ({ route, navigation }) => {
           _id={feedBook._id}
           comment={feedBook.comment}
           date={feedBook.date}
+          favorite={feedBook.favorite}
           onCompleted={navigation.goBack}
         />
         <DeleteButton

@@ -10,10 +10,21 @@ import UserPage from './User/UserQuery'
 import { BookPage } from './Book/Book'
 import Styles from '../util/Styles'
 import PressButton from '../components/PressButton'
+import FavoriteToggle from '../components/FavoriteToggle'
 
 const AddFeedBook = gql`
-  mutation AddFeedBook($bookId: String!, $comment: String!, $date: String!) {
-    addFeedBook(bookId: $bookId, comment: $comment, date: $date) {
+  mutation AddFeedBook(
+    $bookId: String!
+    $comment: String!
+    $date: String!
+    $favorite: Boolean!
+  ) {
+    addFeedBook(
+      bookId: $bookId
+      comment: $comment
+      date: $date
+      favorite: $favorite
+    ) {
       _id
     }
   }
@@ -44,10 +55,11 @@ export default ({ route, navigation }) => {
 
   const [date, setDate] = useState(new Date())
   const [comment, setComment] = useState('')
+  const [favorite, setFavorite] = useState(false)
 
   const addBook = () => {
     callAddReadBookMutation({
-      variables: { bookId, comment, date },
+      variables: { bookId, comment, date, favorite },
     })
   }
 
@@ -61,6 +73,7 @@ export default ({ route, navigation }) => {
         value={comment}
         onChangeText={setComment}
       />
+      <FavoriteToggle favorite={favorite} setFavorite={setFavorite} />
       {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
       <PressButton
         text='Add Book'

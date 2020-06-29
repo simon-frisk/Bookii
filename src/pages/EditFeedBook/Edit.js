@@ -5,15 +5,27 @@ import { View } from 'react-native'
 import TextField from '../../components/TextField'
 import DatePicker from '../../components/DatePicker'
 import PressButton from '../../components/PressButton'
+import FavoriteToggle from '../../components/FavoriteToggle'
 import useApolloError from '../../util/useApolloError'
 
 const UpdateFeedBook = gql`
-  mutation UpdateFeedBook($_id: ID!, $comment: String, $date: String) {
-    updateFeedBook(_id: $_id, comment: $comment, date: $date) {
+  mutation UpdateFeedBook(
+    $_id: ID!
+    $comment: String
+    $date: String
+    $favorite: Boolean
+  ) {
+    updateFeedBook(
+      _id: $_id
+      comment: $comment
+      date: $date
+      favorite: $favorite
+    ) {
       _id
       bookId
       comment
       date
+      favorite
       book {
         thumbnail
         title
@@ -27,19 +39,16 @@ export default ({
   _id,
   comment: initialComment,
   date: initialDate,
+  favorite: initialFavorite,
   onCompleted,
 }) => {
   const [callMutation, { loading, error }] = useMutation(UpdateFeedBook, {
     onCompleted,
   })
   const errorMessage = useApolloError(error)
-  const [comment, setComment] = useState('')
-  const [date, setDate] = useState(new Date())
-
-  useEffect(() => {
-    setComment(initialComment)
-    setDate(initialDate)
-  }, [])
+  const [comment, setComment] = useState(initialComment)
+  const [date, setDate] = useState(initialDate)
+  const [favorite, setFavorite] = useState(initialFavorite)
 
   const submit = () => {
     callMutation({
@@ -47,6 +56,7 @@ export default ({
         _id,
         comment,
         date,
+        favorite,
       },
     })
   }
@@ -60,6 +70,7 @@ export default ({
         onChangeText={setComment}
         placeholder='Say something about this book'
       />
+      <FavoriteToggle favorite={favorite} setFavorite={setFavorite} />
       {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
       <PressButton
         onPress={submit}

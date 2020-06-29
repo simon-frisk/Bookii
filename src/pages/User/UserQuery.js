@@ -14,17 +14,7 @@ export default gql`
         bookId
         comment
         date
-        book {
-          thumbnail
-          title
-          bookId
-        }
-      }
-      favoriteBooks {
-        _id
-        bookId
-        comment
-        date
+        favorite
         book {
           thumbnail
           title

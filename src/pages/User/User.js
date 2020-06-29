@@ -63,11 +63,13 @@ export default ({ route, navigation }) => {
           )}
         </View>
         {/*Some cool text if no books are added*/}
-        {!!data.user.favoriteBooks.length && (
+        {!!data.user.feedBooks.filter(feedBook => feedBook.favorite).length && (
           <FeedBookCardSlider
-            feedBooks={data.user.favoriteBooks}
+            feedBooks={data.user.feedBooks.filter(
+              feedBook => feedBook.favorite
+            )}
             isSelf={isSelf}
-            title='Favorite books'
+            title='Favorites'
           />
         )}
         {!!data.user.feedBooks.length && (

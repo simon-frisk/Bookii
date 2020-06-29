@@ -5,6 +5,7 @@ export default error => {
   const { signout } = useContext(AuthContext)
 
   if (!error) return
+  console.log(error)
   if (error.graphQLErrors.length) {
     return error.graphQLErrors
       .map(error => {
