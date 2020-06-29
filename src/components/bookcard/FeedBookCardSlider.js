@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlatList, Text } from 'react-native'
 import Styles from '../../util/Styles'
-import FeedBookCard from './FeedBookCard'
+import FeedBookCard from './FeedBookCard/FeedBookCard'
 
 export default ({ feedBooks, isSelf, title }) => (
   <>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import Styles from '../../util/Styles'
-import BookCover from '../BookCover'
-import PressButton from '../PressButton'
+import Styles from '../../../util/Styles'
+import BookCover from '../../BookCover'
+import PressButton from '../../PressButton'
+import ExpandableText from './ExpandableText'
 
 export default ({
   isSelf,
@@ -41,17 +42,17 @@ export default ({
             </Text>
           </View>
         </View>
-        <Text style={{ marginTop: 10 }}>{comment}</Text>
-        {isSelf && (
-          <PressButton
-            text='Edit'
-            type='filled'
-            onPress={() =>
-              navigation.navigate('editFeedBook', { _id: feedBookId })
-            }
-          />
-        )}
       </TouchableOpacity>
+      <ExpandableText text={comment} />
+      {isSelf && (
+        <PressButton
+          text='Edit'
+          type='filled'
+          onPress={() =>
+            navigation.navigate('editFeedBook', { _id: feedBookId })
+          }
+        />
+      )}
     </View>
   )
 }
