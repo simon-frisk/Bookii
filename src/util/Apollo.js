@@ -16,7 +16,7 @@ export default new ApolloClient({
       }
     }),
     createUploadLink({
-      uri: 'http://192.168.72.114:4000',
+      uri: 'https://bookiiapp.herokuapp.com/',
     }),
   ]),
   cache: new InMemoryCache(),
