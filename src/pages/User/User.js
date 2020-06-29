@@ -41,26 +41,28 @@ export default ({ route, navigation }) => {
             <ProfilePictureCircle
               profilePicturePath={data.user.profilePicturePath}
               name={data.user.name}
-              size={70}
+              size={80}
             />
             <Text style={Styles.h1}>{data.user.name}</Text>
           </View>
-          {!isSelf && (
-            <FollowButton
-              _id={_id}
-              isSelfFollowing={data.user.followers.some(
-                follower => follower._id.toString() === selfId.toString()
-              )}
-            />
-          )}
-          {isSelf && (
-            <PressButton
-              text='Profile'
-              onPress={() => {
-                navigation.navigate('profile')
-              }}
-            />
-          )}
+          <View style={{ marginHorizontal: 50 }}>
+            {!isSelf && (
+              <FollowButton
+                _id={_id}
+                isSelfFollowing={data.user.followers.some(
+                  follower => follower._id.toString() === selfId.toString()
+                )}
+              />
+            )}
+            {isSelf && (
+              <PressButton
+                text='Profile'
+                onPress={() => {
+                  navigation.navigate('profile')
+                }}
+              />
+            )}
+          </View>
         </View>
         {/*Some cool text if no books are added*/}
         {!!data.user.feedBooks.filter(feedBook => feedBook.favorite).length && (

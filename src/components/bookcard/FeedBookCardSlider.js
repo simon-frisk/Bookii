@@ -20,6 +20,9 @@ export default ({ feedBooks, isSelf, title }) => (
     <FlatList
       data={feedBooks}
       keyExtractor={({ _id }, index) => index + _id}
+      contentContainerStyle={{
+        paddingHorizontal: Styles.standardPageInset / 2,
+      }}
       horizontal={true}
       renderItem={({ item: feedBook }) => (
         <FeedBookCard
@@ -30,7 +33,7 @@ export default ({ feedBooks, isSelf, title }) => (
           title={feedBook.book.title}
           comment={feedBook.comment}
           date={feedBook.date}
-          style={{ marginLeft: Styles.standardPageInset }}
+          style={{ marginHorizontal: Styles.standardPageInset / 2 }}
         />
       )}
     />
