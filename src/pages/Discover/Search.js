@@ -1,34 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { FlatList, ActivityIndicator, View, Text } from 'react-native'
-import { useLazyQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
+import useSearchPage from '../../data/hooks/useSearchPage'
 import BookCard from '../../components/bookcard/BookCard'
 import TextField from '../../components/TextField'
-import useApolloError from '../../util/useApolloError'
 import Styles from '../../util/Styles'
 
-const BookSearch = gql`
-  query BookSearch($query: String!) {
-    bookSearch(query: $query) {
-      bookId
-      title
-      subTitle
-      authors
-      thumbnail
-    }
-  }
-`
-
 export default () => {
-  const [callSearchQuery, { data, loading, error }] = useLazyQuery(BookSearch)
-  const errorMessage = useApolloError(error)
+  const { callQuery, data, loading, errorMessage } = useSearchPage()
   const [query, setQuery] = useState('')
 
-  useEffect(() => search(), [query])
-
-  const search = () => {
-    callSearchQuery({ variables: { query } })
-  }
+  useEffect(() => callQuery({ variables: { query } }), [query])
 
   return (
     <>
@@ -45,7 +26,6 @@ export default () => {
           onChangeText={query => {
             setQuery(query)
           }}
-          onEndEditing={search}
           style={{ margin: Styles.standardPageInset }}
           placeholder='Search'
         />
@@ -64,7 +44,7 @@ export default () => {
         )}
         ListEmptyComponent={() => (
           <>
-            {error && (
+            {errorMessage && (
               <View style={Styles.center}>
                 <Text style={{ color: 'red' }}>{errorMessage}</Text>
               </View>
@@ -79,7 +59,7 @@ export default () => {
                 <Text>Search for books</Text>
               </View>
             )}
-            {!!data && !loading && !error && !!query && (
+            {!!data && !loading && !errorMessage && !!query && (
               <View style={Styles.center}>
                 <Text>No books found</Text>
               </View>
