@@ -4,8 +4,8 @@ import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import { Text } from 'react-native'
 import useApolloError from '../../util/useApolloError'
-import UserQuery from '../User/UserQuery'
-import { BookPage } from './Book'
+import UserPageQuery from '../../data/graphql/UserPageQuery'
+import BookPageQuery from '../../data/graphql/BookPageQuery'
 
 const AddBookToWishList = gql`
   mutation AddBookToWishList($bookId: String!) {
@@ -40,8 +40,8 @@ const AddButton = ({ bookId, onCompleted }) => {
     variables: { bookId },
     onCompleted,
     refetchQueries: [
-      { query: UserQuery },
-      { query: BookPage, variables: { bookId } },
+      { query: UserPageQuery },
+      { query: BookPageQuery, variables: { bookId } },
     ],
   })
   const errorMessage = useApolloError(error)
@@ -65,8 +65,8 @@ const RemoveButton = ({ bookId, onCompleted }) => {
       variables: { bookId },
       onCompleted,
       refetchQueries: [
-        { query: UserQuery },
-        { query: BookPage, variables: { bookId } },
+        { query: UserPageQuery },
+        { query: BookPageQuery, variables: { bookId } },
       ],
     }
   )

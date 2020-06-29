@@ -2,7 +2,7 @@ import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import { UserFollowingAndFollowers } from '../Profile/Profile'
-import UserPage from './UserQuery'
+import UserPageQuery from '../../data/graphql/UserPageQuery'
 import { FeedPage } from '../Feed'
 import PressButton from '../../components/PressButton'
 import useApolloError from '../../util/useApolloError'
@@ -30,7 +30,7 @@ export default ({ isSelfFollowing, _id }) => {
     {
       variables: { _id },
       refetchQueries: [
-        { query: UserPage, variables: { _id } },
+        { query: UserPageQuery, variables: { _id } },
         { query: FeedPage },
         { query: UserFollowingAndFollowers },
       ],

@@ -6,8 +6,8 @@ import * as Segment from 'expo-analytics-segment'
 import TextField from '../components/TextField'
 import DatePicker from '../components/DatePicker'
 import useApolloError from '../util/useApolloError'
-import UserPage from './User/UserQuery'
-import { BookPage } from './Book/Book'
+import UserPageQuery from '../data/graphql/UserPageQuery'
+import BookPageQuery from '../data/graphql/BookPageQuery'
 import Styles from '../util/Styles'
 import PressButton from '../components/PressButton'
 import FavoriteToggle from '../components/FavoriteToggle'
@@ -37,9 +37,9 @@ export default ({ route, navigation }) => {
     AddFeedBook,
     {
       refetchQueries: [
-        { query: UserPage },
+        { query: UserPageQuery },
         {
-          query: BookPage,
+          query: BookPageQuery,
           variables: {
             bookId,
           },

@@ -2,8 +2,8 @@ import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import PressButton from '../../components/PressButton'
-import UserPage from '../User/UserQuery'
-import { BookPage } from '../Book/Book'
+import UserPageQuery from '../../data/graphql/UserPageQuery'
+import BookPageQuery from '../../data/graphql/BookPageQuery'
 import { Text } from 'react-native'
 import useApolloError from '../../util/useApolloError'
 
@@ -21,9 +21,9 @@ export default ({ _id, bookId, onCompleted }) => {
     {
       variables: { _id },
       refetchQueries: [
-        { query: UserPage },
+        { query: UserPageQuery },
         {
-          query: BookPage,
+          query: BookPageQuery,
           variables: {
             bookId,
           },

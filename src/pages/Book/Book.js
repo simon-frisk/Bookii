@@ -1,62 +1,17 @@
 import React from 'react'
 import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import Styles from '../../util/Styles'
-import useApolloError from '../../util/useApolloError'
 import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
 import WishButton from './WishButton'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/BookCover'
 import PressButton from '../../components/PressButton'
-
-export const BookPage = gql`
-  query BookPage($bookId: String!) {
-    book(bookId: $bookId) {
-      title
-      bookId
-      subTitle
-      authors
-      thumbnail
-      pages
-      published
-      publisher
-      wikipediadescription
-      isWished
-      onselffeed {
-        _id
-        date
-        comment
-        book {
-          bookId
-          title
-          thumbnail
-        }
-      }
-      onfollowingfeed {
-        _id
-        date
-        comment
-        book {
-          bookId
-          title
-          thumbnail
-        }
-        user {
-          name
-          profilePicturePath
-          _id
-        }
-      }
-    }
-  }
-`
+import useBookPage from '../../data/hooks/useBookPage'
 
 export default ({ route }) => {
-  const { data, loading, error } = useQuery(BookPage, {
-    variables: { bookId: route.params.bookId },
+  const { data, loading, errorMessage } = useBookPage({
+    bookId: route.params.bookId,
   })
-  const errorMessage = useApolloError(error)
 
   const navigation = useNavigation()
 
@@ -67,7 +22,7 @@ export default ({ route }) => {
       </View>
     )
 
-  if (error)
+  if (errorMessage)
     return (
       <View style={Styles.center}>
         <Text style={{ color: 'red' }}>{errorMessage}</Text>
