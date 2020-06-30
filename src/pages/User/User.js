@@ -8,6 +8,7 @@ import FollowButton from './FollowButton'
 import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
 import SmallBookCardSlider from '../../components/bookcard/SmallBookCardSlider'
 import useUserPage from '../../data/hooks/useUserPage'
+import UserMenu from './UserMenu'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
@@ -32,6 +33,9 @@ export default ({ route, navigation }) => {
       <ScrollView
         contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
       >
+        {!isSelf && (
+          <UserMenu _id={_id} isFlagged={data.user.isinappropriateflagged} />
+        )}
         <View style={{ padding: Styles.standardPageInset }}>
           <View style={{ alignItems: 'center' }}>
             <ProfilePictureCircle

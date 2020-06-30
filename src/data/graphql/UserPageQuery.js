@@ -6,6 +6,7 @@ export default gql`
       _id
       name
       profilePicturePath
+      isinappropriateflagged
       followers {
         _id
       }
