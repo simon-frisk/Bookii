@@ -1,3 +1,9 @@
+import { Platform } from 'react-native'
+
+const font = Platform.select({
+  ios: { fontFamily: 'Arial Rounded MT Bold' },
+})
+
 export default {
   standardPageInset: 20,
   card: {
@@ -13,22 +19,22 @@ export default {
   },
   h1: {
     fontSize: 40,
-    fontFamily: 'Arial Rounded MT Bold',
+    ...font,
     fontWeight: '600',
   },
   h2: {
     fontSize: 33,
-    fontFamily: 'Arial Rounded MT Bold',
+    ...font,
     fontWeight: '500',
   },
   h3: {
     fontSize: 24,
-    fontFamily: 'Arial Rounded MT Bold',
+    ...font,
     fontWeight: '500',
   },
   h4: {
     fontSize: 20,
-    fontFamily: 'Arial Rounded MT Bold',
+    ...font,
     fontWeight: '500',
   },
 }
