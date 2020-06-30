@@ -10,8 +10,7 @@ export default ({ feedBooks, isSelf, title }) => (
         Styles.h2,
         {
           marginHorizontal: Styles.standardPageInset,
-          marginBottom: 10,
-          marginTop: 50,
+          marginTop: 30,
         },
       ]}
     >
@@ -22,6 +21,7 @@ export default ({ feedBooks, isSelf, title }) => (
       keyExtractor={({ _id }, index) => index + _id}
       contentContainerStyle={{
         paddingHorizontal: Styles.standardPageInset / 2,
+        paddingVertical: 15,
       }}
       horizontal={true}
       renderItem={({ item: feedBook }) => (

@@ -10,8 +10,7 @@ export default ({ books, title }) => (
         Styles.h2,
         {
           marginHorizontal: Styles.standardPageInset,
-          marginBottom: 10,
-          marginTop: 50,
+          marginTop: 30,
         },
       ]}
     >
@@ -22,6 +21,7 @@ export default ({ books, title }) => (
       keyExtractor={({ bookId }, index) => index + bookId}
       contentContainerStyle={{
         paddingHorizontal: Styles.standardPageInset / 2,
+        paddingVertical: 15,
       }}
       horizontal={true}
       renderItem={({ item: book }) => (
