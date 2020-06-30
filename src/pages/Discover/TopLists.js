@@ -1,29 +1,11 @@
 import React from 'react'
 import { SectionList, ActivityIndicator, View, Text } from 'react-native'
-import gql from 'graphql-tag'
-import { useQuery } from '@apollo/react-hooks'
+import useTopListsPage from '../../data/hooks/useTopListsPage'
 import Styles from '../../util/Styles'
-import useApolloError from '../../util/useApolloError'
 import BookCard from '../../components/bookcard/BookCard'
 
-const TopList = gql`
-  query TopList {
-    nytimesBestSellers {
-      name
-      books {
-        bookId
-        title
-        subTitle
-        authors
-        thumbnail
-      }
-    }
-  }
-`
-
 export default () => {
-  const { data, loading, error } = useQuery(TopList)
-  const errorMessage = useApolloError(error)
+  const { data, loading, errorMessage } = useTopListsPage()
 
   const sections = data
     ? data.nytimesBestSellers.map(list => ({
@@ -36,7 +18,7 @@ export default () => {
     <SectionList
       contentContainerStyle={{ padding: Styles.standardPageInset }}
       ListEmptyComponent={() => {
-        if (error)
+        if (errorMessage)
           return (
             <View style={Styles.center}>
               <Text style={{ color: 'red' }}>{errorMessage}</Text>
