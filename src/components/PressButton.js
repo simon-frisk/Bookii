@@ -1,14 +1,14 @@
 import React from 'react'
 import { TouchableOpacity, Text, View, ActivityIndicator } from 'react-native'
-import Styles from '../util/Styles'
 
 export default ({ text, type, loading, onPress, containerStyle }) => {
   let style = styles.base
   if (type === 'filled') style = { ...style, ...styles.filled }
   if (type === 'error') style = { ...style, ...styles.error }
+  if (type === 'secondary') style = { ...style, ...styles.secondary }
 
   let textStyle = styles.baseText
-  if (type === 'filled' || type === 'error')
+  if (type === 'filled' || type === 'error' || type === 'secondary')
     textStyle = { ...textStyle, ...styles.filledText }
 
   return (
@@ -43,6 +43,9 @@ const styles = {
   },
   error: {
     backgroundColor: '#d22',
+  },
+  secondary: {
+    backgroundColor: '#ff9544',
   },
   baseText: {
     textAlign: 'center',
