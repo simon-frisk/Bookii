@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ScrollView, ActivityIndicator, Text, View } from 'react-native'
 import { useApolloClient, useQuery } from '@apollo/react-hooks'
+import * as WebBrowser from 'expo-web-browser'
 import gql from 'graphql-tag'
 import { AuthContext } from '../../util/AuthProvider'
 import Styles from '../../util/Styles'
@@ -81,6 +82,21 @@ export default () => {
           }}
         />
         <DeleteProfile _id={data.user._id} />
+      </View>
+      <View style={{ marginVertical: 35 }}>
+        <Text style={Styles.h2}>More</Text>
+        <Text>
+          For viewing privacy policy, visit the
+          <Text
+            style={{ color: 'blue' }}
+            onPress={() =>
+              WebBrowser.openBrowserAsync('https://bookii.simonfrisk.com')
+            }
+          >
+            {' '}
+            Bookii website
+          </Text>
+        </Text>
       </View>
     </ScrollView>
   )
