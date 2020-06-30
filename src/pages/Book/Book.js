@@ -29,7 +29,14 @@ export default ({ route }) => {
       </View>
     )
 
-  if (data)
+  if (data && !data.book)
+    return (
+      <View style={Styles.center}>
+        <Text>Book not found</Text>
+      </View>
+    )
+
+  if (data && data.book)
     return (
       <ScrollView
         contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
