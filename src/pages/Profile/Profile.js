@@ -87,23 +87,15 @@ export default () => {
       <View style={{ marginVertical: 35 }}>
         <Text style={Styles.h2}>More</Text>
         <Text>
-          View the{' '}
+          For more info, like viewing privacy policy or getting support, visit
+          the{' '}
           <Text
             style={{ color: 'blue' }}
             onPress={() =>
               WebBrowser.openBrowserAsync('https://bookii.simonfrisk.com')
             }
           >
-            privacy policy
-          </Text>
-        </Text>
-        <Text>
-          Need support?{' '}
-          <Text
-            style={{ color: 'blue' }}
-            onPress={() => Linking.openURL('mailto:simonfrisk@simonfrisk.com')}
-          >
-            send an email
+            Bookii website
           </Text>
         </Text>
       </View>
