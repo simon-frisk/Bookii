@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/react-hooks'
 import PeoplePageQuery from '../graphql/PeoplePageQuery'
+import { useQuery } from '@apollo/react-hooks'
 import useApolloError from '../../util/useApolloError'
 
 export default () => {

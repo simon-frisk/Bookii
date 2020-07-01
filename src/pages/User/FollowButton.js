@@ -6,7 +6,7 @@ import UserPageQuery from '../../data/graphql/UserPageQuery'
 import PressButton from '../../components/PressButton'
 import useApolloError from '../../util/useApolloError'
 import { Text } from 'react-native'
-import NewPeoplePageQuery from '../../data/graphql/NewPeoplePageQuery'
+import PeoplePageQuery from '../../data/graphql/PeoplePageQuery'
 
 const FollowUser = gql`
   mutation FollowUser($_id: ID!) {
@@ -31,7 +31,7 @@ export default ({ isSelfFollowing, _id }) => {
       variables: { _id },
       refetchQueries: [
         { query: UserPageQuery, variables: { _id } },
-        { query: NewPeoplePageQuery },
+        { query: PeoplePageQuery },
         { query: UserFollowingAndFollowers },
       ],
     }

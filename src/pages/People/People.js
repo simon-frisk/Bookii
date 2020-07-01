@@ -2,13 +2,13 @@ import React from 'react'
 import { ScrollView, ActivityIndicator, View, FlatList } from 'react-native'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
-import useNewPeoplePage from '../../data/hooks/useNewPeoplePage'
+import usePeoplePage from '../../data/hooks/usePeoplePage'
 import useTheme from '../../util/useTheme'
 import UserSlider from '../../components/UserSlider'
 import FeedBookUserCard from '../../components/bookcard/FeedBookUserCard/FeedBookUserCard'
 
 export default () => {
-  const { data, loading, errorMessage } = useNewPeoplePage()
+  const { data, loading, errorMessage } = usePeoplePage()
   const styles = useStyles()
   const theme = useTheme()
 

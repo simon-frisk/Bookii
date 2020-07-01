@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query BookSearchPage($query: String!) {
+  query BookSearch($query: String!) {
     bookSearch(query: $query) {
       bookId
       title
