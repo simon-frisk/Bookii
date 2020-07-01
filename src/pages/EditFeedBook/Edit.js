@@ -7,6 +7,8 @@ import DatePicker from '../../components/DatePicker'
 import PressButton from '../../components/PressButton'
 import FavoriteToggle from '../../components/FavoriteToggle'
 import useApolloError from '../../util/useApolloError'
+import useTheme from '../../util/useTheme'
+import Typography from '../../components/Typography'
 
 const UpdateFeedBook = gql`
   mutation UpdateFeedBook(
@@ -45,6 +47,7 @@ export default ({
   const [callMutation, { loading, error }] = useMutation(UpdateFeedBook, {
     onCompleted,
   })
+  const theme = useTheme()
   const errorMessage = useApolloError(error)
   const [comment, setComment] = useState(initialComment)
   const [date, setDate] = useState(initialDate)
@@ -71,11 +74,13 @@ export default ({
         placeholder='Say something about this book'
       />
       <FavoriteToggle favorite={favorite} setFavorite={setFavorite} />
-      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+      {error && (
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+      )}
       <PressButton
         onPress={submit}
         text='Update'
-        type='filled'
+        color={theme.main}
         loading={loading}
       />
     </View>

@@ -23,7 +23,7 @@ export default ({ text }) => {
         <Typography style={{ marginVertical: 10 }}>
           {isExpanded ? text : extract}
         </Typography>
-        <Typography style={{ color: Theme.colors.main }}>
+        <Typography style={{ color: Theme.main }}>
           {isExpanded ? 'Read less' : 'Read more'}
         </Typography>
       </TouchableOpacity>

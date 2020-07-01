@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image } from 'react-native'
+import Typography from './Typography'
 
 export default ({ profilePicturePath, name, size, style }) => {
   const initials = name
@@ -32,7 +33,9 @@ export default ({ profilePicturePath, name, size, style }) => {
           justifyContent: 'center',
         }}
       >
-        <Text style={{ color: 'white', fontSize: size * 0.4 }}>{initials}</Text>
+        <Typography style={{ color: 'white', fontSize: size * 0.4 }}>
+          {initials}
+        </Typography>
       </View>
     )
 }

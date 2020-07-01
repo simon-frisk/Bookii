@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ActivityIndicator, View, Text } from 'react-native'
+import { ActivityIndicator } from 'react-native'
 import useBookSearch from '../../data/hooks/useBookSearch'
 import TextField from '../../components/TextField'
 import useStyles from '../../util/useStyles'
@@ -34,7 +34,7 @@ export default () => {
           style={{
             padding: 10,
             textAlign: 'center',
-            color: theme.colors.error,
+            color: theme.error,
           }}
         >
           {errorMessage}

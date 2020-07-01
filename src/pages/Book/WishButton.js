@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import PressButton from '../../components/PressButton'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import { Text } from 'react-native'
 import useApolloError from '../../util/useApolloError'
 import UserPageQuery from '../../data/graphql/UserPageQuery'
 import BookPageQuery from '../../data/graphql/BookPageQuery'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 const AddBookToWishList = gql`
   mutation AddBookToWishList($bookId: String!) {
@@ -45,6 +46,7 @@ const AddButton = ({ bookId, onCompleted }) => {
     ],
   })
   const errorMessage = useApolloError(error)
+  const theme = useTheme()
 
   return (
     <>
@@ -53,7 +55,7 @@ const AddButton = ({ bookId, onCompleted }) => {
         loading={loading}
         onPress={callMutation}
       />
-      <Text style={{ color: 'red' }}>{errorMessage}</Text>
+      <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
     </>
   )
 }
@@ -71,6 +73,7 @@ const RemoveButton = ({ bookId, onCompleted }) => {
     }
   )
   const errorMessage = useApolloError(error)
+  const theme = useTheme()
 
   return (
     <>
@@ -79,7 +82,7 @@ const RemoveButton = ({ bookId, onCompleted }) => {
         loading={loading}
         onPress={callMutation}
       />
-      <Text style={{ color: 'red' }}>{errorMessage}</Text>
+      <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
     </>
   )
 }

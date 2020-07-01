@@ -1,20 +1,23 @@
 import React from 'react'
-import { ScrollView, View, ActivityIndicator, Text } from 'react-native'
+import { ScrollView, View, ActivityIndicator } from 'react-native'
 import useStyles from '../../util/useStyles'
 import useUpdateFeedBookPage from '../../data/hooks/useUpdateFeedBookPage'
 import DeleteButton from './DeleteButton'
 import Edit from './Edit'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 export default ({ route, navigation }) => {
   const { data, loading, errorMessage } = useUpdateFeedBookPage({
     _id: route.params._id,
   })
   const Styles = useStyles()
+  const theme = useTheme()
 
   if (errorMessage)
     return (
       <View style={Styles.center}>
-        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
       </View>
     )
 
@@ -30,7 +33,7 @@ export default ({ route, navigation }) => {
     if (!feedBook) return <View />
     return (
       <ScrollView style={{ padding: Styles.standardPageInset }}>
-        <Text style={Styles.h1}>{feedBook.book.title}</Text>
+        <Typography type='h1'>{feedBook.book.title}</Typography>
         <Edit
           _id={feedBook._id}
           comment={feedBook.comment}

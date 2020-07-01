@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import { ScrollView, Text } from 'react-native'
+import { ScrollView } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
 import TextField from '../components/TextField'
 import DatePicker from '../components/DatePicker'
@@ -11,6 +11,8 @@ import BookPageQuery from '../data/graphql/BookPageQuery'
 import useStyles from '../util/useStyles'
 import PressButton from '../components/PressButton'
 import FavoriteToggle from '../components/FavoriteToggle'
+import Typography from '../components/Typography'
+import useTheme from '../util/useTheme'
 
 const AddFeedBook = gql`
   mutation AddFeedBook(
@@ -33,6 +35,7 @@ const AddFeedBook = gql`
 export default ({ route, navigation }) => {
   const bookId = route.params.bookId
   const Styles = useStyles()
+  const theme = useTheme()
 
   const [callAddReadBookMutation, { loading, error }] = useMutation(
     AddFeedBook,
@@ -66,7 +69,7 @@ export default ({ route, navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
-      <Text style={Styles.h1}>Add book to feed</Text>
+      <Typography type='h1'>Add book to feed</Typography>
       <DatePicker value={date} onChange={setDate} />
       <TextField
         placeholder='Say something about this book'
@@ -75,11 +78,13 @@ export default ({ route, navigation }) => {
         onChangeText={setComment}
       />
       <FavoriteToggle favorite={favorite} setFavorite={setFavorite} />
-      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+      {error && (
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+      )}
       <PressButton
         text='Add Book'
         loading={loading}
-        type='filled'
+        color={theme.main}
         onPress={addBook}
       />
     </ScrollView>

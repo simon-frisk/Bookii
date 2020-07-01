@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ScrollView, ActivityIndicator, Text, View } from 'react-native'
+import { ScrollView, ActivityIndicator, View } from 'react-native'
 import { useApolloClient, useQuery } from '@apollo/react-hooks'
 import * as WebBrowser from 'expo-web-browser'
 import gql from 'graphql-tag'
@@ -11,6 +11,8 @@ import UserSlider from '../../components/UserSlider'
 import DeleteProfile from './DeleteProfile'
 import useApolloError from '../../util/useApolloError'
 import ChangePassword from './ChangePassword'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 export const UserFollowingAndFollowers = gql`
   query UserFollowingAndFollowers {
@@ -35,6 +37,7 @@ export const UserFollowingAndFollowers = gql`
 
 export default () => {
   const Styles = useStyles()
+  const theme = useTheme()
   const { data, loading, error } = useQuery(UserFollowingAndFollowers)
   const errorMessage = useApolloError(error)
   const { signout } = useContext(AuthContext)
@@ -50,7 +53,7 @@ export default () => {
   if (error)
     return (
       <View style={Styles.center}>
-        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
       </View>
     )
 
@@ -64,13 +67,13 @@ export default () => {
       <ChangePassword />
       {!!data.user.following.length && (
         <>
-          <Text style={Styles.h2}>Following</Text>
+          <Typography type='h2'>Following</Typography>
           <UserSlider users={data.user.following} />
         </>
       )}
       {!!data.user.followers.length && (
         <>
-          <Text style={Styles.h2}>Followers</Text>
+          <Typography type='h2'>Followers</Typography>
           <UserSlider users={data.user.followers} />
         </>
       )}
@@ -85,19 +88,19 @@ export default () => {
         <DeleteProfile _id={data.user._id} />
       </View>
       <View style={{ marginVertical: 35 }}>
-        <Text style={Styles.h2}>More</Text>
-        <Text>
+        <Typography type='h2'>More</Typography>
+        <Typography>
           For more info, like viewing privacy policy or getting support, visit
           the{' '}
-          <Text
+          <Typography
             style={{ color: 'blue' }}
             onPress={() =>
               WebBrowser.openBrowserAsync('https://bookii.simonfrisk.com')
             }
           >
             Bookii website
-          </Text>
-        </Text>
+          </Typography>
+        </Typography>
       </View>
     </ScrollView>
   )

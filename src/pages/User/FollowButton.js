@@ -5,8 +5,9 @@ import { UserFollowingAndFollowers } from '../Profile/Profile'
 import UserPageQuery from '../../data/graphql/UserPageQuery'
 import PressButton from '../../components/PressButton'
 import useApolloError from '../../util/useApolloError'
-import { Text } from 'react-native'
 import PeoplePageQuery from '../../data/graphql/PeoplePageQuery'
+import useTheme from '../../util/useTheme'
+import Typography from '../../components/Typography'
 
 const FollowUser = gql`
   mutation FollowUser($_id: ID!) {
@@ -37,8 +38,12 @@ export default ({ isSelfFollowing, _id }) => {
     }
   )
   const errorMessage = useApolloError(error)
+  const theme = useTheme()
 
-  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
+  if (error)
+    return (
+      <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+    )
 
   return (
     <PressButton

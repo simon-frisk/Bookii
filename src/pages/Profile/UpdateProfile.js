@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text } from 'react-native'
+import React, { useState } from 'react'
+import { View } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import { useMutation } from '@apollo/react-hooks'
 import { ReactNativeFile } from 'apollo-upload-client'
@@ -7,9 +7,10 @@ import * as Segment from 'expo-analytics-segment'
 import gql from 'graphql-tag'
 import TextField from '../../components/TextField'
 import PressButton from '../../components/PressButton'
-import useStyles from '../../util/useStyles'
 import useApolloError from '../../util/useApolloError'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 const UpdateUser = gql`
   mutation UpdateUser($name: String, $email: String, $profilePicture: Upload) {
@@ -38,7 +39,7 @@ export default ({
     },
   })
   const errorMessage = useApolloError(error)
-  const Styles = useStyles()
+  const theme = useTheme()
 
   const [name, setName] = useState(initialName)
   const [email, setEmail] = useState(initialEmail)
@@ -70,7 +71,7 @@ export default ({
 
   return (
     <View style={{ marginBottom: 35, marginTop: 10 }}>
-      <Text style={Styles.h2}>Update profile</Text>
+      <Typography type='h2'>Update profile</Typography>
       <TextField
         value={email}
         onChangeText={setEmail}
@@ -96,11 +97,13 @@ export default ({
           name={name}
         />
       </View>
-      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+      {error && (
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+      )}
       <PressButton
         text='Update'
         onPress={update}
-        type='filled'
+        color={theme.main}
         loading={loading}
       />
     </View>

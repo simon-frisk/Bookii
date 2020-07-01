@@ -1,59 +1,56 @@
 import React from 'react'
-import { TouchableOpacity, Text, View, ActivityIndicator } from 'react-native'
-import useStyles from '../util/useStyles'
+import { TouchableOpacity, View, ActivityIndicator } from 'react-native'
+import Typography from './Typography'
+import useTheme from '../util/useTheme'
 
-export default ({ text, type, loading, onPress, containerStyle }) => {
-  useStyles()
-  let style = styles.base
-  if (type === 'filled') style = { ...style, ...styles.filled }
-  if (type === 'error') style = { ...style, ...styles.error }
-  if (type === 'secondary') style = { ...style, ...styles.secondary }
-
-  let textStyle = styles.baseText
-  if (type === 'filled' || type === 'error' || type === 'secondary')
-    textStyle = { ...textStyle, ...styles.filledText }
+export default ({ text, loading, onPress, color, containerStyle }) => {
+  const theme = useTheme()
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={{ ...style, ...containerStyle }}>
+      <View
+        style={[
+          {
+            padding: 10,
+            borderRadius: 15,
+            marginVertical: 8,
+            backgroundColor: color || theme.button,
+          },
+          containerStyle,
+        ]}
+      >
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Text style={textStyle}>{text}</Text>
+          <Typography style={{ textAlign: 'center', color: theme.reverseText }}>
+            {text}
+          </Typography>
         )}
       </View>
     </TouchableOpacity>
   )
 }
 
-const styles = {
-  base: {
-    padding: 9,
-    marginVertical: 10,
-    borderRadius: 10,
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
-    backgroundColor: 'white',
-  },
-  filled: {
-    backgroundColor: '#47f',
-  },
-  error: {
-    backgroundColor: '#d22',
-  },
-  secondary: {
-    backgroundColor: '#ff9544',
-  },
-  baseText: {
-    textAlign: 'center',
-    fontSize: 16,
-  },
-  filledText: {
-    color: 'white',
-  },
+function isColorLight(color) {
+  var r, g, b, hsp
+  if (color.match(/^rgb/)) {
+    color = color.match(
+      /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
+    )
+    r = color[1]
+    g = color[2]
+    b = color[3]
+  } else {
+    color = +('0x' + color.slice(1).replace(color.length < 5 && /./g, '$&$&'))
+
+    r = color >> 16
+    g = (color >> 8) & 255
+    b = color & 255
+  }
+  hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b))
+  if (hsp > 127.5) {
+    return 'light'
+  } else {
+    return 'dark'
+  }
 }

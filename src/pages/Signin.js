@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { AuthContext } from '../util/AuthProvider'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
 import useStyles from '../util/useStyles'
+import Typography from '../components/Typography'
+import useTheme from '../util/useTheme'
 
 const Signin = gql`
   query Signin($email: String!, $password: String!) {
@@ -16,6 +18,8 @@ const Signin = gql`
 
 export default () => {
   const Styles = useStyles()
+  const Theme = useTheme()
+
   const [callQuery, { loading, error }] = useLazyQuery(Signin, {
     onCompleted: ({ signin: token }) => {
       setToken(token)
@@ -35,7 +39,7 @@ export default () => {
   return (
     <View style={Styles.center}>
       <View style={{ width: '65%', maxWidth: 300 }}>
-        <Text style={Styles.h2}>Sign in</Text>
+        <Typography type='h2'>Sign in</Typography>
         <TextField
           value={email}
           onChangeText={setEmail}
@@ -49,12 +53,14 @@ export default () => {
           placeholder='password'
           secureTextEntry={true}
         />
-        {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+        {error && (
+          <Typography style={{ color: Theme.error }}>{errorMessage}</Typography>
+        )}
         <PressButton
           text='sign in'
           onPress={signin}
           loading={loading}
-          type='filled'
+          color={theme.main}
           containerStyle={{ marginVertical: 10 }}
         />
       </View>

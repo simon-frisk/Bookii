@@ -4,8 +4,9 @@ import { useMutation } from '@apollo/react-hooks'
 import PressButton from '../../components/PressButton'
 import UserPageQuery from '../../data/graphql/UserPageQuery'
 import BookPageQuery from '../../data/graphql/BookPageQuery'
-import { Text } from 'react-native'
 import useApolloError from '../../util/useApolloError'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 const RemoveFeedBook = gql`
   mutation RemoveFeedBook($_id: ID!) {
@@ -33,8 +34,12 @@ export default ({ _id, bookId, onCompleted }) => {
     }
   )
   const errorMessage = useApolloError(error)
+  const theme = useTheme()
 
-  if (error) return <Text style={{ color: 'red' }}>{errorMessage}</Text>
+  if (error)
+    return (
+      <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+    )
 
   return (
     <PressButton

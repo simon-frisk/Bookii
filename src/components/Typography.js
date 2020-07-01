@@ -14,12 +14,7 @@ export default props => {
   return (
     <Text
       {...props}
-      style={[
-        { color: Theme.colors.text },
-        fontSizeAndWeight,
-        font,
-        props.style,
-      ]}
+      style={[{ color: Theme.text }, fontSizeAndWeight, font, props.style]}
     >
       {props.children}
     </Text>

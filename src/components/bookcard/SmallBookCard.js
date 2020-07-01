@@ -1,12 +1,11 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../BookCover'
-import useStyles from '../../util/useStyles'
+import Typography from '../Typography'
 
 export default ({ bookId, title, thumbnail, style }) => {
   const navigation = useNavigation()
-  const Styles = useStyles()
 
   return (
     <TouchableOpacity
@@ -14,7 +13,9 @@ export default ({ bookId, title, thumbnail, style }) => {
       style={style}
     >
       <BookCover uri={thumbnail} width={160} />
-      <Text style={[Styles.h4, { width: 160, paddingTop: 10 }]}>{title}</Text>
+      <Typography type='h4' style={{ width: 160, paddingTop: 10 }}>
+        {title}
+      </Typography>
     </TouchableOpacity>
   )
 }

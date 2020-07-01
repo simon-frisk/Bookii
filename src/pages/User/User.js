@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
+import { ScrollView, ActivityIndicator, View } from 'react-native'
 import useStyles from '../../util/useStyles'
 import { AuthContext } from '../../util/AuthProvider'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
@@ -9,11 +9,14 @@ import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
 import SmallBookCardSlider from '../../components/bookcard/SmallBookCardSlider'
 import useUserPage from '../../data/hooks/useUserPage'
 import UserMenu from './UserMenu'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
   const { data, loading, errorMessage } = useUserPage({ _id })
   const Styles = useStyles()
+  const theme = useTheme()
 
   if (loading)
     return (
@@ -25,7 +28,7 @@ export default ({ route, navigation }) => {
   if (errorMessage)
     return (
       <View style={Styles.center}>
-        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
       </View>
     )
 
@@ -44,7 +47,7 @@ export default ({ route, navigation }) => {
               name={data.user.name}
               size={100}
             />
-            <Text style={Styles.h1}>{data.user.name}</Text>
+            <Typography type='h1'>{data.user.name}</Typography>
           </View>
           <View style={{ marginHorizontal: 50 }}>
             {!isSelf && (

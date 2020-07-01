@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
+import { ScrollView, ActivityIndicator, View } from 'react-native'
 import useStyles from '../../util/useStyles'
 import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
 import WishButton from './WishButton'
@@ -7,9 +7,12 @@ import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/BookCover'
 import PressButton from '../../components/PressButton'
 import useBookPage from '../../data/hooks/useBookPage'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 export default ({ route }) => {
   const Styles = useStyles()
+  const theme = useTheme()
   const { data, loading, errorMessage } = useBookPage({
     bookId: route.params.bookId,
   })
@@ -26,14 +29,14 @@ export default ({ route }) => {
   if (errorMessage)
     return (
       <View style={Styles.center}>
-        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
       </View>
     )
 
   if (data && !data.book)
     return (
       <View style={Styles.center}>
-        <Text>Book not found</Text>
+        <Typography>Book not found</Typography>
       </View>
     )
 
@@ -46,15 +49,16 @@ export default ({ route }) => {
           <View style={{ marginBottom: 20 }}>
             <View style={{ alignItems: 'center' }}>
               <BookCover uri={data.book.thumbnail} width={200} />
-              <Text
-                style={{ marginTop: 15, textAlign: 'center', ...Styles.h2 }}
+              <Typography
+                type='h2'
+                style={{ marginTop: 15, textAlign: 'center' }}
               >
                 {data.book.title}
-              </Text>
+              </Typography>
               {data.book.subTitle && (
-                <Text style={{ textAlign: 'center', color: 'grey' }}>
+                <Typography style={{ textAlign: 'center', color: 'grey' }}>
                   {data.book.subTitle}
-                </Text>
+                </Typography>
               )}
             </View>
             <PressButton
@@ -64,7 +68,7 @@ export default ({ route }) => {
               onPress={() =>
                 navigation.navigate('addFeedBook', { bookId: data.book.bookId })
               }
-              type='filled'
+              color={theme.main}
             />
             <WishButton
               bookId={data.book.bookId}
@@ -73,28 +77,30 @@ export default ({ route }) => {
           </View>
           <View style={{ marginBottom: 15 }}>
             {data.book.authors && (
-              <Text style={{ color: 'grey' }}>{`Author${
+              <Typography style={{ color: 'grey' }}>{`Author${
                 data.book.authors.length > 1 ? 's' : ''
-              }: ${data.book.authors.join(' , ')}`}</Text>
+              }: ${data.book.authors.join(' , ')}`}</Typography>
             )}
             {data.book.pages && (
-              <Text style={{ color: 'grey' }}>Pages: {data.book.pages}</Text>
+              <Typography style={{ color: 'grey' }}>
+                Pages: {data.book.pages}
+              </Typography>
             )}
             {data.book.published && (
-              <Text style={{ color: 'grey' }}>
+              <Typography style={{ color: 'grey' }}>
                 Published: {data.book.published}
-              </Text>
+              </Typography>
             )}
             {data.book.publisher && (
-              <Text style={{ color: 'grey' }}>
+              <Typography style={{ color: 'grey' }}>
                 Publisher: {data.book.publisher}
-              </Text>
+              </Typography>
             )}
           </View>
           {data.book.wikipediadescription && (
             <View style={[Styles.card, { padding: 20 }]}>
-              <Text style={Styles.h3}>Wikipedia</Text>
-              <Text>{data.book.wikipediadescription}</Text>
+              <Typography type='h3'>Wikipedia</Typography>
+              <Typography>{data.book.wikipediadescription}</Typography>
             </View>
           )}
         </View>

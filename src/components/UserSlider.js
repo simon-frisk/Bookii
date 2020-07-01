@@ -1,7 +1,8 @@
 import React from 'react'
-import { FlatList, TouchableOpacity, Text } from 'react-native'
+import { FlatList, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import ProfilePictureCircle from './ProfilePictureCircle'
+import Typography from './Typography'
 
 export default ({ users }) => {
   const navigation = useNavigation()
@@ -22,7 +23,7 @@ export default ({ users }) => {
             size={70}
             style={{ margin: 7 }}
           />
-          <Text>{user.name.split(' ')[0]}</Text>
+          <Typography>{user.name.split(' ')[0]}</Typography>
         </TouchableOpacity>
       )}
     />

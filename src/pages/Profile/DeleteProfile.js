@@ -5,6 +5,8 @@ import gql from 'graphql-tag'
 import PressButton from '../../components/PressButton'
 import { AuthContext } from '../../util/AuthProvider'
 import useApolloError from '../../util/useApolloError'
+import Typography from '../../components/Typography'
+import useTheme from '../../util/useTheme'
 
 const DeleteProfile = gql`
   mutation DeleteProfile {
@@ -14,12 +16,13 @@ const DeleteProfile = gql`
   }
 `
 
-export default ({ _id }) => {
+export default () => {
   const [deleteAccount, { loading, error }] = useMutation(DeleteProfile, {
     onCompleted: () => signout(),
   })
   const errorMessage = useApolloError(error)
   const { signout } = useContext(AuthContext)
+  const theme = useTheme()
 
   const showAlert = () => {
     Alert.alert(
@@ -47,7 +50,9 @@ export default ({ _id }) => {
         loading={loading}
         onPress={showAlert}
       />
-      {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+      {error && (
+        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+      )}
     </>
   )
 }

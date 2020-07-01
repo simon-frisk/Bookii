@@ -6,6 +6,7 @@ import BookCover from '../../BookCover'
 import PressButton from '../../PressButton'
 import ExpandableText from './ExpandableText'
 import Typography from '../../Typography'
+import useTheme from '../../../util/useTheme'
 
 export default ({
   isSelf,
@@ -19,6 +20,7 @@ export default ({
 }) => {
   const navigation = useNavigation()
   const Styles = useStyles()
+  const theme = useTheme()
 
   return (
     <View
@@ -49,7 +51,7 @@ export default ({
       {isSelf && (
         <PressButton
           text='Edit'
-          type='filled'
+          color={theme.main}
           onPress={() =>
             navigation.navigate('editFeedBook', { _id: feedBookId })
           }

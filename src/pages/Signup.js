@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { Link } from '@react-navigation/native'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -9,6 +9,8 @@ import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
 import useStyles from '../util/useStyles'
+import Typography from '../components/Typography'
+import useTheme from '../util/useTheme'
 
 const Signup = gql`
   mutation Signup($email: String!, $password: String!, $name: String!) {
@@ -25,6 +27,7 @@ export default () => {
   })
   const errorMessage = useApolloError(error)
   const Styles = useStyles()
+  const theme = useTheme()
 
   const { signin: setToken } = useContext(AuthContext)
 
@@ -39,7 +42,7 @@ export default () => {
   return (
     <View style={Styles.center}>
       <View style={{ width: '65%', maxWidth: 300 }}>
-        <Text style={Styles.h2}>Sign up</Text>
+        <Typography type='h2'>Sign up</Typography>
         <TextField
           value={email}
           onChangeText={setEmail}
@@ -58,19 +61,21 @@ export default () => {
           placeholder='password'
           secureTextEntry={true}
         />
-        {error && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+        {error && (
+          <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        )}
         <PressButton
           text='sign up'
           onPress={signup}
           loading={loading}
-          type='filled'
+          color={theme.main}
         />
-        <Text>
+        <Typography>
           Already have an account?{' '}
           <Link to='/signin' style={{ color: 'blue' }}>
             Sign in!
           </Link>
-        </Text>
+        </Typography>
       </View>
     </View>
   )
