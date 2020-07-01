@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesome5 } from '@expo/vector-icons'
 import User from '../pages/User/User'
 import Discover from '../pages/Discover/Discover'
-import Feed from '../pages/Feed'
+import People from '../pages/People/People'
 
 const Tabs = createBottomTabNavigator()
 
@@ -11,11 +11,11 @@ export default () => {
   return (
     <Tabs.Navigator initialRouteName='Me'>
       <Tabs.Screen
-        name='Feed'
-        component={Feed}
+        name='People'
+        component={People}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name='home' size={size} color={color} />
+            <FontAwesome5 name='user-friends' size={size} color={color} />
           ),
         }}
       />
