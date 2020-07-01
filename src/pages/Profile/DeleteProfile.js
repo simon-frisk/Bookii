@@ -46,7 +46,7 @@ export default () => {
     <>
       <PressButton
         text='Delete account'
-        type='error'
+        color={theme.current.error}
         loading={loading}
         onPress={showAlert}
       />

@@ -32,7 +32,7 @@ export default ({ _id, isFlagged: isFlaggedInitial }) => {
         text={isFlagged ? 'Unflag' : 'Flag for inappropriate content'}
         onPress={callMutation}
         loading={loading}
-        type='secondary'
+        color={theme.current.complement}
       />
     </>
   )
