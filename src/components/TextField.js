@@ -27,7 +27,7 @@ export default props => {
           name={props.icon}
           style={{ marginRight: 5 }}
           size={17}
-          color='grey'
+          color={theme.light.text}
         />
       )}
       <TextInput
@@ -36,8 +36,9 @@ export default props => {
         style={{
           flex: 1,
           paddingVertical: 3,
+          color: theme.light.text,
         }}
-        clearButtonMode='always'
+        placeholderTextColor='#aaa'
         keyboardAppearance={theme.isDarkMode ? 'dark' : 'light'}
       />
     </View>

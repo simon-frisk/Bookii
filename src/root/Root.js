@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
+import React, { useContext, useEffect, useRef } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { View } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
@@ -16,17 +16,6 @@ import User from '../pages/User/User'
 import useTheme from '../util/useTheme'
 
 const Stack = createStackNavigator()
-console.log(DefaultTheme)
-const DarkTheme = {
-  dark: true,
-  colors: {
-    background: 'rgb(10, 10, 15)',
-    border: 'rgb(39, 39, 41)',
-    card: 'rgb(18, 18, 18)',
-    primary: 'rgb(10, 10, 15)',
-    text: 'rgb(10, 10, 15)',
-  },
-}
 
 export default () => {
   const { _id, initialAuthCheck, isInitialAuthCheckDone } = useContext(

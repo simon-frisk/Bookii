@@ -32,12 +32,6 @@ export default () => {
       {data && (
         <>
           <Search />
-          <Typography
-            type='h2'
-            style={{ paddingHorizontal: styles.standardPageInset }}
-          >
-            Toplists
-          </Typography>
           <FlatList
             data={data.bookLists}
             renderItem={({ item }) => (
