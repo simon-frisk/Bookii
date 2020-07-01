@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { AuthContext } from './AuthProvider'
 
 export default error => {
-  const { signout } = useContext(AuthContext)
+  const { signout, setIsLatestConsent } = useContext(AuthContext)
 
   if (!error) return
   console.log(error)
@@ -11,6 +11,8 @@ export default error => {
       .map(error => {
         if (error.extentions && error.extensions.code === 'UNAUTHENTICATED')
           signout()
+        if (error.extensions && error.extensions.code === 'NOTLATESTCONSENT')
+          setIsLatestConsent(false)
         return error.message
       })
       .join(', ')

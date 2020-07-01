@@ -13,20 +13,32 @@ import AddFeedBook from '../pages/AddFeedBook'
 import Profile from '../pages/Profile/Profile'
 import EditFeedBook from '../pages/EditFeedBook/EditFeedBook'
 import User from '../pages/User/User'
+import AcceptPolicies from '../pages/AcceptPolicies'
 import useTheme from '../util/useTheme'
+import useInitialIdentifyUser from '../util/useInitialIdentifyUser'
 
 const Stack = createStackNavigator()
 
 export default () => {
-  const { _id, initialAuthCheck, isInitialAuthCheckDone } = useContext(
-    AuthContext
-  )
+  const {
+    _id,
+    initialAuthCheck,
+    isInitialAuthCheckDone,
+    isLatestConsent,
+  } = useContext(AuthContext)
+
+  const { callIdentifyUser, hasIdentifiedUser } = useInitialIdentifyUser()
+
   const navRef = useRef()
   const routeNameRef = useRef()
 
   useEffect(() => {
     initialAuthCheck()
   }, [])
+
+  useEffect(() => {
+    if (_id) callIdentifyUser({ variables: { _id } })
+  }, [_id])
 
   useEffect(() => {
     if (!routeNameRef.current && navRef.current) {
@@ -39,7 +51,7 @@ export default () => {
 
   const theme = useTheme()
 
-  if (!isInitialAuthCheckDone) return <View />
+  if (!isInitialAuthCheckDone || (_id && !hasIdentifiedUser)) return <View />
   return (
     <NavigationContainer
       theme={theme.theme}
@@ -61,14 +73,18 @@ export default () => {
         }}
       >
         {_id ? (
-          <>
-            <Stack.Screen name='mainTabScreen' component={BottomTabs} />
-            <Stack.Screen name='book' component={Book} />
-            <Stack.Screen name='addFeedBook' component={AddFeedBook} />
-            <Stack.Screen name='editFeedBook' component={EditFeedBook} />
-            <Stack.Screen name='user' component={User} />
-            <Stack.Screen name='profile' component={Profile} />
-          </>
+          isLatestConsent ? (
+            <>
+              <Stack.Screen name='mainTabScreen' component={BottomTabs} />
+              <Stack.Screen name='book' component={Book} />
+              <Stack.Screen name='addFeedBook' component={AddFeedBook} />
+              <Stack.Screen name='editFeedBook' component={EditFeedBook} />
+              <Stack.Screen name='user' component={User} />
+              <Stack.Screen name='profile' component={Profile} />
+            </>
+          ) : (
+            <Stack.Screen name='updateconsent' component={AcceptPolicies} />
+          )
         ) : (
           <>
             <Stack.Screen name='signup' component={Signup} />
