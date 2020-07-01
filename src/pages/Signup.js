@@ -49,17 +49,20 @@ export default () => {
           placeholder='email'
           autoCapitalize='none'
           keyboardType='email-address'
+          textContentType='emailAddress'
         />
         <TextField
           value={name}
           onChangeText={setName}
           placeholder='full name'
+          textContentType='name'
         />
         <TextField
           value={password}
           onChangeText={setPassword}
           placeholder='password'
           secureTextEntry={true}
+          textContentType='newPassword'
         />
         {error && (
           <Typography style={{ color: theme.current.error }}>
@@ -74,7 +77,7 @@ export default () => {
         />
         <Typography>
           Already have an account?{' '}
-          <Link to='/signin' style={{ color: 'blue' }}>
+          <Link to='/signin' style={{ color: theme.current.main }}>
             Sign in!
           </Link>
         </Typography>

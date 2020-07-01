@@ -95,7 +95,7 @@ export default () => {
           For more info, like viewing privacy policy or getting support, visit
           the{' '}
           <Typography
-            style={{ color: 'blue' }}
+            style={{ color: theme.current.main }}
             onPress={() =>
               WebBrowser.openBrowserAsync('https://bookii.simonfrisk.com')
             }

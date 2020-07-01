@@ -46,12 +46,14 @@ export default () => {
           placeholder='email'
           autoCapitalize='none'
           keyboardType='email-address'
+          textContentType='emailAdress'
         />
         <TextField
           value={password}
           onChangeText={setPassword}
           placeholder='password'
           secureTextEntry={true}
+          textContentType='password'
         />
         {error && (
           <Typography style={{ color: theme.current.error }}>
