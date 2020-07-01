@@ -38,7 +38,9 @@ export default ({ _id, bookId, onCompleted }) => {
 
   if (error)
     return (
-      <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+      <Typography style={{ color: theme.current.error }}>
+        {errorMessage}
+      </Typography>
     )
 
   return (

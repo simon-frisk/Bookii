@@ -10,6 +10,7 @@ export default ({ users }) => {
   return (
     <FlatList
       horizontal={true}
+      contentContainerStyle={{ paddingBottom: 10 }}
       data={users}
       keyExtractor={(item, index) => item._id + index}
       renderItem={({ item: user }) => (

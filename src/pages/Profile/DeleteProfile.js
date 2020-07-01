@@ -51,7 +51,9 @@ export default () => {
         onPress={showAlert}
       />
       {error && (
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       )}
     </>
   )

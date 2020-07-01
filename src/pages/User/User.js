@@ -28,7 +28,9 @@ export default ({ route, navigation }) => {
   if (errorMessage)
     return (
       <View style={Styles.center}>
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       </View>
     )
 

@@ -5,7 +5,7 @@ const light = {
   background: 'rgb(235, 235, 240)',
   text: 'rgb(25,25,27)',
   reverseText: 'rgb(235, 235, 240)',
-  button: 'grey',
+  button: 'rgb(216, 216, 220)',
   main: '#007AFF',
   complement: '#FF9500',
   error: '#FF3B30',
@@ -26,7 +26,9 @@ export default () => {
   const isDarkMode = colorScheme === 'dark'
 
   return {
-    ...(isDarkMode ? dark : light),
+    current: isDarkMode ? dark : light,
+    dark,
+    light,
     isDarkMode,
   }
 }

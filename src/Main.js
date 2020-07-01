@@ -19,9 +19,11 @@ export default () => {
   return (
     <ApolloProvider client={apolloClient}>
       <AuthProvider>
-        <StatusBar style={theme.isDarkMode ? 'light' : 'dark'} />
+        <StatusBar style={theme.current.isDarkMode ? 'light' : 'dark'} />
         <SafeAreaProvider>
-          <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
+          <SafeAreaView
+            style={{ flex: 1, backgroundColor: theme.current.background }}
+          >
             <Root />
           </SafeAreaView>
         </SafeAreaProvider>

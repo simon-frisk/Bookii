@@ -6,7 +6,7 @@ export default () => {
   return {
     standardPageInset: 20,
     card: {
-      backgroundColor: theme.primary,
+      backgroundColor: theme.current.primary,
       borderRadius: 25,
     },
     center: {

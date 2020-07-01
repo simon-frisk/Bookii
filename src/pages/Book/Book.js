@@ -29,7 +29,9 @@ export default ({ route }) => {
   if (errorMessage)
     return (
       <View style={Styles.center}>
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       </View>
     )
 
@@ -68,7 +70,7 @@ export default ({ route }) => {
               onPress={() =>
                 navigation.navigate('addFeedBook', { bookId: data.book.bookId })
               }
-              color={theme.main}
+              color={theme.current.main}
             />
             <WishButton
               bookId={data.book.bookId}

@@ -55,7 +55,9 @@ const AddButton = ({ bookId, onCompleted }) => {
         loading={loading}
         onPress={callMutation}
       />
-      <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+      <Typography style={{ color: theme.current.error }}>
+        {errorMessage}
+      </Typography>
     </>
   )
 }
@@ -82,7 +84,9 @@ const RemoveButton = ({ bookId, onCompleted }) => {
         loading={loading}
         onPress={callMutation}
       />
-      <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+      <Typography style={{ color: theme.current.error }}>
+        {errorMessage}
+      </Typography>
     </>
   )
 }

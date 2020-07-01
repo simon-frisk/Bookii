@@ -40,12 +40,14 @@ export default () => {
         secureTextEntry={true}
       />
       {error && (
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       )}
       <PressButton
         loading={loading}
         text='Change password'
-        color={theme.main}
+        color={theme.current.main}
         onPress={updatePassword}
       />
     </View>

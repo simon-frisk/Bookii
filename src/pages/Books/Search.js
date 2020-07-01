@@ -34,7 +34,7 @@ export default () => {
           style={{
             padding: 10,
             textAlign: 'center',
-            color: theme.error,
+            color: theme.current.error,
           }}
         >
           {errorMessage}

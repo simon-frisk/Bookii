@@ -75,12 +75,14 @@ export default ({
       />
       <FavoriteToggle favorite={favorite} setFavorite={setFavorite} />
       {error && (
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       )}
       <PressButton
         onPress={submit}
         text='Update'
-        color={theme.main}
+        color={theme.current.main}
         loading={loading}
       />
     </View>

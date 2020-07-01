@@ -18,7 +18,7 @@ const Signin = gql`
 
 export default () => {
   const Styles = useStyles()
-  const Theme = useTheme()
+  const theme = useTheme()
 
   const [callQuery, { loading, error }] = useLazyQuery(Signin, {
     onCompleted: ({ signin: token }) => {
@@ -54,13 +54,15 @@ export default () => {
           secureTextEntry={true}
         />
         {error && (
-          <Typography style={{ color: Theme.error }}>{errorMessage}</Typography>
+          <Typography style={{ color: theme.current.error }}>
+            {errorMessage}
+          </Typography>
         )}
         <PressButton
           text='sign in'
           onPress={signin}
           loading={loading}
-          color={theme.main}
+          color={theme.current.main}
           containerStyle={{ marginVertical: 10 }}
         />
       </View>

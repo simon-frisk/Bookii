@@ -62,13 +62,15 @@ export default () => {
           secureTextEntry={true}
         />
         {error && (
-          <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+          <Typography style={{ color: theme.current.error }}>
+            {errorMessage}
+          </Typography>
         )}
         <PressButton
           text='sign up'
           onPress={signup}
           loading={loading}
-          color={theme.main}
+          color={theme.current.main}
         />
         <Typography>
           Already have an account?{' '}

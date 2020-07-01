@@ -24,7 +24,9 @@ export default () => {
       )}
       {errorMessage && (
         <View style={styles.center}>
-          <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+          <Typography style={{ color: theme.current.error }}>
+            {errorMessage}
+          </Typography>
         </View>
       )}
       {data && (

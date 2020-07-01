@@ -98,12 +98,14 @@ export default ({
         />
       </View>
       {error && (
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       )}
       <PressButton
         text='Update'
         onPress={update}
-        color={theme.main}
+        color={theme.current.main}
         loading={loading}
       />
     </View>

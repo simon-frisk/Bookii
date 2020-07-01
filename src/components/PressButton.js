@@ -14,7 +14,7 @@ export default ({ text, loading, onPress, color, containerStyle }) => {
             padding: 10,
             borderRadius: 15,
             marginVertical: 8,
-            backgroundColor: color || theme.button,
+            backgroundColor: color || theme.current.button,
           },
           containerStyle,
         ]}
@@ -22,7 +22,7 @@ export default ({ text, loading, onPress, color, containerStyle }) => {
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Typography style={{ textAlign: 'center', color: theme.reverseText }}>
+          <Typography style={{ textAlign: 'center', color: theme.light.text }}>
             {text}
           </Typography>
         )}

@@ -24,7 +24,9 @@ export default ({ _id, isFlagged: isFlaggedInitial }) => {
         </Typography>
       )}
       {errorMessage && (
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       )}
       <PressButton
         text={isFlagged ? 'Unflag' : 'Flag for inappropriate content'}

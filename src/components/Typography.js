@@ -7,14 +7,19 @@ const font = Platform.select({
 })
 
 export default props => {
-  const Theme = useTheme()
+  const theme = useTheme()
 
   const fontSizeAndWeight = getFontSize(props.type)
 
   return (
     <Text
       {...props}
-      style={[{ color: Theme.text }, fontSizeAndWeight, font, props.style]}
+      style={[
+        { color: theme.current.text },
+        fontSizeAndWeight,
+        font,
+        props.style,
+      ]}
     >
       {props.children}
     </Text>
@@ -22,9 +27,9 @@ export default props => {
 }
 
 function getFontSize(type) {
-  if (type === 'h1') return { fontSize: 34, fontWeight: '600' }
-  if (type === 'h2') return { fontSize: 28, fontWeight: '500' }
-  if (type === 'h3') return { fontSize: 22, fontWeight: '500' }
+  if (type === 'h1') return { fontSize: 40, fontWeight: '600' }
+  if (type === 'h2') return { fontSize: 33, fontWeight: '500' }
+  if (type === 'h3') return { fontSize: 25, fontWeight: '500' }
   if (type === 'h4') return { fontSize: 20, fontWeight: '500' }
   else return { fontSize: 17 }
 }

@@ -5,7 +5,7 @@ import useTheme from '../../../util/useTheme'
 
 export default ({ text }) => {
   const [isExpanded, setIsExpanded] = useState(false)
-  const Theme = useTheme()
+  const theme = useTheme()
 
   if (text.length < 130)
     return <Typography style={{ marginVertical: 10 }}>{text}</Typography>
@@ -23,7 +23,7 @@ export default ({ text }) => {
         <Typography style={{ marginVertical: 10 }}>
           {isExpanded ? text : extract}
         </Typography>
-        <Typography style={{ color: Theme.main }}>
+        <Typography style={{ color: theme.current.main }}>
           {isExpanded ? 'Read less' : 'Read more'}
         </Typography>
       </TouchableOpacity>

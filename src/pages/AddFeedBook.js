@@ -79,12 +79,14 @@ export default ({ route, navigation }) => {
       />
       <FavoriteToggle favorite={favorite} setFavorite={setFavorite} />
       {error && (
-        <Typography style={{ color: theme.error }}>{errorMessage}</Typography>
+        <Typography style={{ color: theme.current.error }}>
+          {errorMessage}
+        </Typography>
       )}
       <PressButton
         text='Add Book'
         loading={loading}
-        color={theme.main}
+        color={theme.current.main}
         onPress={addBook}
       />
     </ScrollView>

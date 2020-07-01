@@ -51,7 +51,7 @@ export default ({
       {isSelf && (
         <PressButton
           text='Edit'
-          color={theme.main}
+          color={theme.current.main}
           onPress={() =>
             navigation.navigate('editFeedBook', { _id: feedBookId })
           }
