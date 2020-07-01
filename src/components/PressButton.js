@@ -1,7 +1,9 @@
 import React from 'react'
 import { TouchableOpacity, Text, View, ActivityIndicator } from 'react-native'
+import useStyles from '../util/useStyles'
 
 export default ({ text, type, loading, onPress, containerStyle }) => {
+  useStyles()
   let style = styles.base
   if (type === 'filled') style = { ...style, ...styles.filled }
   if (type === 'error') style = { ...style, ...styles.error }

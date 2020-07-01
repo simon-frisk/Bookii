@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View } from 'react-native'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 import TextField from '../../components/TextField'
 import { useMutation } from '@apollo/react-hooks'
 import useApolloError from '../../util/useApolloError'
@@ -19,6 +19,7 @@ export default () => {
   const [callMutation, { data, loading, error }] = useMutation(UpdatePassword)
   const errorMessage = useApolloError(error)
   const [password, setPassword] = useState()
+  const Styles = useStyles()
 
   const updatePassword = () => {
     callMutation({ variables: { password } })

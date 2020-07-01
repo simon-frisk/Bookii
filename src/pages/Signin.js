@@ -6,7 +6,7 @@ import { View, Text } from 'react-native'
 import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
-import Styles from '../util/Styles'
+import useStyles from '../util/useStyles'
 
 const Signin = gql`
   query Signin($email: String!, $password: String!) {
@@ -15,6 +15,7 @@ const Signin = gql`
 `
 
 export default () => {
+  const Styles = useStyles()
   const [callQuery, { loading, error }] = useLazyQuery(Signin, {
     onCompleted: ({ signin: token }) => {
       setToken(token)
@@ -33,7 +34,7 @@ export default () => {
 
   return (
     <View style={Styles.center}>
-      <View style={{ width: '50%', maxWidth: 300 }}>
+      <View style={{ width: '65%', maxWidth: 300 }}>
         <Text style={Styles.h2}>Sign in</Text>
         <TextField
           value={email}

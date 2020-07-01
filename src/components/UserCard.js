@@ -2,10 +2,11 @@ import React from 'react'
 import { TouchableOpacity, View, Text } from 'react-native'
 import ProfilePictureCircle from './ProfilePictureCircle'
 import { useNavigation } from '@react-navigation/native'
-import Styles from '../util/Styles'
+import useStyles from '../util/useStyles'
 
 export default ({ name, _id, profilePicturePath }) => {
   const navigation = useNavigation()
+  const Styles = useStyles()
 
   return (
     <View style={[Styles.card, { padding: 10, marginVertical: 5 }]}>

@@ -6,6 +6,7 @@ import * as Segment from 'expo-analytics-segment'
 import apolloClient from './util/Apollo'
 import { AuthProvider } from './util/AuthProvider'
 import Root from './root/Root'
+import useTheme from './util/useTheme'
 
 Segment.initialize({
   iosWriteKey: 'pgqoHTiSw7nbnaqfaXSbpeOtO8PaenQx',
@@ -13,12 +14,16 @@ Segment.initialize({
 })
 
 export default () => {
+  const theme = useTheme()
+
   return (
     <ApolloProvider client={apolloClient}>
       <AuthProvider>
-        <StatusBar />
+        <StatusBar style={theme.isDarkMode ? 'light' : 'dark'} />
         <SafeAreaProvider>
-          <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
+          <SafeAreaView
+            style={{ flex: 1, backgroundColor: theme.colors.background }}
+          >
             <Root />
           </SafeAreaView>
         </SafeAreaProvider>

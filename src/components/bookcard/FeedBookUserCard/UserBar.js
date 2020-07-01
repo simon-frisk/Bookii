@@ -3,10 +3,11 @@ import { TouchableOpacity, View, Text } from 'react-native'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import ProfilePictureCircle from '../../ProfilePictureCircle'
-import Styles from '../../../util/Styles'
+import useStyles from '../../../util/useStyles'
 
 export default ({ isSelf, user_id, book_id, profilePicturePath, name }) => {
   const navigation = useNavigation()
+  const Styles = useStyles()
 
   return (
     <View

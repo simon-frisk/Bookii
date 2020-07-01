@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 import { AuthContext } from '../../util/AuthProvider'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 import PressButton from '../../components/PressButton'
@@ -13,6 +13,7 @@ import UserMenu from './UserMenu'
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
   const { data, loading, errorMessage } = useUserPage({ _id })
+  const Styles = useStyles()
 
   if (loading)
     return (

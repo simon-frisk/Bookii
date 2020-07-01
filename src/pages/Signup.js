@@ -8,7 +8,7 @@ import { AuthContext } from '../util/AuthProvider'
 import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
-import Styles from '../util/Styles'
+import useStyles from '../util/useStyles'
 
 const Signup = gql`
   mutation Signup($email: String!, $password: String!, $name: String!) {
@@ -24,6 +24,7 @@ export default () => {
     },
   })
   const errorMessage = useApolloError(error)
+  const Styles = useStyles()
 
   const { signin: setToken } = useContext(AuthContext)
 
@@ -37,7 +38,7 @@ export default () => {
 
   return (
     <View style={Styles.center}>
-      <View style={{ width: '50%', maxWidth: 300 }}>
+      <View style={{ width: '65%', maxWidth: 300 }}>
         <Text style={Styles.h2}>Sign up</Text>
         <TextField
           value={email}

@@ -3,11 +3,12 @@ import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import useSearchPage from '../../data/hooks/useSearchPage'
 import BookCard from '../../components/bookcard/BookCard'
 import TextField from '../../components/TextField'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 
 export default () => {
   const { callQuery, data, loading, errorMessage } = useSearchPage()
   const [query, setQuery] = useState('')
+  const Styles = useStyles()
 
   useEffect(() => callQuery({ variables: { query } }), [query])
 

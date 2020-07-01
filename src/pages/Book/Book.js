@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
 import WishButton from './WishButton'
 import { useNavigation } from '@react-navigation/native'
@@ -9,6 +9,7 @@ import PressButton from '../../components/PressButton'
 import useBookPage from '../../data/hooks/useBookPage'
 
 export default ({ route }) => {
+  const Styles = useStyles()
   const { data, loading, errorMessage } = useBookPage({
     bookId: route.params.bookId,
   })

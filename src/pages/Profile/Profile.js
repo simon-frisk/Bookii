@@ -2,10 +2,9 @@ import React, { useContext } from 'react'
 import { ScrollView, ActivityIndicator, Text, View } from 'react-native'
 import { useApolloClient, useQuery } from '@apollo/react-hooks'
 import * as WebBrowser from 'expo-web-browser'
-import * as Linking from 'expo-linking'
 import gql from 'graphql-tag'
 import { AuthContext } from '../../util/AuthProvider'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 import UpdateProfile from './UpdateProfile'
 import PressButton from '../../components/PressButton'
 import UserSlider from '../../components/UserSlider'
@@ -35,6 +34,7 @@ export const UserFollowingAndFollowers = gql`
 `
 
 export default () => {
+  const Styles = useStyles()
   const { data, loading, error } = useQuery(UserFollowingAndFollowers)
   const errorMessage = useApolloError(error)
   const { signout } = useContext(AuthContext)

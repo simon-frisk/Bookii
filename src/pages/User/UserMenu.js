@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import InAppropriateButton from './InAppropriateButton'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 
 export default ({ _id, isFlagged }) => {
+  const Styles = useStyles()
   const [isOpen, setIsOpen] = useState(false)
 
   return (

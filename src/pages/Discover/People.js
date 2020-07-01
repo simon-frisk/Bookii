@@ -1,11 +1,12 @@
 import React from 'react'
 import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import UserCard from '../../components/UserCard'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 import usePeoplePage from '../../data/hooks/usePeoplePage'
 
 export default () => {
   const { data, loading, errorMessage } = usePeoplePage()
+  const Styles = useStyles()
 
   return (
     <FlatList

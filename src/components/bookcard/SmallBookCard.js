@@ -2,10 +2,11 @@ import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../BookCover'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 
 export default ({ bookId, title, thumbnail, style }) => {
   const navigation = useNavigation()
+  const Styles = useStyles()
 
   return (
     <TouchableOpacity

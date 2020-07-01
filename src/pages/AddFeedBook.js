@@ -8,7 +8,7 @@ import DatePicker from '../components/DatePicker'
 import useApolloError from '../util/useApolloError'
 import UserPageQuery from '../data/graphql/UserPageQuery'
 import BookPageQuery from '../data/graphql/BookPageQuery'
-import Styles from '../util/Styles'
+import useStyles from '../util/useStyles'
 import PressButton from '../components/PressButton'
 import FavoriteToggle from '../components/FavoriteToggle'
 
@@ -32,6 +32,7 @@ const AddFeedBook = gql`
 
 export default ({ route, navigation }) => {
   const bookId = route.params.bookId
+  const Styles = useStyles()
 
   const [callAddReadBookMutation, { loading, error }] = useMutation(
     AddFeedBook,

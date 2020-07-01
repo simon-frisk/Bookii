@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import Styles from '../../../util/Styles'
+import useStyles from '../../../util/useStyles'
 import BookCover from '../../BookCover'
 import PressButton from '../../PressButton'
 import ExpandableText from './ExpandableText'
+import Typography from '../../Typography'
 
 export default ({
   isSelf,
@@ -17,6 +18,7 @@ export default ({
   style,
 }) => {
   const navigation = useNavigation()
+  const Styles = useStyles()
 
   return (
     <View
@@ -36,10 +38,10 @@ export default ({
           <View
             style={{ flex: 1, justifyContent: 'space-between', marginLeft: 12 }}
           >
-            <Text style={[Styles.h4]}>{title}</Text>
-            <Text style={{ fontWeight: 'bold' }}>
+            <Typography type='h4'>{title}</Typography>
+            <Typography style={{ fontWeight: 'bold' }}>
               {new Date(date).toDateString()}
-            </Text>
+            </Typography>
           </View>
         </View>
       </TouchableOpacity>

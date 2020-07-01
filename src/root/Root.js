@@ -1,5 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import {
+  NavigationContainer,
+  DarkTheme,
+  DefaultTheme,
+} from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { View } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
@@ -13,6 +17,7 @@ import AddFeedBook from '../pages/AddFeedBook'
 import Profile from '../pages/Profile/Profile'
 import EditFeedBook from '../pages/EditFeedBook/EditFeedBook'
 import User from '../pages/User/User'
+import useTheme from '../util/useTheme'
 
 const Stack = createStackNavigator()
 
@@ -36,9 +41,12 @@ export default () => {
     }
   })
 
+  const { isDarkMode } = useTheme()
+
   if (!isInitialAuthCheckDone) return <View />
   return (
     <NavigationContainer
+      theme={isDarkMode ? DarkTheme : DefaultTheme}
       ref={navRef}
       onStateChange={navState => {
         const routeName = getActiveRouteName(navState)

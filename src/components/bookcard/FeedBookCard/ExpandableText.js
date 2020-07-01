@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
+import Typography from '../../Typography'
+import useTheme from '../../../util/useTheme'
 
 export default ({ text }) => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const Theme = useTheme()
 
   if (text.length < 130)
-    return <Text style={{ marginVertical: 10 }}>{text}</Text>
+    return <Typography style={{ marginVertical: 10 }}>{text}</Typography>
 
   const extract = text
     .slice(0, 90)
@@ -17,12 +20,12 @@ export default ({ text }) => {
   return (
     <>
       <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
-        <Text style={{ marginVertical: 10 }}>
+        <Typography style={{ marginVertical: 10 }}>
           {isExpanded ? text : extract}
-        </Text>
-        <Text style={{ color: 'blue' }}>
+        </Typography>
+        <Typography style={{ color: Theme.colors.main }}>
           {isExpanded ? 'Read less' : 'Read more'}
-        </Text>
+        </Typography>
       </TouchableOpacity>
     </>
   )

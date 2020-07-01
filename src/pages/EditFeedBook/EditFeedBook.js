@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, View, ActivityIndicator, Text } from 'react-native'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 import useUpdateFeedBookPage from '../../data/hooks/useUpdateFeedBookPage'
 import DeleteButton from './DeleteButton'
 import Edit from './Edit'
@@ -9,6 +9,7 @@ export default ({ route, navigation }) => {
   const { data, loading, errorMessage } = useUpdateFeedBookPage({
     _id: route.params._id,
   })
+  const Styles = useStyles()
 
   if (errorMessage)
     return (

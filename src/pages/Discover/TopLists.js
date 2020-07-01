@@ -8,10 +8,11 @@ import {
 } from 'react-native'
 import SmallBookCardSlider from '../../components/bookcard/SmallBookCardSlider'
 import useBookListsPage from '../../data/hooks/useBookListsPage'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 
 export default () => {
   const { data, loading, errorMessage } = useBookListsPage()
+  const Styles = useStyles()
 
   if (errorMessage)
     return (

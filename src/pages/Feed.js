@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList, ActivityIndicator, View, Text } from 'react-native'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import Styles from '../util/Styles'
+import useStyles from '../util/useStyles'
 import FeedBookUserCard from '../components/bookcard/FeedBookUserCard/FeedBookUserCard'
 import useApolloError from '../util/useApolloError'
 
@@ -29,6 +29,7 @@ export const FeedPage = gql`
 export default () => {
   const { data, loading, error, fetchMore } = useQuery(FeedPage)
   const errorMessage = useApolloError(error)
+  const Styles = useStyles()
 
   return (
     <FlatList

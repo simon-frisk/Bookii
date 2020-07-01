@@ -7,7 +7,7 @@ import * as Segment from 'expo-analytics-segment'
 import gql from 'graphql-tag'
 import TextField from '../../components/TextField'
 import PressButton from '../../components/PressButton'
-import Styles from '../../util/Styles'
+import useStyles from '../../util/useStyles'
 import useApolloError from '../../util/useApolloError'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 
@@ -38,6 +38,7 @@ export default ({
     },
   })
   const errorMessage = useApolloError(error)
+  const Styles = useStyles()
 
   const [name, setName] = useState(initialName)
   const [email, setEmail] = useState(initialEmail)
