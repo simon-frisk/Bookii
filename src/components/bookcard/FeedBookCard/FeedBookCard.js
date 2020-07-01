@@ -36,7 +36,7 @@ export default ({
     >
       <TouchableOpacity onPress={() => navigation.navigate('book', { bookId })}>
         <View style={{ flexDirection: 'row' }}>
-          <BookCover uri={thumbnail} width={90} />
+          <BookCover uri={thumbnail} width={90} title={title} />
           <View
             style={{ flex: 1, justifyContent: 'space-between', marginLeft: 12 }}
           >

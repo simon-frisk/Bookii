@@ -46,7 +46,7 @@ export default ({
               {comment}
             </Typography>
           )}
-          <BookCover uri={thumbnail} width={120} />
+          <BookCover uri={thumbnail} width={120} title={title} />
         </View>
       </TouchableOpacity>
       <Typography style={{ marginTop: 10 }}>

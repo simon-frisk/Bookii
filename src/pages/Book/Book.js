@@ -50,7 +50,11 @@ export default ({ route }) => {
         <View style={{ padding: Styles.standardPageInset }}>
           <View style={{ marginBottom: 20 }}>
             <View style={{ alignItems: 'center' }}>
-              <BookCover uri={data.book.thumbnail} width={200} />
+              <BookCover
+                uri={data.book.thumbnail}
+                width={200}
+                title={data.book.title}
+              />
               <Typography
                 type='h2'
                 style={{ marginTop: 15, textAlign: 'center' }}

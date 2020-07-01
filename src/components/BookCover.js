@@ -1,7 +1,8 @@
 import React from 'react'
 import { Image, View } from 'react-native'
+import Typography from './Typography'
 
-export default ({ uri, width, style }) => {
+export default ({ uri, width, style, title }) => {
   return (
     <View style={style}>
       {uri ? (
@@ -14,7 +15,18 @@ export default ({ uri, width, style }) => {
           }}
         />
       ) : (
-        <View style={{ width, height: width * 1.5, backgroundColor: 'grey' }} />
+        <View
+          style={{
+            width,
+            height: width * 1.5,
+            backgroundColor: 'grey',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 10,
+          }}
+        >
+          <Typography>{title}</Typography>
+        </View>
       )}
     </View>
   )
