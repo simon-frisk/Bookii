@@ -1,14 +1,17 @@
 import React from 'react'
 import { View, TextInput } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
+import useTheme from '../util/useTheme'
 
 export default props => {
+  const theme = useTheme()
+
   return (
     <View
       style={[
         {
-          backgroundColor: '#e2e2e2',
-          borderColor: '#e2e2e2',
+          backgroundColor: theme.light.button,
+          borderColor: theme.light.button,
           borderRadius: 12,
           borderWidth: 6,
           paddingHorizontal: 3,
@@ -34,6 +37,8 @@ export default props => {
           flex: 1,
           paddingVertical: 3,
         }}
+        clearButtonMode='always'
+        keyboardAppearance={theme.isDarkMode ? 'dark' : 'light'}
       />
     </View>
   )

@@ -15,7 +15,7 @@ export default () => {
   if (isStackNotEmpty)
     return (
       <TouchableOpacity onPress={close} style={{ marginRight: 20 }}>
-        <AntDesign name='closecircle' size={23} color='#444' />
+        <AntDesign name='closecircle' size={23} color='#555' />
       </TouchableOpacity>
     )
   return <View />
