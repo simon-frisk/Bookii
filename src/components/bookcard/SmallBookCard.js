@@ -11,7 +11,7 @@ export default ({ bookId, title, thumbnail, style }) => {
       onPress={() => navigation.navigate('book', { bookId })}
       style={style}
     >
-      <BookCover uri={thumbnail} width={160} title={title} />
+      <BookCover uri={thumbnail} width={120} title={title} />
     </TouchableOpacity>
   )
 }

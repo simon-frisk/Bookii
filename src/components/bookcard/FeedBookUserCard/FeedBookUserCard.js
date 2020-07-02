@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { UserContext } from '../../../root/UserProvider'
 import BookCover from '../../BookCover'
-import UserBar from './UserBar'
 import useStyles from '../../../util/useStyles'
 import Typography from '../..//Typography'
+import ProfilePictureCircle from '../../ProfilePictureCircle'
 
 export default ({
   bookId,
-  book_id,
   title,
   thumbnail,
   profilePicturePath,
@@ -19,39 +17,42 @@ export default ({
   date,
 }) => {
   const navigation = useNavigation()
-  const { _id: self_id } = useContext(UserContext)
   const Styles = useStyles()
 
   return (
-    <View style={[Styles.card, { marginVertical: 10, padding: 15 }]}>
-      <UserBar
-        isSelf={user_id.toString() === self_id.toString()}
-        user_id={user_id}
-        book_id={book_id}
-        profilePicturePath={profilePicturePath}
-        name={name}
-        date={date}
-      />
+    <View style={[Styles.card, { marginVertical: 10, padding: 20 }]}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('user', { _id: user_id })
+        }}
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}
+      >
+        <ProfilePictureCircle
+          profilePicturePath={profilePicturePath}
+          name={name}
+          size={45}
+          style={{ marginRight: 10 }}
+        />
+        <Typography type='h3'>{name}</Typography>
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('book', { bookId })}>
-        <Typography type='h2'>{title}</Typography>
         <View
           style={{
             flexDirection: 'row',
-            flex: 1,
-            justifyContent: 'space-between',
           }}
         >
-          {!!comment && (
-            <Typography style={{ flex: 1, marginRight: 20 }}>
-              {comment}
+          <BookCover uri={thumbnail} width={110} title={title} />
+          <View
+            style={{ flex: 1, justifyContent: 'space-between', marginLeft: 12 }}
+          >
+            <Typography type='h3'>{title}</Typography>
+            <Typography style={{ fontWeight: 'bold' }}>
+              {new Date(date).toDateString()}
             </Typography>
-          )}
-          <BookCover uri={thumbnail} width={120} title={title} />
+          </View>
         </View>
       </TouchableOpacity>
-      <Typography style={{ marginTop: 10 }}>
-        {new Date(date).toDateString()}
-      </Typography>
+      <Typography style={{ marginTop: 10 }}>{comment}</Typography>
     </View>
   )
 }
