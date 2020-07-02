@@ -1,25 +1,24 @@
 import React from 'react'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
-import { ApolloProvider } from '@apollo/react-hooks'
 import { StatusBar } from 'expo-status-bar'
 import * as Segment from 'expo-analytics-segment'
-import apolloClient from './util/Apollo'
-import { AuthProvider } from './util/AuthProvider'
-import Root from './root/Root'
-import useTheme from './util/useTheme'
+import Apollo from './util/Apollo'
+import { UserProvider } from './util/UserProvider'
+import useTheme from '../util/useTheme'
+import Root from './Root'
 
 Segment.initialize({
   iosWriteKey: 'pgqoHTiSw7nbnaqfaXSbpeOtO8PaenQx',
-  androidWriteKey: 'dygrpZ2dKfi7LKmIGQqmxAreCDTUBXCy',
+  androidWriteKey: 'w73900iZ9EAqus2Lo5of1BEgY5XWJWXX',
 })
 
 export default () => {
   const theme = useTheme()
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <AuthProvider>
-        <StatusBar style={theme.current.isDarkMode ? 'light' : 'dark'} />
+    <UserProvider>
+      <Apollo>
+        <StatusBar style={theme.isDarkMode ? 'light' : 'dark'} />
         <SafeAreaProvider>
           <SafeAreaView
             style={{ flex: 1, backgroundColor: theme.current.background }}
@@ -27,7 +26,7 @@ export default () => {
             <Root />
           </SafeAreaView>
         </SafeAreaProvider>
-      </AuthProvider>
-    </ApolloProvider>
+      </Apollo>
+    </UserProvider>
   )
 }

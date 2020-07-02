@@ -4,7 +4,7 @@ import { Link } from '@react-navigation/native'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import * as Segment from 'expo-analytics-segment'
-import { AuthContext } from '../util/AuthProvider'
+import { UserContext } from '../util/UserProvider'
 import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
@@ -19,6 +19,9 @@ const Signup = gql`
 `
 
 export default () => {
+  const Styles = useStyles()
+  const theme = useTheme()
+
   const [callMutation, { loading, error }] = useMutation(Signup, {
     onCompleted: ({ signup: token }) => {
       Segment.track('Account created')
@@ -26,10 +29,8 @@ export default () => {
     },
   })
   const errorMessage = useApolloError(error)
-  const Styles = useStyles()
-  const theme = useTheme()
 
-  const { signin: setToken } = useContext(AuthContext)
+  const { signin: setToken } = useContext(UserContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

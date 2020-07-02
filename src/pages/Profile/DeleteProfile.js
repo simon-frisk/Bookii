@@ -3,7 +3,7 @@ import { Alert } from 'react-native'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import PressButton from '../../components/PressButton'
-import { AuthContext } from '../../util/AuthProvider'
+import { UserContext } from '../../util/UserProvider'
 import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
@@ -21,7 +21,7 @@ export default () => {
     onCompleted: () => signout(),
   })
   const errorMessage = useApolloError(error)
-  const { signout } = useContext(AuthContext)
+  const { signout } = useContext(UserContext)
   const theme = useTheme()
 
   const showAlert = () => {

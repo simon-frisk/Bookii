@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import { AuthContext } from '../util/AuthProvider'
+import { UserContext } from '../util/UserProvider'
 import { View } from 'react-native'
 import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'
@@ -27,7 +27,7 @@ export default () => {
   })
   const errorMessage = useApolloError(error)
 
-  const { signin: setToken } = useContext(AuthContext)
+  const { signin: setToken } = useContext(UserContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -46,7 +46,7 @@ export default () => {
           placeholder='email'
           autoCapitalize='none'
           keyboardType='email-address'
-          textContentType='emailAdress'
+          textContentType='emailAddress'
         />
         <TextField
           value={password}

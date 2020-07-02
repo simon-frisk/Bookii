@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ScrollView, ActivityIndicator, View } from 'react-native'
 import useStyles from '../../util/useStyles'
-import { AuthContext } from '../../util/AuthProvider'
+import { UserContext } from '../../util/UserProvider'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 import PressButton from '../../components/PressButton'
 import FollowButton from './FollowButton'
@@ -96,7 +96,7 @@ export default ({ route, navigation }) => {
 
 function getUserIDAndIsSelf(route) {
   const paramsId = route.params && route.params._id
-  const selfId = useContext(AuthContext)._id
+  const selfId = useContext(UserContext)._id
   const isSelf = !Boolean(paramsId) || selfId === paramsId
   const _id = isSelf ? selfId : paramsId
   return { _id, isSelf, selfId }

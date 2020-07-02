@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { AppLoading } from 'expo'
 import { View } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
-import { AuthContext } from '../util/AuthProvider'
+import { UserContext } from './UserProvider'
 import CloseScreenButton from './CloseScreenButton'
 import BottomTabs from './BottomTabs'
 import Signin from '../pages/Signin'
@@ -15,7 +16,7 @@ import EditFeedBook from '../pages/EditFeedBook/EditFeedBook'
 import User from '../pages/User/User'
 import AcceptPolicies from '../pages/AcceptPolicies'
 import useTheme from '../util/useTheme'
-import useInitialIdentifyUser from '../util/useInitialIdentifyUser'
+import useIdentifyUser from './useIdentifyUser'
 
 const Stack = createStackNavigator()
 
@@ -25,9 +26,9 @@ export default () => {
     initialAuthCheck,
     isInitialAuthCheckDone,
     isLatestConsent,
-  } = useContext(AuthContext)
+  } = useContext(UserContext)
 
-  const { callIdentifyUser, hasIdentifiedUser } = useInitialIdentifyUser()
+  const { callIdentifyUser } = useIdentifyUser()
 
   const navRef = useRef()
   const routeNameRef = useRef()
@@ -50,8 +51,7 @@ export default () => {
   })
 
   const theme = useTheme()
-
-  if (!isInitialAuthCheckDone || (_id && !hasIdentifiedUser)) return <View />
+  if (!isInitialAuthCheckDone) return <AppLoading />
   return (
     <NavigationContainer
       theme={theme.theme}

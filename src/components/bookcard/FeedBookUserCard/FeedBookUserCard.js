@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { AuthContext } from '../../../util/AuthProvider'
+import { UserContext } from '../../../util/UserProvider'
 import BookCover from '../../BookCover'
 import UserBar from './UserBar'
 import useStyles from '../../../util/useStyles'
@@ -19,7 +19,7 @@ export default ({
   date,
 }) => {
   const navigation = useNavigation()
-  const { _id: self_id } = useContext(AuthContext)
+  const { _id: self_id } = useContext(UserContext)
   const Styles = useStyles()
 
   return (

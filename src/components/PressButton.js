@@ -3,11 +3,18 @@ import { TouchableOpacity, View, ActivityIndicator } from 'react-native'
 import Typography from './Typography'
 import useTheme from '../util/useTheme'
 
-export default ({ text, loading, onPress, color, containerStyle }) => {
+export default ({
+  text,
+  loading,
+  onPress,
+  color,
+  containerStyle,
+  disabled,
+}) => {
   const theme = useTheme()
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} disabled={disabled || loading}>
       <View
         style={[
           {
@@ -22,7 +29,12 @@ export default ({ text, loading, onPress, color, containerStyle }) => {
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Typography style={{ textAlign: 'center', color: theme.light.text }}>
+          <Typography
+            style={{
+              textAlign: 'center',
+              color: disabled ? '#999' : theme.light.text,
+            }}
+          >
             {text}
           </Typography>
         )}

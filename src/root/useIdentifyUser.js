@@ -1,7 +1,7 @@
 import { useLazyQuery } from '@apollo/react-hooks'
-import { useEffect } from 'react'
 import gql from 'graphql-tag'
-import useApolloError from './useApolloError'
+import useApolloError from '../util/useApolloError'
+import * as Segment from 'expo-analytics-segment'
 
 const IdentifyUser = gql`
   query IdentifyUserQuery($_id: ID!) {
@@ -14,9 +14,8 @@ const IdentifyUser = gql`
 `
 
 export default () => {
-  const [callIdentifyUser, { data, error }] = useLazyQuery(IdentifyUser, {
+  const [callIdentifyUser, { error }] = useLazyQuery(IdentifyUser, {
     onCompleted(data) {
-      console.log(data)
       Segment.identifyWithTraits(data.user._id, {
         email: data.user.email,
         name: data.user.name,
@@ -25,12 +24,7 @@ export default () => {
   })
   useApolloError(error)
 
-  useEffect(() => {
-    callIdentifyUser()
-  }, [])
-
   return {
     callIdentifyUser,
-    hasIdentifiedUser: !!data || !!error,
   }
 }

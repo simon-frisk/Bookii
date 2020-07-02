@@ -3,11 +3,12 @@ import { AsyncStorage } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
 import jwt_decode from 'jwt-decode'
 
-export const AuthContext = createContext()
+export const UserContext = createContext()
 
-export const AuthProvider = ({ children }) => {
-  const [decodedAuthtoken, setDecodedAuthtoken] = useState()
+export const UserProvider = ({ children }) => {
   const [isInitialAuthCheckDone, setIsInitialAuthCheckDone] = useState(false)
+  const [token, setToken] = useState()
+  const [_id, set_id] = useState()
   const [isLatestConsent, setIsLatestConsent] = useState(true)
 
   const initialAuthCheck = async () => {
@@ -18,26 +19,30 @@ export const AuthProvider = ({ children }) => {
 
   const signin = async token => {
     try {
-      const decoded = jwt_decode(token)
-      setDecodedAuthtoken(decoded)
+      const { _id } = jwt_decode(token)
+      setToken(token)
+      set_id(_id)
       await AsyncStorage.setItem('authtoken', token)
     } catch (error) {
+      console.log('Error in signin', error)
       signout()
     }
   }
 
   const signout = async () => {
     try {
-      setDecodedAuthtoken(null)
+      setToken(null)
+      set_id(null)
       await AsyncStorage.removeItem('authtoken')
       Segment.reset()
     } catch (error) {}
   }
 
   return (
-    <AuthContext.Provider
+    <UserContext.Provider
       value={{
-        _id: decodedAuthtoken && decodedAuthtoken._id,
+        _id,
+        token,
         signout,
         signin,
         initialAuthCheck,
@@ -47,6 +52,6 @@ export const AuthProvider = ({ children }) => {
       }}
     >
       {children}
-    </AuthContext.Provider>
+    </UserContext.Provider>
   )
 }

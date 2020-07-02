@@ -3,7 +3,7 @@ import { ScrollView, ActivityIndicator, View } from 'react-native'
 import { useApolloClient, useQuery } from '@apollo/react-hooks'
 import * as WebBrowser from 'expo-web-browser'
 import gql from 'graphql-tag'
-import { AuthContext } from '../../util/AuthProvider'
+import { UserContext } from '../../util/UserProvider'
 import useStyles from '../../util/useStyles'
 import UpdateProfile from './UpdateProfile'
 import PressButton from '../../components/PressButton'
@@ -40,7 +40,7 @@ export default () => {
   const theme = useTheme()
   const { data, loading, error } = useQuery(UserFollowingAndFollowers)
   const errorMessage = useApolloError(error)
-  const { signout } = useContext(AuthContext)
+  const { signout } = useContext(UserContext)
   const client = useApolloClient()
 
   if (loading)
