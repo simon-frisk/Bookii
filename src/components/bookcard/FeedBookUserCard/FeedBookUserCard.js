@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { UserContext } from '../../../util/UserProvider'
+import { UserContext } from '../../../root/UserProvider'
 import BookCover from '../../BookCover'
 import UserBar from './UserBar'
 import useStyles from '../../../util/useStyles'

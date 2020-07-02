@@ -2,10 +2,10 @@ import React from 'react'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 import * as Segment from 'expo-analytics-segment'
-import Apollo from './util/Apollo'
-import { UserProvider } from './util/UserProvider'
-import useTheme from '../util/useTheme'
+import Apollo from './Apollo'
+import { UserProvider } from './UserProvider'
 import Root from './Root'
+import useTheme from '../util/useTheme'
 
 Segment.initialize({
   iosWriteKey: 'pgqoHTiSw7nbnaqfaXSbpeOtO8PaenQx',

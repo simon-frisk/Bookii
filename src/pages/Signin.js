@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import { UserContext } from '../util/UserProvider'
+import { UserContext } from '../root/UserProvider'
 import { View } from 'react-native'
 import TextField from '../components/TextField'
 import useApolloError from '../util/useApolloError'

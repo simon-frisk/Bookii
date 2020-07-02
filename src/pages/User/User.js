@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ScrollView, ActivityIndicator, View } from 'react-native'
 import useStyles from '../../util/useStyles'
-import { UserContext } from '../../util/UserProvider'
+import { UserContext } from '../../root/UserProvider'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 import PressButton from '../../components/PressButton'
 import FollowButton from './FollowButton'

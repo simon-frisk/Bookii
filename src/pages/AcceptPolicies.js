@@ -7,7 +7,7 @@ import CheckBox from 'react-native-check-box'
 import useStyles from '../util/useStyles'
 import useTheme from '../util/useTheme'
 import useAcceptLatestPolicies from '../data/hooks/useAcceptLatestPolicies'
-import { UserContext } from '../util/UserProvider'
+import { UserContext } from '../root/UserProvider'
 import { ScrollView } from 'react-native-gesture-handler'
 
 export default () => {
