@@ -5,7 +5,7 @@ import Typography from '../../components/Typography'
 import usePeoplePage from '../../data/hooks/usePeoplePage'
 import useTheme from '../../util/useTheme'
 import UserSlider from '../../components/UserSlider'
-import FeedBookUserCard from '../../components/bookcard/FeedBookUserCard/FeedBookUserCard'
+import FeedBookCard from '../../components/FeedBookCard'
 
 export default () => {
   const { data, loading, errorMessage } = usePeoplePage()
@@ -38,17 +38,7 @@ export default () => {
             data={data.feed}
             keyExtractor={({ _id }, index) => _id + index}
             renderItem={({ item }) => (
-              <FeedBookUserCard
-                book_id={item._id}
-                bookId={item.bookId}
-                comment={item.comment}
-                date={item.date}
-                thumbnail={item.book.thumbnail}
-                title={item.book.title}
-                user_id={item.user._id}
-                name={item.user.name}
-                profilePicturePath={item.user.profilePicturePath}
-              />
+              <FeedBookCard user={item.user} book={item.book} feedBook={item} />
             )}
           />
         </>

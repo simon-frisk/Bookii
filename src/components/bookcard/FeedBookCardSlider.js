@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 import useStyles from '../../util/useStyles'
-import FeedBookCard from './FeedBookCard/FeedBookCard'
+import FeedBookCard from '../FeedBookCard'
 import Typography from '../Typography'
 
 export default ({ feedBooks, isSelf, title }) => {
@@ -23,18 +23,15 @@ export default ({ feedBooks, isSelf, title }) => {
         keyExtractor={({ _id }, index) => index + _id}
         contentContainerStyle={{
           paddingHorizontal: Styles.standardPageInset / 2,
-          paddingVertical: 15,
+          paddingBottom: 10,
         }}
         horizontal={true}
         renderItem={({ item: feedBook }) => (
           <FeedBookCard
             isSelf={isSelf}
-            feedBookId={feedBook._id}
-            bookId={feedBook.book.bookId}
-            thumbnail={feedBook.book.thumbnail}
-            title={feedBook.book.title}
-            comment={feedBook.comment}
-            date={feedBook.date}
+            limitWidth={true}
+            feedBook={feedBook}
+            book={feedBook.book}
             style={{ marginHorizontal: Styles.standardPageInset / 2 }}
           />
         )}
