@@ -20,7 +20,7 @@ export default ({
           {
             padding: 10,
             borderRadius: 15,
-            marginVertical: 8,
+            marginTop: 10,
             backgroundColor: color || theme.current.button,
           },
           containerStyle,

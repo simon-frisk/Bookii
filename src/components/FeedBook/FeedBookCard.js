@@ -20,7 +20,7 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
         Styles.card,
         style,
         {
-          padding: 15,
+          padding: 17,
           width: limitWidth ? 290 : undefined,
           alignSelf: limitWidth ? 'flex-start' : 'auto',
           marginVertical: 10,
@@ -64,11 +64,13 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
           </Typography>
         </TouchableOpacity>
       )}
-      <View style={{ marginVertical: 10 }}>
-        <Typography type='h4' style={{ marginBottom: 5 }}>
+      <View style={{ marginTop: 10 }}>
+        <Typography type='h4'>
           {new Date(feedBook.date).toDateString()}
         </Typography>
-        <ExpandableText text={feedBook.comment} />
+        {!!feedBook.comment && (
+          <ExpandableText text={feedBook.comment} style={{ marginTop: 5 }} />
+        )}
         {isSelf && (
           <PressButton
             text='Edit'

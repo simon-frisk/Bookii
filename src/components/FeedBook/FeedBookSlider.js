@@ -20,7 +20,7 @@ export default ({ title, feedBooks, isSelf }) => {
         keyExtractor={({ _id }, index) => index + _id}
         contentContainerStyle={{
           paddingHorizontal: styles.standardPageInset / 2,
-          paddingBottom: 10,
+          paddingBottom: 5,
         }}
         horizontal={true}
         renderItem={({ item }) => (
@@ -28,7 +28,7 @@ export default ({ title, feedBooks, isSelf }) => {
             limitWidth={true}
             feedBook={item}
             isSelf={isSelf}
-            style={{ marginHorizontal: styles.standardPageInset }}
+            style={{ marginHorizontal: styles.standardPageInset / 2 }}
           />
         )}
       />
