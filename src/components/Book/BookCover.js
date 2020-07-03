@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, View } from 'react-native'
-import Typography from './Typography'
+import Typography from '../Typography'
 
 export default ({ uri, width, style, title }) => {
   return (

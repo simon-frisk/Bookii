@@ -4,7 +4,7 @@ import { FlatList, ScrollView, View, ActivityIndicator } from 'react-native'
 import useStyles from '../../util/useStyles'
 import useTheme from '../../util/useTheme'
 import Typography from '../../components/Typography'
-import SmallBookCardSlider from '../../components/bookcard/SmallBookCardSlider'
+import BookSlider from '../../components/Book/BookSlider'
 import Search from './Search'
 
 export default () => {
@@ -35,7 +35,7 @@ export default () => {
           <FlatList
             data={data.bookLists}
             renderItem={({ item }) => (
-              <SmallBookCardSlider title={item.name} books={item.books} />
+              <BookSlider title={item.name} books={item.books} />
             )}
             keyExtractor={item => item.name}
           />

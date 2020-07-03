@@ -1,10 +1,10 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 import useStyles from '../../util/useStyles'
-import FeedBookCard from '../FeedBookCard'
+import BookCard from './BookCard'
 import Typography from '../Typography'
 
-export default ({ feedBooks, isSelf, title }) => {
+export default ({ books, title }) => {
   const Styles = useStyles()
 
   return (
@@ -13,25 +13,24 @@ export default ({ feedBooks, isSelf, title }) => {
         type='h2'
         style={{
           marginHorizontal: Styles.standardPageInset,
-          marginTop: 30,
+          marginTop: 25,
         }}
       >
         {title}
       </Typography>
       <FlatList
-        data={feedBooks}
-        keyExtractor={({ _id }, index) => index + _id}
+        data={books}
+        keyExtractor={({ bookId }, index) => index + bookId}
         contentContainerStyle={{
           paddingHorizontal: Styles.standardPageInset / 2,
-          paddingBottom: 10,
+          paddingVertical: 10,
         }}
         horizontal={true}
-        renderItem={({ item: feedBook }) => (
-          <FeedBookCard
-            isSelf={isSelf}
-            limitWidth={true}
-            feedBook={feedBook}
-            book={feedBook.book}
+        renderItem={({ item: book }) => (
+          <BookCard
+            bookId={book.bookId}
+            thumbnail={book.thumbnail}
+            title={book.title}
             style={{ marginHorizontal: Styles.standardPageInset / 2 }}
           />
         )}

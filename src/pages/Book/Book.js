@@ -1,10 +1,10 @@
 import React from 'react'
 import { ScrollView, ActivityIndicator, View } from 'react-native'
 import useStyles from '../../util/useStyles'
-import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
+import FeedBookSlider from '../../components/FeedBookSlider'
 import WishButton from './WishButton'
 import { useNavigation } from '@react-navigation/native'
-import BookCover from '../../components/BookCover'
+import BookCover from '../../components/Book/BookCover'
 import PressButton from '../../components/PressButton'
 import useBookPage from '../../data/hooks/useBookPage'
 import Typography from '../../components/Typography'
@@ -111,16 +111,15 @@ export default ({ route }) => {
           )}
         </View>
         {!!data.book.onselffeed.length && (
-          <FeedBookCardSlider
+          <FeedBookSlider
             feedBooks={data.book.onselffeed}
             isSelf={true}
             title='On your feed'
           />
         )}
         {!!data.book.onfollowingfeed.length && (
-          <FeedBookCardSlider
+          <FeedBookSlider
             feedBooks={data.book.onfollowingfeed}
-            isSelf={false}
             title='On following feeds'
           />
         )}

@@ -5,8 +5,8 @@ import { UserContext } from '../../root/UserProvider'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
 import PressButton from '../../components/PressButton'
 import FollowButton from './FollowButton'
-import FeedBookCardSlider from '../../components/bookcard/FeedBookCardSlider'
-import SmallBookCardSlider from '../../components/bookcard/SmallBookCardSlider'
+import FeedBookSlider from '../../components/FeedBook/FeedBookSlider'
+import BookSlider from '../../components/Book/BookSlider'
 import useUserPage from '../../data/hooks/useUserPage'
 import UserMenu from './UserMenu'
 import Typography from '../../components/Typography'
@@ -72,7 +72,7 @@ export default ({ route, navigation }) => {
         </View>
         {/*Some cool text if no books are added*/}
         {!!data.user.feedBooks.filter(feedBook => feedBook.favorite).length && (
-          <FeedBookCardSlider
+          <FeedBookSlider
             feedBooks={data.user.feedBooks.filter(
               feedBook => feedBook.favorite
             )}
@@ -81,10 +81,10 @@ export default ({ route, navigation }) => {
           />
         )}
         {!!data.user.wishBooks.length && (
-          <SmallBookCardSlider books={data.user.wishBooks} title='Wish list' />
+          <BookSlider books={data.user.wishBooks} title='Wish list' />
         )}
         {!!data.user.feedBooks.length && (
-          <FeedBookCardSlider
+          <FeedBookSlider
             feedBooks={data.user.feedBooks}
             isSelf={isSelf}
             title='Feed'

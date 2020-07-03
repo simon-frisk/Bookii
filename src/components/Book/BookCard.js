@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import BookCover from '../BookCover'
+import BookCover from '../Book/BookCover'
 
 export default ({ bookId, title, thumbnail, style }) => {
   const navigation = useNavigation()

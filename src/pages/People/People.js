@@ -5,7 +5,7 @@ import Typography from '../../components/Typography'
 import usePeoplePage from '../../data/hooks/usePeoplePage'
 import useTheme from '../../util/useTheme'
 import UserSlider from '../../components/UserSlider'
-import FeedBookCard from '../../components/FeedBookCard'
+import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 
 export default () => {
   const { data, loading, errorMessage } = usePeoplePage()
@@ -37,9 +37,7 @@ export default () => {
           <FlatList
             data={data.feed}
             keyExtractor={({ _id }, index) => _id + index}
-            renderItem={({ item }) => (
-              <FeedBookCard user={item.user} book={item.book} feedBook={item} />
-            )}
+            renderItem={({ item }) => <FeedBookCard feedBook={item} />}
           />
         </>
       )}
