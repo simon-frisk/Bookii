@@ -61,7 +61,7 @@ export default ({ route }) => {
               >
                 {data.book.title}
               </Typography>
-              {data.book.subTitle && (
+              {!!data.book.subTitle && (
                 <Typography style={{ textAlign: 'center', color: 'grey' }}>
                   {data.book.subTitle}
                 </Typography>
@@ -82,28 +82,28 @@ export default ({ route }) => {
             />
           </View>
           <View style={{ marginBottom: 15 }}>
-            {data.book.authors && (
+            {!!data.book.authors && (
               <Typography style={{ color: 'grey' }}>{`Author${
                 data.book.authors.length > 1 ? 's' : ''
               }: ${data.book.authors.join(' , ')}`}</Typography>
             )}
-            {data.book.pages && (
+            {!!data.book.pages && (
               <Typography style={{ color: 'grey' }}>
                 Pages: {data.book.pages}
               </Typography>
             )}
-            {data.book.published && (
+            {!!data.book.published && (
               <Typography style={{ color: 'grey' }}>
                 Published: {data.book.published}
               </Typography>
             )}
-            {data.book.publisher && (
+            {!!data.book.publisher && (
               <Typography style={{ color: 'grey' }}>
                 Publisher: {data.book.publisher}
               </Typography>
             )}
           </View>
-          {data.book.wikipediadescription && (
+          {!!data.book.wikipediadescription && (
             <View style={[Styles.card, { padding: 20 }]}>
               <Typography type='h3'>Wikipedia</Typography>
               <Typography>{data.book.wikipediadescription}</Typography>
