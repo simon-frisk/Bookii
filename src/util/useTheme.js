@@ -23,12 +23,17 @@ const dark = {
   error: '#FF453A',
 }
 
+const font = Platform.select({
+  ios: { fontFamily: 'Arial Rounded MT Bold' },
+})
+
 export default () => {
   const colorScheme = useColorScheme()
   const isDarkMode = colorScheme === 'dark'
   const current = isDarkMode ? dark : light
 
   return {
+    font,
     current,
     dark,
     light,

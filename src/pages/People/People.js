@@ -6,17 +6,16 @@ import usePeoplePage from '../../data/hooks/usePeoplePage'
 import useTheme from '../../util/useTheme'
 import UserSlider from '../../components/UserSlider'
 import FeedBookCard from '../../components/FeedBook/FeedBookCard'
+import useHeaderTitle from '../../util/useHeaderTitle'
 
 export default () => {
   const { data, loading, errorMessage } = usePeoplePage()
   const styles = useStyles()
   const theme = useTheme()
+  useHeaderTitle('People')
 
   return (
     <ScrollView contentContainerStyle={{ padding: styles.standardPageInset }}>
-      <Typography type='h1' style={{ marginBottom: 30 }}>
-        People
-      </Typography>
       {loading && (
         <View style={styles.center}>
           <ActivityIndicator />

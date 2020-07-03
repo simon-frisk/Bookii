@@ -9,7 +9,6 @@ export default gql`
     }
     feed {
       _id
-      bookId
       comment
       date
       user {
@@ -18,6 +17,7 @@ export default gql`
         profilePicturePath
       }
       book {
+        bookId
         thumbnail
         title
       }

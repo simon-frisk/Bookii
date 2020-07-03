@@ -1,5 +1,11 @@
 import React, { useContext } from 'react'
-import { ScrollView, ActivityIndicator, View } from 'react-native'
+import {
+  ScrollView,
+  ActivityIndicator,
+  View,
+  TouchableOpacity,
+} from 'react-native'
+import { FontAwesome5 } from '@expo/vector-icons'
 import useStyles from '../../util/useStyles'
 import { UserContext } from '../../root/UserProvider'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
@@ -8,15 +14,22 @@ import FollowButton from './FollowButton'
 import FeedBookSlider from '../../components/FeedBook/FeedBookSlider'
 import BookSlider from '../../components/Book/BookSlider'
 import useUserPage from '../../data/hooks/useUserPage'
-import UserMenu from './UserMenu'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
+import useHeaderTitle from '../../util/useHeaderTitle'
+import useReportActionSheet from './useReportActionSheet'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
   const { data, loading, errorMessage } = useUserPage({ _id })
   const Styles = useStyles()
   const theme = useTheme()
+  const showReportActionSheet = useReportActionSheet(
+    _id,
+    data && data.user.isinappropriateflagged
+  )
+
+  useHeaderTitle(data ? data.user.name : '')
 
   if (loading)
     return (
@@ -39,33 +52,44 @@ export default ({ route, navigation }) => {
       <ScrollView
         contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
       >
-        {!isSelf && (
-          <UserMenu _id={_id} isFlagged={data.user.isinappropriateflagged} />
-        )}
-        <View style={{ padding: Styles.standardPageInset }}>
-          <View style={{ alignItems: 'center' }}>
-            <ProfilePictureCircle
-              profilePicturePath={data.user.profilePicturePath}
-              name={data.user.name}
-              size={100}
-            />
-            <Typography type='h1'>{data.user.name}</Typography>
-          </View>
-          <View style={{ marginHorizontal: 50 }}>
+        <View
+          style={{ padding: Styles.standardPageInset, flexDirection: 'row' }}
+        >
+          <ProfilePictureCircle
+            profilePicturePath={data.user.profilePicturePath}
+            name={data.user.name}
+            size={110}
+          />
+          <View style={{ flex: 1, marginLeft: 20, justifyContent: 'flex-end' }}>
             {!isSelf && (
-              <FollowButton
-                _id={_id}
-                isSelfFollowing={data.user.followers.some(
-                  follower => follower._id.toString() === selfId.toString()
-                )}
-              />
+              <>
+                <TouchableOpacity
+                  onPress={showReportActionSheet}
+                  style={{ alignSelf: 'flex-end' }}
+                >
+                  <FontAwesome5
+                    name={
+                      data.user.isinappropriateflagged
+                        ? 'font-awesome-flag'
+                        : 'flag'
+                    }
+                    size={25}
+                    color={theme.current.complement}
+                    style={{ marginBottom: 5 }}
+                  />
+                </TouchableOpacity>
+                <FollowButton
+                  _id={_id}
+                  isSelfFollowing={data.user.followers.some(
+                    follower => follower._id.toString() === selfId.toString()
+                  )}
+                />
+              </>
             )}
             {isSelf && (
               <PressButton
+                onPress={() => navigation.navigate('profile')}
                 text='Profile'
-                onPress={() => {
-                  navigation.navigate('profile')
-                }}
               />
             )}
           </View>

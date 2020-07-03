@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 import { AppLoading } from 'expo'
 import { View } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
@@ -16,9 +16,8 @@ import useTheme from '../util/useTheme'
 import BottomTabs from './BottomTabs'
 import useIdentifyUser from './useIdentifyUser'
 import { UserContext } from './UserProvider'
-import CloseScreenButton from './CloseScreenButton'
 
-const Stack = createStackNavigator()
+const Stack = createNativeStackNavigator()
 
 export default () => {
   const {
@@ -51,6 +50,7 @@ export default () => {
   })
 
   const theme = useTheme()
+
   if (!isInitialAuthCheckDone) return <AppLoading />
   return (
     <NavigationContainer
@@ -63,23 +63,31 @@ export default () => {
       }}
     >
       <Stack.Navigator
-        mode='card'
-        headerMode='float'
         screenOptions={{
+          headerBackTitle: 'Back',
+          headerTopInsetEnabled: true,
+          headerLargeTitleStyle: { ...theme.font, fontSize: 40 },
+          headerStyle: { backgroundColor: theme.current.background },
+          headerTitleStyle: theme.font,
           title: '',
-          headerLeft: () => <View />,
-          headerRight: () => <CloseScreenButton />,
-          headerTransparent: true,
         }}
       >
         {_id ? (
           isLatestConsent ? (
             <>
-              <Stack.Screen name='mainTabScreen' component={BottomTabs} />
+              <Stack.Screen
+                name='mainTabScreen'
+                component={BottomTabs}
+                options={{ headerLargeTitle: true }}
+              />
               <Stack.Screen name='book' component={Book} />
               <Stack.Screen name='addFeedBook' component={AddFeedBook} />
               <Stack.Screen name='editFeedBook' component={EditFeedBook} />
-              <Stack.Screen name='user' component={User} />
+              <Stack.Screen
+                name='user'
+                component={User}
+                options={{ headerLargeTitle: true }}
+              />
               <Stack.Screen name='profile' component={Profile} />
             </>
           ) : (

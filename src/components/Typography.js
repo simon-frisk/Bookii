@@ -2,10 +2,6 @@ import React from 'react'
 import { Text } from 'react-native'
 import useTheme from '../util/useTheme'
 
-const font = Platform.select({
-  ios: { fontFamily: 'Arial Rounded MT Bold' },
-})
-
 export default props => {
   const theme = useTheme()
 
@@ -17,7 +13,7 @@ export default props => {
       style={[
         { color: theme.current.text },
         fontSizeAndWeight,
-        font,
+        theme.font,
         props.style,
       ]}
     >
