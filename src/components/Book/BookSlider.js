@@ -23,7 +23,7 @@ export default ({ books, title }) => {
         keyExtractor={({ bookId }, index) => index + bookId}
         contentContainerStyle={{
           paddingHorizontal: Styles.standardPageInset / 2,
-          paddingBottom: 15,
+          paddingBottom: 5,
         }}
         horizontal={true}
         renderItem={({ item: book }) => (
@@ -31,7 +31,10 @@ export default ({ books, title }) => {
             bookId={book.bookId}
             thumbnail={book.thumbnail}
             title={book.title}
-            style={{ marginHorizontal: Styles.standardPageInset / 2 }}
+            style={{
+              marginHorizontal: Styles.standardPageInset / 2,
+              marginVertical: 10,
+            }}
           />
         )}
       />
