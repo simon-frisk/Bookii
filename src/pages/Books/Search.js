@@ -4,7 +4,7 @@ import useBookSearch from '../../data/hooks/useBookSearch'
 import TextField from '../../components/TextField'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
-import SmallBookCardSlider from '../../components/bookcard/SmallBookCardSlider'
+import BookSlider from '../../components/Book/BookSlider'
 import useTheme from '../../util/useTheme'
 
 export default () => {
@@ -46,7 +46,7 @@ export default () => {
         </Typography>
       )}
       {!!data && !!data.bookSearch.length && (
-        <SmallBookCardSlider title='Search results' books={data.bookSearch} />
+        <BookSlider title='Search results' books={data.bookSearch} />
       )}
     </>
   )

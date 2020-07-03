@@ -1,7 +1,7 @@
 import React from 'react'
 import { ScrollView, ActivityIndicator, View } from 'react-native'
 import useStyles from '../../util/useStyles'
-import FeedBookSlider from '../../components/FeedBookSlider'
+import FeedBookSlider from '../../components/FeedBook/FeedBookSlider'
 import WishButton from './WishButton'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/Book/BookCover'

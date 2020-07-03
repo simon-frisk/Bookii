@@ -20,8 +20,8 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
         Styles.card,
         style,
         {
-          padding: 20,
-          width: limitWidth ? 280 : undefined,
+          padding: 15,
+          width: limitWidth ? 290 : undefined,
           alignSelf: limitWidth ? 'flex-start' : 'auto',
           marginVertical: 10,
         },
