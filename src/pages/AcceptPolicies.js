@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { View } from 'react-native'
 import * as WebBrowser from 'expo-web-browser'
 import Typography from '../components/Typography'
 import PressButton from '../components/PressButton'
