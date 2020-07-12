@@ -8,6 +8,7 @@ export default gql`
       subTitle
       authors
       thumbnail
+      description
       pages
       published
       publisher

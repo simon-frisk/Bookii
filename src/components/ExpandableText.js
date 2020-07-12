@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
-import Typography from '../Typography'
-import useTheme from '../../util/useTheme'
+import Typography from './Typography'
+import useTheme from '../util/useTheme'
 
 export default ({ text, style }) => {
   const [isExpanded, setIsExpanded] = useState(false)

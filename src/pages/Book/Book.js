@@ -9,6 +9,7 @@ import PressButton from '../../components/PressButton'
 import useBookPage from '../../data/hooks/useBookPage'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
+import ExpandableText from '../../components/ExpandableText'
 
 export default ({ route }) => {
   const Styles = useStyles()
@@ -103,10 +104,16 @@ export default ({ route }) => {
               </Typography>
             )}
           </View>
+          {!!data.book.description && (
+            <View style={[Styles.card, { padding: 20, marginBottom: 15 }]}>
+              <Typography type='h3'>Description</Typography>
+              <ExpandableText text={data.book.description} />
+            </View>
+          )}
           {!!data.book.wikipediadescription && (
             <View style={[Styles.card, { padding: 20 }]}>
               <Typography type='h3'>Wikipedia</Typography>
-              <Typography>{data.book.wikipediadescription}</Typography>
+              <ExpandableText text={data.book.wikipediadescription} />
             </View>
           )}
         </View>
