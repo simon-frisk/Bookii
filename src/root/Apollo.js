@@ -32,7 +32,7 @@ export default ({ children }) => {
         }
       }),
       createUploadLink({
-        uri: 'https://bookiiapp.herokuapp.com/',
+        uri: 'https://bookapp-282214.ew.r.appspot.com',
       }),
     ]),
     cache: new InMemoryCache(),
