@@ -107,13 +107,19 @@ export default ({ route }) => {
           {!!data.book.description && (
             <View style={[Styles.card, { padding: 20, marginBottom: 15 }]}>
               <Typography type='h3'>Description</Typography>
-              <ExpandableText text={data.book.description} />
+              <ExpandableText
+                text={data.book.description}
+                extractLength={200}
+              />
             </View>
           )}
           {!!data.book.wikipediadescription && (
             <View style={[Styles.card, { padding: 20 }]}>
               <Typography type='h3'>Wikipedia</Typography>
-              <ExpandableText text={data.book.wikipediadescription} />
+              <ExpandableText
+                text={data.book.wikipediadescription}
+                extractLength={200}
+              />
             </View>
           )}
         </View>

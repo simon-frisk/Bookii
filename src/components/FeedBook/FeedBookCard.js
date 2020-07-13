@@ -64,12 +64,16 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
           </Typography>
         </TouchableOpacity>
       )}
-      <View style={{ marginTop: 10 }}>
+      <View style={{ marginTop: 4 }}>
         <Typography type='h4'>
           {new Date(feedBook.date).toDateString()}
         </Typography>
         {!!feedBook.comment && (
-          <ExpandableText text={feedBook.comment} style={{ marginTop: 5 }} />
+          <ExpandableText
+            text={feedBook.comment}
+            style={{ marginTop: 5 }}
+            extractLength={limitWidth ? 40 : 110}
+          />
         )}
         {isSelf && (
           <PressButton

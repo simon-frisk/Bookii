@@ -3,14 +3,15 @@ import { TouchableOpacity } from 'react-native'
 import Typography from './Typography'
 import useTheme from '../util/useTheme'
 
-export default ({ text, style }) => {
+export default ({ text, style, extractLength }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const theme = useTheme()
 
-  if (text.length < 100) return <Typography style={style}>{text}</Typography>
+  if (text.length < extractLength + 30)
+    return <Typography style={style}>{text}</Typography>
 
   const extract = text
-    .slice(0, 70)
+    .slice(0, extractLength)
     .split(' ')
     .slice(0, -1)
     .join(' ')

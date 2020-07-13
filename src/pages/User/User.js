@@ -58,9 +58,9 @@ export default ({ route, navigation }) => {
           <ProfilePictureCircle
             profilePicturePath={data.user.profilePicturePath}
             name={data.user.name}
-            size={110}
+            size={130}
           />
-          <View style={{ flex: 1, marginLeft: 20, justifyContent: 'flex-end' }}>
+          <View style={{ flex: 1, marginLeft: 30, justifyContent: 'flex-end' }}>
             {!isSelf && (
               <>
                 <TouchableOpacity
