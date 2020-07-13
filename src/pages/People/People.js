@@ -24,7 +24,10 @@ export default () => {
             <>
               <Typography
                 type='h2'
-                style={{ paddingHorizontal: styles.standardPageInset }}
+                style={{
+                  paddingHorizontal: styles.standardPageInset,
+                  paddingTop: 20,
+                }}
               >
                 All users
               </Typography>
