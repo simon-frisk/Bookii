@@ -18,7 +18,8 @@ export default ({
       <View
         style={[
           {
-            padding: 10,
+            paddingVertical: 10,
+            paddingHorizontal: 30,
             borderRadius: 15,
             marginTop: 10,
             backgroundColor: color || theme.current.button,

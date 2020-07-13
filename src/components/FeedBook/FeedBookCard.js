@@ -29,6 +29,7 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
     >
       {!!feedBook.user && (
         <TouchableOpacity
+          disabled={isSelf}
           onPress={() => {
             navigation.navigate('user', { _id: feedBook.user._id })
           }}
@@ -41,7 +42,7 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
           <ProfilePictureCircle
             profilePicturePath={feedBook.user.profilePicturePath}
             name={feedBook.user.name}
-            size={45}
+            size={50}
             style={{ marginRight: 10 }}
           />
           <Typography type='h3'>{feedBook.user.name}</Typography>
@@ -64,7 +65,7 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
           </Typography>
         </TouchableOpacity>
       )}
-      <View style={{ marginTop: 4 }}>
+      <View style={{ marginTop: 8 }}>
         <Typography type='h4'>
           {new Date(feedBook.date).toDateString()}
         </Typography>
@@ -78,7 +79,6 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
         {isSelf && (
           <PressButton
             text='Edit'
-            color={theme.current.main}
             onPress={() =>
               navigation.navigate('editFeedBook', { _id: feedBook._id })
             }

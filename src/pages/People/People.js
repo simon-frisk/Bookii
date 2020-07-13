@@ -33,11 +33,9 @@ export default () => {
           <Typography type='h2'>All users</Typography>
           <UserSlider users={data.users} />
           <Typography type='h2'>Feed</Typography>
-          <FlatList
-            data={data.feed}
-            keyExtractor={({ _id }, index) => _id + index}
-            renderItem={({ item }) => <FeedBookCard feedBook={item} />}
-          />
+          {data.feed.map(feedBook => (
+            <FeedBookCard feedBook={feedBook} key={feedBook._id} />
+          ))}
         </>
       )}
     </ScrollView>

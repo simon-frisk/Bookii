@@ -31,13 +31,9 @@ export default () => {
       {data && (
         <>
           <Search />
-          <FlatList
-            data={data.bookLists}
-            renderItem={({ item }) => (
-              <BookSlider title={item.name} books={item.books} />
-            )}
-            keyExtractor={item => item.name}
-          />
+          {data.bookLists.map(list => (
+            <BookSlider title={list.name} key={list.name} books={list.books} />
+          ))}
         </>
       )}
     </ScrollView>

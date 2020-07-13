@@ -10,6 +10,8 @@ import useBookPage from '../../data/hooks/useBookPage'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
 import ExpandableText from '../../components/ExpandableText'
+import BookCard from '../../components/Book/BookCard'
+import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 
 export default ({ route }) => {
   const Styles = useStyles()
@@ -49,7 +51,7 @@ export default ({ route }) => {
         contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
       >
         <View style={{ padding: Styles.standardPageInset }}>
-          <View style={{ marginBottom: 20 }}>
+          <View style={{ marginBottom: 10 }}>
             <View style={{ alignItems: 'center' }}>
               <BookCover
                 uri={data.book.thumbnail}
@@ -122,20 +124,17 @@ export default ({ route }) => {
               />
             </View>
           )}
+          {data.book.onselffeed.map(feedBook => (
+            <FeedBookCard
+              feedBook={feedBook}
+              key={feedBook._id}
+              isSelf={true}
+            />
+          ))}
+          {data.book.onfollowingfeed.map(feedBook => (
+            <FeedBookCard feedBook={feedBook} key={feedBook._id} />
+          ))}
         </View>
-        {!!data.book.onselffeed.length && (
-          <FeedBookSlider
-            feedBooks={data.book.onselffeed}
-            isSelf={true}
-            title='On your feed'
-          />
-        )}
-        {!!data.book.onfollowingfeed.length && (
-          <FeedBookSlider
-            feedBooks={data.book.onfollowingfeed}
-            title='On following feeds'
-          />
-        )}
       </ScrollView>
     )
 }

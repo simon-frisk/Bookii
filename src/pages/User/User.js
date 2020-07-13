@@ -18,6 +18,7 @@ import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
 import useHeaderTitle from '../../util/useHeaderTitle'
 import useReportActionSheet from './useReportActionSheet'
+import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
@@ -94,7 +95,6 @@ export default ({ route, navigation }) => {
             )}
           </View>
         </View>
-        {/*Some cool text if no books are added*/}
         {!!data.user.feedBooks.filter(feedBook => feedBook.favorite).length && (
           <FeedBookSlider
             feedBooks={data.user.feedBooks.filter(
@@ -107,13 +107,30 @@ export default ({ route, navigation }) => {
         {!!data.user.wishBooks.length && (
           <BookSlider books={data.user.wishBooks} title='Wish list' />
         )}
-        {!!data.user.feedBooks.length && (
-          <FeedBookSlider
-            feedBooks={data.user.feedBooks}
-            isSelf={isSelf}
-            title='Feed'
-          />
-        )}
+        <View
+          style={{ paddingHorizontal: Styles.standardPageInset, marginTop: 25 }}
+        >
+          <Typography type='h2'>Books</Typography>
+          {data.user.feedBooks.map(feedBook => (
+            <FeedBookCard
+              feedBook={feedBook}
+              isSelf={isSelf}
+              key={feedBook._id}
+            />
+          ))}
+          {data.user.feedBooks.length === 0 && (
+            <View style={Styles.center}>
+              <Typography>No books added</Typography>
+              {isSelf && (
+                <PressButton
+                  text='Dicover books!'
+                  color={theme.current.main}
+                  onPress={() => navigation.navigate('Books')}
+                />
+              )}
+            </View>
+          )}
+        </View>
       </ScrollView>
     )
 }

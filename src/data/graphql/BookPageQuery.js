@@ -18,21 +18,16 @@ export default gql`
         _id
         date
         comment
-        book {
-          bookId
-          title
-          thumbnail
+        user {
+          name
+          profilePicturePath
+          _id
         }
       }
       onfollowingfeed {
         _id
         date
         comment
-        book {
-          bookId
-          title
-          thumbnail
-        }
         user {
           name
           profilePicturePath
