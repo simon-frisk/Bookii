@@ -61,13 +61,22 @@ export default ({ route, navigation }) => {
             name={data.user.name}
             size={130}
           />
-          <View style={{ flex: 1, marginLeft: 30, justifyContent: 'flex-end' }}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'flex-start',
+              alignItems: 'flex-end',
+            }}
+          >
             {!isSelf && (
               <>
-                <TouchableOpacity
-                  onPress={showReportActionSheet}
-                  style={{ alignSelf: 'flex-end' }}
-                >
+                <FollowButton
+                  _id={_id}
+                  isSelfFollowing={data.user.followers.some(
+                    follower => follower._id.toString() === selfId.toString()
+                  )}
+                />
+                <TouchableOpacity onPress={showReportActionSheet}>
                   <FontAwesome5
                     name={
                       data.user.isinappropriateflagged
@@ -76,15 +85,9 @@ export default ({ route, navigation }) => {
                     }
                     size={25}
                     color={theme.current.complement}
-                    style={{ marginBottom: 5 }}
+                    style={{ marginTop: 15 }}
                   />
                 </TouchableOpacity>
-                <FollowButton
-                  _id={_id}
-                  isSelfFollowing={data.user.followers.some(
-                    follower => follower._id.toString() === selfId.toString()
-                  )}
-                />
               </>
             )}
             {isSelf && (
