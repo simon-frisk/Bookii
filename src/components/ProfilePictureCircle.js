@@ -16,6 +16,7 @@ export default ({ profilePicturePath, name, size, style }) => {
           width: size,
           height: size,
           borderRadius: size / 2,
+          backgroundColor: 'grey',
           ...style,
         }}
       />
