@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 import { AppLoading } from 'expo'
-import { View } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
 import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
@@ -16,6 +15,7 @@ import useTheme from '../util/useTheme'
 import BottomTabs from './BottomTabs'
 import useIdentifyUser from './useIdentifyUser'
 import { UserContext } from './UserProvider'
+import ForgotPassword from '../pages/ForgotPassword'
 
 const Stack = createNativeStackNavigator()
 
@@ -97,6 +97,7 @@ export default () => {
           <>
             <Stack.Screen name='signup' component={Signup} />
             <Stack.Screen name='signin' component={Signin} />
+            <Stack.Screen name='forgotpassword' component={ForgotPassword} />
           </>
         )}
       </Stack.Navigator>

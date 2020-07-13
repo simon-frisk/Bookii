@@ -4,7 +4,7 @@ export default () => {
   const theme = useTheme()
 
   return {
-    standardPageInset: 20,
+    standardPageInset: 12,
     card: {
       backgroundColor: theme.current.primary,
       borderRadius: 25,

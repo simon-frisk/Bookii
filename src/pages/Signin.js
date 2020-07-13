@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useLazyQuery } from '@apollo/react-hooks'
+import { Link } from '@react-navigation/native'
 import gql from 'graphql-tag'
 import { UserContext } from '../root/UserProvider'
 import { View } from 'react-native'
@@ -67,6 +68,11 @@ export default () => {
           color={theme.current.main}
           containerStyle={{ marginVertical: 10 }}
         />
+        <Typography>
+          <Link to='/forgotpassword' style={{ color: theme.current.main }}>
+            Forgot password?
+          </Link>
+        </Typography>
       </View>
     </View>
   )
