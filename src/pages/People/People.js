@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, ActivityIndicator, View, FlatList } from 'react-native'
+import { ActivityIndicator, View, FlatList } from 'react-native'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
 import usePeoplePage from '../../data/hooks/usePeoplePage'
@@ -9,35 +9,56 @@ import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 import useHeaderTitle from '../../util/useHeaderTitle'
 
 export default () => {
-  const { data, loading, errorMessage } = usePeoplePage()
+  const { data, loading, errorMessage, getMoreData } = usePeoplePage()
   const styles = useStyles()
   const theme = useTheme()
   useHeaderTitle('People')
 
   return (
-    <ScrollView contentContainerStyle={{ padding: styles.standardPageInset }}>
-      {loading && (
-        <View style={styles.center}>
-          <ActivityIndicator />
-        </View>
-      )}
-      {errorMessage && (
-        <View style={styles.center}>
-          <Typography style={{ color: theme.current.error }}>
-            {errorMessage}
-          </Typography>
-        </View>
-      )}
-      {data && (
+    <FlatList
+      data={data && data.feed}
+      keyExtractor={item => item._id}
+      ListHeaderComponent={() => (
         <>
-          <Typography type='h2'>All users</Typography>
-          <UserSlider users={data.users} />
-          <Typography type='h2'>Feed</Typography>
-          {data.feed.map(feedBook => (
-            <FeedBookCard feedBook={feedBook} key={feedBook._id} />
-          ))}
+          <Typography
+            type='h2'
+            style={{ paddingHorizontal: styles.standardPageInset }}
+          >
+            All users
+          </Typography>
+          {!!data && <UserSlider users={data.users} />}
+          <Typography
+            type='h2'
+            style={{ paddingHorizontal: styles.standardPageInset }}
+          >
+            Feed
+          </Typography>
         </>
       )}
-    </ScrollView>
+      ListEmptyComponent={() => {
+        if (loading)
+          return (
+            <View style={styles.center}>
+              <ActivityIndicator />
+            </View>
+          )
+        if (error)
+          return (
+            <View style={styles.center}>
+              <Typography style={{ color: theme.current.error }}>
+                {errorMessage}
+              </Typography>
+            </View>
+          )
+      }}
+      renderItem={({ item }) => (
+        <FeedBookCard
+          feedBook={item}
+          key={item._id}
+          style={{ marginHorizontal: styles.standardPageInset }}
+        />
+      )}
+      onEndReached={getMoreData}
+    />
   )
 }

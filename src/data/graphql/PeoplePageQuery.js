@@ -1,13 +1,13 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query PeoplePageQuery {
+  query PeoplePageQuery($after: ID) {
     users {
       _id
       name
       profilePicturePath
     }
-    feed {
+    feed(after: $after) {
       _id
       comment
       date
