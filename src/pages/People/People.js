@@ -20,19 +20,23 @@ export default () => {
       keyExtractor={item => item._id}
       ListHeaderComponent={() => (
         <>
-          <Typography
-            type='h2'
-            style={{ paddingHorizontal: styles.standardPageInset }}
-          >
-            All users
-          </Typography>
-          {!!data && <UserSlider users={data.users} />}
-          <Typography
-            type='h2'
-            style={{ paddingHorizontal: styles.standardPageInset }}
-          >
-            Feed
-          </Typography>
+          {!!data && (
+            <>
+              <Typography
+                type='h2'
+                style={{ paddingHorizontal: styles.standardPageInset }}
+              >
+                All users
+              </Typography>
+              <UserSlider users={data.users} />
+              <Typography
+                type='h2'
+                style={{ paddingHorizontal: styles.standardPageInset }}
+              >
+                Feed
+              </Typography>
+            </>
+          )}
         </>
       )}
       ListEmptyComponent={() => {
