@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
-import { AppLoading } from 'expo'
+import { View } from 'react-native'
 import * as Segment from 'expo-analytics-segment'
 import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
@@ -51,7 +51,7 @@ export default () => {
 
   const theme = useTheme()
 
-  if (!isInitialAuthCheckDone) return <AppLoading />
+  if (!isInitialAuthCheckDone) return <View />
   return (
     <NavigationContainer
       theme={theme.theme}
