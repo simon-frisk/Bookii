@@ -36,7 +36,7 @@ export default () => {
                 type='h2'
                 style={{ paddingHorizontal: styles.standardPageInset }}
               >
-                Feed
+                Latest books
               </Typography>
             </>
           )}
@@ -49,7 +49,7 @@ export default () => {
               <ActivityIndicator />
             </View>
           )
-        if (error)
+        if (errorMessage)
           return (
             <View style={styles.center}>
               <Typography style={{ color: theme.current.error }}>
@@ -57,6 +57,11 @@ export default () => {
               </Typography>
             </View>
           )
+        return (
+          <View style={styles.center}>
+            <Typography>No books</Typography>
+          </View>
+        )
       }}
       renderItem={({ item }) => (
         <FeedBookCard
