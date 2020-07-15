@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 import { View, Platform } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import PressButton from './PressButton'
-import useStyles from '../util/useStyles'
 import Typography from './Typography'
 
 export default ({ value, onChange }) => {
   const [show, setShow] = useState(false)
-  const styles = useStyles()
 
   return (
-    <View style={{ padding: 10 }}>
+    <View style={{ paddingVertical: 10 }}>
       <Typography type='h4' style={{ textAlign: 'center' }}>
         {new Date(value).toDateString()}
       </Typography>
