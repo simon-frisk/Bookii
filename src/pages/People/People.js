@@ -7,6 +7,7 @@ import useTheme from '../../util/useTheme'
 import UserSlider from '../../components/UserSlider'
 import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 import useHeaderTitle from '../../util/useHeaderTitle'
+import UserSearch from './UserSearch'
 
 export default () => {
   const { data, loading, errorMessage, getMoreData } = usePeoplePage()
@@ -22,6 +23,7 @@ export default () => {
         <>
           {!!data && (
             <>
+              <UserSearch />
               <Typography
                 type='h2'
                 style={{
