@@ -14,6 +14,7 @@ export default gql`
       publisher
       wikipediadescription
       isWished
+      youtubevideos
       onselffeed {
         _id
         date
