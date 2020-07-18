@@ -125,9 +125,15 @@ export default ({ route }) => {
         {!!data.book.youtubevideos.length && (
           <YoutubeVideos videoIds={data.book.youtubevideos} />
         )}
-        {data.book.onselffeed.map(feedBook => (
-          <FeedBookCard feedBook={feedBook} key={feedBook._id} isSelf={true} />
-        ))}
+        <View style={{ margin: Styles.standardPageInset }}>
+          {data.book.onselffeed.map(feedBook => (
+            <FeedBookCard
+              feedBook={feedBook}
+              key={feedBook._id}
+              isSelf={true}
+            />
+          ))}
+        </View>
         <View style={{ margin: Styles.standardPageInset }}>
           {data.book.onfollowingfeed.map(feedBook => (
             <FeedBookCard feedBook={feedBook} key={feedBook._id} />
