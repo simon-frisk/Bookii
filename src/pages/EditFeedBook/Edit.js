@@ -66,7 +66,10 @@ export default ({
 
   return (
     <View>
-      <DatePicker value={date} onChange={setDate} />
+      <DatePicker
+        date={new Date(date)}
+        onDateChange={date => setDate(date.toDateString())}
+      />
       <TextField
         value={comment}
         canHaveManyLines={true}

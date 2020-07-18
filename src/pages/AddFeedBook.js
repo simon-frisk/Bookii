@@ -70,7 +70,7 @@ export default ({ route, navigation }) => {
   return (
     <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
       <Typography type='h1'>Add book</Typography>
-      <DatePicker value={date} onChange={setDate} />
+      <DatePicker date={date} onDateChange={setDate} />
       <TextField
         placeholder='Say something about this book'
         canHaveManyLines={true}
