@@ -10,9 +10,7 @@ import useTheme from '../../util/useTheme'
 
 const DeleteProfile = gql`
   mutation DeleteProfile {
-    deleteUser {
-      _id
-    }
+    deleteUser
   }
 `
 

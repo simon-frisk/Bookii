@@ -22,12 +22,10 @@ const Signup = gql`
     $latestConsent: Boolean!
   ) {
     signup(
-      user: {
-        email: $email
-        name: $name
-        password: $password
-        latestConsent: $latestConsent
-      }
+      email: $email
+      name: $name
+      password: $password
+      latestConsent: $latestConsent
     )
   }
 `

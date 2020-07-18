@@ -13,6 +13,8 @@ import useApolloError from '../../util/useApolloError'
 import ChangePassword from './ChangePassword'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
+import ChangeProfilePicture from './ChangeProfilePicture'
+import useHeaderTitle from '../../util/useHeaderTitle'
 
 export const UserFollowingAndFollowers = gql`
   query UserFollowingAndFollowers {
@@ -42,6 +44,7 @@ export default () => {
   const errorMessage = useApolloError(error)
   const { signout } = useContext(UserContext)
   const client = useApolloClient()
+  useHeaderTitle('Profile')
 
   if (loading)
     return (
@@ -61,10 +64,10 @@ export default () => {
 
   return (
     <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
-      <UpdateProfile
-        name={data.user.name}
+      <UpdateProfile name={data.user.name} email={data.user.email} />
+      <ChangeProfilePicture
         profilePicturePath={data.user.profilePicturePath}
-        email={data.user.email}
+        name={data.user.name}
       />
       <ChangePassword />
       {!!data.user.following.length && (

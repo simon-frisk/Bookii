@@ -8,18 +8,16 @@ import gql from 'graphql-tag'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
 
-const UpdatePassword = gql`
-  mutation UpdateUser($password: String!) {
-    updateUser(user: { password: $password }) {
-      _id
-    }
+const ChangePassword = gql`
+  mutation changePassword($password: String!) {
+    changePassword(password: $password)
   }
 `
 
 export default () => {
-  const [callMutation, { data, loading, error }] = useMutation(UpdatePassword)
+  const [callMutation, { data, loading, error }] = useMutation(ChangePassword)
   const errorMessage = useApolloError(error)
-  const [password, setPassword] = useState()
+  const [password, setPassword] = useState('')
   const theme = useTheme()
 
   const updatePassword = () => {
@@ -27,12 +25,11 @@ export default () => {
   }
 
   useEffect(() => {
-    setPassword()
+    setPassword('')
   }, [data])
 
   return (
-    <View style={{ marginBottom: 35 }}>
-      <Typography type='h2'>Change password</Typography>
+    <View style={{ paddingVertical: 30 }}>
       <TextField
         value={password}
         onChangeText={setPassword}
@@ -47,7 +44,6 @@ export default () => {
       <PressButton
         loading={loading}
         text='Change password'
-        color={theme.current.main}
         onPress={updatePassword}
       />
     </View>

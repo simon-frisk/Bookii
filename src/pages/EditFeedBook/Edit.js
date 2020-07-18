@@ -13,9 +13,9 @@ import Typography from '../../components/Typography'
 const UpdateFeedBook = gql`
   mutation UpdateFeedBook(
     $_id: ID!
-    $comment: String
-    $date: String
-    $favorite: Boolean
+    $comment: String!
+    $date: String!
+    $favorite: Boolean!
   ) {
     updateFeedBook(
       _id: $_id
@@ -28,11 +28,6 @@ const UpdateFeedBook = gql`
       comment
       date
       favorite
-      book {
-        thumbnail
-        title
-        bookId
-      }
     }
   }
 `
