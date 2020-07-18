@@ -19,7 +19,7 @@ export default () => {
     <>
       <TextField
         value={query}
-        icon='search1'
+        icon='search'
         onChangeText={query => {
           setQuery(query)
         }}

@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, TextInput } from 'react-native'
-import { AntDesign } from '@expo/vector-icons'
+import { View, TextInput, TouchableOpacity } from 'react-native'
+import { FontAwesome, Entypo } from '@expo/vector-icons'
 import useTheme from '../util/useTheme'
 
 export default props => {
@@ -12,35 +12,50 @@ export default props => {
         {
           backgroundColor: theme.light.button,
           borderColor: theme.light.button,
-          borderRadius: 12,
-          borderWidth: 6,
-          paddingHorizontal: 3,
-          marginVertical: 6,
+          borderRadius: 15,
+          marginVertical: 5,
           flexDirection: 'row',
-          alignItems: 'center',
         },
         props.style,
       ]}
     >
       {props.icon && (
-        <AntDesign
-          name={props.icon}
-          style={{ marginRight: 5 }}
-          size={17}
-          color={theme.light.text}
-        />
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingLeft: 10,
+          }}
+        >
+          <FontAwesome name={props.icon} size={18} color={theme.light.text} />
+        </View>
       )}
       <TextInput
         {...props}
         multiline={props.canHaveManyLines ? true : false}
         style={{
           flex: 1,
-          paddingVertical: 3,
+          padding: 10,
+          paddingTop: 10,
           color: theme.light.text,
+          ...theme.font,
+          fontSize: 15,
         }}
         placeholderTextColor='#aaa'
         keyboardAppearance={theme.isDarkMode ? 'dark' : 'light'}
       />
+      {!!props.value && !props.canHaveManyLines && (
+        <TouchableOpacity
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingHorizontal: 10,
+          }}
+          onPress={() => props.onChangeText('')}
+        >
+          <Entypo name='circle-with-cross' size={18} color='#aaa' />
+        </TouchableOpacity>
+      )}
     </View>
   )
 }

@@ -25,6 +25,7 @@ const dark = {
 
 const font = Platform.select({
   ios: { fontFamily: 'Arial Rounded MT Bold' },
+  android: { fontFamily: 'Roboto' },
 })
 
 export default () => {

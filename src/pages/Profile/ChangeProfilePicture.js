@@ -78,7 +78,11 @@ export default ({ profilePicturePath: initialProfilePicturePath, name }) => {
           {errorMessage}
         </Typography>
       )}
-      <PressButton text='Save' onPress={save} loading={loading} />
+      <PressButton
+        text='Save profilepicture'
+        onPress={save}
+        loading={loading}
+      />
     </View>
   )
 }

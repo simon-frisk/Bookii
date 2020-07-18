@@ -22,7 +22,7 @@ export default () => {
     <>
       <TextField
         value={query}
-        icon='search1'
+        icon='search'
         onChangeText={setQuery}
         style={{ margin: Styles.standardPageInset }}
         placeholder='Search'
