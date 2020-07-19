@@ -20,8 +20,10 @@ const RemoveBookFromWishList = gql`
   }
 `
 
-export default ({ bookId, isWished: initialIsOnWishList }) => {
+export default ({ bookId, isWished: initialIsOnWishList, loading }) => {
   const [isOnWishList, setIsOnWishList] = useState(initialIsOnWishList)
+
+  if (loading) return <PressButton loading={true} />
 
   return isOnWishList ? (
     <RemoveButton

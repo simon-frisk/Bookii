@@ -52,11 +52,7 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
           }
           style={{ flexDirection: 'row' }}
         >
-          <BookCover
-            uri={feedBook.book.thumbnail}
-            width={100}
-            title={feedBook.book.title}
-          />
+          <BookCover uri={feedBook.book.thumbnail} width={100} />
           <Typography type='h4' style={{ marginLeft: 10, flex: 1 }}>
             {feedBook.book.title}
           </Typography>

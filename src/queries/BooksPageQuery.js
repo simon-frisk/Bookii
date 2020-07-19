@@ -6,7 +6,6 @@ export default gql`
       name
       books {
         bookId
-        title
         thumbnail
       }
     }

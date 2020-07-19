@@ -29,7 +29,6 @@ export default ({ books, title }) => {
           <BookCard
             bookId={book.bookId}
             thumbnail={book.thumbnail}
-            title={book.title}
             style={{
               marginHorizontal: Styles.standardMargin / 2,
               marginVertical: Styles.standardMargin,
