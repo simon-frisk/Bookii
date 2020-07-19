@@ -23,7 +23,10 @@ export default () => {
         onChangeText={query => {
           setQuery(query)
         }}
-        style={{ margin: Styles.standardPageInset }}
+        style={{
+          marginHorizontal: Styles.standardMargin,
+          marginVertical: Styles.standardMargin,
+        }}
         placeholder='Search'
       />
       {loading && !!query && (

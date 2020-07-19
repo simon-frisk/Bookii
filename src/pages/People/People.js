@@ -27,7 +27,7 @@ export default () => {
               <Typography
                 type='h2'
                 style={{
-                  paddingHorizontal: styles.standardPageInset,
+                  paddingHorizontal: styles.standardMargin,
                   paddingTop: 20,
                 }}
               >
@@ -36,7 +36,7 @@ export default () => {
               <UserSlider users={data.users} />
               <Typography
                 type='h2'
-                style={{ paddingHorizontal: styles.standardPageInset }}
+                style={{ paddingHorizontal: styles.standardMargin }}
               >
                 Latest books
               </Typography>
@@ -69,7 +69,7 @@ export default () => {
         <FeedBookCard
           feedBook={item}
           key={item._id}
-          style={{ marginHorizontal: styles.standardPageInset }}
+          style={{ marginHorizontal: styles.standardMargin }}
         />
       )}
       onEndReached={getMoreData}

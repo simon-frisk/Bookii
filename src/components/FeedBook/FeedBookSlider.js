@@ -11,7 +11,10 @@ export default ({ title, feedBooks, isSelf }) => {
     <>
       <Typography
         type='h2'
-        style={{ marginHorizontal: styles.standardPageInset, marginTop: 25 }}
+        style={{
+          marginHorizontal: styles.standardMargin,
+          marginTop: styles.doubleMargin,
+        }}
       >
         {title}
       </Typography>
@@ -19,8 +22,8 @@ export default ({ title, feedBooks, isSelf }) => {
         data={feedBooks}
         keyExtractor={({ _id }, index) => index + _id}
         contentContainerStyle={{
-          paddingHorizontal: styles.standardPageInset / 2,
-          paddingBottom: 5,
+          paddingHorizontal: styles.standardMargin / 2,
+          paddingBottom: styles.standardMargin / 2,
         }}
         horizontal={true}
         renderItem={({ item }) => (
@@ -28,7 +31,7 @@ export default ({ title, feedBooks, isSelf }) => {
             limitWidth={true}
             feedBook={item}
             isSelf={isSelf}
-            style={{ marginHorizontal: styles.standardPageInset / 2 }}
+            style={{ marginHorizontal: styles.standardMargin / 2 }}
           />
         )}
       />

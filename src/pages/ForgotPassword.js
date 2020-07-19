@@ -20,7 +20,7 @@ export default () => {
   useEffect(() => setEmail(''), [data])
 
   return (
-    <ScrollView contentContainerStyle={{ padding: styles.standardPageInset }}>
+    <ScrollView contentContainerStyle={{ padding: styles.standardMargin }}>
       <Typography type='h2'>Forgot password</Typography>
       <Typography style={{ marginVertical: 5 }}>
         You can reset your old password and get a new one by email.
@@ -46,7 +46,6 @@ export default () => {
       <PressButton
         text='Get new password'
         color={theme.current.main}
-        containerStyle={{ marginVertical: 10 }}
         loading={loading}
         onPress={() => callQuery({ variables: { email } })}
       />

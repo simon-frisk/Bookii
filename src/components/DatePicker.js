@@ -3,12 +3,14 @@ import { View, Platform } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import PressButton from './PressButton'
 import Typography from './Typography'
+import useStyles from '../util/useStyles'
 
 export default ({ date, onDateChange }) => {
   const [show, setShow] = useState(false)
+  const styles = useStyles()
 
   return (
-    <View style={{ paddingVertical: 10 }}>
+    <View style={{ padding: styles.standardMargin }}>
       <Typography type='h4' style={{ textAlign: 'center' }}>
         {date.toDateString()}
       </Typography>

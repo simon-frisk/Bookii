@@ -2,9 +2,11 @@ import React from 'react'
 import { View, TextInput, TouchableOpacity } from 'react-native'
 import { FontAwesome, Entypo } from '@expo/vector-icons'
 import useTheme from '../util/useTheme'
+import useStyles from '../util/useStyles'
 
 export default props => {
   const theme = useTheme()
+  const styles = useStyles()
 
   return (
     <View
@@ -13,7 +15,7 @@ export default props => {
           backgroundColor: theme.light.button,
           borderColor: theme.light.button,
           borderRadius: 15,
-          marginVertical: 5,
+          marginVertical: styles.standardMargin / 2,
           flexDirection: 'row',
         },
         props.style,

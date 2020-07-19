@@ -26,7 +26,7 @@ export default () => {
   }, [data])
 
   return (
-    <ScrollView contentContainerStyle={{ padding: styles.standardPageInset }}>
+    <ScrollView contentContainerStyle={{ padding: styles.standardMargin }}>
       <Typography type='h2' style={{ marginBottom: 10 }}>
         Accept privacy policy
       </Typography>

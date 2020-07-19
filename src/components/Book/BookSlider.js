@@ -12,8 +12,8 @@ export default ({ books, title }) => {
       <Typography
         type='h2'
         style={{
-          marginHorizontal: Styles.standardPageInset,
-          marginTop: 25,
+          marginHorizontal: Styles.standardMargin,
+          marginTop: Styles.doubleMargin,
         }}
       >
         {title}
@@ -22,8 +22,7 @@ export default ({ books, title }) => {
         data={books}
         keyExtractor={({ bookId }, index) => index + bookId}
         contentContainerStyle={{
-          paddingHorizontal: Styles.standardPageInset / 2,
-          paddingBottom: 5,
+          paddingHorizontal: Styles.standardMargin / 2,
         }}
         horizontal={true}
         renderItem={({ item: book }) => (
@@ -32,8 +31,8 @@ export default ({ books, title }) => {
             thumbnail={book.thumbnail}
             title={book.title}
             style={{
-              marginHorizontal: Styles.standardPageInset / 2,
-              marginVertical: 10,
+              marginHorizontal: Styles.standardMargin / 2,
+              marginVertical: Styles.standardMargin,
             }}
           />
         )}

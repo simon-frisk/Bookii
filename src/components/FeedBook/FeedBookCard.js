@@ -6,13 +6,11 @@ import BookCover from '../Book/BookCover'
 import PressButton from '../PressButton'
 import ExpandableText from '../ExpandableText'
 import Typography from '../Typography'
-import useTheme from '../../util/useTheme'
 import ProfilePictureCircle from '../ProfilePictureCircle'
 
 export default ({ isSelf, style, limitWidth, feedBook }) => {
   const navigation = useNavigation()
   const Styles = useStyles()
-  const theme = useTheme()
 
   return (
     <View
@@ -20,10 +18,9 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
         Styles.card,
         style,
         {
-          padding: 17,
           width: limitWidth ? 290 : undefined,
           alignSelf: limitWidth ? 'flex-start' : 'auto',
-          marginVertical: 10,
+          marginVertical: Styles.standardMargin / 2,
         },
       ]}
     >

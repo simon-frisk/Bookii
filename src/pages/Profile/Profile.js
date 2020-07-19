@@ -63,7 +63,7 @@ export default () => {
     )
 
   return (
-    <ScrollView contentContainerStyle={{ padding: Styles.standardPageInset }}>
+    <ScrollView contentContainerStyle={{ padding: Styles.standardMargin }}>
       <UpdateProfile name={data.user.name} email={data.user.email} />
       <ChangeProfilePicture
         profilePicturePath={data.user.profilePicturePath}

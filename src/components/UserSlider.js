@@ -3,14 +3,16 @@ import { FlatList, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import ProfilePictureCircle from './ProfilePictureCircle'
 import Typography from './Typography'
+import useStyles from '../util/useStyles'
 
 export default ({ users }) => {
   const navigation = useNavigation()
+  const styles = useStyles()
 
   return (
     <FlatList
       horizontal={true}
-      contentContainerStyle={{ paddingBottom: 10 }}
+      contentContainerStyle={{ paddingBottom: styles.standardMargin }}
       data={users}
       keyExtractor={(item, index) => item._id + index}
       renderItem={({ item: user }) => (

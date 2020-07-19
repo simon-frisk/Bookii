@@ -4,10 +4,12 @@ export default () => {
   const theme = useTheme()
 
   return {
-    standardPageInset: 12,
+    standardMargin: 14,
+    doubleMargin: 28,
     card: {
       backgroundColor: theme.current.primary,
       borderRadius: 25,
+      padding: 18,
     },
     center: {
       flex: 1,

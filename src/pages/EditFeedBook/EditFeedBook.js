@@ -34,20 +34,22 @@ export default ({ route, navigation }) => {
     const feedBook = data.user.feedBooks[0]
     if (!feedBook) return <View />
     return (
-      <ScrollView style={{ padding: Styles.standardPageInset }}>
+      <ScrollView>
         <Typography type='h1'>{feedBook.book.title}</Typography>
-        <Edit
-          _id={feedBook._id}
-          comment={feedBook.comment}
-          date={feedBook.date}
-          favorite={feedBook.favorite}
-          onCompleted={navigation.goBack}
-        />
-        <DeleteButton
-          _id={feedBook._id}
-          bookId={feedBook.bookId}
-          onCompleted={navigation.goBack}
-        />
+        <View style={{ marginHorizontal: Styles.standardMargin }}>
+          <Edit
+            _id={feedBook._id}
+            comment={feedBook.comment}
+            date={feedBook.date}
+            favorite={feedBook.favorite}
+            onCompleted={navigation.goBack}
+          />
+          <DeleteButton
+            _id={feedBook._id}
+            bookId={feedBook.bookId}
+            onCompleted={navigation.goBack}
+          />
+        </View>
       </ScrollView>
     )
   }

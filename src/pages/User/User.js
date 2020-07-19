@@ -51,11 +51,9 @@ export default ({ route, navigation }) => {
   if (data)
     return (
       <ScrollView
-        contentContainerStyle={{ paddingBottom: Styles.standardPageInset }}
+        contentContainerStyle={{ paddingBottom: Styles.standardMargin }}
       >
-        <View
-          style={{ padding: Styles.standardPageInset, flexDirection: 'row' }}
-        >
+        <View style={{ padding: Styles.standardMargin, flexDirection: 'row' }}>
           <ProfilePictureCircle
             profilePicturePath={data.user.profilePicturePath}
             name={data.user.name}
@@ -111,7 +109,7 @@ export default ({ route, navigation }) => {
           <BookSlider books={data.user.wishBooks} title='Wish list' />
         )}
         <View
-          style={{ paddingHorizontal: Styles.standardPageInset, marginTop: 25 }}
+          style={{ paddingHorizontal: Styles.standardMargin, marginTop: 25 }}
         >
           <Typography type='h2'>Books</Typography>
           {data.user.feedBooks.map(feedBook => (

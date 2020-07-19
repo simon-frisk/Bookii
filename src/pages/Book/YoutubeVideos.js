@@ -15,25 +15,22 @@ export default ({ videoIds }) => {
     <View
       style={{
         backgroundColor: theme.current.primary,
-        paddingVertical: 20,
-        marginVertical: 20,
+        paddingVertical: styles.doubleMargin,
+        marginVertical: styles.doubleMargin,
       }}
     >
-      <Typography
-        type='h2'
-        style={{ marginHorizontal: styles.standardPageInset }}
-      >
+      <Typography type='h2' style={{ marginHorizontal: styles.standardMargin }}>
         On youtube
       </Typography>
       <FlatList
         data={videoIds}
         horizontal={true}
-        contentContainerStyle={{ marginTop: 20 }}
+        contentContainerStyle={{ marginTop: styles.doubleMargin }}
         renderItem={({ item: id }) => (
           <View
             style={{
-              marginHorizontal: styles.standardPageInset,
-              marginBottom: 10,
+              marginHorizontal: styles.standardMargin,
+              marginBottom: styles.standardMargin,
             }}
           >
             <YoutubePlayer

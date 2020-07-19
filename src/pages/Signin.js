@@ -66,9 +66,8 @@ export default () => {
           onPress={signin}
           loading={loading}
           color={theme.current.main}
-          containerStyle={{ marginVertical: 10 }}
         />
-        <Typography>
+        <Typography style={{ marginTop: Styles.standardMargin }}>
           <Link to='/forgotpassword' style={{ color: theme.current.main }}>
             Forgot password?
           </Link>

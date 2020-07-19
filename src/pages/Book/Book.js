@@ -37,17 +37,10 @@ export default ({ route }) => {
       </View>
     )
 
-  if (data && !data.book)
-    return (
-      <View style={Styles.center}>
-        <Typography>Book not found</Typography>
-      </View>
-    )
-
-  if (data && data.book)
+  if (data)
     return (
       <ScrollView>
-        <View style={{ padding: Styles.standardPageInset }}>
+        <View style={{ padding: Styles.standardMargin }}>
           <View style={{ alignItems: 'center' }}>
             <BookCover
               uri={data.book.thumbnail}
@@ -56,7 +49,10 @@ export default ({ route }) => {
             />
             <Typography
               type='h2'
-              style={{ marginTop: 15, textAlign: 'center' }}
+              style={{
+                marginTop: Styles.standardMargin,
+                textAlign: 'center',
+              }}
             >
               {data.book.title}
             </Typography>
@@ -75,7 +71,7 @@ export default ({ route }) => {
           />
           <WishButton bookId={data.book.bookId} isWished={data.book.isWished} />
         </View>
-        <View style={{ padding: Styles.standardPageInset }}>
+        <View style={{ marginHorizontal: Styles.standardMargin }}>
           {!!data.book.authors && (
             <Typography style={{ color: 'grey' }}>{`Author${
               data.book.authors.length > 1 ? 's' : ''
@@ -101,7 +97,10 @@ export default ({ route }) => {
           <View
             style={[
               Styles.card,
-              { padding: 20, margin: Styles.standardPageInset },
+              {
+                marginTop: Styles.standardMargin,
+                marginHorizontal: Styles.standardMargin,
+              },
             ]}
           >
             <Typography type='h3'>Description</Typography>
@@ -112,7 +111,10 @@ export default ({ route }) => {
           <View
             style={[
               Styles.card,
-              { padding: 20, margin: Styles.standardPageInset },
+              {
+                marginTop: Styles.standardMargin,
+                marginHorizontal: Styles.standardMargin,
+              },
             ]}
           >
             <Typography type='h3'>Wikipedia</Typography>
@@ -125,7 +127,12 @@ export default ({ route }) => {
         {!!data.book.youtubevideos.length && (
           <YoutubeVideos videoIds={data.book.youtubevideos} />
         )}
-        <View style={{ margin: Styles.standardPageInset }}>
+        <View
+          style={{
+            marginHorizontal: Styles.standardMargin,
+            marginVertical: Styles.standardMargin / 2,
+          }}
+        >
           {data.book.onselffeed.map(feedBook => (
             <FeedBookCard
               feedBook={feedBook}
@@ -133,8 +140,6 @@ export default ({ route }) => {
               isSelf={true}
             />
           ))}
-        </View>
-        <View style={{ margin: Styles.standardPageInset }}>
           {data.book.onfollowingfeed.map(feedBook => (
             <FeedBookCard feedBook={feedBook} key={feedBook._id} />
           ))}

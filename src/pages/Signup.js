@@ -110,7 +110,7 @@ export default () => {
           loading={loading}
           color={theme.current.main}
         />
-        <Typography>
+        <Typography style={{ marginTop: Styles.standardMargin }}>
           Already have an account?{' '}
           <Link to='/signin' style={{ color: theme.current.main }}>
             Sign in!
