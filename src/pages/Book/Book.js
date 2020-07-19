@@ -47,20 +47,21 @@ export default ({ route }) => {
               width={200}
               title={data.book.title}
             />
-            <Typography
-              type='h2'
-              style={{
-                marginTop: Styles.standardMargin,
-                textAlign: 'center',
-              }}
-            >
-              {data.book.title}
-            </Typography>
-            {!!data.book.subTitle && (
-              <Typography style={{ textAlign: 'center', color: 'grey' }}>
-                {data.book.subTitle}
+            <View style={{ marginVertical: Styles.standardMargin / 2 }}>
+              <Typography
+                type='h2'
+                style={{
+                  textAlign: 'center',
+                }}
+              >
+                {data.book.title}
               </Typography>
-            )}
+              {!!data.book.subTitle && (
+                <Typography style={{ textAlign: 'center', color: 'grey' }}>
+                  {data.book.subTitle}
+                </Typography>
+              )}
+            </View>
           </View>
           <PressButton
             text={'Add book' + (!!data.book.onselffeed.length ? ' again' : '')}

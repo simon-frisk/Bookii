@@ -15,7 +15,7 @@ export default props => {
           backgroundColor: theme.light.button,
           borderColor: theme.light.button,
           borderRadius: 15,
-          marginVertical: styles.standardMargin / 2,
+          marginTop: styles.standardMargin / 2,
           flexDirection: 'row',
         },
         props.style,

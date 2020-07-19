@@ -8,6 +8,7 @@ import PressButton from '../../components/PressButton'
 import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 
 const UpdateUser = gql`
   mutation UpdateUser($name: String!, $email: String!) {
@@ -30,6 +31,7 @@ export default ({ email: initialEmail, name: initialName }) => {
   })
   const errorMessage = useApolloError(error)
   const theme = useTheme()
+  const styles = useStyles()
 
   const [name, setName] = useState(initialName)
   const [email, setEmail] = useState(initialEmail)
@@ -39,7 +41,12 @@ export default ({ email: initialEmail, name: initialName }) => {
   }
 
   return (
-    <View>
+    <View
+      style={{
+        paddingHorizontal: styles.standardMargin,
+        marginTop: styles.doubleMargin,
+      }}
+    >
       <TextField
         value={email}
         onChangeText={setEmail}
@@ -56,6 +63,7 @@ export default ({ email: initialEmail, name: initialName }) => {
       <PressButton
         text='Save email and name'
         onPress={update}
+        color={theme.current.main}
         loading={loading}
       />
     </View>

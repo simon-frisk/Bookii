@@ -7,6 +7,7 @@ import PressButton from '../../components/PressButton'
 import gql from 'graphql-tag'
 import Typography from '../../components/Typography'
 import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 
 const ChangePassword = gql`
   mutation changePassword($password: String!) {
@@ -19,6 +20,7 @@ export default () => {
   const errorMessage = useApolloError(error)
   const [password, setPassword] = useState('')
   const theme = useTheme()
+  const styles = useStyles()
 
   const updatePassword = () => {
     callMutation({ variables: { password } })
@@ -29,7 +31,12 @@ export default () => {
   }, [data])
 
   return (
-    <View style={{ paddingVertical: 30 }}>
+    <View
+      style={{
+        paddingTop: styles.doubleMargin,
+        paddingHorizontal: styles.standardMargin,
+      }}
+    >
       <TextField
         value={password}
         onChangeText={setPassword}
@@ -43,7 +50,7 @@ export default () => {
       )}
       <PressButton
         loading={loading}
-        text='Change password'
+        text='Save password'
         onPress={updatePassword}
       />
     </View>

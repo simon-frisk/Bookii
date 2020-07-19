@@ -8,6 +8,7 @@ import useTheme from '../util/useTheme'
 import useAcceptLatestPolicies from '../data/hooks/useAcceptLatestPolicies'
 import { UserContext } from '../root/UserProvider'
 import { ScrollView } from 'react-native-gesture-handler'
+import useHeaderTitle from '../util/useHeaderTitle'
 
 export default () => {
   const styles = useStyles()
@@ -20,6 +21,7 @@ export default () => {
     data,
   } = useAcceptLatestPolicies()
   const { setIsLatestConsent } = useContext(UserContext)
+  useHeaderTitle('Privacy policy')
 
   useEffect(() => {
     if (data) setIsLatestConsent(data.acceptLatestPolicies)
@@ -27,9 +29,6 @@ export default () => {
 
   return (
     <ScrollView contentContainerStyle={{ padding: styles.standardMargin }}>
-      <Typography type='h2' style={{ marginBottom: 10 }}>
-        Accept privacy policy
-      </Typography>
       <Typography>
         The privacy policy of bookii has been updated. Find the updated policy{' '}
         <Typography

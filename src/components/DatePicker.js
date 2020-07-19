@@ -10,7 +10,7 @@ export default ({ date, onDateChange }) => {
   const styles = useStyles()
 
   return (
-    <View style={{ padding: styles.standardMargin }}>
+    <View style={{ paddingVertical: styles.standardMargin }}>
       <Typography type='h4' style={{ textAlign: 'center' }}>
         {date.toDateString()}
       </Typography>

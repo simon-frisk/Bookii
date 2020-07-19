@@ -88,10 +88,18 @@ export default () => {
                 component={User}
                 options={{ headerLargeTitle: true }}
               />
-              <Stack.Screen name='profile' component={Profile} />
+              <Stack.Screen
+                name='profile'
+                component={Profile}
+                options={{ headerLargeTitle: true }}
+              />
             </>
           ) : (
-            <Stack.Screen name='updateconsent' component={AcceptPolicies} />
+            <Stack.Screen
+              name='updateconsent'
+              component={AcceptPolicies}
+              options={{ headerLargeTitle: true }}
+            />
           )
         ) : (
           <>

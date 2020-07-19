@@ -63,26 +63,40 @@ export default () => {
     )
 
   return (
-    <ScrollView contentContainerStyle={{ padding: Styles.standardMargin }}>
-      <UpdateProfile name={data.user.name} email={data.user.email} />
+    <ScrollView>
       <ChangeProfilePicture
         profilePicturePath={data.user.profilePicturePath}
         name={data.user.name}
       />
+      <UpdateProfile name={data.user.name} email={data.user.email} />
       <ChangePassword />
       {!!data.user.following.length && (
-        <>
+        <View
+          style={{
+            marginTop: Styles.doubleMargin,
+            marginHorizontal: Styles.standardMargin,
+          }}
+        >
           <Typography type='h2'>Following</Typography>
           <UserSlider users={data.user.following} />
-        </>
+        </View>
       )}
       {!!data.user.followers.length && (
-        <>
+        <View
+          style={{
+            marginHorizontal: Styles.standardMargin,
+          }}
+        >
           <Typography type='h2'>Followers</Typography>
           <UserSlider users={data.user.followers} />
-        </>
+        </View>
       )}
-      <View style={{ marginTop: 35 }}>
+      <View
+        style={{
+          marginTop: Styles.standardMargin,
+          marginHorizontal: Styles.standardMargin,
+        }}
+      >
         <PressButton
           text='Sign out'
           onPress={() => {
@@ -92,7 +106,12 @@ export default () => {
         />
         <DeleteProfile _id={data.user._id} />
       </View>
-      <View style={{ marginVertical: 35 }}>
+      <View
+        style={{
+          marginTop: Styles.standardMargin,
+          marginHorizontal: Styles.standardMargin,
+        }}
+      >
         <Typography type='h2'>More</Typography>
         <Typography>
           For more info, like viewing privacy policy or getting support, visit

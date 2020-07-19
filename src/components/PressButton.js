@@ -24,7 +24,7 @@ export default ({
           paddingVertical: 10,
           paddingHorizontal: 30,
           borderRadius: 15,
-          marginTop: styles.standardMargin,
+          marginTop: styles.standardMargin / 2,
           backgroundColor: color || theme.current.button,
         },
         containerStyle,

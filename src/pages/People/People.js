@@ -28,7 +28,7 @@ export default () => {
                 type='h2'
                 style={{
                   paddingHorizontal: styles.standardMargin,
-                  paddingTop: 20,
+                  paddingTop: styles.standardMargin,
                 }}
               >
                 All users

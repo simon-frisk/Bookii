@@ -9,6 +9,7 @@ import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
+import useStyles from '../../util/useStyles'
 
 const ChangeProfilePicture = gql`
   mutation ChangeProfilePicture($profilePicture: Upload) {
@@ -27,6 +28,7 @@ export default ({ profilePicturePath: initialProfilePicturePath, name }) => {
     initialProfilePicturePath
   )
   const theme = useTheme()
+  const styles = useStyles()
 
   const save = () => {
     callMutation({ variables: { profilePicture } })
@@ -50,7 +52,12 @@ export default ({ profilePicturePath: initialProfilePicturePath, name }) => {
   }
 
   return (
-    <View style={{ marginTop: 10 }}>
+    <View
+      style={{
+        marginHorizontal: styles.standardMargin,
+        marginTop: styles.standardMargin,
+      }}
+    >
       <View
         style={{
           flexDirection: 'row',
@@ -60,7 +67,7 @@ export default ({ profilePicturePath: initialProfilePicturePath, name }) => {
       >
         <ProfilePictureCircle
           profilePicturePath={profilePicturePath}
-          size={70}
+          size={80}
           name={name}
         />
         <PressButton text='Select' onPress={selectProfilePicture} />
@@ -81,6 +88,7 @@ export default ({ profilePicturePath: initialProfilePicturePath, name }) => {
       <PressButton
         text='Save profilepicture'
         onPress={save}
+        color={theme.current.main}
         loading={loading}
       />
     </View>

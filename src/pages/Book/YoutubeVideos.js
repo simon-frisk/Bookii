@@ -21,11 +21,12 @@ export default ({ videoIds }) => {
       }}
     >
       <Typography type='h2' style={{ marginHorizontal: styles.standardMargin }}>
-        On youtube
+        Youtube
       </Typography>
       <FlatList
         data={videoIds}
         horizontal={true}
+        keyExtractor={item => item}
         contentContainerStyle={{
           marginTop: styles.standardMargin,
           paddingRight: styles.standardMargin,
