@@ -17,6 +17,7 @@ export default () => {
 
   return (
     <ScrollView>
+      <Search />
       {loading && (
         <View style={styles.center}>
           <ActivityIndicator />
@@ -29,14 +30,10 @@ export default () => {
           </Typography>
         </View>
       )}
-      {data && (
-        <>
-          <Search />
-          {data.bookLists.map(list => (
-            <BookSlider title={list.name} key={list.name} books={list.books} />
-          ))}
-        </>
-      )}
+      {data &&
+        data.bookLists.map(list => (
+          <BookSlider title={list.name} key={list.name} books={list.books} />
+        ))}
     </ScrollView>
   )
 }

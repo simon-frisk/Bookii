@@ -35,9 +35,9 @@ export default () => {
       keyExtractor={item => item._id}
       ListHeaderComponent={() => (
         <>
+          <UserSearch />
           {!!data && (
             <>
-              <UserSearch />
               <Typography
                 type='h2'
                 style={{
