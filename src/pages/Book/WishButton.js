@@ -75,7 +75,7 @@ const RemoveButton = ({ bookId, onCompleted }) => {
     }
   )
   const errorMessage = useApolloError(error)
-  const theme = useStyles()
+  const { theme } = useStyles()
 
   return (
     <>
