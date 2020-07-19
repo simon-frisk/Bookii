@@ -38,8 +38,8 @@ export default ({ videoIds }) => {
           >
             <YoutubePlayer
               ref={playerRef}
-              height={180}
-              width={320}
+              height={190}
+              width={340}
               videoId={id}
               play={false}
               volume={50}

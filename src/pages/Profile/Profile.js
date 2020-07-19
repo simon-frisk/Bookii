@@ -106,7 +106,7 @@ export default () => {
       </View>
       <View
         style={{
-          marginTop: Styles.standardMargin,
+          marginVertical: Styles.standardMargin,
           marginHorizontal: Styles.standardMargin,
         }}
       >
