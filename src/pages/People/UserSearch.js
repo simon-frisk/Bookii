@@ -24,7 +24,10 @@ export default () => {
         value={query}
         icon='search'
         onChangeText={setQuery}
-        style={{ margin: Styles.standardMargin }}
+        style={{
+          marginHorizontal: Styles.standardMargin,
+          marginVertical: Styles.standardMargin,
+        }}
         placeholder='Search'
       />
       {loading && !!query && (
