@@ -15,8 +15,9 @@ export default ({ videoIds }) => {
     <View
       style={{
         backgroundColor: theme.current.primary,
-        paddingVertical: styles.doubleMargin,
-        marginVertical: styles.doubleMargin,
+        marginTop: styles.doubleMargin,
+        marginBottom: styles.standardMargin,
+        paddingVertical: styles.standardMargin,
       }}
     >
       <Typography type='h2' style={{ marginHorizontal: styles.standardMargin }}>
@@ -25,12 +26,15 @@ export default ({ videoIds }) => {
       <FlatList
         data={videoIds}
         horizontal={true}
-        contentContainerStyle={{ marginTop: styles.doubleMargin }}
+        contentContainerStyle={{
+          marginTop: styles.standardMargin,
+          paddingRight: styles.standardMargin,
+        }}
         renderItem={({ item: id }) => (
           <View
             style={{
-              marginHorizontal: styles.standardMargin,
-              marginBottom: styles.standardMargin,
+              marginLeft: styles.standardMargin,
+              marginBottom: 10,
             }}
           >
             <YoutubePlayer
@@ -39,10 +43,6 @@ export default ({ videoIds }) => {
               width={320}
               videoId={id}
               play={false}
-              onChangeState={event => console.log(event)}
-              onReady={() => console.log('ready')}
-              onError={e => console.log(e)}
-              onPlaybackQualityChange={q => console.log(q)}
               volume={50}
               playbackRate={1}
             />
