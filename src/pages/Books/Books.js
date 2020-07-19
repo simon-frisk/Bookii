@@ -1,14 +1,17 @@
 import React from 'react'
-import useBooksPage from '../../data/hooks/useBooksPage'
 import { ScrollView, View, ActivityIndicator } from 'react-native'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
 import BookSlider from '../../components/Book/BookSlider'
 import Search from './Search'
 import useHeaderTitle from '../../util/useHeaderTitle'
+import { useQuery } from '@apollo/react-hooks'
+import BooksPageQuery from '../../queries/BooksPageQuery'
+import useApolloError from '../../util/useApolloError'
 
 export default () => {
-  const { data, loading, errorMessage } = useBooksPage()
+  const { data, loading, error } = useQuery(BooksPageQuery)
+  const errorMessage = useApolloError(error)
   const styles = useStyles()
   useHeaderTitle('Books')
 

@@ -5,14 +5,20 @@ import Typography from '../components/Typography'
 import useStyles from '../util/useStyles'
 import TextField from '../components/TextField'
 import PressButton from '../components/PressButton'
-import ForgotPassword from '../data/graphql/ForgotPassword'
 import useApolloError from '../util/useApolloError'
+import gql from 'graphql-tag'
+
+const query = gql`
+  query ForgotPassword($email: String!) {
+    forgotpassword(email: $email)
+  }
+`
 
 export default () => {
   const styles = useStyles()
   const [email, setEmail] = useState('')
 
-  const [callQuery, { data, loading, error }] = useLazyQuery(ForgotPassword)
+  const [callQuery, { data, loading, error }] = useLazyQuery(query)
   const errorMessage = useApolloError(error)
 
   useEffect(() => setEmail(''), [data])

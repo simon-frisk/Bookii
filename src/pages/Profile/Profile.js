@@ -14,31 +14,11 @@ import ChangePassword from './ChangePassword'
 import Typography from '../../components/Typography'
 import ChangeProfilePicture from './ChangeProfilePicture'
 import useHeaderTitle from '../../util/useHeaderTitle'
-
-export const UserFollowingAndFollowers = gql`
-  query UserFollowingAndFollowers {
-    user {
-      _id
-      name
-      email
-      profilePicturePath
-      following {
-        _id
-        name
-        profilePicturePath
-      }
-      followers {
-        _id
-        name
-        profilePicturePath
-      }
-    }
-  }
-`
+import FollowingAndFollowersQuery from '../../queries/FollowingAndFollowersQuery'
 
 export default () => {
   const Styles = useStyles()
-  const { data, loading, error } = useQuery(UserFollowingAndFollowers)
+  const { data, loading, error } = useQuery(FollowingAndFollowersQuery)
   const errorMessage = useApolloError(error)
   const { signout } = useContext(UserContext)
   const client = useApolloClient()

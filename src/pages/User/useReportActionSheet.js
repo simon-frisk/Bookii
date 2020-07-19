@@ -1,11 +1,23 @@
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import useStyles from '../../util/useStyles'
-import useInappropriateFlag from '../../data/hooks/useInappropriateFlag'
+import { useMutation } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+
+const mutation = gql`
+  mutation ToggleInappropriateFlagged($_id: ID!) {
+    toggleinappropriateflagged(_id: $_id) {
+      _id
+      isinappropriateflagged
+    }
+  }
+`
 
 export default (_id, isFlagged) => {
   const { showActionSheetWithOptions } = useActionSheet()
   const { theme } = useStyles()
-  const { callMutation } = useInappropriateFlag({ _id })
+  const [callMutation] = useMutation(mutation, {
+    variables: { _id },
+  })
 
   function showReportActionSheet() {
     showActionSheetWithOptions(

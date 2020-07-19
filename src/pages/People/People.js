@@ -2,14 +2,30 @@ import React from 'react'
 import { ActivityIndicator, View, FlatList } from 'react-native'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
-import usePeoplePage from '../../data/hooks/usePeoplePage'
 import UserSlider from '../../components/UserSlider'
 import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 import useHeaderTitle from '../../util/useHeaderTitle'
 import UserSearch from './UserSearch'
+import PeoplePageQuery from '../../queries/PeoplePageQuery'
+import { useQuery } from '@apollo/react-hooks'
+import useApolloError from '../../util/useApolloError'
 
 export default () => {
-  const { data, loading, errorMessage, getMoreData } = usePeoplePage()
+  const { data, loading, error, fetchMore } = useQuery(PeoplePageQuery)
+  const errorMessage = useApolloError(error)
+  function getMoreData() {
+    fetchMore({
+      query: PeoplePageQuery,
+      variables: { after: data.feed[data.feed.length - 1]._id },
+      updateQuery(prev, { fetchMoreResult }) {
+        return {
+          ...prev,
+          feed: [...prev.feed, ...fetchMoreResult.feed],
+        }
+      },
+    })
+  }
+
   const styles = useStyles()
   useHeaderTitle('People')
 

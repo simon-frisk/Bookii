@@ -1,13 +1,13 @@
 import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-import { UserFollowingAndFollowers } from '../Profile/Profile'
-import UserPageQuery from '../../data/graphql/UserPageQuery'
+import UserPageQuery from '../../queries/UserPageQuery'
 import PressButton from '../../components/PressButton'
 import useApolloError from '../../util/useApolloError'
-import PeoplePageQuery from '../../data/graphql/PeoplePageQuery'
+import PeoplePageQuery from '../../queries/PeoplePageQuery'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
+import FollowingAndFollowersQuery from '../../queries/FollowingAndFollowersQuery'
 
 const FollowUser = gql`
   mutation FollowUser($_id: ID!) {
@@ -33,7 +33,7 @@ export default ({ isSelfFollowing, _id }) => {
       refetchQueries: [
         { query: UserPageQuery, variables: { _id } },
         { query: PeoplePageQuery },
-        { query: UserFollowingAndFollowers },
+        { query: FollowingAndFollowersQuery },
       ],
     }
   )

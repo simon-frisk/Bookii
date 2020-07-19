@@ -4,20 +4,24 @@ import Typography from '../components/Typography'
 import PressButton from '../components/PressButton'
 import CheckBox from 'react-native-check-box'
 import useStyles from '../util/useStyles'
-import useAcceptLatestPolicies from '../data/hooks/useAcceptLatestPolicies'
 import { UserContext } from '../root/UserProvider'
 import { ScrollView } from 'react-native-gesture-handler'
 import useHeaderTitle from '../util/useHeaderTitle'
+import { useMutation } from '@apollo/react-hooks'
+import useApolloError from '../util/useApolloError'
+import gql from 'graphql-tag'
+
+const Mutation = gql`
+  mutation AcceptLatestPolicies {
+    acceptLatestPolicies
+  }
+`
 
 export default () => {
   const styles = useStyles()
   const [agree, setAgree] = useState(false)
-  const {
-    callAcceptLatestPolicies,
-    loading,
-    errorMessage,
-    data,
-  } = useAcceptLatestPolicies()
+  const [callMutation, { loading, error, data }] = useMutation(Mutation)
+  const errorMessage = useApolloError(error)
   const { setIsLatestConsent } = useContext(UserContext)
   useHeaderTitle('Privacy policy')
 
@@ -53,7 +57,7 @@ export default () => {
       </Typography>
       <PressButton
         text='Continue'
-        onPress={() => callAcceptLatestPolicies()}
+        onPress={() => callMutation()}
         disabled={!agree}
         loading={loading}
       />

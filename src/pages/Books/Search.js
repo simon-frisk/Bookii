@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
-import useBookSearch from '../../data/hooks/useBookSearch'
 import TextField from '../../components/TextField'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
 import BookSlider from '../../components/Book/BookSlider'
+import { useLazyQuery } from '@apollo/react-hooks'
+import useApolloError from '../../util/useApolloError'
+import gql from 'graphql-tag'
+
+const BookSearchQuery = gql`
+  query BookSearch($query: String!) {
+    bookSearch(query: $query) {
+      bookId
+      title
+      subTitle
+      authors
+      thumbnail
+    }
+  }
+`
 
 export default () => {
-  const { callQuery, data, loading, errorMessage } = useBookSearch()
+  const [callQuery, { data, loading, error }] = useLazyQuery(BookSearchQuery)
+  const errorMessage = useApolloError(error)
   const [query, setQuery] = useState('')
   const Styles = useStyles()
 

@@ -5,18 +5,21 @@ import WishButton from './WishButton'
 import { useNavigation } from '@react-navigation/native'
 import BookCover from '../../components/Book/BookCover'
 import PressButton from '../../components/PressButton'
-import useBookPage from '../../data/hooks/useBookPage'
 import Typography from '../../components/Typography'
 import ExpandableText from '../../components/ExpandableText'
 import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 import YoutubeVideos from './YoutubeVideos'
+import { useQuery } from '@apollo/react-hooks'
+import useApolloError from '../../util/useApolloError'
+import BookPageQuery from '../../queries/BookPageQuery'
 
 export default ({ route }) => {
-  const Styles = useStyles()
-  const { data, loading, errorMessage } = useBookPage({
-    bookId: route.params.bookId,
+  const { data, loading, error } = useQuery(BookPageQuery, {
+    variables: { bookId: route.params.bookId },
   })
+  const errorMessage = useApolloError(error)
 
+  const Styles = useStyles()
   const navigation = useNavigation()
 
   if (loading)

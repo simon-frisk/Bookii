@@ -9,6 +9,7 @@ import FavoriteToggle from '../../components/FavoriteToggle'
 import useApolloError from '../../util/useApolloError'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
+import UserPageQuery from '../../queries/UserPageQuery'
 
 const UpdateFeedBook = gql`
   mutation UpdateFeedBook(
@@ -41,6 +42,7 @@ export default ({
 }) => {
   const [callMutation, { loading, error }] = useMutation(UpdateFeedBook, {
     onCompleted,
+    refetchQueries: [{ query: UserPageQuery }],
   })
   const { theme } = useStyles()
   const errorMessage = useApolloError(error)

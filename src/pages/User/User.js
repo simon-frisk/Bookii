@@ -13,15 +13,20 @@ import PressButton from '../../components/PressButton'
 import FollowButton from './FollowButton'
 import FeedBookSlider from '../../components/FeedBook/FeedBookSlider'
 import BookSlider from '../../components/Book/BookSlider'
-import useUserPage from '../../data/hooks/useUserPage'
 import Typography from '../../components/Typography'
 import useHeaderTitle from '../../util/useHeaderTitle'
 import useReportActionSheet from './useReportActionSheet'
 import FeedBookCard from '../../components/FeedBook/FeedBookCard'
+import { useQuery } from '@apollo/react-hooks'
+import UserPageQuery from '../../queries/UserPageQuery'
+import useApolloError from '../../util/useApolloError'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
-  const { data, loading, errorMessage } = useUserPage({ _id })
+  const { data, loading, error } = useQuery(UserPageQuery, {
+    variables: { _id },
+  })
+  const errorMessage = useApolloError(error)
   const Styles = useStyles()
   const showReportActionSheet = useReportActionSheet(
     _id,

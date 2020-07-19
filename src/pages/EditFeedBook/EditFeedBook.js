@@ -1,15 +1,20 @@
 import React from 'react'
 import { ScrollView, View, ActivityIndicator } from 'react-native'
 import useStyles from '../../util/useStyles'
-import useUpdateFeedBookPage from '../../data/hooks/useUpdateFeedBookPage'
 import DeleteButton from './DeleteButton'
 import Edit from './Edit'
 import Typography from '../../components/Typography'
+import { useQuery } from '@apollo/react-hooks'
+import UpdateFeedBookPageQuery from '../../queries/UpdateFeedBookPageQuery'
+import useApolloError from '../../util/useApolloError'
 
 export default ({ route, navigation }) => {
-  const { data, loading, errorMessage } = useUpdateFeedBookPage({
-    _id: route.params._id,
+  const { data, loading, error } = useQuery(UpdateFeedBookPageQuery, {
+    variables: {
+      _id: route.params._id,
+    },
   })
+  const errorMessage = useApolloError(error)
   const Styles = useStyles()
 
   if (errorMessage)
