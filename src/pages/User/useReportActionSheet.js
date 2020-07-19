@@ -1,10 +1,10 @@
 import { useActionSheet } from '@expo/react-native-action-sheet'
-import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 import useInappropriateFlag from '../../data/hooks/useInappropriateFlag'
 
 export default (_id, isFlagged) => {
   const { showActionSheetWithOptions } = useActionSheet()
-  const theme = useTheme()
+  const { theme } = useStyles()
   const { callMutation } = useInappropriateFlag({ _id })
 
   function showReportActionSheet() {

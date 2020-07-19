@@ -15,7 +15,6 @@ import FeedBookSlider from '../../components/FeedBook/FeedBookSlider'
 import BookSlider from '../../components/Book/BookSlider'
 import useUserPage from '../../data/hooks/useUserPage'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
 import useHeaderTitle from '../../util/useHeaderTitle'
 import useReportActionSheet from './useReportActionSheet'
 import FeedBookCard from '../../components/FeedBook/FeedBookCard'
@@ -24,7 +23,6 @@ export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
   const { data, loading, errorMessage } = useUserPage({ _id })
   const Styles = useStyles()
-  const theme = useTheme()
   const showReportActionSheet = useReportActionSheet(
     _id,
     data && data.user.isinappropriateflagged
@@ -42,7 +40,7 @@ export default ({ route, navigation }) => {
   if (errorMessage)
     return (
       <View style={Styles.center}>
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: Styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       </View>
@@ -82,7 +80,7 @@ export default ({ route, navigation }) => {
                         : 'flag'
                     }
                     size={25}
-                    color={theme.current.complement}
+                    color={Styles.theme.current.complement}
                     style={{ marginTop: 15 }}
                   />
                 </TouchableOpacity>
@@ -125,7 +123,7 @@ export default ({ route, navigation }) => {
               {isSelf && (
                 <PressButton
                   text='Dicover books!'
-                  color={theme.current.main}
+                  color={styles.theme.current.main}
                   onPress={() => navigation.navigate('Books')}
                 />
               )}

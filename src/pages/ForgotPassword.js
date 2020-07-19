@@ -5,13 +5,11 @@ import Typography from '../components/Typography'
 import useStyles from '../util/useStyles'
 import TextField from '../components/TextField'
 import PressButton from '../components/PressButton'
-import useTheme from '../util/useTheme'
 import ForgotPassword from '../data/graphql/ForgotPassword'
 import useApolloError from '../util/useApolloError'
 
 export default () => {
   const styles = useStyles()
-  const theme = useTheme()
   const [email, setEmail] = useState('')
 
   const [callQuery, { data, loading, error }] = useLazyQuery(ForgotPassword)
@@ -39,13 +37,13 @@ export default () => {
         </Typography>
       )}
       {error && (
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       )}
       <PressButton
         text='Get new password'
-        color={theme.current.main}
+        color={styles.theme.current.main}
         loading={loading}
         onPress={() => callQuery({ variables: { email } })}
       />

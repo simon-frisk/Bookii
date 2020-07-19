@@ -6,7 +6,6 @@ import useApolloError from '../../util/useApolloError'
 import PressButton from '../../components/PressButton'
 import gql from 'graphql-tag'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
 import useStyles from '../../util/useStyles'
 
 const ChangePassword = gql`
@@ -19,7 +18,6 @@ export default () => {
   const [callMutation, { data, loading, error }] = useMutation(ChangePassword)
   const errorMessage = useApolloError(error)
   const [password, setPassword] = useState('')
-  const theme = useTheme()
   const styles = useStyles()
 
   const updatePassword = () => {
@@ -44,7 +42,7 @@ export default () => {
         secureTextEntry={true}
       />
       {error && (
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       )}

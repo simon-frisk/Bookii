@@ -12,7 +12,6 @@ import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
 import useStyles from '../util/useStyles'
 import Typography from '../components/Typography'
-import useTheme from '../util/useTheme'
 
 const Signup = gql`
   mutation Signup(
@@ -32,7 +31,6 @@ const Signup = gql`
 
 export default () => {
   const Styles = useStyles()
-  const theme = useTheme()
 
   const [callMutation, { loading, error }] = useMutation(Signup, {
     onCompleted: ({ signup: token }) => {
@@ -82,7 +80,7 @@ export default () => {
           <Typography style={{ flex: 1, marginRight: 5 }}>
             I have read and agree with the{' '}
             <Typography
-              style={{ color: theme.current.main }}
+              style={{ color: Styles.theme.current.main }}
               onPress={() =>
                 WebBrowser.openBrowserAsync(
                   'https://bookii.simonfrisk.com/privacypolicy'
@@ -95,12 +93,12 @@ export default () => {
           <CheckBox
             isChecked={latestConsent}
             onClick={() => setLatestConsent(!latestConsent)}
-            leftTextStyle={{ color: theme.current.text, fontSize: 16 }}
-            checkBoxColor={theme.current.text}
+            leftTextStyle={{ color: Styles.theme.current.text, fontSize: 16 }}
+            checkBoxColor={Styles.theme.current.text}
           />
         </View>
         {error && (
-          <Typography style={{ color: theme.current.error }}>
+          <Typography style={{ color: Styles.theme.current.error }}>
             {errorMessage}
           </Typography>
         )}
@@ -108,11 +106,11 @@ export default () => {
           text='sign up'
           onPress={signup}
           loading={loading}
-          color={theme.current.main}
+          color={Styles.theme.current.main}
         />
         <Typography style={{ marginTop: Styles.standardMargin }}>
           Already have an account?{' '}
-          <Link to='/signin' style={{ color: theme.current.main }}>
+          <Link to='/signin' style={{ color: Styles.theme.current.main }}>
             Sign in!
           </Link>
         </Typography>

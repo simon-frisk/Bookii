@@ -7,14 +7,12 @@ import BookCover from '../../components/Book/BookCover'
 import PressButton from '../../components/PressButton'
 import useBookPage from '../../data/hooks/useBookPage'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
 import ExpandableText from '../../components/ExpandableText'
 import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 import YoutubeVideos from './YoutubeVideos'
 
 export default ({ route }) => {
   const Styles = useStyles()
-  const theme = useTheme()
   const { data, loading, errorMessage } = useBookPage({
     bookId: route.params.bookId,
   })
@@ -31,7 +29,7 @@ export default ({ route }) => {
   if (errorMessage)
     return (
       <View style={Styles.center}>
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: Styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       </View>
@@ -68,7 +66,7 @@ export default ({ route }) => {
             onPress={() =>
               navigation.navigate('addFeedBook', { bookId: data.book.bookId })
             }
-            color={theme.current.main}
+            color={Styles.theme.current.main}
           />
           <WishButton bookId={data.book.bookId} isWished={data.book.isWished} />
         </View>

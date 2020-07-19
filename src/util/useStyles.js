@@ -4,6 +4,7 @@ export default () => {
   const theme = useTheme()
 
   return {
+    theme,
     standardMargin: 14,
     doubleMargin: 28,
     card: {

@@ -11,7 +11,7 @@ import Profile from '../pages/Profile/Profile'
 import EditFeedBook from '../pages/EditFeedBook/EditFeedBook'
 import User from '../pages/User/User'
 import AcceptPolicies from '../pages/AcceptPolicies'
-import useTheme from '../util/useTheme'
+import useStyles from '../util/useStyles'
 import BottomTabs from './BottomTabs'
 import useIdentifyUser from './useIdentifyUser'
 import { UserContext } from './UserProvider'
@@ -26,11 +26,10 @@ export default () => {
     isInitialAuthCheckDone,
     isLatestConsent,
   } = useContext(UserContext)
-
   const { callIdentifyUser } = useIdentifyUser()
-
   const navRef = useRef()
   const routeNameRef = useRef()
+  const { theme } = useStyles()
 
   useEffect(() => {
     initialAuthCheck()
@@ -48,8 +47,6 @@ export default () => {
       reportRouteIfChanged(routeName, null)
     }
   })
-
-  const theme = useTheme()
 
   if (!isInitialAuthCheckDone) return <View />
   return (

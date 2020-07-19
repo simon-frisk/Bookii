@@ -4,7 +4,6 @@ import Typography from '../components/Typography'
 import PressButton from '../components/PressButton'
 import CheckBox from 'react-native-check-box'
 import useStyles from '../util/useStyles'
-import useTheme from '../util/useTheme'
 import useAcceptLatestPolicies from '../data/hooks/useAcceptLatestPolicies'
 import { UserContext } from '../root/UserProvider'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -12,7 +11,6 @@ import useHeaderTitle from '../util/useHeaderTitle'
 
 export default () => {
   const styles = useStyles()
-  const theme = useTheme()
   const [agree, setAgree] = useState(false)
   const {
     callAcceptLatestPolicies,
@@ -32,7 +30,7 @@ export default () => {
       <Typography>
         The privacy policy of bookii has been updated. Find the updated policy{' '}
         <Typography
-          style={{ color: theme.current.main }}
+          style={{ color: styles.theme.current.main }}
           onPress={() =>
             WebBrowser.openBrowserAsync(
               'https://bookii.simonfrisk.com/privacypolicy'
@@ -46,11 +44,11 @@ export default () => {
         leftText='I have read and agree with the privacy policy'
         isChecked={agree}
         onClick={() => setAgree(!agree)}
-        leftTextStyle={{ color: theme.current.text, fontSize: 16 }}
-        checkBoxColor={theme.current.text}
+        leftTextStyle={{ color: styles.theme.current.text, fontSize: 16 }}
+        checkBoxColor={styles.theme.current.text}
         style={{ marginTop: 25 }}
       />
-      <Typography style={{ color: theme.current.error }}>
+      <Typography style={{ color: styles.theme.current.error }}>
         {errorMessage}
       </Typography>
       <PressButton

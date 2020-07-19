@@ -8,11 +8,10 @@ import DatePicker from '../components/DatePicker'
 import useApolloError from '../util/useApolloError'
 import UserPageQuery from '../data/graphql/UserPageQuery'
 import BookPageQuery from '../data/graphql/BookPageQuery'
-import useStyles from '../util/useStyles'
 import PressButton from '../components/PressButton'
 import FavoriteToggle from '../components/FavoriteToggle'
 import Typography from '../components/Typography'
-import useTheme from '../util/useTheme'
+import useStyles from '../util/useStyles'
 
 const AddFeedBook = gql`
   mutation AddFeedBook(
@@ -35,7 +34,6 @@ const AddFeedBook = gql`
 export default ({ route, navigation }) => {
   const bookId = route.params.bookId
   const Styles = useStyles()
-  const theme = useTheme()
 
   const [callAddReadBookMutation, { loading, error }] = useMutation(
     AddFeedBook,
@@ -79,14 +77,14 @@ export default ({ route, navigation }) => {
       />
       <FavoriteToggle favorite={favorite} setFavorite={setFavorite} />
       {error && (
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: Styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       )}
       <PressButton
         text='Add Book'
         loading={loading}
-        color={theme.current.main}
+        color={Styles.theme.current.main}
         onPress={addBook}
       />
     </ScrollView>

@@ -7,14 +7,12 @@ import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
 import UserSlider from '../../components/UserSlider'
 import useStyles from '../../util/useStyles'
-import useTheme from '../../util/useTheme'
 
 export default () => {
   const [callQuery, { data, loading, error }] = useLazyQuery(UserSearchQuery)
   const errorMessage = useApolloError(error)
   const [query, setQuery] = useState('')
   const Styles = useStyles()
-  const theme = useTheme()
 
   useEffect(() => callQuery({ variables: { name: query } }), [query])
 
@@ -38,7 +36,7 @@ export default () => {
           style={{
             padding: 10,
             textAlign: 'center',
-            color: theme.current.error,
+            color: Styles.theme.current.error,
           }}
         >
           {errorMessage}

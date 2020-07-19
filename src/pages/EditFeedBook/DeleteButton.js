@@ -6,7 +6,7 @@ import UserPageQuery from '../../data/graphql/UserPageQuery'
 import BookPageQuery from '../../data/graphql/BookPageQuery'
 import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 
 const RemoveFeedBook = gql`
   mutation RemoveFeedBook($_id: ID!) {
@@ -34,7 +34,7 @@ export default ({ _id, bookId, onCompleted }) => {
     }
   )
   const errorMessage = useApolloError(error)
-  const theme = useTheme()
+  const { theme } = useStyles()
 
   if (error)
     return (

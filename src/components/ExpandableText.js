@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import Typography from './Typography'
-import useTheme from '../util/useTheme'
+import useStyles from '../util/useStyles'
 
 export default ({ text, style, extractLength }) => {
   const [isExpanded, setIsExpanded] = useState(false)
-  const theme = useTheme()
+  const { theme } = useStyles()
 
   if (text.length < extractLength + 30)
     return <Typography style={style}>{text}</Typography>

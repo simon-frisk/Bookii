@@ -12,7 +12,6 @@ import DeleteProfile from './DeleteProfile'
 import useApolloError from '../../util/useApolloError'
 import ChangePassword from './ChangePassword'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
 import ChangeProfilePicture from './ChangeProfilePicture'
 import useHeaderTitle from '../../util/useHeaderTitle'
 
@@ -39,7 +38,6 @@ export const UserFollowingAndFollowers = gql`
 
 export default () => {
   const Styles = useStyles()
-  const theme = useTheme()
   const { data, loading, error } = useQuery(UserFollowingAndFollowers)
   const errorMessage = useApolloError(error)
   const { signout } = useContext(UserContext)
@@ -56,7 +54,7 @@ export default () => {
   if (error)
     return (
       <View style={Styles.center}>
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: Styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       </View>
@@ -117,7 +115,7 @@ export default () => {
           For more info, like viewing privacy policy or getting support, visit
           the{' '}
           <Typography
-            style={{ color: theme.current.main }}
+            style={{ color: Styles.theme.current.main }}
             onPress={() =>
               WebBrowser.openBrowserAsync('https://bookii.simonfrisk.com')
             }

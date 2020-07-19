@@ -9,7 +9,6 @@ import useApolloError from '../util/useApolloError'
 import PressButton from '../components/PressButton'
 import useStyles from '../util/useStyles'
 import Typography from '../components/Typography'
-import useTheme from '../util/useTheme'
 
 const Signin = gql`
   query Signin($email: String!, $password: String!) {
@@ -19,7 +18,6 @@ const Signin = gql`
 
 export default () => {
   const Styles = useStyles()
-  const theme = useTheme()
 
   const [callQuery, { loading, error }] = useLazyQuery(Signin, {
     onCompleted: ({ signin: token }) => {
@@ -57,7 +55,7 @@ export default () => {
           textContentType='password'
         />
         {error && (
-          <Typography style={{ color: theme.current.error }}>
+          <Typography style={{ color: Styles.theme.current.error }}>
             {errorMessage}
           </Typography>
         )}
@@ -65,10 +63,13 @@ export default () => {
           text='sign in'
           onPress={signin}
           loading={loading}
-          color={theme.current.main}
+          color={Styles.theme.current.main}
         />
         <Typography style={{ marginTop: Styles.standardMargin }}>
-          <Link to='/forgotpassword' style={{ color: theme.current.main }}>
+          <Link
+            to='/forgotpassword'
+            style={{ color: Styles.theme.current.main }}
+          >
             Forgot password?
           </Link>
         </Typography>

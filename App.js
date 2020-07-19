@@ -8,7 +8,7 @@ import * as Segment from 'expo-analytics-segment'
 import Apollo from './src/root/Apollo'
 import { UserProvider } from './src/root/UserProvider'
 import Root from './src/root/Root'
-import useTheme from './src/util/useTheme'
+import useStyles from './src/util/useStyles'
 
 enableScreens()
 
@@ -18,7 +18,7 @@ Segment.initialize({
 })
 
 export default () => {
-  const theme = useTheme()
+  const { theme } = useStyles()
 
   return (
     <UserProvider>

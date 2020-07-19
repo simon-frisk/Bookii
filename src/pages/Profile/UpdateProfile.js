@@ -7,7 +7,6 @@ import TextField from '../../components/TextField'
 import PressButton from '../../components/PressButton'
 import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
 import useStyles from '../../util/useStyles'
 
 const UpdateUser = gql`
@@ -30,7 +29,6 @@ export default ({ email: initialEmail, name: initialName }) => {
     },
   })
   const errorMessage = useApolloError(error)
-  const theme = useTheme()
   const styles = useStyles()
 
   const [name, setName] = useState(initialName)
@@ -56,14 +54,14 @@ export default ({ email: initialEmail, name: initialName }) => {
       />
       <TextField value={name} onChangeText={setName} placeholder='name' />
       {error && (
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       )}
       <PressButton
         text='Save email and name'
         onPress={update}
-        color={theme.current.main}
+        color={styles.theme.current.main}
         loading={loading}
       />
     </View>

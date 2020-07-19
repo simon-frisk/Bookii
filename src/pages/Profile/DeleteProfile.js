@@ -6,7 +6,7 @@ import PressButton from '../../components/PressButton'
 import { UserContext } from '../../root/UserProvider'
 import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 
 const DeleteProfile = gql`
   mutation DeleteProfile {
@@ -20,7 +20,7 @@ export default () => {
   })
   const errorMessage = useApolloError(error)
   const { signout } = useContext(UserContext)
-  const theme = useTheme()
+  const { theme } = useStyles()
 
   const showAlert = () => {
     Alert.alert(

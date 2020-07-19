@@ -7,7 +7,7 @@ import DatePicker from '../../components/DatePicker'
 import PressButton from '../../components/PressButton'
 import FavoriteToggle from '../../components/FavoriteToggle'
 import useApolloError from '../../util/useApolloError'
-import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
 
 const UpdateFeedBook = gql`
@@ -42,7 +42,7 @@ export default ({
   const [callMutation, { loading, error }] = useMutation(UpdateFeedBook, {
     onCompleted,
   })
-  const theme = useTheme()
+  const { theme } = useStyles()
   const errorMessage = useApolloError(error)
   const [comment, setComment] = useState(initialComment)
   const [date, setDate] = useState(initialDate)

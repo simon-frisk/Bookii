@@ -5,13 +5,11 @@ import TextField from '../../components/TextField'
 import useStyles from '../../util/useStyles'
 import Typography from '../../components/Typography'
 import BookSlider from '../../components/Book/BookSlider'
-import useTheme from '../../util/useTheme'
 
 export default () => {
   const { callQuery, data, loading, errorMessage } = useBookSearch()
   const [query, setQuery] = useState('')
   const Styles = useStyles()
-  const theme = useTheme()
 
   useEffect(() => callQuery({ variables: { query } }), [query])
 
@@ -37,7 +35,7 @@ export default () => {
           style={{
             padding: 10,
             textAlign: 'center',
-            color: theme.current.error,
+            color: Styles.theme.current.error,
           }}
         >
           {errorMessage}

@@ -4,12 +4,11 @@ import * as ImagePicker from 'expo-image-picker'
 import { ReactNativeFile } from 'apollo-upload-client'
 import { View } from 'react-native'
 import ProfilePictureCircle from '../../components/ProfilePictureCircle'
-import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import useApolloError from '../../util/useApolloError'
 import Typography from '../../components/Typography'
-import useStyles from '../../util/useStyles'
 
 const ChangeProfilePicture = gql`
   mutation ChangeProfilePicture($profilePicture: Upload) {
@@ -27,7 +26,6 @@ export default ({ profilePicturePath: initialProfilePicturePath, name }) => {
   const [profilePicturePath, setProfilePicturePath] = useState(
     initialProfilePicturePath
   )
-  const theme = useTheme()
   const styles = useStyles()
 
   const save = () => {
@@ -77,18 +75,18 @@ export default ({ profilePicturePath: initialProfilePicturePath, name }) => {
             setProfilePicture()
             setProfilePicturePath()
           }}
-          color={theme.current.error}
+          color={styles.theme.current.error}
         />
       </View>
       {error && (
-        <Typography style={{ color: theme.current.error }}>
+        <Typography style={{ color: styles.theme.current.error }}>
           {errorMessage}
         </Typography>
       )}
       <PressButton
         text='Save profilepicture'
         onPress={save}
-        color={theme.current.main}
+        color={styles.theme.current.main}
         loading={loading}
       />
     </View>

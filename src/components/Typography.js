@@ -1,9 +1,9 @@
 import React from 'react'
 import { Text } from 'react-native'
-import useTheme from '../util/useTheme'
+import useStyles from '../util/useStyles'
 
 export default props => {
-  const theme = useTheme()
+  const { theme } = useStyles()
 
   const fontSizeAndWeight = getFontSize(props.type)
 

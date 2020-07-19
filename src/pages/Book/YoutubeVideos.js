@@ -4,17 +4,15 @@ import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import Typography from '../../components/Typography'
 import useStyles from '../../util/useStyles'
-import useTheme from '../../util/useTheme'
 
 export default ({ videoIds }) => {
   const playerRef = useRef()
   const styles = useStyles()
-  const theme = useTheme()
 
   return (
     <View
       style={{
-        backgroundColor: theme.current.primary,
+        backgroundColor: styles.theme.current.primary,
         marginTop: styles.doubleMargin,
         marginBottom: styles.standardMargin,
         paddingVertical: styles.standardMargin,

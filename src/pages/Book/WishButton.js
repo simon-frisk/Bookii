@@ -6,7 +6,7 @@ import useApolloError from '../../util/useApolloError'
 import UserPageQuery from '../../data/graphql/UserPageQuery'
 import BookPageQuery from '../../data/graphql/BookPageQuery'
 import Typography from '../../components/Typography'
-import useTheme from '../../util/useTheme'
+import useStyles from '../../util/useStyles'
 
 const AddBookToWishList = gql`
   mutation AddBookToWishList($bookId: String!) {
@@ -46,7 +46,7 @@ const AddButton = ({ bookId, onCompleted }) => {
     ],
   })
   const errorMessage = useApolloError(error)
-  const theme = useTheme()
+  const { theme } = useStyles()
 
   return (
     <>
@@ -75,7 +75,7 @@ const RemoveButton = ({ bookId, onCompleted }) => {
     }
   )
   const errorMessage = useApolloError(error)
-  const theme = useTheme()
+  const theme = useStyles()
 
   return (
     <>

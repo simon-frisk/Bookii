@@ -1,19 +1,17 @@
 import React from 'react'
 import { View, TextInput, TouchableOpacity } from 'react-native'
 import { FontAwesome, Entypo } from '@expo/vector-icons'
-import useTheme from '../util/useTheme'
 import useStyles from '../util/useStyles'
 
 export default props => {
-  const theme = useTheme()
   const styles = useStyles()
 
   return (
     <View
       style={[
         {
-          backgroundColor: theme.light.button,
-          borderColor: theme.light.button,
+          backgroundColor: styles.theme.light.button,
+          borderColor: styles.theme.light.button,
           borderRadius: 15,
           marginTop: styles.standardMargin / 2,
           flexDirection: 'row',
@@ -29,7 +27,11 @@ export default props => {
             paddingLeft: 10,
           }}
         >
-          <FontAwesome name={props.icon} size={18} color={theme.light.text} />
+          <FontAwesome
+            name={props.icon}
+            size={18}
+            color={styles.theme.light.text}
+          />
         </View>
       )}
       <TextInput
@@ -39,12 +41,12 @@ export default props => {
           flex: 1,
           padding: 10,
           paddingTop: 10,
-          color: theme.light.text,
-          ...theme.font,
+          color: styles.theme.light.text,
+          ...styles.theme.font,
           fontSize: 15,
         }}
         placeholderTextColor='#aaa'
-        keyboardAppearance={theme.isDarkMode ? 'dark' : 'light'}
+        keyboardAppearance={styles.theme.isDarkMode ? 'dark' : 'light'}
       />
       {!!props.value && !props.canHaveManyLines && (
         <TouchableOpacity

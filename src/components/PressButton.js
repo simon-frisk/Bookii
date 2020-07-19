@@ -1,7 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, View, ActivityIndicator } from 'react-native'
 import Typography from './Typography'
-import useTheme from '../util/useTheme'
 import useStyles from '../util/useStyles'
 
 export default ({
@@ -12,7 +11,6 @@ export default ({
   containerStyle,
   disabled,
 }) => {
-  const theme = useTheme()
   const styles = useStyles()
 
   return (
@@ -25,7 +23,7 @@ export default ({
           paddingHorizontal: 30,
           borderRadius: 15,
           marginTop: styles.standardMargin / 2,
-          backgroundColor: color || theme.current.button,
+          backgroundColor: color || styles.theme.current.button,
         },
         containerStyle,
       ]}
@@ -36,7 +34,7 @@ export default ({
         <Typography
           style={{
             textAlign: 'center',
-            color: disabled ? '#999' : theme.light.text,
+            color: disabled ? '#999' : styles.theme.light.text,
           }}
         >
           {text}
