@@ -9,6 +9,7 @@ import UserSearch from './UserSearch'
 import PeoplePageQuery from '../../queries/PeoplePageQuery'
 import { useQuery } from '@apollo/react-hooks'
 import useApolloError from '../../util/useApolloError'
+import ErrorCenter from '../../components/ErrorCenter'
 
 export default () => {
   const { data, loading, error, fetchMore } = useQuery(PeoplePageQuery)
@@ -65,14 +66,7 @@ export default () => {
               <ActivityIndicator />
             </View>
           )
-        if (errorMessage)
-          return (
-            <View style={styles.center}>
-              <Typography style={{ color: styles.theme.current.error }}>
-                {errorMessage}
-              </Typography>
-            </View>
-          )
+        if (errorMessage) return <ErrorCenter message={errorMessage} />
         return (
           <View style={styles.center}>
             <Typography>No books</Typography>

@@ -15,6 +15,7 @@ import Typography from '../../components/Typography'
 import ChangeProfilePicture from './ChangeProfilePicture'
 import useHeaderTitle from '../../util/useHeaderTitle'
 import FollowingAndFollowersQuery from '../../queries/FollowingAndFollowersQuery'
+import ErrorCenter from '../../components/ErrorCenter'
 
 export default () => {
   const Styles = useStyles()
@@ -31,14 +32,7 @@ export default () => {
       </View>
     )
 
-  if (error)
-    return (
-      <View style={Styles.center}>
-        <Typography style={{ color: Styles.theme.current.error }}>
-          {errorMessage}
-        </Typography>
-      </View>
-    )
+  if (error) return <ErrorCenter message={errorMessage} />
 
   return (
     <ScrollView>

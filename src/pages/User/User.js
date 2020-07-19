@@ -20,6 +20,7 @@ import FeedBookCard from '../../components/FeedBook/FeedBookCard'
 import { useQuery } from '@apollo/react-hooks'
 import UserPageQuery from '../../queries/UserPageQuery'
 import useApolloError from '../../util/useApolloError'
+import ErrorCenter from '../../components/ErrorCenter'
 
 export default ({ route, navigation }) => {
   const { _id, isSelf, selfId } = getUserIDAndIsSelf(route)
@@ -42,14 +43,7 @@ export default ({ route, navigation }) => {
       </View>
     )
 
-  if (errorMessage)
-    return (
-      <View style={Styles.center}>
-        <Typography style={{ color: Styles.theme.current.error }}>
-          {errorMessage}
-        </Typography>
-      </View>
-    )
+  if (errorMessage) return <ErrorCenter message={errorMessage} />
 
   if (data)
     return (

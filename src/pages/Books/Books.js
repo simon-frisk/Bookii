@@ -8,6 +8,7 @@ import useHeaderTitle from '../../util/useHeaderTitle'
 import { useQuery } from '@apollo/react-hooks'
 import BooksPageQuery from '../../queries/BooksPageQuery'
 import useApolloError from '../../util/useApolloError'
+import ErrorCenter from '../../components/ErrorCenter'
 
 export default () => {
   const { data, loading, error } = useQuery(BooksPageQuery)
@@ -23,13 +24,7 @@ export default () => {
           <ActivityIndicator />
         </View>
       )}
-      {errorMessage && (
-        <View style={styles.center}>
-          <Typography style={{ color: styles.theme.current.error }}>
-            {errorMessage}
-          </Typography>
-        </View>
-      )}
+      {errorMessage && <ErrorCenter message={errorMessage} />}
       {data &&
         data.bookLists.map(list => (
           <BookSlider title={list.name} key={list.name} books={list.books} />
