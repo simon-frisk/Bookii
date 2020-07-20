@@ -122,7 +122,7 @@ export default ({ route, navigation }) => {
               {isSelf && (
                 <PressButton
                   text='Dicover books!'
-                  color={styles.theme.current.main}
+                  color={Styles.theme.current.main}
                   onPress={() => navigation.navigate('Books')}
                 />
               )}
