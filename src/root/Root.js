@@ -16,6 +16,7 @@ import BottomTabs from './BottomTabs'
 import useIdentifyUser from './useIdentifyUser'
 import { UserContext } from './UserProvider'
 import ForgotPassword from '../pages/ForgotPassword'
+import BookList from '../pages/BookList'
 
 const Stack = createNativeStackNavigator()
 
@@ -78,6 +79,7 @@ export default () => {
                 options={{ headerLargeTitle: true }}
               />
               <Stack.Screen name='book' component={Book} />
+              <Stack.Screen name='bookList' component={BookList} />
               <Stack.Screen name='addFeedBook' component={AddFeedBook} />
               <Stack.Screen name='editFeedBook' component={EditFeedBook} />
               <Stack.Screen

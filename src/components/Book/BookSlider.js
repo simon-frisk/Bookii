@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 import useStyles from '../../util/useStyles'
-import BookCard from './BookCard'
+import BookCoverLink from './BookCoverLink'
 import Typography from '../Typography'
 
 export default ({ books, title }) => {
@@ -26,7 +26,7 @@ export default ({ books, title }) => {
         }}
         horizontal={true}
         renderItem={({ item: book }) => (
-          <BookCard
+          <BookCoverLink
             bookId={book.bookId}
             thumbnail={book.thumbnail}
             style={{

@@ -1,5 +1,6 @@
 export default error => {
   if (!error) return
+  console.log(error)
   if (error.graphQLErrors.length) {
     return error.graphQLErrors.map(error => error.message).join(', ')
   }

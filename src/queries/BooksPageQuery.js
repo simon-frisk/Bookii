@@ -2,12 +2,8 @@ import gql from 'graphql-tag'
 
 export default gql`
   query BookLists {
-    bookLists {
+    bestSellerLists {
       name
-      books {
-        bookId
-        thumbnail
-      }
     }
   }
 `
