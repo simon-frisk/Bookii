@@ -4,6 +4,7 @@ export default gql`
   query BookLists {
     bestSellerLists {
       name
+      icon
     }
   }
 `

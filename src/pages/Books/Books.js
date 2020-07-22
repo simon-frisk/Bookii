@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  ScrollView,
-  View,
-  ActivityIndicator,
-  TouchableOpacity,
-} from 'react-native'
+import { ScrollView, View, ActivityIndicator } from 'react-native'
 import useStyles from '../../util/useStyles'
 import Search from './Search'
 import useHeaderTitle from '../../util/useHeaderTitle'
@@ -34,18 +29,25 @@ export default () => {
       )}
       {errorMessage && <ErrorCenter message={errorMessage} />}
       {data && (
-        <Table title='Bestsellers'>
-          {data.bestSellerLists.map(list => (
-            <Cell
-              key={list.name}
-              title={list.name}
-              onPress={() =>
-                navigation.navigate('bookList', { name: list.name })
-              }
-              Left={() => <Typography>📚</Typography>}
-            />
-          ))}
-        </Table>
+        <>
+          <Typography type='h2'>Bestsellers</Typography>
+          <Table
+            title='Bestsellers'
+            description='Bestseller lists from The New York Times'
+            initialLength={5}
+            data={data.bestSellerLists}
+            renderCell={list => (
+              <Cell
+                key={list.name}
+                title={list.name}
+                onPress={() =>
+                  navigation.navigate('bookList', { name: list.name })
+                }
+                Left={() => <Typography>{list.icon}</Typography>}
+              />
+            )}
+          />
+        </>
       )}
     </ScrollView>
   )

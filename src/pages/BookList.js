@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import BookListPage from '../queries/BookListPage'
-import { View, ActivityIndicator } from 'react-native'
+import { View, ActivityIndicator, Text } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import useStyles from '../util/useStyles'
 import Typography from '../components/Typography'
@@ -24,12 +24,26 @@ export default ({ route }) => {
       </View>
     )
   if (error) return <ErrorCenter message={errorMessage} />
+
   return (
     <FlatList
       ListHeaderComponent={() => (
-        <Typography type='h2' style={{ padding: styles.standardMargin }}>
-          {data.bookList.name}
-        </Typography>
+        <View style={{ padding: styles.standardMargin }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <Typography type='h2' style={{ flex: 1 }}>
+              {data.bookList.name}
+            </Typography>
+            <Text style={{ fontSize: 60, marginLeft: 10 }}>
+              {data.bookList.icon}
+            </Text>
+          </View>
+        </View>
       )}
       data={data.bookList.books}
       keyExtractor={item => item.bookId}
