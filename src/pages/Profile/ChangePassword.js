@@ -49,6 +49,7 @@ export default () => {
       <PressButton
         loading={loading}
         text='Save password'
+        color={styles.theme.current.main}
         onPress={updatePassword}
       />
     </View>

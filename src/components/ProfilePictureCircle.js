@@ -1,8 +1,10 @@
 import React from 'react'
 import { View, Image } from 'react-native'
 import Typography from './Typography'
+import useStyles from '../util/useStyles'
 
 export default ({ profilePicturePath, name, size, style }) => {
+  const { theme } = useStyles()
   const initials = name
     .split(' ')
     .map(namePart => namePart.charAt(0))
@@ -34,7 +36,7 @@ export default ({ profilePicturePath, name, size, style }) => {
           justifyContent: 'center',
         }}
       >
-        <Typography style={{ color: 'white', fontSize: size * 0.4 }}>
+        <Typography style={{ color: theme.dark.text, fontSize: size * 0.4 }}>
           {initials}
         </Typography>
       </View>

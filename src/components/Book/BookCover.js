@@ -25,7 +25,7 @@ export default ({ uri, width, style, loading }) => {
             <Entypo
               name='image-inverted'
               size={width / 3}
-              color={styles.theme.current.button}
+              color={styles.theme.current.text}
             />
           )}
         </View>

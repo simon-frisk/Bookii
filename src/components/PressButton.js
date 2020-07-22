@@ -19,11 +19,11 @@ export default ({
       disabled={disabled || loading}
       style={[
         {
-          paddingVertical: 10,
+          paddingVertical: 8,
           paddingHorizontal: 30,
           borderRadius: 15,
           marginTop: styles.standardMargin / 2,
-          backgroundColor: color || styles.theme.current.button,
+          backgroundColor: color || styles.theme.current.primary,
         },
         containerStyle,
       ]}
@@ -34,7 +34,7 @@ export default ({
         <Typography
           style={{
             textAlign: 'center',
-            color: disabled ? '#999' : styles.theme.light.text,
+            color: disabled ? '#999' : styles.theme.current.text,
           }}
         >
           {text}

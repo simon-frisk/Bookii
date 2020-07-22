@@ -75,6 +75,7 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
             onPress={() =>
               navigation.navigate('editFeedBook', { _id: feedBook._id })
             }
+            containerStyle={{ paddingVertical: 0 }}
           />
         )}
       </View>

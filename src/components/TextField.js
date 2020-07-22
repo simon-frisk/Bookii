@@ -10,8 +10,8 @@ export default props => {
     <View
       style={[
         {
-          backgroundColor: styles.theme.light.button,
-          borderColor: styles.theme.light.button,
+          backgroundColor: styles.theme.current.primary,
+          borderColor: styles.theme.current.primary,
           borderRadius: 15,
           marginTop: styles.standardMargin / 2,
           flexDirection: 'row',
@@ -30,7 +30,7 @@ export default props => {
           <FontAwesome
             name={props.icon}
             size={18}
-            color={styles.theme.light.text}
+            color={styles.theme.current.text}
           />
         </View>
       )}
@@ -41,7 +41,7 @@ export default props => {
           flex: 1,
           padding: 10,
           paddingTop: 10,
-          color: styles.theme.light.text,
+          color: styles.theme.current.text,
           ...styles.theme.font,
           fontSize: 15,
         }}
@@ -57,7 +57,11 @@ export default props => {
           }}
           onPress={() => props.onChangeText('')}
         >
-          <Entypo name='circle-with-cross' size={18} color='#aaa' />
+          <Entypo
+            name='circle-with-cross'
+            size={18}
+            color={styles.theme.current.text}
+          />
         </TouchableOpacity>
       )}
     </View>
