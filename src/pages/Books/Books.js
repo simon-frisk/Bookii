@@ -40,8 +40,6 @@ export default () => {
             Bestsellers
           </Typography>
           <Table
-            title='Bestsellers'
-            description='Bestseller lists from The New York Times'
             initialLength={5}
             data={data.bestSellerLists}
             renderCell={list => (
@@ -52,6 +50,28 @@ export default () => {
                   navigation.navigate('bookList', { name: list.name })
                 }
                 Left={() => <Typography>{list.icon}</Typography>}
+              />
+            )}
+          />
+          <Typography
+            type='h2'
+            style={{
+              marginHorizontal: styles.standardMargin,
+              marginTop: styles.standardMargin,
+            }}
+          >
+            Categories
+          </Typography>
+          <Table
+            data={data.categories}
+            renderCell={category => (
+              <Cell
+                key={category.name}
+                title={category.name}
+                onPress={() =>
+                  navigation.navigate('category', { name: category.name })
+                }
+                Left={() => <Typography>{category.icon}</Typography>}
               />
             )}
           />

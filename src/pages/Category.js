@@ -1,17 +1,18 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import BookListPage from '../queries/BookListPage'
+import CategoryPageQuery from '../queries/CategoryPageQuery'
 import { View, ActivityIndicator, Text } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import useStyles from '../util/useStyles'
-import Typography from '../components/Typography'
 import ErrorCenter from '../components/ErrorCenter'
 import useApolloError from '../util/useApolloError'
 import BookCard from '../components/Book/BookCard'
+import useHeaderTitle from '../util/useHeaderTitle'
+import Typography from '../components/Typography'
 
 export default ({ route }) => {
   const name = route.params.name
-  const { data, loading, error } = useQuery(BookListPage, {
+  const { data, loading, error } = useQuery(CategoryPageQuery, {
     variables: { name },
   })
   const errorMessage = useApolloError(error)
@@ -27,6 +28,7 @@ export default ({ route }) => {
 
   return (
     <FlatList
+      data={data.category.books}
       ListHeaderComponent={() => (
         <View
           style={{
@@ -37,14 +39,13 @@ export default ({ route }) => {
           }}
         >
           <Typography type='h2' style={{ flex: 1 }}>
-            {data.bookList.name}
+            {data.category.name}
           </Typography>
           <Text style={{ fontSize: 60, marginLeft: 10 }}>
-            {data.bookList.icon}
+            {data.category.icon}
           </Text>
         </View>
       )}
-      data={data.bookList.books}
       keyExtractor={item => item.bookId}
       renderItem={({ item }) => <BookCard book={item} />}
     />

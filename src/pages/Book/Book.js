@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, TouchableOpacity } from 'react-native'
 import useStyles from '../../util/useStyles'
 import WishButton from './WishButton'
 import { useNavigation } from '@react-navigation/native'
@@ -98,6 +98,34 @@ export default ({ route }) => {
               <Typography style={{ color: 'grey' }}>
                 Publisher: {data.book.publisher}
               </Typography>
+            )}
+            {!!data.book.categories && (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginTop: Styles.standardMargin,
+                }}
+              >
+                {data.book.categories.map(category => (
+                  <TouchableOpacity
+                    key={category.name}
+                    style={{
+                      backgroundColor: Styles.theme.current.main,
+                      borderRadius: 15,
+                      padding: 3,
+                      marginRight: Styles.standardMargin,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                    }}
+                    onPress={() =>
+                      navigation.navigate('category', { name: category.name })
+                    }
+                  >
+                    <Typography>{category.icon}</Typography>
+                    <Typography>{category.name}</Typography>
+                  </TouchableOpacity>
+                ))}
+              </View>
             )}
           </View>
           {!!data.book.description && (

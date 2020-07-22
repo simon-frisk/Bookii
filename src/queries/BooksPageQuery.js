@@ -6,5 +6,9 @@ export default gql`
       name
       icon
     }
+    categories {
+      name
+      icon
+    }
   }
 `

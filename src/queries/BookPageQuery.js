@@ -15,6 +15,10 @@ export default gql`
       wikipediadescription
       isWished
       youtubevideos
+      categories {
+        name
+        icon
+      }
       onselffeed {
         _id
         date
