@@ -32,7 +32,10 @@ export default () => {
         <>
           <Typography
             type='h2'
-            style={{ marginHorizontal: styles.standardMargin }}
+            style={{
+              marginHorizontal: styles.standardMargin,
+              marginTop: styles.standardMargin,
+            }}
           >
             Bestsellers
           </Typography>
