@@ -30,7 +30,12 @@ export default () => {
       {errorMessage && <ErrorCenter message={errorMessage} />}
       {data && (
         <>
-          <Typography type='h2'>Bestsellers</Typography>
+          <Typography
+            type='h2'
+            style={{ marginHorizontal: styles.standardMargin }}
+          >
+            Bestsellers
+          </Typography>
           <Table
             title='Bestsellers'
             description='Bestseller lists from The New York Times'
