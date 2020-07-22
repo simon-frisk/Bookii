@@ -10,6 +10,7 @@ import PeoplePageQuery from '../../queries/PeoplePageQuery'
 import { useQuery } from '@apollo/react-hooks'
 import useApolloError from '../../util/useApolloError'
 import ErrorCenter from '../../components/ErrorCenter'
+import UserShow from './UserShow'
 
 export default () => {
   const { data, loading, error, fetchMore } = useQuery(PeoplePageQuery)
@@ -39,19 +40,16 @@ export default () => {
           <UserSearch />
           {!!data && (
             <>
+              <UserShow
+                recommended={data.recommendedUsers}
+                following={data.user.following}
+              />
               <Typography
                 type='h2'
                 style={{
                   paddingHorizontal: styles.standardMargin,
-                  paddingTop: styles.standardMargin,
+                  paddingTop: styles.standardMargin / 2,
                 }}
-              >
-                All users
-              </Typography>
-              <UserSlider users={data.users} />
-              <Typography
-                type='h2'
-                style={{ paddingHorizontal: styles.standardMargin }}
               >
                 Latest books
               </Typography>

@@ -2,10 +2,17 @@ import gql from 'graphql-tag'
 
 export default gql`
   query PeoplePageQuery($after: ID) {
-    users {
+    recommendedUsers {
       _id
       name
       profilePicturePath
+    }
+    user {
+      following {
+        _id
+        name
+        profilePicturePath
+      }
     }
     feed(after: $after) {
       _id
