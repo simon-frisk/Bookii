@@ -26,11 +26,13 @@ export default ({ route }) => {
   if (error) return <ErrorCenter message={errorMessage} />
   return (
     <FlatList
-      contentContainerStyle={{ padding: styles.standardMargin }}
       ListHeaderComponent={() => (
-        <Typography type='h2'>{data.bookList.name}</Typography>
+        <Typography type='h2' style={{ padding: styles.standardMargin }}>
+          {data.bookList.name}
+        </Typography>
       )}
       data={data.bookList.books}
+      keyExtractor={item => item.bookId}
       renderItem={({ item }) => <BookCard book={item} />}
     />
   )

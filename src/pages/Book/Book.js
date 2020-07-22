@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, ActivityIndicator, View, Text } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import useStyles from '../../util/useStyles'
 import WishButton from './WishButton'
 import { useNavigation } from '@react-navigation/native'
@@ -54,98 +54,108 @@ export default ({ route }) => {
             </View>
           )}
         </View>
-        <PressButton
-          text={
-            'Add book' +
-            (!!data && !!data.book.onselffeed.length ? ' again' : '')
-          }
-          onPress={() =>
-            navigation.navigate('addFeedBook', { bookId: data.book.bookId })
-          }
-          color={Styles.theme.current.main}
-          loading={loading}
-          containerStyle={{ marginTop: Styles.standardMargin / 2 }}
-        />
-        <WishButton
-          bookId={!!data && data.book.bookId}
-          isWished={!!data && data.book.isWished}
-          loading={loading}
-        />
-      </View>
-      <View style={{ marginHorizontal: Styles.standardMargin }}>
-        {!!data && !!data.book.authors && (
-          <Typography style={{ color: 'grey' }}>{`Author${
-            data.book.authors.length > 1 ? 's' : ''
-          }: ${data.book.authors.join(' , ')}`}</Typography>
-        )}
-        {!!data && !!data.book.pages && (
-          <Typography style={{ color: 'grey' }}>
-            Pages: {data.book.pages}
-          </Typography>
-        )}
-        {!!data && !!data.book.published && (
-          <Typography style={{ color: 'grey' }}>
-            Published: {data.book.published}
-          </Typography>
-        )}
-        {!!data && !!data.book.publisher && (
-          <Typography style={{ color: 'grey' }}>
-            Publisher: {data.book.publisher}
-          </Typography>
-        )}
-      </View>
-      {!!data && !!data.book.description && (
-        <View
-          style={[
-            Styles.card,
-            {
-              marginTop: Styles.standardMargin,
-              marginHorizontal: Styles.standardMargin,
-            },
-          ]}
-        >
-          <Typography type='h3'>Description</Typography>
-          <ExpandableText text={data.book.description} extractLength={200} />
-        </View>
-      )}
-      {!!data && !!data.book.wikipediadescription && (
-        <View
-          style={[
-            Styles.card,
-            {
-              marginTop: Styles.standardMargin,
-              marginHorizontal: Styles.standardMargin,
-            },
-          ]}
-        >
-          <Typography type='h3'>Wikipedia</Typography>
-          <ExpandableText
-            text={data.book.wikipediadescription}
-            extractLength={200}
-          />
-        </View>
-      )}
-      {!!data && !!data.book.youtubevideos.length && (
-        <YoutubeVideos videoIds={data.book.youtubevideos} />
-      )}
-      {!!data && (
-        <View
-          style={{
-            marginHorizontal: Styles.standardMargin,
-            marginVertical: Styles.standardMargin / 2,
-          }}
-        >
-          {data.book.onselffeed.map(feedBook => (
-            <FeedBookCard
-              feedBook={feedBook}
-              key={feedBook._id}
-              isSelf={true}
+        {data && (
+          <>
+            <PressButton
+              text={
+                'Add book' +
+                (!!data && !!data.book.onselffeed.length ? ' again' : '')
+              }
+              onPress={() =>
+                navigation.navigate('addFeedBook', { bookId: data.book.bookId })
+              }
+              color={Styles.theme.current.main}
+              loading={loading}
+              containerStyle={{ marginTop: Styles.standardMargin / 2 }}
             />
-          ))}
-          {data.book.onfollowingfeed.map(feedBook => (
-            <FeedBookCard feedBook={feedBook} key={feedBook._id} />
-          ))}
-        </View>
+            <WishButton
+              bookId={!!data && data.book.bookId}
+              isWished={!!data && data.book.isWished}
+              loading={loading}
+            />
+          </>
+        )}
+      </View>
+      {data && (
+        <>
+          <View style={{ marginHorizontal: Styles.standardMargin }}>
+            {!!data.book.authors && (
+              <Typography style={{ color: 'grey' }}>{`Author${
+                data.book.authors.length > 1 ? 's' : ''
+              }: ${data.book.authors.join(' , ')}`}</Typography>
+            )}
+            {!!data.book.pages && (
+              <Typography style={{ color: 'grey' }}>
+                Pages: {data.book.pages}
+              </Typography>
+            )}
+            {!!data.book.published && (
+              <Typography style={{ color: 'grey' }}>
+                Published: {data.book.published}
+              </Typography>
+            )}
+            {!!data.book.publisher && (
+              <Typography style={{ color: 'grey' }}>
+                Publisher: {data.book.publisher}
+              </Typography>
+            )}
+          </View>
+          {!!data.book.description && (
+            <View
+              style={[
+                Styles.card,
+                {
+                  marginTop: Styles.standardMargin,
+                  marginHorizontal: Styles.standardMargin,
+                },
+              ]}
+            >
+              <Typography type='h3'>Description</Typography>
+              <ExpandableText
+                text={data.book.description}
+                extractLength={200}
+              />
+            </View>
+          )}
+          {!!data.book.wikipediadescription && (
+            <View
+              style={[
+                Styles.card,
+                {
+                  marginTop: Styles.standardMargin,
+                  marginHorizontal: Styles.standardMargin,
+                },
+              ]}
+            >
+              <Typography type='h3'>Wikipedia</Typography>
+              <ExpandableText
+                text={data.book.wikipediadescription}
+                extractLength={200}
+              />
+            </View>
+          )}
+          {!!data.book.youtubevideos.length && (
+            <YoutubeVideos videoIds={data.book.youtubevideos} />
+          )}
+
+          <View
+            style={{
+              marginHorizontal: Styles.standardMargin,
+              marginVertical: Styles.standardMargin / 2,
+            }}
+          >
+            {data.book.onselffeed.map(feedBook => (
+              <FeedBookCard
+                feedBook={feedBook}
+                key={feedBook._id}
+                isSelf={true}
+              />
+            ))}
+            {data.book.onfollowingfeed.map(feedBook => (
+              <FeedBookCard feedBook={feedBook} key={feedBook._id} />
+            ))}
+          </View>
+        </>
       )}
     </ScrollView>
   )

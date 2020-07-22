@@ -12,7 +12,11 @@ export default ({ book }) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('book', { bookId: book.bookId })}
-      style={{ flexDirection: 'row', margin: styles.standardMargin }}
+      style={{
+        flexDirection: 'row',
+        marginHorizontal: styles.standardMargin,
+        marginVertical: styles.standardMargin / 2,
+      }}
     >
       <BookCover uri={book.thumbnail} width={100} />
       <Typography type='h3' style={{ marginLeft: 10, flex: 1 }}>

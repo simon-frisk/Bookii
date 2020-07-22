@@ -14,6 +14,8 @@ import useApolloError from '../../util/useApolloError'
 import ErrorCenter from '../../components/ErrorCenter'
 import Typography from '../../components/Typography'
 import { useNavigation } from '@react-navigation/native'
+import Cell from '../../components/Table/Cell'
+import Table from '../../components/Table/Table'
 
 export default () => {
   const { data, loading, error } = useQuery(BooksPageQuery)
@@ -32,27 +34,18 @@ export default () => {
       )}
       {errorMessage && <ErrorCenter message={errorMessage} />}
       {data && (
-        <>
-          <Typography type='h2' style={{ margin: styles.standardMargin }}>
-            Bestsellers
-          </Typography>
+        <Table title='Bestsellers'>
           {data.bestSellerLists.map(list => (
-            <TouchableOpacity
+            <Cell
               key={list.name}
-              style={{
-                backgroundColor: styles.theme.current.primary,
-                padding: styles.standardMargin,
-                borderTopColor: styles.theme.current.border,
-                borderTopWidth: 0.7,
-              }}
+              title={list.name}
               onPress={() =>
                 navigation.navigate('bookList', { name: list.name })
               }
-            >
-              <Typography>{list.name}</Typography>
-            </TouchableOpacity>
+              Left={() => <Typography>📚</Typography>}
+            />
           ))}
-        </>
+        </Table>
       )}
     </ScrollView>
   )
