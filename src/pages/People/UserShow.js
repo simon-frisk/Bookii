@@ -5,7 +5,9 @@ import UserSlider from '../../components/UserSlider'
 import useStyles from '../../util/useStyles'
 
 export default ({ recommended, following }) => {
-  const [mode, setMode] = useState('following')
+  const [mode, setMode] = useState(
+    following.length ? 'following' : 'recommended'
+  )
   const styles = useStyles()
 
   return (
