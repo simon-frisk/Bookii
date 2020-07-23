@@ -5,13 +5,11 @@ export default gql`
     book(bookId: $bookId) {
       title
       bookId
-      subTitle
+      subtitle
       authors
       thumbnail
-      description
       pages
       published
-      publisher
       wikipediadescription
       isWished
       youtubevideos

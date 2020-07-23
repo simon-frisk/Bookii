@@ -46,9 +46,9 @@ export default ({ route }) => {
               >
                 {data.book.title}
               </Typography>
-              {!!data.book.subTitle && (
+              {!!data.book.subtitle && (
                 <Typography style={{ textAlign: 'center', color: 'grey' }}>
-                  {data.book.subTitle}
+                  {data.book.subtitle}
                 </Typography>
               )}
             </View>
@@ -94,11 +94,6 @@ export default ({ route }) => {
                 Published: {data.book.published}
               </Typography>
             )}
-            {!!data.book.publisher && (
-              <Typography style={{ color: 'grey' }}>
-                Publisher: {data.book.publisher}
-              </Typography>
-            )}
             {!!data.book.categories && (
               <View
                 style={{
@@ -128,23 +123,6 @@ export default ({ route }) => {
               </View>
             )}
           </View>
-          {!!data.book.description && (
-            <View
-              style={[
-                Styles.card,
-                {
-                  marginTop: Styles.standardMargin,
-                  marginHorizontal: Styles.standardMargin,
-                },
-              ]}
-            >
-              <Typography type='h3'>Description</Typography>
-              <ExpandableText
-                text={data.book.description}
-                extractLength={200}
-              />
-            </View>
-          )}
           {!!data.book.wikipediadescription && (
             <View
               style={[

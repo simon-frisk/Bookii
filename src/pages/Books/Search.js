@@ -13,7 +13,6 @@ const BookSearchQuery = gql`
     bookSearch(query: $query) {
       bookId
       title
-      subTitle
       authors
       thumbnail
     }
