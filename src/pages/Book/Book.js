@@ -126,6 +126,20 @@ export default ({ route }) => {
           />
         </View>
       )}
+      {!!data.book.description && (
+        <View
+          style={[
+            Styles.card,
+            {
+              marginTop: Styles.standardMargin,
+              marginHorizontal: Styles.standardMargin,
+            },
+          ]}
+        >
+          <Typography type='h3'>Description</Typography>
+          <ExpandableText text={data.book.description} extractLength={200} />
+        </View>
+      )}
       {!!data.book.youtubevideos.length && (
         <YoutubeVideos videoIds={data.book.youtubevideos} />
       )}

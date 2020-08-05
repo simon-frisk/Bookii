@@ -10,6 +10,7 @@ export default gql`
       thumbnail
       pages
       published
+      description
       wikipediadescription
       isWished
       youtubevideos
