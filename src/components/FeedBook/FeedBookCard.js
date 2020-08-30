@@ -6,11 +6,14 @@ import BookCover from '../Book/BookCover'
 import PressButton from '../PressButton'
 import ExpandableText from '../ExpandableText'
 import Typography from '../Typography'
-import ProfilePictureCircle from '../ProfilePictureCircle'
+import CommentSection from './CommentSection/CommentSection'
+import UserSection from './UserSection'
+import useTheme from '../../util/useTheme'
 
 export default ({ isSelf, style, limitWidth, feedBook }) => {
   const navigation = useNavigation()
   const Styles = useStyles()
+  const theme = useTheme()
 
   return (
     <View
@@ -18,47 +21,41 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
         Styles.card,
         style,
         {
-          width: limitWidth ? 290 : undefined,
+          width: limitWidth ? 320 : undefined,
           alignSelf: limitWidth ? 'flex-start' : 'auto',
           marginVertical: Styles.standardMargin / 2,
         },
       ]}
     >
-      {!!feedBook.user && (
-        <TouchableOpacity
-          disabled={isSelf}
-          onPress={() => {
-            navigation.navigate('user', { _id: feedBook.user._id })
-          }}
+      <UserSection isSelf={isSelf} user={feedBook.user} />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('book', { bookId: feedBook.book.bookId })
+        }
+        style={{ flexDirection: 'row' }}
+      >
+        <BookCover uri={feedBook.book.thumbnail} width={80} />
+        <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginBottom: 10,
+            flex: 1,
+            marginLeft: Styles.standardMargin,
+            justifyContent: 'space-between',
           }}
         >
-          <ProfilePictureCircle
-            profilePicturePath={feedBook.user.profilePicturePath}
-            name={feedBook.user.name}
-            size={50}
-            style={{ marginRight: 10 }}
-          />
-          <Typography type='h3'>{feedBook.user.name}</Typography>
-        </TouchableOpacity>
-      )}
-      {!!feedBook.book && (
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('book', { bookId: feedBook.book.bookId })
-          }
-          style={{ flexDirection: 'row' }}
-        >
-          <BookCover uri={feedBook.book.thumbnail} width={100} />
-          <Typography type='h4' style={{ marginLeft: 10, flex: 1 }}>
-            {feedBook.book.title}
-          </Typography>
-        </TouchableOpacity>
-      )}
-      <View style={{ marginTop: 8 }}>
+          <Typography type='h3'>{feedBook.book.title}</Typography>
+          {isSelf && (
+            <PressButton
+              text='Edit'
+              color={theme.current.main}
+              containerStyle={{ alignSelf: 'flex-end' }}
+              onPress={() =>
+                navigation.navigate('editFeedBook', { _id: feedBook._id })
+              }
+            />
+          )}
+        </View>
+      </TouchableOpacity>
+      <View style={{ marginTop: Styles.standardMargin }}>
         <Typography type='h4'>
           {new Date(feedBook.date).toDateString()}
         </Typography>
@@ -69,15 +66,11 @@ export default ({ isSelf, style, limitWidth, feedBook }) => {
             extractLength={limitWidth ? 40 : 110}
           />
         )}
-        {isSelf && (
-          <PressButton
-            text='Edit'
-            onPress={() =>
-              navigation.navigate('editFeedBook', { _id: feedBook._id })
-            }
-            containerStyle={{ paddingVertical: 0 }}
-          />
-        )}
+        <CommentSection
+          comments={feedBook.comments}
+          userId={feedBook.user._id}
+          feedBookId={feedBook._id}
+        />
       </View>
     </View>
   )

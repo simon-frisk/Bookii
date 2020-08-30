@@ -20,22 +20,50 @@ export default gql`
       }
       onselffeed {
         _id
-        date
         comment
+        date
         user {
+          _id
           name
           profilePicturePath
+        }
+        comments {
           _id
+          user {
+            profilePicturePath
+            _id
+            name
+          }
+          comment
+        }
+        book {
+          bookId
+          thumbnail
+          title
         }
       }
       onfollowingfeed {
         _id
-        date
         comment
+        date
         user {
+          _id
           name
           profilePicturePath
+        }
+        comments {
           _id
+          user {
+            profilePicturePath
+            _id
+            name
+          }
+          comment
+        }
+        book {
+          bookId
+          thumbnail
+          title
         }
       }
     }

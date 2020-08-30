@@ -23,6 +23,15 @@ export default gql`
         name
         profilePicturePath
       }
+      comments {
+        _id
+        user {
+          profilePicturePath
+          _id
+          name
+        }
+        comment
+      }
       book {
         bookId
         thumbnail

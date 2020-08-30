@@ -10,8 +10,8 @@ export default props => {
     <View
       style={[
         {
-          backgroundColor: styles.theme.current.primary,
-          borderColor: styles.theme.current.primary,
+          backgroundColor: props.color || styles.theme.current.primary,
+          borderColor: props.color || styles.theme.current.primary,
           borderRadius: 15,
           marginTop: styles.standardMargin / 2,
           flexDirection: 'row',

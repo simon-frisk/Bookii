@@ -17,14 +17,27 @@ export default gql`
       }
       feedBooks {
         _id
-        bookId
         comment
         date
         favorite
+        user {
+          _id
+          name
+          profilePicturePath
+        }
+        comments {
+          _id
+          user {
+            profilePicturePath
+            _id
+            name
+          }
+          comment
+        }
         book {
+          bookId
           thumbnail
           title
-          bookId
         }
       }
     }
